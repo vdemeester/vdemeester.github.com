@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jekyll on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/jekyll/</link>
+    <link>http://vincent.demeester.fr/tags/jekyll/</link>
     <description>Recent content in Jekyll on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
 &lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
 &lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
@@ -155,10 +155,10 @@ C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#3
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
@@ -208,10 +208,10 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>
 
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
@@ -292,10 +292,10 @@ directory and edit your files.&lt;/p&gt;
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>
 
 &lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process

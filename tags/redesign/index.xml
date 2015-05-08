@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redesign on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/redesign/</link>
+    <link>http://vincent.demeester.fr/tags/redesign/</link>
     <description>Recent content in Redesign on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 24 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/redesign/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/redesign/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;

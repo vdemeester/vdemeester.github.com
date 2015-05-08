@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Orgmode on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/orgmode/</link>
+    <link>http://vincent.demeester.fr/tags/orgmode/</link>
     <description>Recent content in Orgmode on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/orgmode/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/orgmode/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
 &lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
 &lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;

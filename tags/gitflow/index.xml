@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gitflow on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/gitflow/</link>
+    <link>http://vincent.demeester.fr/tags/gitflow/</link>
     <description>Recent content in Gitflow on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 23 Jul 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/gitflow/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/gitflow/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>
 
 &lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.

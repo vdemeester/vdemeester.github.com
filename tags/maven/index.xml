@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Maven on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/maven/</link>
+    <link>http://vincent.demeester.fr/tags/maven/</link>
     <description>Recent content in Maven on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 08 Sep 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/maven/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Maven Tmpfs</title>
-      <link>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</link>
+      <link>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</guid>
+      <guid>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
       <description>&lt;p&gt;Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
 &lt;strong&gt;&amp;ldquo;Convention over configuration&amp;rdquo;&lt;/strong&gt; me va vraiment bien. Que ce soit au boulot ou
 à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
@@ -179,10 +179,10 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>
 
 &lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/github/</link>
+    <link>http://vincent.demeester.fr/tags/github/</link>
     <description>Recent content in Github on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 16 Dec 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
-      <link>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <link>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
       <description>
 
 &lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
@@ -66,10 +66,10 @@
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories

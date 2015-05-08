@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Me on Vincent Demeester</title>
-    <link>http://localhost:1313/categories/me/</link>
+    <link>http://vincent.demeester.fr/categories/me/</link>
     <description>Recent content in Me on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 24 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/me/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/categories/me/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
@@ -64,10 +64,10 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
     
     <item>
       <title>Podcasts</title>
-      <link>http://localhost:1313/posts/2013-10-12-podcasts/</link>
+      <link>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2013-10-12-podcasts/</guid>
+      <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -134,10 +134,10 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
-      <link>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <link>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
       <description>
 
 &lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
@@ -189,10 +189,10 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
     
     <item>
       <title>News</title>
-      <link>http://localhost:1313/posts/2012-07-21-news/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-21-news/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
 vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
 
@@ -205,7 +205,7 @@ oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arri
 simplement fendue.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
@@ -243,10 +243,10 @@ noms).&lt;/li&gt;
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>
 
 &lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process

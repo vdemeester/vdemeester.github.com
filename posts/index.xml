@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Vincent Demeester</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>http://vincent.demeester.fr/posts/</link>
     <description>Recent content in Posts on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
 &lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
 &lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
@@ -155,10 +155,10 @@ C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#3
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
@@ -208,10 +208,10 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
     
     <item>
       <title>Podcasts</title>
-      <link>http://localhost:1313/posts/2013-10-12-podcasts/</link>
+      <link>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2013-10-12-podcasts/</guid>
+      <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -278,10 +278,10 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
     
     <item>
       <title>Maven Tmpfs</title>
-      <link>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</link>
+      <link>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</guid>
+      <guid>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
       <description>&lt;p&gt;Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
 &lt;strong&gt;&amp;ldquo;Convention over configuration&amp;rdquo;&lt;/strong&gt; me va vraiment bien. Que ce soit au boulot ou
 à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
@@ -446,10 +446,10 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
-      <link>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <link>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
       <description>
 
 &lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
@@ -501,10 +501,10 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>
 
 &lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
@@ -597,10 +597,10 @@ verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration opt
     
     <item>
       <title>News</title>
-      <link>http://localhost:1313/posts/2012-07-21-news/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-21-news/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
 vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
 
@@ -613,7 +613,7 @@ oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arri
 simplement fendue.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
+&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
@@ -651,10 +651,10 @@ noms).&lt;/li&gt;
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>
 
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
@@ -735,10 +735,10 @@ directory and edit your files.&lt;/p&gt;
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
@@ -866,10 +866,10 @@ repository.&lt;/p&gt;
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>
 
 &lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process

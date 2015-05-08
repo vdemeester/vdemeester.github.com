@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Guard on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/guard/</link>
+    <link>http://vincent.demeester.fr/tags/guard/</link>
     <description>Recent content in Guard on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 13 May 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/guard/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/guard/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>
 
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going

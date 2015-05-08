@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Vincent Demeester</title>
-    <link>http://localhost:1313/tags/git/</link>
+    <link>http://vincent.demeester.fr/tags/git/</link>
     <description>Recent content in Git on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 23 Jul 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>
 
 &lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
@@ -107,10 +107,10 @@ verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration opt
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
