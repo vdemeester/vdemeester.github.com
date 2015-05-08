@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <base href="http://localhost:1313/">
+    <link rel="start" href="http://localhost:1313/" />
+
+    <title>Vincent Demeester</title>
+    <link rel="canonical" href="http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+
+    <link rel="openid.server" href="https://indieauth.com/openid" />
+    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
+
+
+    <style type="text/css">
+      #header {
+      
+      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
+      
+      }
+    </style>
+
+  </head>
+  
+  <body lang=""/>
+  
+
+
+  <header id="header">
+
+    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
+
+    <div>
+      <h1>
+        <summary>
+          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
+        </summary>
+      </h1>
+      <ul class="nav">
+        <li class="archive"><a href="/archive/">Archive</a></li>
+        <li class="categories"><a href="/categories/">Categories</a></li>
+        <li class="tags"><a href="/tags/">Tags</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+<div id="main-container">
+  <div id="page">
+    <article class="post">
+      <header>
+        <h1 class="emphnext">Gitolite quick and dirty mirror</h1><a href='http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/'></a>
+        <address class="signature">
+          <span class="date">Tue, 5 May, 2012</span>
+          <span class="words">(700 Words)</span>
+        </address>
+        <ul class="tag_box inline">
+          
+          <li class="category"><a href="/categories/#developement">developement</a></li>
+          
+          
+          
+          
+          
+          <li class="tag tag-gitolite"><a href="/tags/#gitolite">gitolite<span>1</span></a></li>
+          
+          
+          <li class="tag tag-git"><a href="/tags/#git">git<span>2</span></a></li>
+          
+          
+          <li class="tag tag-linux"><a href="/tags/#linux">linux<span>1</span></a></li>
+          
+          
+          <li class="tag tag-mirror"><a href="/tags/#mirror">mirror<span>1</span></a></li>
+          
+          
+          <li class="tag tag-github"><a href="/tags/#github">github<span>2</span></a></li>
+          
+          <br/>
+          
+        </ul>
+      </header>
+</header>
+
+
+<p>I&rsquo;m running a gitolite <em>instance</em> on my personal server to manage my repositories
+(personnal, private or public) ; and I am quickly going to share with you how I
+setup a <em>quick and dirty</em> mirror feature.</p>
+
+<p>First, I am using <strong>gitolite 3</strong>. The mirroring we are going to setup is not the
+<em>supported</em> <a href="http://sitaramc.github.com/gitolite/mirroring.html">mirroring <strong>built-in</strong></a>.
+We are going to implement a simplier way to set mirror thing :</p>
+
+<ol>
+<li>Write a custom gitolite command ; the idea is to be able to write <code>git-config</code>
+stuff.</li>
+<li>Write a hook that take a specific <code>git-config</code> (let say <code>mirror.url</code>) and do
+a simple mirroring.</li>
+</ol>
+
+<h1 id="gitolite-commands:56bca63520f3b7058489b7be9bf67456">Gitolite commands</h1>
+
+<p>Gitolite 3 has been rewritten to be more flexible : <a href="http://sitaramc.github.com/gitolite/g3why.html">Why a completely new version</a>.
+The rewrite made it really easy to extend gitolite. <del>I&rsquo;ve fork <a href="https://github.com/vdemeester/gitolite">gitolite</a> on github</del>
+I&rsquo;ve created a <a href="http://github.com/vdemeester/vdemeester-gitolite-local-code">repository git</a>
+to easily add commands to my gitolite instance via <em>local code</em>. The gitolite command I wrote is
+a quick and dirty script in shell to add <code>git config</code>. The source should speek
+for itself ; It <em>should</em> include some way to check if the given config is not
+already present in the <code>gitolite-admin</code> configuration file — and so might be
+rewritten in <code>Perl</code>.</p>
+
+<p>The command is <code>write-git-config</code> because a <code>git-config</code> command already exists
+in the built-in commands.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
+
+<span style="color: #008800; font-style: italic"># Usage:    ssh git@host write-git-config &lt;repo&gt; &lt;key&gt; &lt;value&gt;</span>
+<span style="color: #008800; font-style: italic">#</span>
+<span style="color: #008800; font-style: italic"># Set git-config value for user-created (&quot;wild&quot;) repo.</span>
+
+die<span style="color: #666666">()</span> <span style="color: #666666">{</span> <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$@</span><span style="color: #BB4444">&quot;</span> &gt;&amp;2; <span style="color: #AA22FF">exit </span>1; <span style="color: #666666">}</span>
+usage<span style="color: #666666">()</span> <span style="color: #666666">{</span> perl -lne <span style="color: #BB4444">&#39;print substr($_, 2) if /^# Usage/../^$/&#39;</span> &lt; <span style="color: #B8860B">$0</span>; <span style="color: #AA22FF">exit </span>1; <span style="color: #666666">}</span>
+<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$1</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$2</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$3</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> usage
+<span style="color: #666666">[</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$1</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;-h&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> usage
+<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$GL_USER</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> die GL_USER not <span style="color: #AA22FF">set</span>
+
+<span style="color: #008800; font-style: italic"># ----------------------------------------------------------------------</span>
+<span style="color: #B8860B">repo</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
+<span style="color: #B8860B">key</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
+<span style="color: #B8860B">value</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
+
+<span style="color: #008800; font-style: italic"># this shell script takes arguments that are completely under the user&#39;s</span>
+<span style="color: #008800; font-style: italic"># control, so make sure you quote those suckers!</span>
+
+<span style="color: #AA22FF; font-weight: bold">if</span> gitolite query-rc -q WRITER_CAN_UPDATE_DESC
+<span style="color: #AA22FF; font-weight: bold">then</span>
+    gitolite access -q <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span> <span style="color: #B8860B">$GL_USER</span> W any <span style="color: #666666">||</span> die You are not authorised
+<span style="color: #AA22FF; font-weight: bold">else</span>
+    gitolite creator <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span> <span style="color: #B8860B">$GL_USER</span> <span style="color: #666666">||</span> die You are not authorised
+<span style="color: #AA22FF; font-weight: bold">fi</span>
+
+<span style="color: #008800; font-style: italic"># if it passes, $repo is a valid repo name so it is known to contain only sane</span>
+<span style="color: #008800; font-style: italic"># characters.  This is because &#39;gitolite creator&#39; return true only if there</span>
+<span style="color: #008800; font-style: italic"># *is* a repo of that name and it has a gl-creator file that contains the same</span>
+<span style="color: #008800; font-style: italic"># text as $GL_USER.</span>
+
+<span style="color: #B8860B">configfile</span><span style="color: #666666">=</span><span style="color: #BB4444">`</span>gitolite query-rc GL_REPO_BASE<span style="color: #BB4444">`</span>/<span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span>.git/config
+
+git config --file <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$configfile</span><span style="color: #BB4444">&quot;</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$key</span><span style="color: #BB4444">&quot;</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$value</span><span style="color: #BB4444">&quot;</span>
+</pre></div>
+</p>
+
+<h1 id="gitolite-hooks:56bca63520f3b7058489b7be9bf67456">Gitolite hooks</h1>
+
+<p>The next step is to write a quick <code>post-receive</code> hook that check if there is a
+certain <code>git-config</code> entry and run <code>git push --mirror</code>. The file is in
+<code>$HOME/.gitolite/hooks/common/post-receive</code> ; you could add a better system to
+hooks (to be able to add &ldquo;dynamic&rdquo; hooks, …).</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
+
+<span style="color: #008800; font-style: italic"># Simple gitolite mirroring</span>
+
+<span style="color: #008800; font-style: italic"># flush STDIN coming from git, because gitolite&#39;s own post-receive.mirrorpush</span>
+<span style="color: #008800; font-style: italic"># script does the same thing</span>
+<span style="color: #666666">[</span> -t <span style="color: #666666">0</span> <span style="color: #666666">]</span> <span style="color: #666666">||</span> cat &gt;/dev/null
+
+<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$GL_REPO</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> die GL_REPO not <span style="color: #AA22FF">set</span>
+
+<span style="color: #B8860B">target</span><span style="color: #666666">=</span><span style="color: #BB4444">`</span>git config --get mirror.url<span style="color: #BB4444">`</span>
+<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$target</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #AA22FF">exit </span>0
+
+<span style="color: #008800; font-style: italic"># Support a REPO variable for wildcard mirrors</span>
+<span style="color: #B8860B">gl_repo_escaped</span><span style="color: #666666">=</span><span style="color: #AA22FF; font-weight: bold">$(</span><span style="color: #AA22FF">echo</span> <span style="color: #B8860B">$GL_REPO</span> | sed <span style="color: #BB4444">&#39;s/\//\\\//g&#39;</span><span style="color: #AA22FF; font-weight: bold">)</span>
+<span style="color: #B8860B">target</span><span style="color: #666666">=</span><span style="color: #AA22FF; font-weight: bold">$(</span><span style="color: #AA22FF">echo</span> <span style="color: #B8860B">$target</span> | sed -e <span style="color: #BB4444">&quot;s/REPO/</span><span style="color: #B8860B">$gl_repo_escaped</span><span style="color: #BB4444">/g&quot;</span><span style="color: #AA22FF; font-weight: bold">)</span>
+
+<span style="color: #008800; font-style: italic"># Do the mirror push</span>
+git push --mirror <span style="color: #B8860B">$target</span>
+</pre></div>
+</p>
+
+<p>The next, and final step is to run <code>gitolite compile</code> to update links to hooks
+for every repositories.</p>
+
+<h1 id="for-real:56bca63520f3b7058489b7be9bf67456">For real</h1>
+
+<p>And finaly, this is the final step you&rsquo;ll do.</p>
+
+<pre><code>$ ssh git@host write-git-config vincent/vcsh-home mirror.url git@github.com:vdemeester/vcsh-home.git
+$ git push
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 294 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: To git@github.com:vdemeester/vcsh-home.git
+remote:    65681a8..701c990  master -&gt; master
+To git@host:vincent/vcsh-home.git
+   65681a8..701c990  master -&gt; master
+</code></pre>
+
+<p>And that should be it !</p>
+
+<p><strong>Update 2012/10/04</strong> : Moved from gitolite fork to <em>gitolite local code</em>
+repository.</p>
+
+</article>
+<div class="prev-next">
+  
+  <a class="paging-link prev" href="/posts/2012-05-07-reinit-and-jekyll/" title="Reinit and Jekyll">← Previous post</a>
+  
+
+  
+  <a class="paging-link next" href="/posts/2012-05-13-jekyll-foreman-guard-bundler/" title="Jekyll Forman Guard Bundler">Next post →</a>
+  
+</div>
+
+</div>
+</div>
+
+<div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content and design by <a href="/info/site.html">Vincent Demeester</a>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
+  		</span><br />
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+

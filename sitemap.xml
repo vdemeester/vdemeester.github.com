@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://localhost:1313/</loc>
+    <lastmod>2015-05-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</loc>
+    <lastmod>2015-05-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</loc>
+    <lastmod>2014-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2013-10-12-podcasts/</loc>
+    <lastmod>2013-10-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</loc>
+    <lastmod>2013-09-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</loc>
+    <lastmod>2012-12-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</loc>
+    <lastmod>2012-07-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-07-21-news/</loc>
+    <lastmod>2012-07-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</loc>
+    <lastmod>2012-05-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</loc>
+    <lastmod>2012-05-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</loc>
+    <lastmod>2012-05-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/archive/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+  </url>
+  
+</urlset>

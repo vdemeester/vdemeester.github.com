@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <base href="http://localhost:1313/">
+    <link rel="start" href="http://localhost:1313/" />
+
+    <title>Vincent Demeester</title>
+    <link rel="canonical" href="http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+
+    <link rel="openid.server" href="https://indieauth.com/openid" />
+    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
+
+
+    <style type="text/css">
+      #header {
+      
+      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
+      
+      }
+    </style>
+
+  </head>
+  
+  <body lang=""/>
+  
+
+
+  <header id="header">
+
+    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
+
+    <div>
+      <h1>
+        <summary>
+          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
+        </summary>
+      </h1>
+      <ul class="nav">
+        <li class="archive"><a href="/archive/">Archive</a></li>
+        <li class="categories"><a href="/categories/">Categories</a></li>
+        <li class="tags"><a href="/tags/">Tags</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+<div id="main-container">
+  <div id="page">
+    <article class="post">
+      <header>
+        <h1 class="emphnext">Reinit and Jekyll</h1><a href='http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/'></a>
+        <address class="signature">
+          <span class="date">Mon, 5 May, 2012</span>
+          <span class="words">(300 Words)</span>
+        </address>
+        <ul class="tag_box inline">
+          
+          <li class="category"><a href="/categories/#me">me</a></li>
+          
+          
+          
+          
+          
+          <li class="tag tag-intro"><a href="/tags/#intro">intro<span>1</span></a></li>
+          
+          
+          <li class="tag tag-jekyll"><a href="/tags/#jekyll">jekyll<span>4</span></a></li>
+          
+          <br/>
+          
+        </ul>
+      </header>
+</header>
+
+
+<p>Two weeks ago, my <em>online</em> personal server has been attacked and, somehow, died. I&rsquo;m in the process
+of re-installation of it but I&rsquo;m going to hardened a bit the security on it. Anyway, this crash meant
+that every piece of site I maintain has been down. That&rsquo;s why I moved this <em>identity site</em> on the
+github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should
+still be up for a while.</p>
+
+<p>And I&rsquo;m switching on Jekyll for this website as It is supported by Github page, easy to use and easy
+to deploy elsewhere (if one day I want to move from Github).</p>
+
+<p>The rest of the post is going to be used as a <em>sandbox</em> post to test the site styles.</p>
+
+<blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+<p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+
+<h2 id="highlight:9c1aa07d0b2d69339bbe4c2e41552590">Highlight</h2>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #AA22FF; font-weight: bold">def</span> <span style="color: #00A000">foo</span>
+  <span style="color: #AA22FF">puts</span> <span style="color: #BB4444">&#39;foo&#39;</span>
+<span style="color: #AA22FF; font-weight: bold">end</span>
+</pre></div>
+</p>
+
+<p>Some bash script…</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/bash</span>
+update_gems<span style="color: #666666">()</span> <span style="color: #666666">{</span>
+    <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Update gems for all versions ? (y/N)&quot;</span>
+    <span style="color: #AA22FF">read </span>UPDATE_GEMS
+    <span style="color: #AA22FF">test</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #B8860B">UPDATE_GEMS</span><span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #B8860B">UPDATE_GEMS</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;n&quot;</span>
+    <span style="color: #AA22FF; font-weight: bold">if</span> <span style="color: #AA22FF">test</span> <span style="color: #BB4444">&quot;</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #B8860B">UPDATE_GEMS</span><span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;y&quot;</span>; <span style="color: #AA22FF; font-weight: bold">then</span>
+        <span style="color: #AA22FF; font-weight: bold">for</span> version in <span style="color: #BB4444">`</span>ls --color<span style="color: #666666">=</span>never <span style="color: #B8860B">$HOME</span>/.rbenv/versions<span style="color: #BB4444">`</span>; <span style="color: #AA22FF; font-weight: bold">do</span>
+            <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;Updating </span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #B8860B">version</span>%/<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">&quot;</span>
+            <span style="color: #B8860B">RBENV_VERSION</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #B8860B">version</span>%/<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">&quot;</span> rbenv <span style="color: #AA22FF">exec </span>gem update
+            <span style="color: #B8860B">RBENV_VERSION</span><span style="color: #666666">=</span><span style="color: #BB4444">&quot;</span><span style="color: #BB6688; font-weight: bold">${</span><span style="color: #B8860B">version</span>%/<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BB4444">&quot;</span> rbenv <span style="color: #AA22FF">exec </span>gem install bundler
+        <span style="color: #AA22FF; font-weight: bold">done</span>
+    <span style="color: #AA22FF; font-weight: bold">fi</span>
+<span style="color: #666666">}</span>
+
+update_gems
+</pre></div>
+</p>
+
+</article>
+<div class="prev-next">
+  
+  <a class="paging-link prev" href="/archive/" title="Archive">← Previous post</a>
+  
+
+  
+  <a class="paging-link next" href="/posts/2012-05-08-gitolite-quick-and-dirty-mirror/" title="Gitolite quick and dirty mirror">Next post →</a>
+  
+</div>
+
+</div>
+</div>
+
+<div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content and design by <a href="/info/site.html">Vincent Demeester</a>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
+  		</span><br />
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+

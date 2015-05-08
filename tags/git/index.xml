@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/git/</link>
+    <description>Recent content in Git on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 23 Jul 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Maven Release Gitflow</title>
+      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <description>
+
+&lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
+When working on maven project, there is few great plugins that helps to get
+the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/maven-release-plugin&#34;&gt;maven-release-plugin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Inspired on this &lt;a href=&#34;https://gist.github.com/1043970&#34;&gt;gist&lt;/a&gt;, I&amp;rsquo;ve come with
+a cool way of doing things (let say we want to release a 0.1 version of an
+artifact) :&lt;/p&gt;
+
+&lt;h1 id=&#34;prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
+
+&lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
+(to know where to deploy the release artifact) and few options for the
+maven-release-plugin :&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-release-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.3.2&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;tagNameFormat&amp;gt;&lt;/span&gt;v@{project.version}&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/tagNameFormat&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;pushChanges&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/pushChanges&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;localCheckout&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/localCheckout&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Few explanation here :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tagNameFormat&lt;/code&gt; is here to change the default tag name (which is &lt;code&gt;${project.artifactId}-${project.version}&lt;/code&gt;) to a better one.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pushChanges&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt; tells  maven-release-plugin not to push
+changes (this will become useful)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;localCheckout&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; tells maven-release-plugin to clone from
+local repository (not distant). This is especially useful here because we
+didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;the-real-stuff:5b48b9cc71274145577975feb51b5ced&#34;&gt;The real stuff&lt;/h1&gt;
+
+&lt;p&gt;First create a release branch from develop.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout -b release/v0.1 develop
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:prepare               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# change the pom, commit and tag version, and&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# re-change pom (by incrementing SNAPSHOT version)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:perform               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get the tagged version, compile and deploy&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And the real fun begins.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout develop              &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get back to the develop branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into develop&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout master               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# go to the master branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1~1  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into master but&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# the tagged version instead of the release/v0.1 HEAD&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git branch -D release/v0.1        &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Removing the release branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git push --all &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --tags &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Finally push everything&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
+merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The next step would be to create a helper script that automates this and
+verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration options.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edit 17:58&lt;/strong&gt; : You can take a look &lt;a href=&#34;https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gitolite quick and dirty mirror</title>
+      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
+(personnal, private or public) ; and I am quickly going to share with you how I
+setup a &lt;em&gt;quick and dirty&lt;/em&gt; mirror feature.&lt;/p&gt;
+
+&lt;p&gt;First, I am using &lt;strong&gt;gitolite 3&lt;/strong&gt;. The mirroring we are going to setup is not the
+&lt;em&gt;supported&lt;/em&gt; &lt;a href=&#34;http://sitaramc.github.com/gitolite/mirroring.html&#34;&gt;mirroring &lt;strong&gt;built-in&lt;/strong&gt;&lt;/a&gt;.
+We are going to implement a simplier way to set mirror thing :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Write a custom gitolite command ; the idea is to be able to write &lt;code&gt;git-config&lt;/code&gt;
+stuff.&lt;/li&gt;
+&lt;li&gt;Write a hook that take a specific &lt;code&gt;git-config&lt;/code&gt; (let say &lt;code&gt;mirror.url&lt;/code&gt;) and do
+a simple mirroring.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;gitolite-commands:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite commands&lt;/h1&gt;
+
+&lt;p&gt;Gitolite 3 has been rewritten to be more flexible : &lt;a href=&#34;http://sitaramc.github.com/gitolite/g3why.html&#34;&gt;Why a completely new version&lt;/a&gt;.
+The rewrite made it really easy to extend gitolite. &lt;del&gt;I&amp;rsquo;ve fork &lt;a href=&#34;https://github.com/vdemeester/gitolite&#34;&gt;gitolite&lt;/a&gt; on github&lt;/del&gt;
+I&amp;rsquo;ve created a &lt;a href=&#34;http://github.com/vdemeester/vdemeester-gitolite-local-code&#34;&gt;repository git&lt;/a&gt;
+to easily add commands to my gitolite instance via &lt;em&gt;local code&lt;/em&gt;. The gitolite command I wrote is
+a quick and dirty script in shell to add &lt;code&gt;git config&lt;/code&gt;. The source should speek
+for itself ; It &lt;em&gt;should&lt;/em&gt; include some way to check if the given config is not
+already present in the &lt;code&gt;gitolite-admin&lt;/code&gt; configuration file — and so might be
+rewritten in &lt;code&gt;Perl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The command is &lt;code&gt;write-git-config&lt;/code&gt; because a &lt;code&gt;git-config&lt;/code&gt; command already exists
+in the built-in commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Usage:    ssh git@host write-git-config &amp;lt;repo&amp;gt; &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Set git-config value for user-created (&amp;quot;wild&amp;quot;) repo.&lt;/span&gt;
+
+die&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$@&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;amp;2; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+usage&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; perl -lne &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;print substr($_, 2) if /^# Usage/../^$/&amp;#39;&lt;/span&gt; &amp;lt; &lt;span style=&#34;color: #B8860B&#34;&gt;$0&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$2&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$3&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-h&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_USER not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# ----------------------------------------------------------------------&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# this shell script takes arguments that are completely under the user&amp;#39;s&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# control, so make sure you quote those suckers!&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; gitolite query-rc -q WRITER_CAN_UPDATE_DESC
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+    gitolite access -q &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; W any &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt;
+    gitolite creator &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# if it passes, $repo is a valid repo name so it is known to contain only sane&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# characters.  This is because &amp;#39;gitolite creator&amp;#39; return true only if there&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# *is* a repo of that name and it has a gl-creator file that contains the same&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# text as $GL_USER.&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;configfile&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;gitolite query-rc GL_REPO_BASE&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;/&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;.git/config
+
+git config --file &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$configfile&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$key&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$value&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;gitolite-hooks:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite hooks&lt;/h1&gt;
+
+&lt;p&gt;The next step is to write a quick &lt;code&gt;post-receive&lt;/code&gt; hook that check if there is a
+certain &lt;code&gt;git-config&lt;/code&gt; entry and run &lt;code&gt;git push --mirror&lt;/code&gt;. The file is in
+&lt;code&gt;$HOME/.gitolite/hooks/common/post-receive&lt;/code&gt; ; you could add a better system to
+hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Simple gitolite mirroring&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# flush STDIN coming from git, because gitolite&amp;#39;s own post-receive.mirrorpush&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# script does the same thing&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -t &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; cat &amp;gt;/dev/null
+
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_REPO not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;git config --get mirror.url&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;0
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Support a REPO variable for wildcard mirrors&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt; | sed &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;s/\//\\\//g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt; | sed -e &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;s/REPO/&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/g&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Do the mirror push&lt;/span&gt;
+git push --mirror &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The next, and final step is to run &lt;code&gt;gitolite compile&lt;/code&gt; to update links to hooks
+for every repositories.&lt;/p&gt;
+
+&lt;h1 id=&#34;for-real:56bca63520f3b7058489b7be9bf67456&#34;&gt;For real&lt;/h1&gt;
+
+&lt;p&gt;And finaly, this is the final step you&amp;rsquo;ll do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh git@host write-git-config vincent/vcsh-home mirror.url git@github.com:vdemeester/vcsh-home.git
+$ git push
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 294 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: To git@github.com:vdemeester/vcsh-home.git
+remote:    65681a8..701c990  master -&amp;gt; master
+To git@host:vincent/vcsh-home.git
+   65681a8..701c990  master -&amp;gt; master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that should be it !&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2012/10/04&lt;/strong&gt; : Moved from gitolite fork to &lt;em&gt;gitolite local code&lt;/em&gt;
+repository.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

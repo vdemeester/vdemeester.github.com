@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <base href="http://localhost:1313/">
+    <link rel="start" href="http://localhost:1313/" />
+
+    <title>Vincent Demeester</title>
+    <link rel="canonical" href="http://localhost:1313/posts/2012-07-23-maven-release-gitflow/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+
+    <link rel="openid.server" href="https://indieauth.com/openid" />
+    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
+
+
+    <style type="text/css">
+      #header {
+      
+      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
+      
+      }
+    </style>
+
+  </head>
+  
+  <body lang="fr"/>
+  
+
+
+  <header id="header">
+
+    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
+
+    <div>
+      <h1>
+        <summary>
+          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
+        </summary>
+      </h1>
+      <ul class="nav">
+        <li class="archive"><a href="/archive/">Archive</a></li>
+        <li class="categories"><a href="/categories/">Categories</a></li>
+        <li class="tags"><a href="/tags/">Tags</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+<div id="main-container">
+  <div id="page">
+    <article class="post">
+      <header>
+        <h1 class="emphnext">Maven Release Gitflow</h1><a href='http://localhost:1313/posts/2012-07-23-maven-release-gitflow/'></a>
+        <address class="signature">
+          <span class="date">Mon, 7 Jul, 2012</span>
+          <span class="words">(400 Words)</span>
+        </address>
+        <ul class="tag_box inline">
+          
+          <li class="category"><a href="/categories/#developement">developement</a></li>
+          
+          
+          
+          
+          
+          <li class="tag tag-maven"><a href="/tags/#maven">maven<span>2</span></a></li>
+          
+          
+          <li class="tag tag-java"><a href="/tags/#java">java<span>2</span></a></li>
+          
+          
+          <li class="tag tag-git"><a href="/tags/#git">git<span>2</span></a></li>
+          
+          
+          <li class="tag tag-gitflow"><a href="/tags/#gitflow">gitflow<span>1</span></a></li>
+          
+          
+          <li class="tag tag-release"><a href="/tags/#release">release<span>1</span></a></li>
+          
+          <br/>
+          
+        </ul>
+      </header>
+</header>
+
+
+<p>I like a lot the <a href="http://nvie.com/posts/a-successful-git-branching-model/">gitflow</a> way of managing project.
+When working on maven project, there is few great plugins that helps to get
+the work done. One of them is <a href="http://maven.apache.org/plugins/maven-release-plugin">maven-release-plugin</a>.</p>
+
+<p>Inspired on this <a href="https://gist.github.com/1043970">gist</a>, I&rsquo;ve come with
+a cool way of doing things (let say we want to release a 0.1 version of an
+artifact) :</p>
+
+<h1 id="prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced">Prepare the pom.xml.</h1>
+
+<p>It needs <code>&lt;scm&gt;</code> entries, <code>&lt;distributionManagement&gt;</code> entries
+(to know where to deploy the release artifact) and few options for the
+maven-release-plugin :</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;project&gt;</span>
+
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;build&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;plugins&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;plugin&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>2.3.2<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;tagNameFormat&gt;</span>v@{project.version}<span style="color: #008000; font-weight: bold">&lt;/tagNameFormat&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;pushChanges&gt;</span>false<span style="color: #008000; font-weight: bold">&lt;/pushChanges&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;localCheckout&gt;</span>true<span style="color: #008000; font-weight: bold">&lt;/localCheckout&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/plugin&gt;</span>
+            <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/plugins&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/build&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+
+<span style="color: #008000; font-weight: bold">&lt;/project&gt;</span>
+</pre></div>
+</p>
+
+<p>Few explanation here :</p>
+
+<ul>
+<li><code>tagNameFormat</code> is here to change the default tag name (which is <code>${project.artifactId}-${project.version}</code>) to a better one.</li>
+<li><code>pushChanges</code> set to <code>false</code> tells  maven-release-plugin not to push
+changes (this will become useful)</li>
+<li><code>localCheckout</code> set to <code>true</code> tells maven-release-plugin to clone from
+local repository (not distant). This is especially useful here because we
+didn&rsquo;t push anything (so not setting this option would result in a failure).</li>
+</ul>
+
+<h1 id="the-real-stuff:5b48b9cc71274145577975feb51b5ced">The real stuff</h1>
+
+<p>First create a release branch from develop.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>git checkout -b release/v0.1 develop
+</pre></div>
+</p>
+
+<p>Then run the maven release stuff.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>mvn release:prepare               <span style="color: #008800; font-style: italic"># change the pom, commit and tag version, and</span>
+                                    <span style="color: #008800; font-style: italic"># re-change pom (by incrementing SNAPSHOT version)</span>
+<span style="color: #B8860B">$ </span>mvn release:perform               <span style="color: #008800; font-style: italic"># get the tagged version, compile and deploy</span>
+</pre></div>
+</p>
+
+<p>And the real fun begins.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>git checkout develop              <span style="color: #008800; font-style: italic"># get back to the develop branch</span>
+<span style="color: #B8860B">$ </span>git merge --no-ff release/v0.1    <span style="color: #008800; font-style: italic"># merge the version back into develop</span>
+<span style="color: #B8860B">$ </span>git checkout master               <span style="color: #008800; font-style: italic"># go to the master branch</span>
+<span style="color: #B8860B">$ </span>git merge --no-ff release/v0.1~1  <span style="color: #008800; font-style: italic"># merge the version back into master but</span>
+                                    <span style="color: #008800; font-style: italic"># the tagged version instead of the release/v0.1 HEAD</span>
+<span style="color: #B8860B">$ </span>git branch -D release/v0.1        <span style="color: #008800; font-style: italic"># Removing the release branch</span>
+<span style="color: #B8860B">$ </span>git push --all <span style="color: #666666">&amp;&amp;</span> git push --tags <span style="color: #008800; font-style: italic"># Finally push everything</span>
+</pre></div>
+</p>
+
+<p>The real magic here is the <code>git merge --no-ff release/v0.1~1</code> which will
+merge into master the commit before the HEAD of the branch <code>release/v0.1</code>.</p>
+
+<p>The next step would be to create a helper script that automates this and
+verify that the <code>pom.xml</code> has the right configuration options.</p>
+
+<p><strong>Edit 17:58</strong> : You can take a look <a href="https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow">here</a></p>
+
+</article>
+<div class="prev-next">
+  
+  <a class="paging-link prev" href="/posts/2012-07-21-news/" title="News">← Previous post</a>
+  
+
+  
+  <a class="paging-link next" href="/posts/2012-12-16-gollum-comme-wiki-personnel/" title="Gollum Comme Wiki Personnel">Next post →</a>
+  
+</div>
+
+</div>
+</div>
+
+<div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content and design by <a href="/info/site.html">Vincent Demeester</a>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
+  		</span><br />
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+

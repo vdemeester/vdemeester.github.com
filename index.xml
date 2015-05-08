@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vincent Demeester</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Orgmode et Jekyll</title>
+      <link>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;p&gt;
+.. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici plus souvent.
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;
+Au niveau de mes points d&#39;entrées sur le web, je compte remettre un peu en route la partie blog de ce site et tourner shortbrain.org (ou autre) en un site plus &#34;documentation&#34; en me basant sur mes notes (powered by org-mode). &lt;b&gt;Je me suis également remis à Gnu Emacs et oh god qu&#39;est-ce que c&#39;est bon&lt;/b&gt; :-D.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+C&#39;est ce que j&#39;écrivais il y a un an, et effectivement c&#39;est toujours aussi bon &lt;code&gt;;-D&lt;/code&gt;. J&#39;ai commencé à utiliser &lt;code&gt;org-mode&lt;/code&gt; de manière assez intensive, pour mettre en place mon &lt;i&gt;personal kanban&lt;/i&gt; mais également pour prendre mes notes. Et plus je l&#39;utilise, plus j&#39;ai du mal m&#39;en passer et à aller dans mon dossier hébergeant ce site pour y écrire en Markdown. Il me fallait donc trouver une astuce pour convertir certaines notes en post pour Jekyll. C&#39;est maintenant chose faite (après 6 mois dans ma TODO-list…), et voici comment je m&#39;en sors.
+&lt;/p&gt;
+
+&lt;p&gt;
+L&#39;idée générale est assez simple :
+&lt;/p&gt;
+
+&lt;ol class=&#34;org-ol&#34;&gt;
+&lt;li&gt;Utiliser un dossier particulier pour les notes destiné à ce blog
+&lt;/li&gt;
+&lt;li&gt;Exporter, au format html, ces notes dans le bon dossier (&lt;code&gt;_posts&lt;/code&gt;)
+&lt;/li&gt;
+&lt;li&gt;… et c&#39;est tout en fait :) — c&#39;était pas &lt;i&gt;ben&lt;/i&gt; compliqué !
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Les fichiers org&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
+&lt;p&gt;
+Tous mes fichiers &lt;code&gt;org-mode&lt;/code&gt; sont dans un ensemble de dossiers bien particulier — cela n&#39;a pas grand chose d&#39;important à faire ici, mais ça permet de suivre la configuration qui suit. Il s&#39;agit du dossier &lt;code&gt;~/desktop/org/&lt;/code&gt;, et de ces fils : &lt;code&gt;todos&lt;/code&gt; pour ce que je dois faire et &lt;code&gt;notes&lt;/code&gt; pour ma prise de note. Dans &lt;code&gt;notes&lt;/code&gt; on trouve donc des dossiers et en particulier un qui se nomme &lt;code&gt;vdf&lt;/code&gt; (pour Vincent.Demeester.Fr).
+&lt;/p&gt;
+
+&lt;p&gt;
+La seule différence que les fichiers &lt;code&gt;.org&lt;/code&gt; ont dans ce dossier par rapport aux autres, c&#39;est le début du fichier. En effet, &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; a besoin d&#39;une entête en &lt;code&gt;YAML&lt;/code&gt; pour le layout, les tags, la catégorie et plein d&#39;autres trucs. Le fichier &lt;code&gt;org&lt;/code&gt; de ce billet ressemble à ça par example :
+&lt;/p&gt;
+
+&lt;pre class=&#34;example&#34;&gt;
+#+BEGIN_HTML
+---
+layout: post
+category: developement
+tags: jekyll blog emacs orgmode html
+lang: fr
+---
+#+END_HTML
+* Un peu plus d&#39;un an..
+
+.. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici.
+
+[…]
+&lt;/pre&gt;
+
+&lt;p&gt;
+Les utilisateurs de Jekyll reconnaitront les &lt;code&gt;---&lt;/code&gt; et le format du header. &lt;code&gt;#+BEGIN_HTML&lt;/code&gt; et &lt;code&gt;#+END_HTML&lt;/code&gt; sont là pour dire à &lt;code&gt;org-mode&lt;/code&gt; d&#39;exporter un bloc en HTML sans l&#39;interpréter — c&#39;est une façon de mettre du HTML dans un document &lt;code&gt;org&lt;/code&gt; si on peut pas faire ce qu&#39;on veut avec le &lt;i&gt;markup&lt;/i&gt;. Ici ça nous permet d&#39;exporter tel quel le header de &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; en haut du HTML généré, pratique !
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Configuration de org-mode&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
+&lt;p&gt;
+Il reste maintenant à configurer le &lt;i&gt;projet de publication&lt;/i&gt; (publishing project) dans Emacs. Je vais mettre ici juste la partie intéressante, donc pour plus d&#39;information sur comment publier des fichiers org-mode avec Emacs, c&#39;est par &lt;a href=&#34;http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html&#34;&gt;ici&lt;/a&gt; pour un tutoriel (j&#39;adore &lt;a href=&#34;http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html&#34;&gt;worg&lt;/a&gt; soit dit en passant :P).
+&lt;/p&gt;
+
+&lt;p&gt;
+L&#39;idée c&#39;est de définir un projet avec plusieurs &lt;i&gt;components&lt;/i&gt;, un pour les fichiers &lt;code&gt;org&lt;/code&gt;, un pour les fichiers &lt;code&gt;css&lt;/code&gt; et un pour les &lt;i&gt;assets&lt;/i&gt; (images, vidéos, …). On souhaite également ne pas générer de table des matières (TOC) et ne génerer que le &lt;i&gt;body&lt;/i&gt; (pas de &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;, …). Et ça se présente comme suit.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Variables&lt;/span&gt;
+&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Project&lt;/span&gt;
+&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #784437;&#34;&gt;org-publish-project-alist&lt;/span&gt;
+      `&lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;org&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:exclude&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:section-numbers&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-toc&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-drawers&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #4f7e67;&#34;&gt;org-html-publish-to-html&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:headline-levels&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;4&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:body-only&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;png&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;jpg&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;gif&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;pdf&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;mp3&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;ogg&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span style=&#34;color: #006FE0;&#34;&gt;:components&lt;/span&gt; &lt;span style=&#34;color: #709870;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span style=&#34;color: #709870;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+J&#39;utilise des variables, c&#39;est pas indispensable mais c&#39;est plus pratique. Il y a trois &lt;i&gt;components&lt;/i&gt;, chacun définit les fichiers qu&#39;il traite grâce à &lt;code&gt;:base-extension&lt;/code&gt;. Intéressons-nous surtout à &lt;code&gt;vdf-notes&lt;/code&gt; puisque c&#39;est celui qui nous sort les fichiers &lt;code&gt;HTML&lt;/code&gt; à partir des fichiers &lt;code&gt;org&lt;/code&gt;. On se passe de table des matières grâce à &lt;code&gt;:with-toc nil&lt;/code&gt;, on ne génère que le &lt;i&gt;body&lt;/i&gt; grâce à &lt;code&gt;:body-only t&lt;/code&gt; et on évite les numéros de sections avec &lt;code&gt;:section-numbers nil&lt;/code&gt;. Le bonus vient avec &lt;code&gt;:htmlized-source t&lt;/code&gt; puisque du coup, les parties sources (entre &lt;code&gt;#+BEGIN_SRC&lt;/code&gt; et &lt;code&gt;#+END_SRC&lt;/code&gt;) sont exportés avec les mêmes couleurs que j&#39;ai dans ma configuration Emacs (avec les &lt;a href=&#34;https://github.com/vdemeester/emacs-config#raindow-identifiers&#34;&gt;rainbow-identifiers&lt;/a&gt;, voir ce post &lt;a href=&#34;https://medium.com/@evnbr/coding-in-color-3a6db2743a1e&#34;&gt;là&lt;/a&gt; également).
+&lt;/p&gt;
+
+&lt;p&gt;
+Il ne reste plus qu&#39;à publier le projet quand on le souhaite avec &lt;code&gt;org-publish&lt;/code&gt; — je vous laisse lire la documentation pour savoir comment on fait.
+&lt;/p&gt;
+
+&lt;p&gt;
+Et c&#39;est tout bon. Un petit &lt;code&gt;bundle exec jekyll serve --watch&lt;/code&gt; pour voir le rendu — et quand on est content on commit. Et c&#39;est la fête &lt;code&gt;\o/&lt;/code&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#39;incrémenter un peu maintenant.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Redesign Et Résolutions</title>
+      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <description>
+
+&lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
+
+&lt;h2 id=&#34;redesign:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Redesign&lt;/h2&gt;
+
+&lt;p&gt;Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris &lt;code&gt;\o/&lt;/code&gt;).
+Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas
+fait &lt;code&gt;;-P&lt;/code&gt;), j&amp;rsquo;avais envie de &lt;em&gt;déménager&lt;/em&gt; le site en quelques sortes.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;inspiration c&amp;rsquo;est assez facile à trouver, regarder &lt;a href=&#34;http://medium.com&#34;&gt;medium&lt;/a&gt;, le site de
+&lt;a href=&#34;http://www.viksit.com/&#34;&gt;Viksit Gaur&lt;/a&gt; ou encore celui de &lt;a href=&#34;http://silent-strength.com/&#34;&gt;Michael&lt;/a&gt; (coucou &lt;code&gt;:-P&lt;/code&gt;).
+J&amp;rsquo;adore ce genre de site, assez épuré mais avec une partie fixe (à gauche ou à droite) et avec des images changeantes.&lt;/p&gt;
+
+&lt;p&gt;Les images en fond de l&amp;rsquo;espace de gauche peuvent changer d&amp;rsquo;une page à l&amp;rsquo;autre. Je suis en train de m&amp;rsquo;amuser un peu
+avec &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;. Il faut que je trouve un moyen d&amp;rsquo;optimiser un peu les images que j&amp;rsquo;utilise
+parce que là je joue un peu le bourrin.&lt;/p&gt;
+
+&lt;h2 id=&#34;résolutions:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Résolutions&lt;/h2&gt;
+
+&lt;p&gt;Nouvelle année, nouveau boulot, implique nouvelles résolutions. Il y a deux aspects à ces &lt;em&gt;résolutions&lt;/em&gt; : sur un plan
+informatique/geek/travail/organisation, et sur un plan purement &lt;em&gt;physique&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mon retour sur Paris devrait me permettre de participer à un peu plus d&amp;rsquo;évènements, notamment du côté des Java User Group, mais
+aussi FSFE, et j&amp;rsquo;en passe. Je compte également continué à jouer le &lt;em&gt;factotum&lt;/em&gt; en me gardant un peu de temps au niveau
+personnel pour travailler sur des aspects &lt;em&gt;geek&lt;/em&gt; que je n&amp;rsquo;aurais peut-être pas l&amp;rsquo;occasion de pratiquer au travail.
+Au niveau de mes &lt;em&gt;points d&amp;rsquo;entrées&lt;/em&gt; sur le web, je compte remettre un peu en route la partie blog de ce site et
+tourner shortbrain.org (ou autre) en un site plus &amp;ldquo;documentation&amp;rdquo; en me basant sur mes notes (powered by &lt;a href=&#34;http://org-mode.org&#34;&gt;org-mode&lt;/a&gt;).
+Je me suis également remis à &lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Gnu Emacs&lt;/a&gt; et &lt;em&gt;oh god&lt;/em&gt; qu&amp;rsquo;est-ce que c&amp;rsquo;est bon &lt;code&gt;:-D&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Au niveau phyisque, dans la continuité de la fin 2012, l&amp;rsquo;année 2013 a probablement été la pire de ma vie. Les
+problèmes de dos c&amp;rsquo;est pas facile tous les jours.. En février, j&amp;rsquo;avais peur de ne jamais remonter sur un vélo ; en Mai
+je remontais pour la première fois sur le vélo, en Septembre je faisais 40km par semaine et en décembre j&amp;rsquo;étais
+presque capable de faire 30km en une journée. Mème si l&amp;rsquo;année 2014 a mal commencé (je me suis felé un côte en Janvier),
+mes objectifs pour cette année et les futurs sont nettement plus positif. Le &lt;a href=&#34;http://fitbit.com&#34;&gt;fitbit&lt;/a&gt; que j&amp;rsquo;ai
+acquis en Février me permet d&amp;rsquo;avoir un objectif de marche (certes assez modeste) de 10000 pas et 8,05 km par jour.
+Je compte bien me fixer d&amp;rsquo;autre objectifs : monter la barre plus haut (15000 voir plus), faire 50km de vélo
+sur une journée.&lt;/p&gt;
+
+&lt;p&gt;Les objectifs physiques à très long termes sont également assez simples : retrouver ma forme physique et ne plus être
+géné à cause du dos. En gros c&amp;rsquo;est : être capable de faire 120km de vélo et monter des cols (Col du Sapenay, Mont Revard)
+et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi-marathon, marathon :D).&lt;/p&gt;
+
+&lt;p&gt;Sur ce, je vais retourner à mes cartons :-P.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Podcasts</title>
+      <link>http://localhost:1313/posts/2013-10-12-podcasts/</link>
+      <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2013-10-12-podcasts/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou
+moins régulièrement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec
+des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande
+place. Voici une liste plus ou moins bien triés de ceux auxquels je suis
+souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post
+à jour ou en créerait un nouveau sinon :-).&lt;/p&gt;
+
+&lt;h2 id=&#34;geek-co:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Geek &amp;amp; co&lt;/h2&gt;
+
+&lt;p&gt;Je suis un developpeur, un geek et convaincu des logiciels libres, les
+podcasts qui suivent reflète assez cette partie là de mon identité.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.captainweb.net/&#34;&gt;L&amp;rsquo;apéro de Captain (fr)&lt;/a&gt; : dans le genre geeky, déjanté et sauvage, en français, on ne fait pas mieux. Pas vraiment safe for work, et pas tout à fait &amp;ldquo;libriste&amp;rdquo; comme j&amp;rsquo;aime, les tranches de rires sont garanties ; même si parfois on est un peu verreux d&amp;rsquo;avoir écouter jusqu&amp;rsquo;à la fin et le bien nommé &amp;ldquo;wazzuf&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.agencetousgeeks.com/&#34;&gt;Agence Tous Geeks (fr)&lt;/a&gt; : fils caché de l&amp;rsquo;apéro du captain, on y retrouve des amis (et membres de ce dernier), mais c&amp;rsquo;est un peu plus calme.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bazingcast.com/about/&#34;&gt;Bazingcast (fr)&lt;/a&gt; : podcast geek, plus posé que les deux précédents mais avec
+des débats, des trolls et tout ce que l&amp;rsquo;on peut attendre de geeks.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.captainposix.net/&#34;&gt;Parole de Tux (fr-be)&lt;/a&gt; : podcast venant de nos voisin belge, pas trop long et plutôt sympa ; et si comme moi vous adorez l&amp;rsquo;accent belge, c&amp;rsquo;est le top.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faif.us/&#34;&gt;Free as in Freedom (en)&lt;/a&gt; : podcast parlant de logiciel
+libre principalement côté license, truc légal, etc.. en anglais, faut
+parfois s&amp;rsquo;accrocher.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://episodes.gitminutes.com/&#34;&gt;Git Minutes (en)&lt;/a&gt; : podcast à propos de
+Git et des outils de son écosystème (vcsh, etc..).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;radio:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Radio&lt;/h2&gt;
+
+&lt;p&gt;J&amp;rsquo;aime bien la radio, bien plus que la télévision (que j&amp;rsquo;allume si peu qu&amp;rsquo;à
+chaque fois la box se met à jour &lt;code&gt;;-p&lt;/code&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-laura-leishman-project&#34;&gt;France Inter - LLP (Laura leishman Project)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12265.xml&#34;&gt;Le Mouv&amp;rsquo; - Laura Leishman Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-interception&#34;&gt;France Inter - Interception&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.la-bas.org/&#34;&gt;France Inter - là-bas si j&amp;rsquo;y suis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689840&#34;&gt;France Culture - Pixel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4685228&#34;&gt;France Culture - Place de la toile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689418&#34;&gt;France Culture - Philippe Meyer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12582.xml&#34;&gt;Le Mouv&amp;rsquo; - Glitch (sur le Mouv&amp;rsquo;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12691.xml&#34;&gt;Le Mouv&amp;rsquo; - Code Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12190.xml&#34;&gt;Le Mouv&amp;rsquo; - Suivez le geek&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.divergence-fm.org/-http-www-divergence-fm-org-ecrire-exec-rubrique-id_rubrique-61-.html&#34;&gt;Divergence Numerique&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;musique:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Musique&lt;/h2&gt;
+
+&lt;p&gt;Les podcast suivant sont purement musique, tous musique &lt;em&gt;techno&lt;/em&gt; ou
+trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://podcasts.flaix.fr/corstencountdown&#34;&gt;Ferry Corsten - Corsten Countdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.galexmusic.com/podcast/gareth.xml&#34;&gt;Gareth Emery Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://feedproxy.feedburner.com/Tiestos_club_life&#34;&gt;Tiesto Club Life&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://oakenfold.libsyn.com/rss&#34;&gt;Oakenfold Perfecto Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maven Tmpfs</title>
+      <link>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</link>
+      <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2013-09-08-maven-tmpfs/</guid>
+      <description>&lt;p&gt;Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
+&lt;strong&gt;&amp;ldquo;Convention over configuration&amp;rdquo;&lt;/strong&gt; me va vraiment bien. Que ce soit au boulot ou
+à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
+disque traditionnel (mécanique ?). Pour augmenter un peu la durée de vie de
+ces disques SSD, j&amp;rsquo;ai cherché à savoir comment &lt;em&gt;déporter&lt;/em&gt; le &lt;em&gt;build&lt;/em&gt; de maven
+(qui, pour rappel, se passe dans le dossier &lt;code&gt;target/&lt;/code&gt;) hors du SSD ; ici ce
+sera dans le dossier &lt;code&gt;/tmp/&lt;/code&gt; qui est monté en mémoire (merci &lt;code&gt;tmpfs&lt;/code&gt;),
+mais on peut imaginer déporter ça sur un autre disque, etc.. Après quelques
+recherches j&amp;rsquo;ai trouvés quelques inspirations.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Limitations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Dans la solution présentée ci-dessous les principales limitations sont
+les suivantes (que j&amp;rsquo;essaierais de diminuer au fil du temp ;P) :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Il est nécessaire de modifier le pom.xml du projet ; cela ne s&amp;rsquo;appliquera
+donc pas à tous les projets maven sans modification du pom.xml.&lt;/li&gt;
+&lt;li&gt;Cela ne fonctionne que sur une plateforme qui support les liens
+symboliques (Linux, Mac OS X, et autre UNIX).&lt;/li&gt;
+&lt;li&gt;Cela ne fonctionne qu&amp;rsquo;avec Java 7 ou plus.&lt;/li&gt;
+&lt;li&gt;Si vous utilisez m2e, il va gentillement gueuler et c&amp;rsquo;est moche ; pour
+résoudre le problème, il faut faire un tour vers &lt;a href=&#34;http://wiki.eclipse.org/M2E_plugin_execution_not_covered&#34;&gt;M2E plugin execution
+not covered&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Pour [maven](), le dossier &lt;code&gt;target/&lt;/code&gt; vient de la propriété
+&lt;code&gt;project.build.directory&lt;/code&gt;. Dans la théorie, il suffirait de modifier (dans
+&lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;) cette propriété et le tour serait jouer.
+Malheuresement ce n&amp;rsquo;est pas possible, &lt;code&gt;project.build.directory&lt;/code&gt; est une
+propriété interne et n&amp;rsquo;est, à priori, pas modifiable.&lt;/p&gt;
+
+&lt;p&gt;Notre souhait est le suivant :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Le build doit se faire dans &lt;code&gt;/tmp/m2/&lt;/code&gt;, ce qui pour un projet se traduit
+par &lt;code&gt;/tmp/m2/${groupId}:${artifactId}&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Le dossier &lt;code&gt;target/&lt;/code&gt; dans les sources est un lien symbolique vers le
+dossier dans &lt;code&gt;/tmp/m2/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;On passe par un &lt;strong&gt;profile&lt;/strong&gt; qui n&amp;rsquo;est &lt;strong&gt;pas actif&lt;/strong&gt; par défaut (pour ne pas
+faire chier le monde) mais &lt;strong&gt;activable via une propriété&lt;/strong&gt; (maven nous permet
+de le faire et c&amp;rsquo;est cool &lt;code&gt;^_^&lt;/code&gt;). La propriété utilisée sera
+&lt;code&gt;external.build.root&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Le code ci-dessous est repris directement de mon inspiration&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Il
+s&amp;rsquo;occupe de créer le dossier &lt;code&gt;${groupId}:${artifactId}&lt;/code&gt; dans
+&lt;code&gt;external.build.root&lt;/code&gt; et de faire le lien dans le dossier courant.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;external-build-dir&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activation&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeByDefault&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeByDefault&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;property&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;external.build.root&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activation&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.alexecollins.maven.plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;script-maven-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0.0&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;prep-work-tree&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;execute&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;initialize&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+                                        import java.nio.file.*
+                                        def dir =
+                                        &amp;quot;${external.build.root}/${project.groupId}:${project.artifactId}&amp;quot;
+                                        println &amp;quot;using Maven dir ${dir}&amp;quot;
+                                        def dirPath = Paths.get(dir)
+                                        if (!Files.exists(dirPath)) {
+                                        Files.createDirectories(dirPath)
+                                        }
+                                        def target = Paths.get(&amp;quot;${project.build.directory}&amp;quot;)
+                                        if (!Files.exists(target)) {
+                                        Files.createSymbolicLink(target, dirPath)
+                                        }&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;drop-symlink&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;execute&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;clean&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+                                        import java.nio.file.*
+                                        def target = Paths.get(&amp;quot;${project.build.directory}&amp;quot;)
+                                        if (Files.isSymbolicLink(target)) {
+                                        Files.delete(target)
+                                        }
+                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.codehaus.groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.8.6&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;language&amp;gt;&lt;/span&gt;groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/language&amp;gt;&lt;/span&gt;
+                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Ainsi, il suffit ensuite d&amp;rsquo;avoir quelques choses du genre dans son
+&lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt; pour que les builds qui ont ce profil se &lt;em&gt;build&lt;/em&gt;
+dans &lt;code&gt;/tmp/m2/&lt;/code&gt;. On peut aussi ne rien avoir dans &lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;
+et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la commande &lt;code&gt;mvn&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;settings&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;build-in-ramfs&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;external.build.root&amp;gt;&lt;/span&gt;/tmp/m2/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/external.build.root&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeProfiles&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeProfile&amp;gt;&lt;/span&gt;build-in-ramfs&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeProfile&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeProfiles&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;a href=&#34;http://elehack.net/writings/programming/maven-target-in-tmpfs&#34;&gt;Putting Maven build directories out-of-tree&lt;/a&gt; par &lt;a href=&#34;http://elehack.net/&#34;&gt;Michal Ekstrand&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gollum Comme Wiki Personnel</title>
+      <link>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <description>
+
+&lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
+
+&lt;p&gt;Une des principales &lt;em&gt;action&lt;/em&gt; que j&amp;rsquo;ai pris est d&amp;rsquo;utiliser un wiki local et synchronisé sur &lt;em&gt;tout&lt;/em&gt; mes PCs. Le &lt;em&gt;format&lt;/em&gt; wiki est assez adapté à une prise de note et à la création de contenu plus complet (comme des &lt;a href=&#34;http://shortbrain.org&#34;&gt;articles&lt;/a&gt; ou de la documentation pour des projets en cours). Les conditions étaient les suivantes :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Facilité de mise en place.&lt;/li&gt;
+&lt;li&gt;Pas de base de données.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Merging&lt;/em&gt; facile (&lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt; &lt;em&gt;rules my world&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/&#34;&gt;Markdown&lt;/a&gt; comme syntaxe, car utilisé à peu près partout (blogs, articles, READMEs, documentations).&lt;/li&gt;
+&lt;li&gt;Éditable à partir d&amp;rsquo;une interface web ou de mon éditeur favoris.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;L&amp;rsquo;outil qui remplit presque toutes ces conditions s&amp;rsquo;appelle &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;gollum&lt;/a&gt;. C&amp;rsquo;est un moteur wiki, écris en ruby, qui se base sur un repository &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;. Il est développer par l&amp;rsquo;équipe de &lt;a href=&#34;http://github.com&#34;&gt;Github&lt;/a&gt; et c&amp;rsquo;est celui qui est utilisé par les pages wiki là-bas. Il permet d&amp;rsquo;utiliser à peu près n&amp;rsquo;importe quel syntaxe (dont &lt;a href=&#34;https://github.com/github/github-flavored-markdown&#34;&gt;github-markdown&lt;/a&gt; qui est assez proche de celle de &lt;a href=&#34;http://johnmacfarlane.net/pandoc&#34;&gt;pandoc&lt;/a&gt;). Par ailleurs, comme il se base sur &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;, les points &lt;em&gt;&amp;ldquo;pas de base de données&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;merging facile&amp;rdquo;&lt;/em&gt; et &lt;em&gt;&amp;ldquo;éditable également à partir de mon éditeur favoris&amp;rdquo;&lt;/em&gt; sont toutes remplies.&lt;/p&gt;
+
+&lt;p&gt;Avec &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.&lt;/p&gt;
+
+&lt;h2 id=&#34;mise-en-place:4ec8b636d5075b710d87673b2f0e67dd&#34;&gt;Mise en place&lt;/h2&gt;
+
+&lt;p&gt;La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&amp;rsquo;installation se fait par &lt;a href=&#34;rubygems.org&#34;&gt;RubyGem&lt;/a&gt; ou en clonant le repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Installation de gollum et du format markdown de github&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;gem install gollum gitub-markdown
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Si vous n&amp;rsquo;utilisez pas &lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt; ou &lt;a href=&#34;https://rvm.io/&#34;&gt;rvm&lt;/a&gt; il est probable qu&amp;rsquo;il faille lancer la commande en root ou utiliser sudo.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, il suffit de lancer &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; dans un dossier qui est un repository git ; le tour est joué&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# J&amp;#39;ulitise ~/desktop/wiki pour mon wiki&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;cd&lt;/span&gt; ~/desktop/wiki &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; gollum
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;idée finale est d&amp;rsquo;automatiser deux choses :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Le démarrage de gollum&lt;/li&gt;
+&lt;li&gt;La synchronisation du repository avec les différents autres &lt;em&gt;remotes&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Suivant le système d&amp;rsquo;exploitation et/ou la distribution utilisées, il y a énormément de possibilité d&amp;rsquo;effectuer cette automatisation. Dans mon cas, j&amp;rsquo;ai une &lt;a href=&#34;http://debian.org&#34;&gt;Debian&lt;/a&gt; assez light, avec surtout plein de scripts. Je démarre donc &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; au démarrage de ma session grâce à une script qui est lancé dans la foulée du gestionnaire de fenêtre. La synchronisation se fait grâce à une tâche planifiée &lt;em&gt;cron&lt;/em&gt; qui est &amp;ldquo;distribué&amp;rdquo; sur chacune de mes machines.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;C&amp;rsquo;est tout pour le moment&lt;/em&gt; ;-).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Maven Release Gitflow</title>
+      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <description>
+
+&lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
+When working on maven project, there is few great plugins that helps to get
+the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/maven-release-plugin&#34;&gt;maven-release-plugin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Inspired on this &lt;a href=&#34;https://gist.github.com/1043970&#34;&gt;gist&lt;/a&gt;, I&amp;rsquo;ve come with
+a cool way of doing things (let say we want to release a 0.1 version of an
+artifact) :&lt;/p&gt;
+
+&lt;h1 id=&#34;prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
+
+&lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
+(to know where to deploy the release artifact) and few options for the
+maven-release-plugin :&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-release-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.3.2&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;tagNameFormat&amp;gt;&lt;/span&gt;v@{project.version}&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/tagNameFormat&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;pushChanges&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/pushChanges&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;localCheckout&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/localCheckout&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Few explanation here :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tagNameFormat&lt;/code&gt; is here to change the default tag name (which is &lt;code&gt;${project.artifactId}-${project.version}&lt;/code&gt;) to a better one.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pushChanges&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt; tells  maven-release-plugin not to push
+changes (this will become useful)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;localCheckout&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; tells maven-release-plugin to clone from
+local repository (not distant). This is especially useful here because we
+didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;the-real-stuff:5b48b9cc71274145577975feb51b5ced&#34;&gt;The real stuff&lt;/h1&gt;
+
+&lt;p&gt;First create a release branch from develop.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout -b release/v0.1 develop
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:prepare               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# change the pom, commit and tag version, and&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# re-change pom (by incrementing SNAPSHOT version)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:perform               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get the tagged version, compile and deploy&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And the real fun begins.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout develop              &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get back to the develop branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into develop&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout master               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# go to the master branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1~1  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into master but&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# the tagged version instead of the release/v0.1 HEAD&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git branch -D release/v0.1        &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Removing the release branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git push --all &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --tags &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Finally push everything&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
+merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The next step would be to create a helper script that automates this and
+verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration options.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edit 17:58&lt;/strong&gt; : You can take a look &lt;a href=&#34;https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>News</title>
+      <link>http://localhost:1313/posts/2012-07-21-news/</link>
+      <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-07-21-news/</guid>
+      <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
+vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes.
+Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en
+rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de
+tourner les pédales. Intrigué, j&amp;rsquo;ai jeté un coup d&amp;rsquo;œil au vélo, et &lt;em&gt;oh rage
+oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arrière&lt;/em&gt; du vélo c&amp;rsquo;était tout
+simplement fendue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
+  7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
+
+&lt;p&gt;Bien entendu ce n&amp;rsquo;est que matériel mais ce vélo avait une grande importance
+  sentimentale : il avait mon âge et appartenait à mon père quand j&amp;rsquo;étais
+  petit.&lt;/p&gt;
+
+&lt;p&gt;Maintenant il ne reste plus qu&amp;rsquo;à sortir la carte bleue pour m&amp;rsquo;en procurer un
+  nouveau…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Je suis actuellement en vacances pour deux petites semaines (ouf !). Cela me
+permet, entre autre, de me réentrainer à monter des cols (vu que je suis
+dans les Alpes) ; parce qu&amp;rsquo;à Bordeaux, c&amp;rsquo;est assez difficile d&amp;rsquo;en trouver.
+Par contre il me reste beaucoup de boulot pour retrouver ma forme d&amp;rsquo;il
+y a une dizaine d&amp;rsquo;année et de monter facilement le &lt;em&gt;Grand Colombier&lt;/em&gt; !&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Je joue pas mal avec &lt;a href=&#34;http://vaadin.com&#34;&gt;Vaadin&lt;/a&gt; en ce moment,
+principalement pour le boulot. J&amp;rsquo;annonce donc deux petits projets en cours :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;
+: librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;
+: un composant vaadin hautement flexible (mais je suis mauvais pour les
+noms).&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Et &amp;ldquo;c&amp;rsquo;est tout pour le moment&amp;rdquo;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Jekyll Forman Guard Bundler</title>
+      <link>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <description>
+
+&lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
+all the tools that are quite awesome in Ruby.&lt;/p&gt;
+
+&lt;h1 id=&#34;goal:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Goal&lt;/h1&gt;
+
+&lt;p&gt;The goal is simple :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I want to be able to install any dependent &lt;a href=&#34;http://rubygems.org&#34;&gt;Gem&lt;/a&gt; with a
+&lt;em&gt;on-liner&lt;/em&gt; command&lt;/li&gt;
+&lt;li&gt;I want to be able to run a &lt;em&gt;Jekyll server&lt;/em&gt; that auto updates.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We are going to play with : &lt;a href=&#34;http://gembundler.com/&#34;&gt;Bundler&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/guard/guard&#34;&gt;Guard&lt;/a&gt; and &lt;a href=&#34;https://github.com/ddollar/foreman&#34;&gt;foreman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;bundler:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Bundler&lt;/h2&gt;
+
+&lt;p&gt;Bundler let us run &lt;code&gt;bundle install&lt;/code&gt; to get all Ruby Gems we will need ; It use
+a file name &lt;code&gt;Gemfile&lt;/code&gt;. The gems we need are simple : &lt;code&gt;jekyll&lt;/code&gt;, &lt;code&gt;guard&lt;/code&gt; and some
+Guard extensions.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;source &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://rubygems.org&amp;quot;&lt;/span&gt;
+
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-jekyll2&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-shell&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;guard:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Guard&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Guard is a command line tool to easily handle events on file system modifications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Guard will be watching file we told him and run action in consequence ; The file
+is name &lt;code&gt;Guardfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;guard &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  watch &lt;span style=&#34;color: #BB6688&#34;&gt;%r{.*}&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+guard &lt;span style=&#34;color: #B8860B&#34;&gt;:bundler&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  watch(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Gemfile&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# vim:filetype=ruby&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;foreman:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Foreman&lt;/h2&gt;
+
+&lt;p&gt;Finally, foreman will let us declare our processes and will handle the start,
+forward the output and handle the shutdown. It can then export its configuration
+into more &lt;em&gt;production-ready&lt;/em&gt; file (&lt;code&gt;init&lt;/code&gt;, &lt;code&gt;upstard&lt;/code&gt;, …) ; It uses a file named
+&lt;code&gt;Procfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will tell foreman to run :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The jekyll build-in server : &lt;code&gt;jekyll --server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Guard, to handle file changes &lt;em&gt;in background&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;web: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;jekyll --server
+guard: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;guard
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
+directory and edit your files.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gitolite quick and dirty mirror</title>
+      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
+(personnal, private or public) ; and I am quickly going to share with you how I
+setup a &lt;em&gt;quick and dirty&lt;/em&gt; mirror feature.&lt;/p&gt;
+
+&lt;p&gt;First, I am using &lt;strong&gt;gitolite 3&lt;/strong&gt;. The mirroring we are going to setup is not the
+&lt;em&gt;supported&lt;/em&gt; &lt;a href=&#34;http://sitaramc.github.com/gitolite/mirroring.html&#34;&gt;mirroring &lt;strong&gt;built-in&lt;/strong&gt;&lt;/a&gt;.
+We are going to implement a simplier way to set mirror thing :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Write a custom gitolite command ; the idea is to be able to write &lt;code&gt;git-config&lt;/code&gt;
+stuff.&lt;/li&gt;
+&lt;li&gt;Write a hook that take a specific &lt;code&gt;git-config&lt;/code&gt; (let say &lt;code&gt;mirror.url&lt;/code&gt;) and do
+a simple mirroring.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;gitolite-commands:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite commands&lt;/h1&gt;
+
+&lt;p&gt;Gitolite 3 has been rewritten to be more flexible : &lt;a href=&#34;http://sitaramc.github.com/gitolite/g3why.html&#34;&gt;Why a completely new version&lt;/a&gt;.
+The rewrite made it really easy to extend gitolite. &lt;del&gt;I&amp;rsquo;ve fork &lt;a href=&#34;https://github.com/vdemeester/gitolite&#34;&gt;gitolite&lt;/a&gt; on github&lt;/del&gt;
+I&amp;rsquo;ve created a &lt;a href=&#34;http://github.com/vdemeester/vdemeester-gitolite-local-code&#34;&gt;repository git&lt;/a&gt;
+to easily add commands to my gitolite instance via &lt;em&gt;local code&lt;/em&gt;. The gitolite command I wrote is
+a quick and dirty script in shell to add &lt;code&gt;git config&lt;/code&gt;. The source should speek
+for itself ; It &lt;em&gt;should&lt;/em&gt; include some way to check if the given config is not
+already present in the &lt;code&gt;gitolite-admin&lt;/code&gt; configuration file — and so might be
+rewritten in &lt;code&gt;Perl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The command is &lt;code&gt;write-git-config&lt;/code&gt; because a &lt;code&gt;git-config&lt;/code&gt; command already exists
+in the built-in commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Usage:    ssh git@host write-git-config &amp;lt;repo&amp;gt; &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Set git-config value for user-created (&amp;quot;wild&amp;quot;) repo.&lt;/span&gt;
+
+die&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$@&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;amp;2; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+usage&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; perl -lne &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;print substr($_, 2) if /^# Usage/../^$/&amp;#39;&lt;/span&gt; &amp;lt; &lt;span style=&#34;color: #B8860B&#34;&gt;$0&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$2&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$3&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-h&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_USER not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# ----------------------------------------------------------------------&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# this shell script takes arguments that are completely under the user&amp;#39;s&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# control, so make sure you quote those suckers!&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; gitolite query-rc -q WRITER_CAN_UPDATE_DESC
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+    gitolite access -q &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; W any &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt;
+    gitolite creator &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# if it passes, $repo is a valid repo name so it is known to contain only sane&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# characters.  This is because &amp;#39;gitolite creator&amp;#39; return true only if there&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# *is* a repo of that name and it has a gl-creator file that contains the same&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# text as $GL_USER.&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;configfile&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;gitolite query-rc GL_REPO_BASE&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;/&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;.git/config
+
+git config --file &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$configfile&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$key&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$value&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;gitolite-hooks:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite hooks&lt;/h1&gt;
+
+&lt;p&gt;The next step is to write a quick &lt;code&gt;post-receive&lt;/code&gt; hook that check if there is a
+certain &lt;code&gt;git-config&lt;/code&gt; entry and run &lt;code&gt;git push --mirror&lt;/code&gt;. The file is in
+&lt;code&gt;$HOME/.gitolite/hooks/common/post-receive&lt;/code&gt; ; you could add a better system to
+hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Simple gitolite mirroring&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# flush STDIN coming from git, because gitolite&amp;#39;s own post-receive.mirrorpush&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# script does the same thing&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -t &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; cat &amp;gt;/dev/null
+
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_REPO not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;git config --get mirror.url&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;0
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Support a REPO variable for wildcard mirrors&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt; | sed &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;s/\//\\\//g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt; | sed -e &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;s/REPO/&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/g&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Do the mirror push&lt;/span&gt;
+git push --mirror &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The next, and final step is to run &lt;code&gt;gitolite compile&lt;/code&gt; to update links to hooks
+for every repositories.&lt;/p&gt;
+
+&lt;h1 id=&#34;for-real:56bca63520f3b7058489b7be9bf67456&#34;&gt;For real&lt;/h1&gt;
+
+&lt;p&gt;And finaly, this is the final step you&amp;rsquo;ll do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh git@host write-git-config vincent/vcsh-home mirror.url git@github.com:vdemeester/vcsh-home.git
+$ git push
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 294 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: To git@github.com:vdemeester/vcsh-home.git
+remote:    65681a8..701c990  master -&amp;gt; master
+To git@host:vincent/vcsh-home.git
+   65681a8..701c990  master -&amp;gt; master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that should be it !&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2012/10/04&lt;/strong&gt; : Moved from gitolite fork to &lt;em&gt;gitolite local code&lt;/em&gt;
+repository.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinit and Jekyll</title>
+      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <description>
+
+&lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process
+of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant
+that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this &lt;em&gt;identity site&lt;/em&gt; on the
+github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should
+still be up for a while.&lt;/p&gt;
+
+&lt;p&gt;And I&amp;rsquo;m switching on Jekyll for this website as It is supported by Github page, easy to use and easy
+to deploy elsewhere (if one day I want to move from Github).&lt;/p&gt;
+
+&lt;p&gt;The rest of the post is going to be used as a &lt;em&gt;sandbox&lt;/em&gt; post to test the site styles.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+
+&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;highlight:9c1aa07d0b2d69339bbe4c2e41552590&#34;&gt;Highlight&lt;/h2&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;foo&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some bash script…&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
+update_gems&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Update gems for all versions ? (y/N)&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;read &lt;/span&gt;UPDATE_GEMS
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;for&lt;/span&gt; version in &lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;ls --color&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;never &lt;span style=&#34;color: #B8860B&#34;&gt;$HOME&lt;/span&gt;/.rbenv/versions&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+            &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Updating &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem update
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem install bundler
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;done&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+update_gems
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Archive</title>
+      <link>http://localhost:1313/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Categories</title>
+      <link>http://localhost:1313/categories/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/categories/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tags</title>
+      <link>http://localhost:1313/tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/tags/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Emacs on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/emacs/</link>
+    <description>Recent content in Emacs on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Orgmode et Jekyll</title>
+      <link>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;p&gt;
+.. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici plus souvent.
+&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;
+Au niveau de mes points d&#39;entrées sur le web, je compte remettre un peu en route la partie blog de ce site et tourner shortbrain.org (ou autre) en un site plus &#34;documentation&#34; en me basant sur mes notes (powered by org-mode). &lt;b&gt;Je me suis également remis à Gnu Emacs et oh god qu&#39;est-ce que c&#39;est bon&lt;/b&gt; :-D.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+C&#39;est ce que j&#39;écrivais il y a un an, et effectivement c&#39;est toujours aussi bon &lt;code&gt;;-D&lt;/code&gt;. J&#39;ai commencé à utiliser &lt;code&gt;org-mode&lt;/code&gt; de manière assez intensive, pour mettre en place mon &lt;i&gt;personal kanban&lt;/i&gt; mais également pour prendre mes notes. Et plus je l&#39;utilise, plus j&#39;ai du mal m&#39;en passer et à aller dans mon dossier hébergeant ce site pour y écrire en Markdown. Il me fallait donc trouver une astuce pour convertir certaines notes en post pour Jekyll. C&#39;est maintenant chose faite (après 6 mois dans ma TODO-list…), et voici comment je m&#39;en sors.
+&lt;/p&gt;
+
+&lt;p&gt;
+L&#39;idée générale est assez simple :
+&lt;/p&gt;
+
+&lt;ol class=&#34;org-ol&#34;&gt;
+&lt;li&gt;Utiliser un dossier particulier pour les notes destiné à ce blog
+&lt;/li&gt;
+&lt;li&gt;Exporter, au format html, ces notes dans le bon dossier (&lt;code&gt;_posts&lt;/code&gt;)
+&lt;/li&gt;
+&lt;li&gt;… et c&#39;est tout en fait :) — c&#39;était pas &lt;i&gt;ben&lt;/i&gt; compliqué !
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Les fichiers org&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
+&lt;p&gt;
+Tous mes fichiers &lt;code&gt;org-mode&lt;/code&gt; sont dans un ensemble de dossiers bien particulier — cela n&#39;a pas grand chose d&#39;important à faire ici, mais ça permet de suivre la configuration qui suit. Il s&#39;agit du dossier &lt;code&gt;~/desktop/org/&lt;/code&gt;, et de ces fils : &lt;code&gt;todos&lt;/code&gt; pour ce que je dois faire et &lt;code&gt;notes&lt;/code&gt; pour ma prise de note. Dans &lt;code&gt;notes&lt;/code&gt; on trouve donc des dossiers et en particulier un qui se nomme &lt;code&gt;vdf&lt;/code&gt; (pour Vincent.Demeester.Fr).
+&lt;/p&gt;
+
+&lt;p&gt;
+La seule différence que les fichiers &lt;code&gt;.org&lt;/code&gt; ont dans ce dossier par rapport aux autres, c&#39;est le début du fichier. En effet, &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; a besoin d&#39;une entête en &lt;code&gt;YAML&lt;/code&gt; pour le layout, les tags, la catégorie et plein d&#39;autres trucs. Le fichier &lt;code&gt;org&lt;/code&gt; de ce billet ressemble à ça par example :
+&lt;/p&gt;
+
+&lt;pre class=&#34;example&#34;&gt;
+#+BEGIN_HTML
+---
+layout: post
+category: developement
+tags: jekyll blog emacs orgmode html
+lang: fr
+---
+#+END_HTML
+* Un peu plus d&#39;un an..
+
+.. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici.
+
+[…]
+&lt;/pre&gt;
+
+&lt;p&gt;
+Les utilisateurs de Jekyll reconnaitront les &lt;code&gt;---&lt;/code&gt; et le format du header. &lt;code&gt;#+BEGIN_HTML&lt;/code&gt; et &lt;code&gt;#+END_HTML&lt;/code&gt; sont là pour dire à &lt;code&gt;org-mode&lt;/code&gt; d&#39;exporter un bloc en HTML sans l&#39;interpréter — c&#39;est une façon de mettre du HTML dans un document &lt;code&gt;org&lt;/code&gt; si on peut pas faire ce qu&#39;on veut avec le &lt;i&gt;markup&lt;/i&gt;. Ici ça nous permet d&#39;exporter tel quel le header de &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; en haut du HTML généré, pratique !
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Configuration de org-mode&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
+&lt;p&gt;
+Il reste maintenant à configurer le &lt;i&gt;projet de publication&lt;/i&gt; (publishing project) dans Emacs. Je vais mettre ici juste la partie intéressante, donc pour plus d&#39;information sur comment publier des fichiers org-mode avec Emacs, c&#39;est par &lt;a href=&#34;http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html&#34;&gt;ici&lt;/a&gt; pour un tutoriel (j&#39;adore &lt;a href=&#34;http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html&#34;&gt;worg&lt;/a&gt; soit dit en passant :P).
+&lt;/p&gt;
+
+&lt;p&gt;
+L&#39;idée c&#39;est de définir un projet avec plusieurs &lt;i&gt;components&lt;/i&gt;, un pour les fichiers &lt;code&gt;org&lt;/code&gt;, un pour les fichiers &lt;code&gt;css&lt;/code&gt; et un pour les &lt;i&gt;assets&lt;/i&gt; (images, vidéos, …). On souhaite également ne pas générer de table des matières (TOC) et ne génerer que le &lt;i&gt;body&lt;/i&gt; (pas de &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;, …). Et ça se présente comme suit.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Variables&lt;/span&gt;
+&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Project&lt;/span&gt;
+&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #784437;&#34;&gt;org-publish-project-alist&lt;/span&gt;
+      `&lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;org&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:exclude&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:section-numbers&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-toc&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-drawers&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #4f7e67;&#34;&gt;org-html-publish-to-html&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:headline-levels&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;4&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:body-only&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;png&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;jpg&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;gif&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;pdf&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;mp3&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;ogg&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span style=&#34;color: #006FE0;&#34;&gt;:components&lt;/span&gt; &lt;span style=&#34;color: #709870;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span style=&#34;color: #709870;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+J&#39;utilise des variables, c&#39;est pas indispensable mais c&#39;est plus pratique. Il y a trois &lt;i&gt;components&lt;/i&gt;, chacun définit les fichiers qu&#39;il traite grâce à &lt;code&gt;:base-extension&lt;/code&gt;. Intéressons-nous surtout à &lt;code&gt;vdf-notes&lt;/code&gt; puisque c&#39;est celui qui nous sort les fichiers &lt;code&gt;HTML&lt;/code&gt; à partir des fichiers &lt;code&gt;org&lt;/code&gt;. On se passe de table des matières grâce à &lt;code&gt;:with-toc nil&lt;/code&gt;, on ne génère que le &lt;i&gt;body&lt;/i&gt; grâce à &lt;code&gt;:body-only t&lt;/code&gt; et on évite les numéros de sections avec &lt;code&gt;:section-numbers nil&lt;/code&gt;. Le bonus vient avec &lt;code&gt;:htmlized-source t&lt;/code&gt; puisque du coup, les parties sources (entre &lt;code&gt;#+BEGIN_SRC&lt;/code&gt; et &lt;code&gt;#+END_SRC&lt;/code&gt;) sont exportés avec les mêmes couleurs que j&#39;ai dans ma configuration Emacs (avec les &lt;a href=&#34;https://github.com/vdemeester/emacs-config#raindow-identifiers&#34;&gt;rainbow-identifiers&lt;/a&gt;, voir ce post &lt;a href=&#34;https://medium.com/@evnbr/coding-in-color-3a6db2743a1e&#34;&gt;là&lt;/a&gt; également).
+&lt;/p&gt;
+
+&lt;p&gt;
+Il ne reste plus qu&#39;à publier le projet quand on le souhaite avec &lt;code&gt;org-publish&lt;/code&gt; — je vous laisse lire la documentation pour savoir comment on fait.
+&lt;/p&gt;
+
+&lt;p&gt;
+Et c&#39;est tout bon. Un petit &lt;code&gt;bundle exec jekyll serve --watch&lt;/code&gt; pour voir le rendu — et quand on est content on commit. Et c&#39;est la fête &lt;code&gt;\o/&lt;/code&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#39;incrémenter un peu maintenant.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

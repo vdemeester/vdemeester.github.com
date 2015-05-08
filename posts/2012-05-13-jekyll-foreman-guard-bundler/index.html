@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <base href="http://localhost:1313/">
+    <link rel="start" href="http://localhost:1313/" />
+
+    <title>Vincent Demeester</title>
+    <link rel="canonical" href="http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+
+    <link rel="openid.server" href="https://indieauth.com/openid" />
+    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
+
+
+    <style type="text/css">
+      #header {
+      
+      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
+      
+      }
+    </style>
+
+  </head>
+  
+  <body lang=""/>
+  
+
+
+  <header id="header">
+
+    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
+
+    <div>
+      <h1>
+        <summary>
+          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
+        </summary>
+      </h1>
+      <ul class="nav">
+        <li class="archive"><a href="/archive/">Archive</a></li>
+        <li class="categories"><a href="/categories/">Categories</a></li>
+        <li class="tags"><a href="/tags/">Tags</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+<div id="main-container">
+  <div id="page">
+    <article class="post">
+      <header>
+        <h1 class="emphnext">Jekyll Forman Guard Bundler</h1><a href='http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/'></a>
+        <address class="signature">
+          <span class="date">Sun, 5 May, 2012</span>
+          <span class="words">(300 Words)</span>
+        </address>
+        <ul class="tag_box inline">
+          
+          <li class="category"><a href="/categories/#developement">developement</a></li>
+          
+          
+          
+          
+          
+          <li class="tag tag-jekyll"><a href="/tags/#jekyll">jekyll<span>4</span></a></li>
+          
+          
+          <li class="tag tag-ruby"><a href="/tags/#ruby">ruby<span>1</span></a></li>
+          
+          
+          <li class="tag tag-bundler"><a href="/tags/#bundler">bundler<span>1</span></a></li>
+          
+          
+          <li class="tag tag-guard"><a href="/tags/#guard">guard<span>1</span></a></li>
+          
+          
+          <li class="tag tag-foreman"><a href="/tags/#foreman">foreman<span>1</span></a></li>
+          
+          <br/>
+          
+        </ul>
+      </header>
+</header>
+
+
+<p>This post is a quick &ldquo;How did I setup my Jekyll environnement ?&rdquo;. We are going
+all the tools that are quite awesome in Ruby.</p>
+
+<h1 id="goal:8f9f48985fc9fc30a1303da056ae0779">Goal</h1>
+
+<p>The goal is simple :</p>
+
+<ol>
+<li>I want to be able to install any dependent <a href="http://rubygems.org">Gem</a> with a
+<em>on-liner</em> command</li>
+<li>I want to be able to run a <em>Jekyll server</em> that auto updates.</li>
+</ol>
+
+<p>We are going to play with : <a href="http://gembundler.com/">Bundler</a>,
+<a href="https://github.com/guard/guard">Guard</a> and <a href="https://github.com/ddollar/foreman">foreman</a>.</p>
+
+<h2 id="bundler:8f9f48985fc9fc30a1303da056ae0779">Bundler</h2>
+
+<p>Bundler let us run <code>bundle install</code> to get all Ruby Gems we will need ; It use
+a file name <code>Gemfile</code>. The gems we need are simple : <code>jekyll</code>, <code>guard</code> and some
+Guard extensions.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">source <span style="color: #BB4444">&quot;http://rubygems.org&quot;</span>
+
+gem <span style="color: #BB4444">&#39;jekyll&#39;</span>
+gem <span style="color: #BB4444">&#39;guard&#39;</span>
+gem <span style="color: #BB4444">&#39;guard-jekyll2&#39;</span>
+gem <span style="color: #BB4444">&#39;guard-shell&#39;</span>
+gem <span style="color: #BB4444">&#39;guard-bundler&#39;</span>
+</pre></div>
+</p>
+
+<h2 id="guard:8f9f48985fc9fc30a1303da056ae0779">Guard</h2>
+
+<blockquote>
+<p>Guard is a command line tool to easily handle events on file system modifications.</p>
+</blockquote>
+
+<p>Guard will be watching file we told him and run action in consequence ; The file
+is name <code>Guardfile</code>.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">guard <span style="color: #BB4444">&#39;jekyll2&#39;</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+  watch <span style="color: #BB6688">%r{.*}</span>
+<span style="color: #AA22FF; font-weight: bold">end</span>
+
+guard <span style="color: #B8860B">:bundler</span> <span style="color: #AA22FF; font-weight: bold">do</span>
+  watch(<span style="color: #BB4444">&#39;Gemfile&#39;</span>)
+<span style="color: #AA22FF; font-weight: bold">end</span>
+<span style="color: #008800; font-style: italic"># vim:filetype=ruby</span>
+</pre></div>
+</p>
+
+<h2 id="foreman:8f9f48985fc9fc30a1303da056ae0779">Foreman</h2>
+
+<p>Finally, foreman will let us declare our processes and will handle the start,
+forward the output and handle the shutdown. It can then export its configuration
+into more <em>production-ready</em> file (<code>init</code>, <code>upstard</code>, …) ; It uses a file named
+<code>Procfile</code>.</p>
+
+<p>We will tell foreman to run :</p>
+
+<ul>
+<li>The jekyll build-in server : <code>jekyll --server</code></li>
+<li>Guard, to handle file changes <em>in background</em>.</li>
+</ul>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">web: bundle <span style="color: #AA22FF">exec </span>jekyll --server
+guard: bundle <span style="color: #AA22FF">exec </span>guard
+</pre></div>
+</p>
+
+<p>And that&rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
+directory and edit your files.</p>
+
+</article>
+<div class="prev-next">
+  
+  <a class="paging-link prev" href="/posts/2012-05-08-gitolite-quick-and-dirty-mirror/" title="Gitolite quick and dirty mirror">← Previous post</a>
+  
+
+  
+  <a class="paging-link next" href="/posts/2012-07-21-news/" title="News">Next post →</a>
+  
+</div>
+
+</div>
+</div>
+
+<div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content and design by <a href="/info/site.html">Vincent Demeester</a>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
+  		</span><br />
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mirror on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/mirror/</link>
+    <description>Recent content in Mirror on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Tue, 08 May 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gitolite quick and dirty mirror</title>
+      <link>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <description>
+
+&lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
+(personnal, private or public) ; and I am quickly going to share with you how I
+setup a &lt;em&gt;quick and dirty&lt;/em&gt; mirror feature.&lt;/p&gt;
+
+&lt;p&gt;First, I am using &lt;strong&gt;gitolite 3&lt;/strong&gt;. The mirroring we are going to setup is not the
+&lt;em&gt;supported&lt;/em&gt; &lt;a href=&#34;http://sitaramc.github.com/gitolite/mirroring.html&#34;&gt;mirroring &lt;strong&gt;built-in&lt;/strong&gt;&lt;/a&gt;.
+We are going to implement a simplier way to set mirror thing :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Write a custom gitolite command ; the idea is to be able to write &lt;code&gt;git-config&lt;/code&gt;
+stuff.&lt;/li&gt;
+&lt;li&gt;Write a hook that take a specific &lt;code&gt;git-config&lt;/code&gt; (let say &lt;code&gt;mirror.url&lt;/code&gt;) and do
+a simple mirroring.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;gitolite-commands:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite commands&lt;/h1&gt;
+
+&lt;p&gt;Gitolite 3 has been rewritten to be more flexible : &lt;a href=&#34;http://sitaramc.github.com/gitolite/g3why.html&#34;&gt;Why a completely new version&lt;/a&gt;.
+The rewrite made it really easy to extend gitolite. &lt;del&gt;I&amp;rsquo;ve fork &lt;a href=&#34;https://github.com/vdemeester/gitolite&#34;&gt;gitolite&lt;/a&gt; on github&lt;/del&gt;
+I&amp;rsquo;ve created a &lt;a href=&#34;http://github.com/vdemeester/vdemeester-gitolite-local-code&#34;&gt;repository git&lt;/a&gt;
+to easily add commands to my gitolite instance via &lt;em&gt;local code&lt;/em&gt;. The gitolite command I wrote is
+a quick and dirty script in shell to add &lt;code&gt;git config&lt;/code&gt;. The source should speek
+for itself ; It &lt;em&gt;should&lt;/em&gt; include some way to check if the given config is not
+already present in the &lt;code&gt;gitolite-admin&lt;/code&gt; configuration file — and so might be
+rewritten in &lt;code&gt;Perl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The command is &lt;code&gt;write-git-config&lt;/code&gt; because a &lt;code&gt;git-config&lt;/code&gt; command already exists
+in the built-in commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Usage:    ssh git@host write-git-config &amp;lt;repo&amp;gt; &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Set git-config value for user-created (&amp;quot;wild&amp;quot;) repo.&lt;/span&gt;
+
+die&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$@&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &amp;gt;&amp;amp;2; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+usage&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt; perl -lne &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;print substr($_, 2) if /^# Usage/../^$/&amp;#39;&lt;/span&gt; &amp;lt; &lt;span style=&#34;color: #B8860B&#34;&gt;$0&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;1; &lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$2&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$3&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;-h&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; usage
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_USER not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# ----------------------------------------------------------------------&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;repo&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$1&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF&#34;&gt;shift&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# this shell script takes arguments that are completely under the user&amp;#39;s&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# control, so make sure you quote those suckers!&lt;/span&gt;
+
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; gitolite query-rc -q WRITER_CAN_UPDATE_DESC
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+    gitolite access -q &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; W any &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;else&lt;/span&gt;
+    gitolite creator &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_USER&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; die You are not authorised
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# if it passes, $repo is a valid repo name so it is known to contain only sane&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# characters.  This is because &amp;#39;gitolite creator&amp;#39; return true only if there&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# *is* a repo of that name and it has a gl-creator file that contains the same&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# text as $GL_USER.&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;configfile&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;gitolite query-rc GL_REPO_BASE&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;/&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$repo&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;.git/config
+
+git config --file &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$configfile&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$key&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$value&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h1 id=&#34;gitolite-hooks:56bca63520f3b7058489b7be9bf67456&#34;&gt;Gitolite hooks&lt;/h1&gt;
+
+&lt;p&gt;The next step is to write a quick &lt;code&gt;post-receive&lt;/code&gt; hook that check if there is a
+certain &lt;code&gt;git-config&lt;/code&gt; entry and run &lt;code&gt;git push --mirror&lt;/code&gt;. The file is in
+&lt;code&gt;$HOME/.gitolite/hooks/common/post-receive&lt;/code&gt; ; you could add a better system to
+hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/sh&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Simple gitolite mirroring&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# flush STDIN coming from git, because gitolite&amp;#39;s own post-receive.mirrorpush&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# script does the same thing&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -t &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;||&lt;/span&gt; cat &amp;gt;/dev/null
+
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; die GL_REPO not &lt;span style=&#34;color: #AA22FF&#34;&gt;set&lt;/span&gt;
+
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;git config --get mirror.url&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;[&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;exit &lt;/span&gt;0
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Support a REPO variable for wildcard mirrors&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$GL_REPO&lt;/span&gt; | sed &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;s/\//\\\//g&amp;#39;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;$(&lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt; | sed -e &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;s/REPO/&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$gl_repo_escaped&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;/g&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;)&lt;/span&gt;
+
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Do the mirror push&lt;/span&gt;
+git push --mirror &lt;span style=&#34;color: #B8860B&#34;&gt;$target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The next, and final step is to run &lt;code&gt;gitolite compile&lt;/code&gt; to update links to hooks
+for every repositories.&lt;/p&gt;
+
+&lt;h1 id=&#34;for-real:56bca63520f3b7058489b7be9bf67456&#34;&gt;For real&lt;/h1&gt;
+
+&lt;p&gt;And finaly, this is the final step you&amp;rsquo;ll do.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ssh git@host write-git-config vincent/vcsh-home mirror.url git@github.com:vdemeester/vcsh-home.git
+$ git push
+Counting objects: 5, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 294 bytes, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: To git@github.com:vdemeester/vcsh-home.git
+remote:    65681a8..701c990  master -&amp;gt; master
+To git@host:vincent/vcsh-home.git
+   65681a8..701c990  master -&amp;gt; master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And that should be it !&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Update 2012/10/04&lt;/strong&gt; : Moved from gitolite fork to &lt;em&gt;gitolite local code&lt;/em&gt;
+repository.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

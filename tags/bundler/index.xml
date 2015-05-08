@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bundler on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/bundler/</link>
+    <description>Recent content in Bundler on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sun, 13 May 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/bundler/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Jekyll Forman Guard Bundler</title>
+      <link>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <description>
+
+&lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
+all the tools that are quite awesome in Ruby.&lt;/p&gt;
+
+&lt;h1 id=&#34;goal:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Goal&lt;/h1&gt;
+
+&lt;p&gt;The goal is simple :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I want to be able to install any dependent &lt;a href=&#34;http://rubygems.org&#34;&gt;Gem&lt;/a&gt; with a
+&lt;em&gt;on-liner&lt;/em&gt; command&lt;/li&gt;
+&lt;li&gt;I want to be able to run a &lt;em&gt;Jekyll server&lt;/em&gt; that auto updates.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;We are going to play with : &lt;a href=&#34;http://gembundler.com/&#34;&gt;Bundler&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/guard/guard&#34;&gt;Guard&lt;/a&gt; and &lt;a href=&#34;https://github.com/ddollar/foreman&#34;&gt;foreman&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;bundler:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Bundler&lt;/h2&gt;
+
+&lt;p&gt;Bundler let us run &lt;code&gt;bundle install&lt;/code&gt; to get all Ruby Gems we will need ; It use
+a file name &lt;code&gt;Gemfile&lt;/code&gt;. The gems we need are simple : &lt;code&gt;jekyll&lt;/code&gt;, &lt;code&gt;guard&lt;/code&gt; and some
+Guard extensions.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;source &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://rubygems.org&amp;quot;&lt;/span&gt;
+
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-jekyll2&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-shell&amp;#39;&lt;/span&gt;
+gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;guard:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Guard&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Guard is a command line tool to easily handle events on file system modifications.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Guard will be watching file we told him and run action in consequence ; The file
+is name &lt;code&gt;Guardfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;guard &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  watch &lt;span style=&#34;color: #BB6688&#34;&gt;%r{.*}&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+
+guard &lt;span style=&#34;color: #B8860B&#34;&gt;:bundler&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+  watch(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Gemfile&amp;#39;&lt;/span&gt;)
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# vim:filetype=ruby&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;foreman:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Foreman&lt;/h2&gt;
+
+&lt;p&gt;Finally, foreman will let us declare our processes and will handle the start,
+forward the output and handle the shutdown. It can then export its configuration
+into more &lt;em&gt;production-ready&lt;/em&gt; file (&lt;code&gt;init&lt;/code&gt;, &lt;code&gt;upstard&lt;/code&gt;, …) ; It uses a file named
+&lt;code&gt;Procfile&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will tell foreman to run :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The jekyll build-in server : &lt;code&gt;jekyll --server&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Guard, to handle file changes &lt;em&gt;in background&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;web: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;jekyll --server
+guard: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;guard
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And that&amp;rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
+directory and edit your files.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

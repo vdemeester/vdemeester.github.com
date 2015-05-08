@@ -1,52 +1,52 @@
 @font-face {
     font-family: "CabinSketch";
     font-weight: bold;
-    src: url("fonts/CabinSketch-Bold.ttf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/CabinSketch-Bold.ttf") format("opentype");
 }
 @font-face {
     font-family: "Cabin";
     font-weight: normal;
-    src: url("fonts/Cabin-Regular.ttf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Cabin-Regular.ttf") format("opentype");
 }
 @font-face {
     font-family: "GraublauWeb";
-    src: url("fonts/GraublauWeb.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/GraublauWeb.otf") format("opentype");
 }
 @font-face {
     font-family: "GraublauWeb";
     font-weight: bold;
-    src: url("fonts/GraublauWebBold.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/GraublauWebBold.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
-    src: url("fonts/Merriweather-Regular.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-Regular.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
     font-weight: bold;
-    src: url("fonts/Merriweather-Bold.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-Bold.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
     font-weight: bold;
     font-style: italic;
-    src: url("fonts/Merriweather-BoldItalic.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-BoldItalic.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
     font-style: italic;
-    src: url("fonts/Merriweather-Italic.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-Italic.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
     font-weight: lighter;
     font-style: italic;
-    src: url("fonts/Merriweather-LightItalic.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-LightItalic.otf") format("opentype");
 }
 @font-face {
     font-family: "Merriweather";
     font-weight: lighter;
-    src: url("fonts/Merriweather-Light.otf") format("opentype");
+    src: url("http://vincent.demeester.fr/css/fonts/Merriweather-Light.otf") format("opentype");
 }
 
 html {
@@ -78,10 +78,10 @@ h1,h2,h3,h4 {
 	font-family: "Merriweather", "GraublauWeb", 'lucida grande', sans-serif; 
 }
 h1 { margin-bottom: 1em; }
-body.home div#page p {
+body div.home div#page p {
     font-family: "Droid Sans", sans-serif;
 }
-body.home div#page p:first-line {
+body div.home div#page p:first-line {
 	font-variant: normal;
 	font-size: inherit;
 }
@@ -253,16 +253,39 @@ ul.inline.tag_box li {
     padding: 0;
 }
 ul.tag_box li a{
-    background:#006400;
     color:#fff;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;	
-    border-radius:4px;
-    padding: 1px 4px;
+    padding: 2px 4px;
+    margin: 0px 1px;
+}
+li.category a{
+    background:#159818;
+}
+li.tag a{
+    background:#578B96;
 }
 ul.tag_box li a span {
     font-weight: bold;
     font-size: 0.5em;
+}
+
+/* Custom :D */
+li.tag-emacs a {
+    background: #8156A7;
+}
+li.tag-orgmode a {
+    background: #4D85D1;
+}
+li.tag-docker a {
+    background: #51B7FF;
+}
+li.tag-java a, li.tag-javascript a {
+    background: #DF2D4F;
+}
+li.tag-go a, li.tag-golang a {
+    background: #E0EBF5;
+}
+li.tag-ruby a {
+    background: #7F267B;
 }
 
 /*
@@ -280,21 +303,21 @@ body.red #header {
 }
 */
 
-body.home div#page dd {
+body div.home div#page dd {
     margin: 0;
     padding-left: 23px !important;
     background-position: 0 50% !important;
     background-repeat: no-repeat !important;
 }
-body.home div#page dd.mail {
+body dev.home div#page dd.mail {
     background:url("../images/email.png");
 }
-body.home div#page dd.gnupg {
+body div.home div#page dd.gnupg {
     background:url("../images/key.png");
 }
-body.home div#page dd.jabber {
+body div.home div#page dd.jabber {
     background:url("../images/user_gray.png");
 }
-body.home div#page dd.irc {
+body div.home div#page dd.irc {
     background:url("../images/comments.png");
 }

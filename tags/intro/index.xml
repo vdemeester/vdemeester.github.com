@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Intro on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/intro/</link>
+    <description>Recent content in Intro on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 07 May 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/intro/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Reinit and Jekyll</title>
+      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <description>
+
+&lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process
+of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant
+that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this &lt;em&gt;identity site&lt;/em&gt; on the
+github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should
+still be up for a while.&lt;/p&gt;
+
+&lt;p&gt;And I&amp;rsquo;m switching on Jekyll for this website as It is supported by Github page, easy to use and easy
+to deploy elsewhere (if one day I want to move from Github).&lt;/p&gt;
+
+&lt;p&gt;The rest of the post is going to be used as a &lt;em&gt;sandbox&lt;/em&gt; post to test the site styles.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+
+&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;highlight:9c1aa07d0b2d69339bbe4c2e41552590&#34;&gt;Highlight&lt;/h2&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;foo&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some bash script…&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
+update_gems&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Update gems for all versions ? (y/N)&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;read &lt;/span&gt;UPDATE_GEMS
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;for&lt;/span&gt; version in &lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;ls --color&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;never &lt;span style=&#34;color: #B8860B&#34;&gt;$HOME&lt;/span&gt;/.rbenv/versions&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+            &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Updating &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem update
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem install bundler
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;done&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+update_gems
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

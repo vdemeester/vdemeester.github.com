@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gitflow on Vincent Demeester</title>
+    <link>http://localhost:1313/tags/gitflow/</link>
+    <description>Recent content in Gitflow on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 23 Jul 2012 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/gitflow/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Maven Release Gitflow</title>
+      <link>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</link>
+      <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-07-23-maven-release-gitflow/</guid>
+      <description>
+
+&lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
+When working on maven project, there is few great plugins that helps to get
+the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/maven-release-plugin&#34;&gt;maven-release-plugin&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Inspired on this &lt;a href=&#34;https://gist.github.com/1043970&#34;&gt;gist&lt;/a&gt;, I&amp;rsquo;ve come with
+a cool way of doing things (let say we want to release a 0.1 version of an
+artifact) :&lt;/p&gt;
+
+&lt;h1 id=&#34;prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
+
+&lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
+(to know where to deploy the release artifact) and few options for the
+maven-release-plugin :&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
+
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-release-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.3.2&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;tagNameFormat&amp;gt;&lt;/span&gt;v@{project.version}&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/tagNameFormat&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;pushChanges&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/pushChanges&amp;gt;&lt;/span&gt;
+                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;localCheckout&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/localCheckout&amp;gt;&lt;/span&gt;
+                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
+            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
+    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Few explanation here :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;tagNameFormat&lt;/code&gt; is here to change the default tag name (which is &lt;code&gt;${project.artifactId}-${project.version}&lt;/code&gt;) to a better one.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pushChanges&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt; tells  maven-release-plugin not to push
+changes (this will become useful)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;localCheckout&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; tells maven-release-plugin to clone from
+local repository (not distant). This is especially useful here because we
+didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;the-real-stuff:5b48b9cc71274145577975feb51b5ced&#34;&gt;The real stuff&lt;/h1&gt;
+
+&lt;p&gt;First create a release branch from develop.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout -b release/v0.1 develop
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:prepare               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# change the pom, commit and tag version, and&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# re-change pom (by incrementing SNAPSHOT version)&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:perform               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get the tagged version, compile and deploy&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;And the real fun begins.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout develop              &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get back to the develop branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into develop&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout master               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# go to the master branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1~1  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into master but&lt;/span&gt;
+                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# the tagged version instead of the release/v0.1 HEAD&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git branch -D release/v0.1        &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Removing the release branch&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git push --all &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --tags &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Finally push everything&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
+merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The next step would be to create a helper script that automates this and
+verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration options.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Edit 17:58&lt;/strong&gt; : You can take a look &lt;a href=&#34;https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

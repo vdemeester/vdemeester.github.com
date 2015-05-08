@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Me on Vincent Demeester</title>
+    <link>http://localhost:1313/categories/me/</link>
+    <description>Recent content in Me on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 24 Mar 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/me/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Redesign Et Résolutions</title>
+      <link>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <description>
+
+&lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
+
+&lt;h2 id=&#34;redesign:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Redesign&lt;/h2&gt;
+
+&lt;p&gt;Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris &lt;code&gt;\o/&lt;/code&gt;).
+Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas
+fait &lt;code&gt;;-P&lt;/code&gt;), j&amp;rsquo;avais envie de &lt;em&gt;déménager&lt;/em&gt; le site en quelques sortes.&lt;/p&gt;
+
+&lt;p&gt;Pour l&amp;rsquo;inspiration c&amp;rsquo;est assez facile à trouver, regarder &lt;a href=&#34;http://medium.com&#34;&gt;medium&lt;/a&gt;, le site de
+&lt;a href=&#34;http://www.viksit.com/&#34;&gt;Viksit Gaur&lt;/a&gt; ou encore celui de &lt;a href=&#34;http://silent-strength.com/&#34;&gt;Michael&lt;/a&gt; (coucou &lt;code&gt;:-P&lt;/code&gt;).
+J&amp;rsquo;adore ce genre de site, assez épuré mais avec une partie fixe (à gauche ou à droite) et avec des images changeantes.&lt;/p&gt;
+
+&lt;p&gt;Les images en fond de l&amp;rsquo;espace de gauche peuvent changer d&amp;rsquo;une page à l&amp;rsquo;autre. Je suis en train de m&amp;rsquo;amuser un peu
+avec &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;. Il faut que je trouve un moyen d&amp;rsquo;optimiser un peu les images que j&amp;rsquo;utilise
+parce que là je joue un peu le bourrin.&lt;/p&gt;
+
+&lt;h2 id=&#34;résolutions:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Résolutions&lt;/h2&gt;
+
+&lt;p&gt;Nouvelle année, nouveau boulot, implique nouvelles résolutions. Il y a deux aspects à ces &lt;em&gt;résolutions&lt;/em&gt; : sur un plan
+informatique/geek/travail/organisation, et sur un plan purement &lt;em&gt;physique&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Mon retour sur Paris devrait me permettre de participer à un peu plus d&amp;rsquo;évènements, notamment du côté des Java User Group, mais
+aussi FSFE, et j&amp;rsquo;en passe. Je compte également continué à jouer le &lt;em&gt;factotum&lt;/em&gt; en me gardant un peu de temps au niveau
+personnel pour travailler sur des aspects &lt;em&gt;geek&lt;/em&gt; que je n&amp;rsquo;aurais peut-être pas l&amp;rsquo;occasion de pratiquer au travail.
+Au niveau de mes &lt;em&gt;points d&amp;rsquo;entrées&lt;/em&gt; sur le web, je compte remettre un peu en route la partie blog de ce site et
+tourner shortbrain.org (ou autre) en un site plus &amp;ldquo;documentation&amp;rdquo; en me basant sur mes notes (powered by &lt;a href=&#34;http://org-mode.org&#34;&gt;org-mode&lt;/a&gt;).
+Je me suis également remis à &lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Gnu Emacs&lt;/a&gt; et &lt;em&gt;oh god&lt;/em&gt; qu&amp;rsquo;est-ce que c&amp;rsquo;est bon &lt;code&gt;:-D&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Au niveau phyisque, dans la continuité de la fin 2012, l&amp;rsquo;année 2013 a probablement été la pire de ma vie. Les
+problèmes de dos c&amp;rsquo;est pas facile tous les jours.. En février, j&amp;rsquo;avais peur de ne jamais remonter sur un vélo ; en Mai
+je remontais pour la première fois sur le vélo, en Septembre je faisais 40km par semaine et en décembre j&amp;rsquo;étais
+presque capable de faire 30km en une journée. Mème si l&amp;rsquo;année 2014 a mal commencé (je me suis felé un côte en Janvier),
+mes objectifs pour cette année et les futurs sont nettement plus positif. Le &lt;a href=&#34;http://fitbit.com&#34;&gt;fitbit&lt;/a&gt; que j&amp;rsquo;ai
+acquis en Février me permet d&amp;rsquo;avoir un objectif de marche (certes assez modeste) de 10000 pas et 8,05 km par jour.
+Je compte bien me fixer d&amp;rsquo;autre objectifs : monter la barre plus haut (15000 voir plus), faire 50km de vélo
+sur une journée.&lt;/p&gt;
+
+&lt;p&gt;Les objectifs physiques à très long termes sont également assez simples : retrouver ma forme physique et ne plus être
+géné à cause du dos. En gros c&amp;rsquo;est : être capable de faire 120km de vélo et monter des cols (Col du Sapenay, Mont Revard)
+et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi-marathon, marathon :D).&lt;/p&gt;
+
+&lt;p&gt;Sur ce, je vais retourner à mes cartons :-P.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Podcasts</title>
+      <link>http://localhost:1313/posts/2013-10-12-podcasts/</link>
+      <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2013-10-12-podcasts/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou
+moins régulièrement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec
+des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande
+place. Voici une liste plus ou moins bien triés de ceux auxquels je suis
+souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post
+à jour ou en créerait un nouveau sinon :-).&lt;/p&gt;
+
+&lt;h2 id=&#34;geek-co:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Geek &amp;amp; co&lt;/h2&gt;
+
+&lt;p&gt;Je suis un developpeur, un geek et convaincu des logiciels libres, les
+podcasts qui suivent reflète assez cette partie là de mon identité.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.captainweb.net/&#34;&gt;L&amp;rsquo;apéro de Captain (fr)&lt;/a&gt; : dans le genre geeky, déjanté et sauvage, en français, on ne fait pas mieux. Pas vraiment safe for work, et pas tout à fait &amp;ldquo;libriste&amp;rdquo; comme j&amp;rsquo;aime, les tranches de rires sont garanties ; même si parfois on est un peu verreux d&amp;rsquo;avoir écouter jusqu&amp;rsquo;à la fin et le bien nommé &amp;ldquo;wazzuf&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.agencetousgeeks.com/&#34;&gt;Agence Tous Geeks (fr)&lt;/a&gt; : fils caché de l&amp;rsquo;apéro du captain, on y retrouve des amis (et membres de ce dernier), mais c&amp;rsquo;est un peu plus calme.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://bazingcast.com/about/&#34;&gt;Bazingcast (fr)&lt;/a&gt; : podcast geek, plus posé que les deux précédents mais avec
+des débats, des trolls et tout ce que l&amp;rsquo;on peut attendre de geeks.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.captainposix.net/&#34;&gt;Parole de Tux (fr-be)&lt;/a&gt; : podcast venant de nos voisin belge, pas trop long et plutôt sympa ; et si comme moi vous adorez l&amp;rsquo;accent belge, c&amp;rsquo;est le top.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://faif.us/&#34;&gt;Free as in Freedom (en)&lt;/a&gt; : podcast parlant de logiciel
+libre principalement côté license, truc légal, etc.. en anglais, faut
+parfois s&amp;rsquo;accrocher.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://episodes.gitminutes.com/&#34;&gt;Git Minutes (en)&lt;/a&gt; : podcast à propos de
+Git et des outils de son écosystème (vcsh, etc..).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;radio:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Radio&lt;/h2&gt;
+
+&lt;p&gt;J&amp;rsquo;aime bien la radio, bien plus que la télévision (que j&amp;rsquo;allume si peu qu&amp;rsquo;à
+chaque fois la box se met à jour &lt;code&gt;;-p&lt;/code&gt;).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-laura-leishman-project&#34;&gt;France Inter - LLP (Laura leishman Project)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12265.xml&#34;&gt;Le Mouv&amp;rsquo; - Laura Leishman Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-interception&#34;&gt;France Inter - Interception&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.la-bas.org/&#34;&gt;France Inter - là-bas si j&amp;rsquo;y suis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689840&#34;&gt;France Culture - Pixel&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4685228&#34;&gt;France Culture - Place de la toile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689418&#34;&gt;France Culture - Philippe Meyer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12582.xml&#34;&gt;Le Mouv&amp;rsquo; - Glitch (sur le Mouv&amp;rsquo;)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12691.xml&#34;&gt;Le Mouv&amp;rsquo; - Code Source&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12190.xml&#34;&gt;Le Mouv&amp;rsquo; - Suivez le geek&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.divergence-fm.org/-http-www-divergence-fm-org-ecrire-exec-rubrique-id_rubrique-61-.html&#34;&gt;Divergence Numerique&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;musique:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Musique&lt;/h2&gt;
+
+&lt;p&gt;Les podcast suivant sont purement musique, tous musique &lt;em&gt;techno&lt;/em&gt; ou
+trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://podcasts.flaix.fr/corstencountdown&#34;&gt;Ferry Corsten - Corsten Countdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.galexmusic.com/podcast/gareth.xml&#34;&gt;Gareth Emery Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://feedproxy.feedburner.com/Tiestos_club_life&#34;&gt;Tiesto Club Life&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://oakenfold.libsyn.com/rss&#34;&gt;Oakenfold Perfecto Podcast&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gollum Comme Wiki Personnel</title>
+      <link>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <description>
+
+&lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
+
+&lt;p&gt;Une des principales &lt;em&gt;action&lt;/em&gt; que j&amp;rsquo;ai pris est d&amp;rsquo;utiliser un wiki local et synchronisé sur &lt;em&gt;tout&lt;/em&gt; mes PCs. Le &lt;em&gt;format&lt;/em&gt; wiki est assez adapté à une prise de note et à la création de contenu plus complet (comme des &lt;a href=&#34;http://shortbrain.org&#34;&gt;articles&lt;/a&gt; ou de la documentation pour des projets en cours). Les conditions étaient les suivantes :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Facilité de mise en place.&lt;/li&gt;
+&lt;li&gt;Pas de base de données.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Merging&lt;/em&gt; facile (&lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt; &lt;em&gt;rules my world&lt;/em&gt;).&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/&#34;&gt;Markdown&lt;/a&gt; comme syntaxe, car utilisé à peu près partout (blogs, articles, READMEs, documentations).&lt;/li&gt;
+&lt;li&gt;Éditable à partir d&amp;rsquo;une interface web ou de mon éditeur favoris.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;L&amp;rsquo;outil qui remplit presque toutes ces conditions s&amp;rsquo;appelle &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;gollum&lt;/a&gt;. C&amp;rsquo;est un moteur wiki, écris en ruby, qui se base sur un repository &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;. Il est développer par l&amp;rsquo;équipe de &lt;a href=&#34;http://github.com&#34;&gt;Github&lt;/a&gt; et c&amp;rsquo;est celui qui est utilisé par les pages wiki là-bas. Il permet d&amp;rsquo;utiliser à peu près n&amp;rsquo;importe quel syntaxe (dont &lt;a href=&#34;https://github.com/github/github-flavored-markdown&#34;&gt;github-markdown&lt;/a&gt; qui est assez proche de celle de &lt;a href=&#34;http://johnmacfarlane.net/pandoc&#34;&gt;pandoc&lt;/a&gt;). Par ailleurs, comme il se base sur &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;, les points &lt;em&gt;&amp;ldquo;pas de base de données&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;merging facile&amp;rdquo;&lt;/em&gt; et &lt;em&gt;&amp;ldquo;éditable également à partir de mon éditeur favoris&amp;rdquo;&lt;/em&gt; sont toutes remplies.&lt;/p&gt;
+
+&lt;p&gt;Avec &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.&lt;/p&gt;
+
+&lt;h2 id=&#34;mise-en-place:4ec8b636d5075b710d87673b2f0e67dd&#34;&gt;Mise en place&lt;/h2&gt;
+
+&lt;p&gt;La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&amp;rsquo;installation se fait par &lt;a href=&#34;rubygems.org&#34;&gt;RubyGem&lt;/a&gt; ou en clonant le repository.&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Installation de gollum et du format markdown de github&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;gem install gollum gitub-markdown
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Si vous n&amp;rsquo;utilisez pas &lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt; ou &lt;a href=&#34;https://rvm.io/&#34;&gt;rvm&lt;/a&gt; il est probable qu&amp;rsquo;il faille lancer la commande en root ou utiliser sudo.&lt;/p&gt;
+
+&lt;p&gt;Ensuite, il suffit de lancer &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; dans un dossier qui est un repository git ; le tour est joué&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# J&amp;#39;ulitise ~/desktop/wiki pour mon wiki&lt;/span&gt;
+&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;cd&lt;/span&gt; ~/desktop/wiki &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; gollum
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;L&amp;rsquo;idée finale est d&amp;rsquo;automatiser deux choses :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Le démarrage de gollum&lt;/li&gt;
+&lt;li&gt;La synchronisation du repository avec les différents autres &lt;em&gt;remotes&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Suivant le système d&amp;rsquo;exploitation et/ou la distribution utilisées, il y a énormément de possibilité d&amp;rsquo;effectuer cette automatisation. Dans mon cas, j&amp;rsquo;ai une &lt;a href=&#34;http://debian.org&#34;&gt;Debian&lt;/a&gt; assez light, avec surtout plein de scripts. Je démarre donc &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; au démarrage de ma session grâce à une script qui est lancé dans la foulée du gestionnaire de fenêtre. La synchronisation se fait grâce à une tâche planifiée &lt;em&gt;cron&lt;/em&gt; qui est &amp;ldquo;distribué&amp;rdquo; sur chacune de mes machines.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;C&amp;rsquo;est tout pour le moment&lt;/em&gt; ;-).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>News</title>
+      <link>http://localhost:1313/posts/2012-07-21-news/</link>
+      <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-07-21-news/</guid>
+      <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
+vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes.
+Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en
+rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de
+tourner les pédales. Intrigué, j&amp;rsquo;ai jeté un coup d&amp;rsquo;œil au vélo, et &lt;em&gt;oh rage
+oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arrière&lt;/em&gt; du vélo c&amp;rsquo;était tout
+simplement fendue.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
+  7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
+
+&lt;p&gt;Bien entendu ce n&amp;rsquo;est que matériel mais ce vélo avait une grande importance
+  sentimentale : il avait mon âge et appartenait à mon père quand j&amp;rsquo;étais
+  petit.&lt;/p&gt;
+
+&lt;p&gt;Maintenant il ne reste plus qu&amp;rsquo;à sortir la carte bleue pour m&amp;rsquo;en procurer un
+  nouveau…&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Je suis actuellement en vacances pour deux petites semaines (ouf !). Cela me
+permet, entre autre, de me réentrainer à monter des cols (vu que je suis
+dans les Alpes) ; parce qu&amp;rsquo;à Bordeaux, c&amp;rsquo;est assez difficile d&amp;rsquo;en trouver.
+Par contre il me reste beaucoup de boulot pour retrouver ma forme d&amp;rsquo;il
+y a une dizaine d&amp;rsquo;année et de monter facilement le &lt;em&gt;Grand Colombier&lt;/em&gt; !&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Je joue pas mal avec &lt;a href=&#34;http://vaadin.com&#34;&gt;Vaadin&lt;/a&gt; en ce moment,
+principalement pour le boulot. J&amp;rsquo;annonce donc deux petits projets en cours :&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;
+: librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;
+: un composant vaadin hautement flexible (mais je suis mauvais pour les
+noms).&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Et &amp;ldquo;c&amp;rsquo;est tout pour le moment&amp;rdquo;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinit and Jekyll</title>
+      <link>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</link>
+      <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <description>
+
+&lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process
+of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant
+that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this &lt;em&gt;identity site&lt;/em&gt; on the
+github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should
+still be up for a while.&lt;/p&gt;
+
+&lt;p&gt;And I&amp;rsquo;m switching on Jekyll for this website as It is supported by Github page, easy to use and easy
+to deploy elsewhere (if one day I want to move from Github).&lt;/p&gt;
+
+&lt;p&gt;The rest of the post is going to be used as a &lt;em&gt;sandbox&lt;/em&gt; post to test the site styles.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+
+&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&#34;highlight:9c1aa07d0b2d69339bbe4c2e41552590&#34;&gt;Highlight&lt;/h2&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;foo&lt;/span&gt;
+  &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
+&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Some bash script…&lt;/p&gt;
+
+&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
+update_gems&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Update gems for all versions ? (y/N)&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;read &lt;/span&gt;UPDATE_GEMS
+    &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;for&lt;/span&gt; version in &lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;ls --color&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;never &lt;span style=&#34;color: #B8860B&#34;&gt;$HOME&lt;/span&gt;/.rbenv/versions&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
+            &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Updating &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem update
+            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem install bundler
+        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;done&lt;/span&gt;
+    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
+&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+update_gems
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

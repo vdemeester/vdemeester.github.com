@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <base href="http://localhost:1313/">
+    <link rel="start" href="http://localhost:1313/" />
+
+    <title>Vincent Demeester</title>
+    <link rel="canonical" href="http://localhost:1313/posts/2013-09-08-maven-tmpfs/">
+    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+
+    <link rel="openid.server" href="https://indieauth.com/openid" />
+    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
+    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
+
+
+    <style type="text/css">
+      #header {
+      
+      background: url('/images/2014/03/wallpaper-1470931.jpg') repeat scroll center center / cover transparent;
+      
+      }
+    </style>
+
+  </head>
+  
+  <body lang="fr"/>
+  
+
+
+  <header id="header">
+
+    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
+
+    <div>
+      <h1>
+        <summary>
+          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
+        </summary>
+      </h1>
+      <ul class="nav">
+        <li class="archive"><a href="/archive/">Archive</a></li>
+        <li class="categories"><a href="/categories/">Categories</a></li>
+        <li class="tags"><a href="/tags/">Tags</a></li>
+      </ul>
+    </div>
+  </header>
+
+
+<div id="main-container">
+  <div id="page">
+    <article class="post">
+      <header>
+        <h1 class="emphnext">Maven Tmpfs</h1><a href='http://localhost:1313/posts/2013-09-08-maven-tmpfs/'></a>
+        <address class="signature">
+          <span class="date">Sun, 9 Sep, 2013</span>
+          <span class="words">(600 Words)</span>
+        </address>
+        <ul class="tag_box inline">
+          
+          <li class="category"><a href="/categories/#developement">developement</a></li>
+          
+          
+          
+          
+          
+          <li class="tag tag-maven"><a href="/tags/#maven">maven<span>2</span></a></li>
+          
+          
+          <li class="tag tag-tmpfs"><a href="/tags/#tmpfs">tmpfs<span>1</span></a></li>
+          
+          
+          <li class="tag tag-ssd"><a href="/tags/#ssd">ssd<span>1</span></a></li>
+          
+          <br/>
+          
+        </ul>
+      </header>
+</header>
+<p>Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
+<strong>&ldquo;Convention over configuration&rdquo;</strong> me va vraiment bien. Que ce soit au boulot ou
+à la maison, j&rsquo;ai plus d&rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
+disque traditionnel (mécanique ?). Pour augmenter un peu la durée de vie de
+ces disques SSD, j&rsquo;ai cherché à savoir comment <em>déporter</em> le <em>build</em> de maven
+(qui, pour rappel, se passe dans le dossier <code>target/</code>) hors du SSD ; ici ce
+sera dans le dossier <code>/tmp/</code> qui est monté en mémoire (merci <code>tmpfs</code>),
+mais on peut imaginer déporter ça sur un autre disque, etc.. Après quelques
+recherches j&rsquo;ai trouvés quelques inspirations.</p>
+
+<blockquote>
+<p><strong>Limitations</strong></p>
+
+<p>Dans la solution présentée ci-dessous les principales limitations sont
+les suivantes (que j&rsquo;essaierais de diminuer au fil du temp ;P) :</p>
+
+<ol>
+<li>Il est nécessaire de modifier le pom.xml du projet ; cela ne s&rsquo;appliquera
+donc pas à tous les projets maven sans modification du pom.xml.</li>
+<li>Cela ne fonctionne que sur une plateforme qui support les liens
+symboliques (Linux, Mac OS X, et autre UNIX).</li>
+<li>Cela ne fonctionne qu&rsquo;avec Java 7 ou plus.</li>
+<li>Si vous utilisez m2e, il va gentillement gueuler et c&rsquo;est moche ; pour
+résoudre le problème, il faut faire un tour vers <a href="http://wiki.eclipse.org/M2E_plugin_execution_not_covered">M2E plugin execution
+not covered</a>.</li>
+</ol>
+</blockquote>
+
+<p>Pour [maven](), le dossier <code>target/</code> vient de la propriété
+<code>project.build.directory</code>. Dans la théorie, il suffirait de modifier (dans
+<code>$HOME/.m2/settings.xml</code>) cette propriété et le tour serait jouer.
+Malheuresement ce n&rsquo;est pas possible, <code>project.build.directory</code> est une
+propriété interne et n&rsquo;est, à priori, pas modifiable.</p>
+
+<p>Notre souhait est le suivant :</p>
+
+<ol>
+<li>Le build doit se faire dans <code>/tmp/m2/</code>, ce qui pour un projet se traduit
+par <code>/tmp/m2/${groupId}:${artifactId}</code>.</li>
+<li>Le dossier <code>target/</code> dans les sources est un lien symbolique vers le
+dossier dans <code>/tmp/m2/</code></li>
+<li>On passe par un <strong>profile</strong> qui n&rsquo;est <strong>pas actif</strong> par défaut (pour ne pas
+faire chier le monde) mais <strong>activable via une propriété</strong> (maven nous permet
+de le faire et c&rsquo;est cool <code>^_^</code>). La propriété utilisée sera
+<code>external.build.root</code>.</li>
+</ol>
+
+<p>Le code ci-dessous est repris directement de mon inspiration<sup class="footnote-ref" id="fnref:9530d562fd47526537cf94a30c56655c:inspiration"><a rel="footnote" href="#fn:9530d562fd47526537cf94a30c56655c:inspiration">1</a></sup>. Il
+s&rsquo;occupe de créer le dossier <code>${groupId}:${artifactId}</code> dans
+<code>external.build.root</code> et de faire le lien dans le dossier courant.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;project&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;profiles&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;profile&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>external-build-dir<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;activation&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;activeByDefault&gt;</span>false<span style="color: #008000; font-weight: bold">&lt;/activeByDefault&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;property&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;name&gt;</span>external.build.root<span style="color: #008000; font-weight: bold">&lt;/name&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/property&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/activation&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;build&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;plugins&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;plugin&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>com.alexecollins.maven.plugin<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>script-maven-plugin<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>1.0.0<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;executions&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;execution&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>prep-work-tree<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;goals&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;goal&gt;</span>execute<span style="color: #008000; font-weight: bold">&lt;/goal&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/goals&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;phase&gt;</span>initialize<span style="color: #008000; font-weight: bold">&lt;/phase&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+                                        import java.nio.file.*
+                                        def dir =
+                                        &quot;${external.build.root}/${project.groupId}:${project.artifactId}&quot;
+                                        println &quot;using Maven dir ${dir}&quot;
+                                        def dirPath = Paths.get(dir)
+                                        if (!Files.exists(dirPath)) {
+                                        Files.createDirectories(dirPath)
+                                        }
+                                        def target = Paths.get(&quot;${project.build.directory}&quot;)
+                                        if (!Files.exists(target)) {
+                                        Files.createSymbolicLink(target, dirPath)
+                                        }<span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;/execution&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;execution&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>drop-symlink<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;goals&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;goal&gt;</span>execute<span style="color: #008000; font-weight: bold">&lt;/goal&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/goals&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;phase&gt;</span>clean<span style="color: #008000; font-weight: bold">&lt;/phase&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
+                                    <span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+                                        import java.nio.file.*
+                                        def target = Paths.get(&quot;${project.build.directory}&quot;)
+                                        if (Files.isSymbolicLink(target)) {
+                                        Files.delete(target)
+                                        }
+                                    <span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;/execution&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/executions&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;dependencies&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;dependency&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>org.codehaus.groovy<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>groovy<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
+                                <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>1.8.6<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;/dependency&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/dependencies&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
+                            <span style="color: #008000; font-weight: bold">&lt;language&gt;</span>groovy<span style="color: #008000; font-weight: bold">&lt;/language&gt;</span>
+                        <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
+                    <span style="color: #008000; font-weight: bold">&lt;/plugin&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;/plugins&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/build&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/profile&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/profiles&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/project&gt;</span>
+</pre></div>
+</p>
+
+<p>Ainsi, il suffit ensuite d&rsquo;avoir quelques choses du genre dans son
+<code>$HOME/.m2/settings.xml</code> pour que les builds qui ont ce profil se <em>build</em>
+dans <code>/tmp/m2/</code>. On peut aussi ne rien avoir dans <code>$HOME/.m2/settings.xml</code>
+et utilise <code>-Dexternal.build.root=/tmp/m2/</code> avec la commande <code>mvn</code>.</p>
+
+<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;settings&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;profiles&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;profile&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>build-in-ramfs<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;properties&gt;</span>
+                <span style="color: #008000; font-weight: bold">&lt;external.build.root&gt;</span>/tmp/m2/<span style="color: #008000; font-weight: bold">&lt;/external.build.root&gt;</span>
+            <span style="color: #008000; font-weight: bold">&lt;/properties&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;/profile&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/profiles&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;activeProfiles&gt;</span>
+        <span style="color: #008000; font-weight: bold">&lt;activeProfile&gt;</span>build-in-ramfs<span style="color: #008000; font-weight: bold">&lt;/activeProfile&gt;</span>
+    <span style="color: #008000; font-weight: bold">&lt;/activeProfiles&gt;</span>
+    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+<span style="color: #008000; font-weight: bold">&lt;/settings&gt;</span>
+</pre></div>
+</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:9530d562fd47526537cf94a30c56655c:inspiration"><a href="http://elehack.net/writings/programming/maven-target-in-tmpfs">Putting Maven build directories out-of-tree</a> par <a href="http://elehack.net/">Michal Ekstrand</a>
+ <a class="footnote-return" href="#fnref:9530d562fd47526537cf94a30c56655c:inspiration"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
+</article>
+<div class="prev-next">
+  
+  <a class="paging-link prev" href="/posts/2012-12-16-gollum-comme-wiki-personnel/" title="Gollum Comme Wiki Personnel">← Previous post</a>
+  
+
+  
+  <a class="paging-link next" href="/posts/2013-10-12-podcasts/" title="Podcasts">Next post →</a>
+  
+</div>
+
+</div>
+</div>
+
+<div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content and design by <a href="/info/site.html">Vincent Demeester</a>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
+  		</span><br />
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+<script>document.write('<script src="http://'
+        + (location.host || 'localhost').split(':')[0]
+		+ ':1313/livereload.js?mindelay=10"></'
+        + 'script>')</script></body>
+
