@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://vincent.demeester.fr/</loc>
-    <lastmod>2015-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2015-05-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</loc>
+    <lastmod>2015-05-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -58,11 +63,11 @@
   </url>
   
   <url>
-    <loc>http://vincent.demeester.fr/archive/</loc>
+    <loc>http://vincent.demeester.fr/categories/</loc>
   </url>
   
   <url>
-    <loc>http://vincent.demeester.fr/categories/</loc>
+    <loc>http://vincent.demeester.fr/archive/</loc>
   </url>
   
   <url>
