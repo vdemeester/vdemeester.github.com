@@ -1029,20 +1029,20 @@ update_gems
     </item>
     
     <item>
-      <title>Categories</title>
-      <link>http://vincent.demeester.fr/categories/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://vincent.demeester.fr/categories/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Archive</title>
       <link>http://vincent.demeester.fr/archive/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/archive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Categories</title>
+      <link>http://vincent.demeester.fr/categories/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/categories/</guid>
       <description></description>
     </item>
     
