@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container on Vincent Demeester</title>
+    <link>http://vincent.demeester.fr/tags/container/</link>
+    <description>Recent content in Container on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Mon, 27 Oct 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://vincent.demeester.fr/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Docker 1.3 et son écosystème</title>
+      <link>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
+      <pubDate>Mon, 27 Oct 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
+      <description>&lt;div class=&#34;notice&#34;&gt;Cet article est disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme&#34;&gt;http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
+
+&lt;p&gt;Le &lt;strong&gt;16 octobre dernier&lt;/strong&gt;, &lt;ins&gt;Docker est passé en version 1.3&lt;/ins&gt;. C&#39;est une
+bonne occasion de faire un point sur ce qu&#39;apportent les mises à jour
+qui sont sorties depuis la 1.0. Nous allons également en profiter pour
+regarder les news &lt;strong&gt;importantes&lt;/strong&gt; de l&#39;écosystème Docker.&lt;/p&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/public/Billet_0511/docker_container_engine_logo.png&#34; alt=&#34;Docker&#34; title=&#34;Docker&#34; /&gt;&lt;/p&gt;
+
+
+&lt;p&gt;Rappel très rapide, &lt;strong&gt;Docker est une plate-forme ouverte à destination des développeurs et administrateurs systèmes visant à faciliter la construction et le déploiement d&#39;applications distribuées&lt;/strong&gt;. De manière
+moins marketing, l&#39;idée derrière Docker est d&#39;&lt;strong&gt;automatiser&lt;/strong&gt; le &lt;strong&gt;déploiement&lt;/strong&gt; d&#39;environnements sous forme de &lt;strong&gt;conteneurs légers&lt;/strong&gt;, portables et auto-suffisants&amp;nbsp;; les conteneurs permettant d&#39;isoler
+l&#39;exécution des applications dans des contextes d&#39;exécution. Pour ce
+faire, Docker, écris en &lt;a href=&#34;http://golang.org/&#34;&gt;Go&lt;/a&gt;, reprend les bases de &lt;strong&gt;LXC&lt;/strong&gt;, utilise les fonctionnalités
+du &lt;strong&gt;noyau Linux&lt;/strong&gt; (CGroups, Namespaces, …) et se base &lt;em&gt;initialement&lt;/em&gt; sur un
+système de fichier &#34;en oignons&#34; AUFS&amp;nbsp;; D&#39;autres backend sont supportés
+également comme BTRFS ou &lt;em&gt;devicemapper&lt;/em&gt; (LVM).&lt;/p&gt;
+
+
+&lt;p&gt;Depuis le 9 juin 2014 et la release de la version 1.0 &#34;production-read&#34;, l&#39;équipe derrière Docker n&#39;a pas chomé et 3
+nouvelles mises à jour sont sorties depuis&amp;nbsp;; à savoir que les
+&lt;em&gt;releases&lt;/em&gt; de Docker se font à un rythme pré-défini, &#34;à-la&#34; Linux,
+tout ce qui est prêt et testé est intégré à la release qui
+suit. Voyons, de façon non-exhaustive, quelles sont les princiales
+améliorations apportées par ces différentes versions.&lt;/p&gt;
+
+&lt;h4&gt;Hub&amp;nbsp;: Images officielles et language stack&lt;/h4&gt;
+
+
+&lt;p&gt;Le &lt;strong&gt;Hub&lt;/strong&gt;, tel qu&#39;il a été nommé après la sortie de Docker 1.0 est &lt;strong&gt;un dépôt des images Docker&lt;/strong&gt; de tout-un-chacun qui souhaite les partager.&lt;/p&gt;
+
+
+&lt;p&gt;Au début de l&#39;été, Docker Inc. a annoncé l&#39;apparition des &lt;strong&gt;dépots officiels&lt;/strong&gt;. L&#39;idée est d&#39;estampiller des images Docker comme officielles,
+c&#39;est à dire vérifiées et garanties comme étant issues et supportées par
+les mainteneurs des projets. De nombreuses images officielles existent
+déjà pour les principaux projets open-source, comme Ubuntu, MongoDB,
+etc. Toute communauté open-source ou même tout éditeur logiciel peut
+entrer en contact avec l&#39;équipe Docker pour voir son/ses images
+estampillées &#34;officielles&#34;, après validation. Cette étiquette vient se
+rajouter à l&#39;étiquette &#34;&lt;em&gt;automated build repository&lt;/em&gt;&#34;, précédement
+appelée &lt;em&gt;verified&lt;/em&gt; (ce qui prétait à confusion) qui donne la garantie
+à l&#39;utilisateur que l&#39;image a été construite de manière automatique
+par l&#39;infrastructure de Docker Inc. Il est également à noter que la version
+1.3.0 de Docker apporte la vérification de la provenance et de
+l&#39;intégrité des images officielles via signature électronique&amp;nbsp;; même si
+pour l&#39;instant c&#39;est en &lt;em&gt;work-in-progress&lt;/em&gt;.&lt;/p&gt;
+
+
+&lt;p&gt;Un autre ajout récent au Docker Hub, datant de fin septembre, vaut le
+détour&amp;nbsp;: les l&lt;strong&gt;anguage stack&lt;/strong&gt;, des images de bases &lt;em&gt;pre-construites&lt;/em&gt; avec tous les outils nécessaires pour faire tourner une application dans un langage donné. Un développeur souhaitant rapidement construire
+un conteneur avec, par exemple, une application Clojure, n&#39;a plus
+besoin de &lt;em&gt;réinventer la roue&lt;/em&gt; (i.e. partir d&#39;une image de base, installer
+le JDK, installer lein, etc.). Il lui suffit de partir d&#39;une des
+&lt;em&gt;language stack&lt;/em&gt;, ici clojure.&lt;/p&gt;
+
+&lt;pre class=&#34;bash code bash&#34; style=&#34;font-family:inherit&#34;&gt;FROM clojure
+COPY . &lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;usr&lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;src&lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;app
+WORKDIR &lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;usr&lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;src&lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;app
+CMD &lt;span style=&#34;color: #7a0874; font-weight: bold;&#34;&gt;&amp;#91;&lt;/span&gt;&lt;span style=&#34;color: #ff0000;&#34;&gt;&amp;quot;lein&amp;quot;&lt;/span&gt;, &lt;span style=&#34;color: #ff0000;&#34;&gt;&amp;quot;run&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #7a0874; font-weight: bold;&#34;&gt;&amp;#93;&lt;/span&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;Restart policies (1.2.0)&lt;/h4&gt;
+
+
+&lt;p&gt;Docker 1.2 a apporté une option en plus à la commande &lt;code&gt;run&lt;/code&gt;&amp;nbsp;:
+&lt;code&gt;--restart&lt;/code&gt;. Il permet de définir une &lt;strong&gt;politique de redémarrage&lt;/strong&gt; dans
+le cas où le conteneurs viendrait à mourrir, que ce soit de manière
+normale (code de retour à 0) ou inattendue (&lt;em&gt;failure&lt;/em&gt;, code de retour
+différent de 0). Trois options sont disponibles pour l&#39;instant&amp;nbsp;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;no&lt;/strong&gt;&amp;nbsp;: pas de redémarrage, fonctionnement par défaut.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;on-failure&lt;/strong&gt;: redémarrage automatique si le conteneur s&#39;est terminé de façon anormale. Il est possible d&#39;ajouter un nombre maximum de redémarrage&amp;nbsp;; avec &lt;code&gt;--restart=on-failure:3&lt;/code&gt; docker essaiera de redémarrer 3 fois avant d&#39;abandonner.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;always&lt;/strong&gt;&amp;nbsp;: redémarrage automatique, tout le temps, erreurs ou pas.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4&gt;Injection de processus (1.3.0)&lt;/h4&gt;
+
+
+&lt;p&gt;La possibilité de voir ce qui se passe dans le container, et par
+conséquent de s&#39;en servir pour debugger, s&#39;est averé longtemps
+complexe. Dans les &lt;em&gt;premiers jours&lt;/em&gt; de Docker, l&#39;installation d&#39;un
+démon ssh était une solution commune. Cependant, celà complexifiait la
+création d&#39;un conteneur&amp;nbsp;; en effet, Docker est fait pour lancer et isoler
+une seule commande, l&#39;ajout d&#39;un démon sshd imposait alors de mettre
+en place une solution du type &lt;em&gt;init&lt;/em&gt; comme supervisord, runit, ou
+autres. Un article de Jérôme Petazonni, employé Docker Inc,
+a mis les choses au point&amp;nbsp;:
+&lt;strong&gt;&lt;a href=&#34;http://jpetazzo.github.io/2014/06/23/docker-ssh-considered-evil/&#34;&gt;If you run SSHD in your Docker containers, you&#39;re doing it wrong!&lt;/a&gt;&lt;/strong&gt;,
+littéralement &#34;&lt;em&gt;Si vous faites tourner SSHD dans vos container Docker, vous vous trompez&lt;/em&gt;&#34;. Jérôme avait créé à l&#39;époque un outil,
+&lt;a href=&#34;https://github.com/jpetazzo/nsenter&#34;&gt;nsenter&lt;/a&gt;, qui était (et est toujours) installable en passant par un container, histoire de montrer
+un peu de magie.&lt;/p&gt;
+
+
+&lt;p&gt;La version 1.3 de Docker intègre un nouvelle commande, &lt;code&gt;exec&lt;/code&gt; qui
+n&#39;est autre que nsenter, en mieux, directement intégré à Docker, plus
+besoin de passer par un outil externe. &lt;strong&gt;Il devient donc possible d&#39;executer n&#39;importe quelle process à l&#39;intérieur donc container, qui est en cours d&#39;exécution&lt;/strong&gt;. Ainsi un simple &lt;code&gt;docker exec -it ubuntu_bash bash&lt;/code&gt; et
+nous voici dans une session bash à l&#39;intérieur du conteneur. Bien
+entendu, comme pour nsenter, cela ne change pas l&#39;idée derrière Docker
+qui est &#34;une application par conteneur&#34;&amp;nbsp;; la commande &lt;code&gt;exec&lt;/code&gt; est
+surtout présente pour répondre à des problématiques de &lt;em&gt;debug&lt;/em&gt; et de
+&lt;em&gt;developpement&lt;/em&gt;.&lt;/p&gt;
+
+
+&lt;h4&gt;Cycle de vie d’un container (1.3.0)&lt;/h4&gt;
+
+
+&lt;p&gt;Une autre nouvelle commande arrive avec la version 1.3.0 de Docker,
+c&#39;est &lt;code&gt;create&lt;/code&gt;. Beaucoup d&#39;utilisateur ont demandé d&#39;être capable
+de séparer la création initiale de conteneur et son lancement&amp;nbsp;;
+auparavant il n&#39;existait que la commande &lt;code&gt;run&lt;/code&gt; qui faisait les deux
+d&#39;un coup.&lt;/p&gt;
+
+&lt;pre class=&#34;bash code bash&#34; style=&#34;font-family:inherit&#34;&gt;$ docker create &lt;span style=&#34;color: #660033;&#34;&gt;-t&lt;/span&gt; &lt;span style=&#34;color: #660033;&#34;&gt;-i&lt;/span&gt; fedora &lt;span style=&#34;color: #c20cb9; font-weight: bold;&#34;&gt;bash&lt;/span&gt;
+6d8af538ec541dd581ebc2a24153a28329acb5268abe5ef868c1f1a261221752
+$ docker start &lt;span style=&#34;color: #660033;&#34;&gt;-a&lt;/span&gt; &lt;span style=&#34;color: #660033;&#34;&gt;-i&lt;/span&gt; 6d8af538ec5
+bash-&lt;span style=&#34;color: #000000;&#34;&gt;4.2&lt;/span&gt;&lt;span style=&#34;color: #666666; font-style: italic;&#34;&gt;#&lt;/span&gt;&lt;/pre&gt;
+
+
+&lt;h4&gt;Options de sécurité (1.3.0)&lt;/h4&gt;
+
+
+&lt;p&gt;Les utilisateurs de SELinux ou AppArmor vont être content, la commande
+&lt;code&gt;--security-opt&lt;/code&gt;, arrivée avec la version 1.3.0, permet les &lt;em&gt;labels&lt;/em&gt;
+et &lt;em&gt;profiles&lt;/em&gt; de ces derniers, ce qui donne quelque chose comme&amp;nbsp;:&lt;/p&gt;
+
+&lt;pre class=&#34;bash code bash&#34; style=&#34;font-family:inherit&#34;&gt;docker run &lt;span style=&#34;color: #660033;&#34;&gt;--security-opt&lt;/span&gt; label:&lt;span style=&#34;color: #7a0874; font-weight: bold;&#34;&gt;type&lt;/span&gt;:svirt_apache &lt;span style=&#34;color: #660033;&#34;&gt;-i&lt;/span&gt; &lt;span style=&#34;color: #660033;&#34;&gt;-t&lt;/span&gt; centos &lt;span style=&#34;color: #c20cb9; font-weight: bold;&#34;&gt;bash&lt;/span&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;L&#39;avantage principal de cette nouvelle commande, c&#39;est, sur
+les systèmes qui sont configurés avec SELinux ou AppArmor, de pouvoir
+donner des privilèges de manière plus fine qu&#39;avec l&#39;option
+&lt;code&gt;--privileged&lt;/code&gt; (qui donne tout) et ainsi diminuer les risques
+potentiels.&lt;/p&gt;
+
+
+&lt;h4&gt;Boot2docker&lt;/h4&gt;
+
+
+&lt;p&gt;Docker s&#39;appuyant sur des fonctionnalitées de noyau Linux, son usage
+est &lt;em&gt;limité&lt;/em&gt; à un système hôte avec un noyau Linux. Le projet
+boot2docker vise à enlever cette barrière en &lt;strong&gt;permettant d&#39;avoir la commande docker sous Mac OS X et Windows&lt;/strong&gt;. Il s&#39;agit ni plus ni moins
+d&#39;une machine virtuelle VirtualBox légère, basée sur la distribution
+Tiny Core Linux, pour avoir un &lt;em&gt;overhead&lt;/em&gt; le plus faible possible.
+L&#39;utilisation de boot2docker n&#39;est pas encore totalement transparente,
+principalement pour la gestion des ports ou encore du montage des
+volumes du Host (OS X ou Windows) dans le conteneur Docker. La version
+1.3 de docker, et la version correspondante de boot2docker, permettent
+maintenant aux utiliseurs de Mac OS X de monter leur dossier &lt;em&gt;hôtes&lt;/em&gt;
+dans le conteneur.&lt;/p&gt;
+
+
+&lt;h4&gt;Fig 1.0&lt;/h4&gt;
+
+
+&lt;p&gt;&lt;a href=&#34;http://www.fig.sh/&#34;&gt;Fig&lt;/a&gt; est un outil de développement basé sur Docker, écrit en Python. L&#39;idée est de
+définir son environnement via un fichier YAML, que ce soit pour le
+code sur lequel nous travaillons mais également les services externes
+desquels notre application dépend (Base de données, &#39;&#39;Message
+queue&#39;&#39;, etc.).&lt;/p&gt;
+
+
+&lt;p&gt;Nous avons donc, par exemple, un &lt;code&gt;Dockerfile&lt;/code&gt;&amp;nbsp;:&lt;/p&gt;
+
+&lt;pre class=&#34;bash code bash&#34; style=&#34;font-family:inherit&#34;&gt;FROM clojure:lein-2.5.0
+ADD . &lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;code
+WORKDIR &lt;span style=&#34;color: #000000; font-weight: bold;&#34;&gt;/&lt;/span&gt;code
+RUN lein run&lt;/pre&gt;
+
+
+
+&lt;p&gt;Et un &lt;code&gt;fig.yml&lt;/code&gt;&amp;nbsp;:&lt;/p&gt;
+
+&lt;pre&gt;[yaml]
+web:
+  build: .
+  command: lein run
+  links:
+   - db
+  ports:
+   - &amp;quot;8000:8000&amp;quot;
+db:
+  image: postgres
+&lt;/pre&gt;
+
+
+&lt;p&gt;Enfin un petit &lt;code&gt;fig up&lt;/code&gt; et c&#39;est gagné, nous obtenons notre base de données
+relationnelle qui tourne, notre appli qui a été construite et qui
+tourne aussi, et qui est lié à notre conteneur db. Il existe bien d&#39;autres
+commandes (&lt;code&gt;start&lt;/code&gt;, &lt;code&gt;stop&lt;/code&gt;, &lt;code&gt;destroy&lt;/code&gt;, etc.).&lt;/p&gt;
+
+
+&lt;p&gt;Fig était initialement développé par &lt;a href=&#34;https://www.orchardup.com/&#34;&gt;Orchard&lt;/a&gt;, qui a été acquis cette
+année par Docker Inc. Ce 17 octobre, l&#39;équipe Docker a donc fait un release 1.0 de
+Fig en ajoutant le support à docker 1.3 et à boot2docker. Un certain nombre de commandes et de
+nouvelles fonctionnalitées ont étés ajoutées, notament&amp;nbsp;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fig port&lt;/code&gt;, qui liste les ports par service,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fig pull&lt;/code&gt;, qui récupère la dernière version d&#39;un service,&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fig restart&lt;/code&gt;, qui redémarre les conteneurs (&lt;code&gt;stop&lt;/code&gt; et &lt;code&gt;start&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;le support de &lt;code&gt;.dockerignore&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;le support de connection en TLS au daemon Docker&lt;/li&gt;
+&lt;li&gt;et pas mal d&#39;autres options.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Mais l&#39;annonce principale accompagnant cette version est que &lt;strong&gt;Fig ne recevra plus de mise à jour majeure à partir de cette version 1.0&lt;/strong&gt;
+puisque l&#39;équipe Docker travaille pour &lt;strong&gt;intégrer les fonctionnalités&lt;/strong&gt;
+que Fig apporte, &lt;strong&gt;directement dans Docker&lt;/strong&gt;&amp;nbsp;; ce qui est une
+excellente nouvelle.&lt;/p&gt;
+
+
+&lt;h4&gt;Partenariat avec Microsoft&lt;/h4&gt;
+
+
+&lt;p&gt;Cela transpirait ces derniers mois, dans les différentes conférences
+et meetups, Microsoft s&#39;intéressait de très prêt à Docker. C&#39;est
+maintenant officiel, &lt;strong&gt;Docker Inc et Microsoft sont partenaires&lt;/strong&gt;. Le
+partenariat couvre pour l&#39;instant les sujets suivants&amp;nbsp;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ajouter le support de windows comme hôte Docker.&lt;/li&gt;
+&lt;li&gt;Pour Microsoft, supporter les API &lt;em&gt;open-orchestration&lt;/em&gt; de Docker.&lt;/li&gt;
+&lt;li&gt;Intégration de Docker dans Microsoft Azure.&lt;/li&gt;
+&lt;li&gt;Collaboration étroite sur les applications qui ont besoin de plusieurs conteneur (i.e. ce que Fig fait de mieux), et le support d&#39;application qui sont composés de conteneurs Linux et Windows.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Le but &lt;em&gt;ultime&lt;/em&gt; de Docker quand il a été distribué de façon libre
+était&amp;nbsp;: &#34;__Construire le &#39;bouton&#39; qui permet à toutes applications
+d&#39;être construites et déployées sur n&#39;importe quel serveur, n&#39;importe
+où.__&#34; (C&#39;est nettement plus classe en anglais&amp;nbsp;: “&#39;&#39;To build the ‘button’
+that enables any application to be built and deployed on any server,
+anywhere.&#39;&#39;”). Ce partenariat est donc une nouvelle marche en direction
+de ce dernier.&lt;/p&gt;
+
+
+&lt;h4&gt;Conclusion&lt;/h4&gt;
+
+
+&lt;p&gt;Un an et demi après la première &lt;em&gt;release&lt;/em&gt; publique de Docker et près
+de 5 mois après la version 1.0, Docker et sa communauté avancent
+toujours aussi vite. Comme Solomon Hykes (CTO et co-fondateur de dotCould)
+avait dit lors de la dockerCon 14&amp;nbsp;: &#34;&lt;strong&gt;la valeur réelle de docker n&#39;est pas la technologie, mais le fait que les gens se mettent d&#39;accord sur quelque chose&lt;/strong&gt;&#34;&amp;nbsp;; Docker Inc. pousse principalement dans le sens de la
+standardisation. Le développement de
+&lt;a href=&#34;https://github.com/docker/libcontainer&#34;&gt;libcontainer&lt;/a&gt;,
+&lt;a href=&#34;https://github.com/docker/libchan&#34;&gt;libchan&lt;/a&gt; et
+&lt;a href=&#34;https://github.com/docker/libswarm&#34;&gt;libswarm&lt;/a&gt; sont des projets qui
+vont dans ce sens. La communautée est toute aussi &lt;em&gt;bouillante&lt;/em&gt; d&#39;idées
+et chaque jour voit de nouveau projet plus intéressant les uns que les
+autres.&lt;/p&gt;
+
+
+&lt;p&gt;Enfin la &lt;strong&gt;&lt;a href=&#34;http://europe.dockercon.com/&#34;&gt;dockerCon Europe&lt;/a&gt;, les 4 et 5 décembre 2014&lt;/strong&gt; viendra couronner une année très riche du côté de Docker et
+de son écosystème. Rendez-vous mi-décembre pour faire un petit retour
+  sur la première conférence européenne Docker ;-).&lt;/&gt;
+
+</description>
+    </item>
+    
+  </channel>
+</rss>
