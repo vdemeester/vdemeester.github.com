@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://vincent.demeester.fr/</loc>
-    <lastmod>2015-05-09T00:00:00+00:00</lastmod>
+    <lastmod>2015-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</loc>
+    <lastmod>2015-06-01T00:00:00+00:00</lastmod>
   </url>
   
   <url>
