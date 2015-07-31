@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mr on Vincent Demeester</title>
+    <link>http://vincent.demeester.fr/tags/mr/</link>
+    <description>Recent content in Mr on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://vincent.demeester.fr/tags/mr/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gestion de configuration : introduction</title>
+      <link>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
+      <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
+      <description>&lt;p&gt;
+Cela doit faire au moins 2 ans que je souhaite partager la façon dont
+je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
+longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
+écrire, je vais en faire une série de petit billet de blog dont
+celui-ci est l&#39;introduction. Nous y aborderons donc mon besoin, et mes
+choix.
+&lt;/p&gt;
+
+&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Besoin(s)&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;p&gt;
+En bon &lt;b&gt;geek&lt;/b&gt; que je suis, je suis fan des &lt;i&gt;dotfiles&lt;/i&gt;. Les &lt;i&gt;dotfiles&lt;/i&gt;
+— fichiers de configurations — sont de petits fichiers, habituellement
+dans votre dossier personnel (votre &lt;i&gt;$HOME&lt;/i&gt;), qui nous permettent de
+paramétrer et personnaliser nos outils de tous les jours. C&#39;est
+principalement vrai pour des outils en ligne de commande — et ça tombe
+bien, j&#39;adore — mais pas uniquement limité à ces derniers.
+&lt;/p&gt;
+
+&lt;p&gt;
+Je vais faire une très petite aparté sur le pourquoi de cette
+personnalisation :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;C&#39;est &lt;b&gt;fun&lt;/b&gt; à faire et c&#39;est relativement important de mon point de vue.
+&lt;/li&gt;
+&lt;li&gt;C&#39;est &lt;b&gt;éducatif&lt;/b&gt; ou /formateur ; on lit les documentations de nos
+outils, leurs fonctionnalités un peu caché. On va souvent découvrir
+un peu la philosophie dans laquelle l&#39;outil a été créé. C&#39;est en
+mettant les &lt;i&gt;mains dans le cambouis&lt;/i&gt; et en &lt;i&gt;foutant un gros bordel&lt;/i&gt;
+que j&#39;ai le plus appris (ça va du &lt;i&gt;langage&lt;/i&gt; shell et d&#39;autres
+langages de scripts, de POSIX, au noyau linux ou encore au LISP avec
+GNU/Emacs).
+&lt;/li&gt;
+&lt;li&gt;Cela fait &lt;b&gt;gagner du temps&lt;/b&gt; et de manière non négligeable. Je suis
+né courageux mais terriblement fainéant (et oui c&#39;est possible
+&lt;code&gt;:-P&lt;/code&gt;), j&#39;aime pas trop me répéter quand ça devient un peu compliqué
+/ chiant (e.g. &lt;code&gt;docker run monimage args&lt;/code&gt; ça va, &lt;code&gt;docker run -v /tmp:/tmp -v /var/run/docker.socket:/var/run/docker.socket […] run monimage arg1 arg2 arg3 […]&lt;/code&gt;
+moins déjà).
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Revenons à nos moutons et faisons une petit liste de mes besoins, un
+peu en vrac :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;J&#39;ai plusieurs ordinateurs (laptop/desktop/serveurs) et je souhaite
+avoir mes configurations &lt;b&gt;synchroniser&lt;/b&gt; entre ceux-ci — et ce de
+manière simple, c&#39;est à dire &lt;i&gt;une commande à exécuter&lt;/i&gt;.
+&lt;/li&gt;
+&lt;li&gt;C&#39;est lié au point précédent mais, je ne &lt;i&gt;peux pas vivre&lt;/i&gt; sans
+outil de gestion de version, comme &lt;b&gt;git&lt;/b&gt;. Il me faut donc un outil
+ou ensemble d&#39;outil qui sait utiliser des outils de gestion de
+version &lt;i&gt;du marché&lt;/i&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;
+Git all the thing ! \o/
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;En fonction de mes ordinateurs, mes besoins de configuration
+changent. Il me faut donc un outil &lt;b&gt;flexible&lt;/b&gt; qui me permet de dire
+par example : sur ce PC j&#39;ai un serveur &lt;code&gt;Xorg&lt;/code&gt; donc j&#39;ai besoin de
+mes configuration xorg, de celle de mon &lt;i&gt;window manager&lt;/i&gt;, etc. — et
+inversement sur ce serveur j&#39;ai besoin de python et haskell mais pas
+de xorg..
+&lt;/li&gt;
+&lt;li&gt;Je ne souhaites pas avoir à faire des liens symboliques, ou de
+scripts d&#39;installation. Je trouves que ça rends les choses plus
+compliquées. Du coup il faut que je puisse avoir &lt;b&gt;plusieurs &lt;i&gt;dépôts
+de configuration&lt;/i&gt;&lt;/b&gt; (repository) qui pointent au même endroit, sans
+que ce soit le bordel.
+&lt;/li&gt;
+&lt;li&gt;Le &lt;b&gt;partage&lt;/b&gt; est important pour moi. Il en découle deux choses :
+&lt;ol class=&#34;org-ol&#34;&gt;
+&lt;li&gt;Il faut que je puisse documenter un peu mon repository, avec un
+bon vieux &lt;code&gt;README&lt;/code&gt; ; sans que chaque &lt;code&gt;README&lt;/code&gt; se marchent dessus.
+&lt;/li&gt;
+&lt;li&gt;Il y a quelques &lt;b&gt;informations&lt;/b&gt; qui sont &lt;b&gt;personnelles&lt;/b&gt;, comme par
+exemple les clés ssh. Il me faut donc être capable d&#39;avoir des
+&lt;i&gt;dépôts publiques&lt;/i&gt; et des &lt;i&gt;dépôts privés&lt;/i&gt;. C&#39;est très facilité
+par l&#39;aspect &lt;i&gt;flexibilité&lt;/i&gt; &lt;code&gt;:-)&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Un bonus que je souhaite, est de pouvoir disposer de &lt;b&gt;hooks&lt;/b&gt;, un peu
+à la manière de git (voir &lt;a href=&#34;https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks&#34;&gt;ici&lt;/a&gt;). L&#39;idée est par example de pouvoir
+&lt;b&gt;générer&lt;/b&gt; un fichier de configuration à partir d&#39;un ensemble de
+fichier qui viendraient de différents dépots. Le meilleur exemple
+que je peux donner c&#39;est &lt;code&gt;~/.ssh/config&lt;/code&gt; dans lequel je vais y
+mettre des bouts publiques que je souhaites partager (comme le &lt;code&gt;Host
+  *&lt;/code&gt; avec des trucs cool comme &lt;code&gt;ControlPersist&lt;/code&gt;, on en parlera plus
+tard) et des bouts privés (mes hosts privés, avec mes configurations
+de rebonds, etc..).
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Cette liste a mis un certain temps à se former dans ma tête, mais une
+fois qu&#39;elle était formé, j&#39;ai pu assez facilement faire des choix.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Choix&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
+&lt;p&gt;
+Deux outils et un peu d&#39;organisation permettent de répondre à mes
+besoins. Les deux outils sont &lt;code&gt;vcsh&lt;/code&gt; et &lt;code&gt;myrepos&lt;/code&gt; (anciennement appelé
+&lt;code&gt;mr&lt;/code&gt;), fait par respectivement Richard Hartmann et Joey Hess (tout
+deux assez impliqué dans la communauté Debian).
+&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;sec-2-1&#34;&gt;vcsh&lt;/h3&gt;
+&lt;div class=&#34;outline-text-3&#34; id=&#34;text-2-1&#34;&gt;
+&lt;p&gt;
+En un mot, &lt;a href=&#34;https://github.com/RichiH/vcsh&#34;&gt;vcsh&lt;/a&gt; permet de maintenir plusieurs &lt;i&gt;repository&lt;/i&gt; &lt;a href=&#34;http://git-scm.com/&#34;&gt;git&lt;/a&gt; dans un
+seul dossier. Par défaut tous les &lt;i&gt;repository&lt;/i&gt; git maintenu par
+&lt;code&gt;vcsh&lt;/code&gt; pointent vers le dossier &lt;code&gt;$HOME&lt;/code&gt;, mais il est possible
+d&#39;utiliser un autre dossier.
+&lt;/p&gt;
+
+&lt;p&gt;
+L&#39;idée est de pouvoir disposer de plusieurs repository par &lt;i&gt;famille
+d&#39;application&lt;/i&gt;, par example &lt;code&gt;vim&lt;/code&gt;, &lt;code&gt;ssh&lt;/code&gt;, &lt;code&gt;emacs&lt;/code&gt;, &lt;code&gt;zsh&lt;/code&gt;, etc. Cela
+permet ainsi d&#39;avoir différents ensemble de configurations sur
+différentes machines et pour différents utilisateurs. Cela apporte une
+très grande flexibilité et facilite le partage de configuration (au
+sein d&#39;une entreprise ou d&#39;un projet par example) tout en laissant la
+place à la définition de configuration personnalisé.
+&lt;/p&gt;
+
+&lt;p&gt;
+En bonus, &lt;code&gt;vcsh&lt;/code&gt; supporte un système de hook, permettant d&#39;exécuter des
+commandes à différents moment du &lt;i&gt;workflow&lt;/i&gt; — c&#39;est la seul partie qui
+manquant à &lt;code&gt;vcsh&lt;/code&gt; de mon point de vue alors j&#39;y ai apporté ma petit pierre.
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;code&gt;vcsh&lt;/code&gt; est la clé de voûte de ma gestion de configuration. Sans le
+travail formidable de &lt;a href=&#34;http://richardhartmann.de/&#34;&gt;Richard Hartmann&lt;/a&gt;, je ne sais pas comment je
+ferais..
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2-2&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;sec-2-2&#34;&gt;myrepos&lt;/h3&gt;
+&lt;div class=&#34;outline-text-3&#34; id=&#34;text-2-2&#34;&gt;
+&lt;p&gt;
+En un mot, &lt;a href=&#34;https://myrepos.branchable.com/&#34;&gt;myrepos&lt;/a&gt; est un outil permettant de &lt;i&gt;gérer&lt;/i&gt; plusieurs
+repository (git, subversion, mercurial, …) avec une seule commande :
+&lt;code&gt;mr&lt;/code&gt;. C&#39;est simple et efficace :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;&lt;code&gt;mr u&lt;/code&gt; (ou &lt;code&gt;mr update&lt;/code&gt;) pour récupérer les dernières modifications (&lt;code&gt;git pull&lt;/code&gt;,
+&lt;code&gt;svn up&lt;/code&gt;, …).
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mr -d $HOME/.config u&lt;/code&gt; pour récupérer les dernières modifications
+des repository qui sont dans &lt;code&gt;$HOME/.config&lt;/code&gt;.
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mr -j 6 u&lt;/code&gt; pour paralléliser la récupération (ici 6 jobs en parallèle).
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mr p&lt;/code&gt; pour pousser des modifications (&lt;code&gt;git push&lt;/code&gt;, …).
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;mr run&lt;/code&gt; pour lancer un commande (j&#39;utilise ça tous les jours).
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Il est également possible de personnaliser les commandes à lancer
+lors d&#39;un &lt;i&gt;update&lt;/i&gt; ou autre (toutes les commandes), et même en
+définir des nouvelles. Cela se présente comme suit :
+&lt;/p&gt;
+
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #6434A3;&#34;&gt;foo&lt;/span&gt;]
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;update&lt;/span&gt; = git pull --rebase
+
+[&lt;span style=&#34;color: #6434A3;&#34;&gt;bar&lt;/span&gt;]
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; =
+    git clone git@github.com:joeyh/bar.git
+    cd bar
+    git remote add upstream git@github.com:barbar/bar.git
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;zap&lt;/span&gt; =
+    git pull upstream
+    git merge upstream/master
+    git push origin master
+
+[&lt;span style=&#34;color: #6434A3;&#34;&gt;mystuff&lt;/span&gt;]
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
+
+[&lt;span style=&#34;color: #6434A3;&#34;&gt;DEFAULT&lt;/span&gt;]
+&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
+&lt;span style=&#34;color: #BA36A5;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #008000;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+Une autre fonctionnalité qui m&#39;est totalement indispensable sont les
+&lt;code&gt;fixup(s)&lt;/code&gt;. Il est en effet possible d&#39;exécuter une ou plusieurs
+commandes (shell) après un &lt;code&gt;update&lt;/code&gt; (ou via la commande &lt;code&gt;fixup&lt;/code&gt;). C&#39;est
+grâce à ce système la que je génère mes fichiers de configuration en
+provenance de plusieurs repository (comme &lt;code&gt;$HOME/.ssh/config&lt;/code&gt; ou
+encore &lt;code&gt;$HOME/.gitconfig&lt;/code&gt;).
+&lt;/p&gt;
+
+&lt;p&gt;
+&lt;code&gt;myrepos&lt;/code&gt; est l&#39;exemple de l&#39;outil simple et efficace qui fait une
+chose et le fait très bien, et dont je n&#39;arrive pas à me passer
+&lt;code&gt;:-D&lt;/code&gt;.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
+&lt;p&gt;
+Et voilà, c&#39;est tout pour cette introduction &lt;code&gt;;-)&lt;/code&gt;. La prochaine
+partie se penchera sur la &lt;b&gt;structure&lt;/b&gt; que j&#39;utilise ainsi que le
+repository principal qui est &lt;a href=&#34;https://github.com/vdemeester/vcsh-home&#34;&gt;&lt;b&gt;vcsh-home&lt;/b&gt;&lt;/a&gt;. Dans les parties suivantes on
+parlera des autres repository et donc des configurations spécifiques
+pour les différents outils (comme &lt;a href=&#34;https://github.com/vdemeester/sh-config&#34;&gt;sh-config&lt;/a&gt;, &lt;a href=&#34;https://github.com/vdemeester/emacs-config&#34;&gt;emacs-config&lt;/a&gt; ou encore
+&lt;a href=&#34;https://github.com/vdemeester/go-config&#34;&gt;go-config&lt;/a&gt;). On parlera aussi probablement de &lt;code&gt;git-annex&lt;/code&gt; dans le futur.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

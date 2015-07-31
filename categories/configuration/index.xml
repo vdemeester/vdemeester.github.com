@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Configuration on Vincent Demeester</title>
+    <link>http://localhost:1313/categories/configuration/</link>
+    <description>Recent content in Configuration on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>fr-fr</language>
+    <lastBuildDate>Sat, 01 Aug 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/configuration/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Gestion de configuration : introduction</title>
+      <link>http://localhost:1313/posts/config-managment-intro/</link>
+      <pubDate>Sat, 01 Aug 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/config-managment-intro/</guid>
+      <description>&lt;p&gt;
+Cela doit faire au moins 2 ans que je souhaite partager la façon dont
+je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
+longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
+écrire, je vais en faire une série de petit billet de blog dont
+celui-ci est l&#39;introduction. Nous y aborderons donc mon besoin, et le
+pourquoi de mes choix.
+&lt;/p&gt;
+
+&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Mes besoin(s)&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;p&gt;
+En bon &lt;b&gt;geek&lt;/b&gt; que je suis, je suis fan des &lt;i&gt;dotfiles&lt;/i&gt;. Les &lt;i&gt;dotfiles&lt;/i&gt;
+— fichers de configurations — sont de petits fichiers, habituellement
+dans votre dossier personnel (votre &lt;i&gt;$HOME&lt;/i&gt;), qui nous permettent de
+paramétrer et personnaliser nos outils de tous les jours. C&#39;est
+principalement vrai pour des outils en ligne de commande — et ça tombe
+bien, j&#39;adore — mais pas uniquement limité à ces derniers.
+&lt;/p&gt;
+
+&lt;p&gt;
+Je vais faire une très petite aparté sur le pourquoi de cette
+personnalisation :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;C&#39;est &lt;b&gt;fun&lt;/b&gt; à faire et c&#39;est relativement important de mon point de vue.
+&lt;/li&gt;
+&lt;li&gt;C&#39;est &lt;b&gt;éducatif&lt;/b&gt; ou /formateur ; on lit les documentations de nos
+outils, leurs fonctionnalités un peu caché. On va souvent découvrir
+un peu la philosophie dans laquelle l&#39;outil a été créé. C&#39;est en
+mettant les &lt;i&gt;mains dans le camboui&lt;/i&gt; et en &lt;i&gt;foutant un gros bordel&lt;/i&gt;
+que j&#39;ai le plus appris (ça va du &lt;i&gt;language&lt;/i&gt; shell et d&#39;autres
+languages de scrips, de POSIX, au noyau linux ou encore au LISP avec
+GNU/Emacs).
+&lt;/li&gt;
+&lt;li&gt;Cela fait &lt;b&gt;gagner du temps&lt;/b&gt; et de manière non négligeable. Je suis
+né courageux mais terriblement fainéant (et oui c&#39;est possible
+&lt;code&gt;:-P&lt;/code&gt;), j&#39;aime pas trop me répéter quand ça devient un peu compliqué
+/ chiant (e.g. &lt;code&gt;docker run monimage args&lt;/code&gt; ça va, &lt;code&gt;docker run -v /tmp:/tmp -v /var/run/docker.socket:/var/run/docker.socket […] run monimage arg1 arg2 arg3 […]&lt;/code&gt;
+moins déjà).
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+Revenons à nos moutons et faisons une petit liste de mes besoins, un
+peu en vrac :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;J&#39;ai plusieurs ordinateurs (laptop/desktop/servers) et je souhaite
+avoir mes configurations &lt;b&gt;synchroniser&lt;/b&gt; entre ceux-ci — et ce de
+manière simple, c&#39;est à dire &lt;i&gt;une commande à exécuter&lt;/i&gt;.
+&lt;/li&gt;
+&lt;li&gt;C&#39;est lié au point précédent mais, je ne &lt;i&gt;peux pas vivre&lt;/i&gt; sans
+outil de gestion de version, comme &lt;b&gt;git&lt;/b&gt;. Il me faut donc un outil
+ou ensemble d&#39;outil qui sait utiliser des outils de gestion de
+version &lt;i&gt;du marché&lt;/i&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;
+Git all the thing !
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;En fonction de mes ordinateurs, mes besoins de configuration
+changent. Il me faut donc un outil &lt;b&gt;flexible&lt;/b&gt; qui me permet de dire
+par example : sur ce PC j&#39;ai un serveur &lt;code&gt;Xorg&lt;/code&gt; donc j&#39;ai besoin de
+mes configuration xorg, de celle de mon &lt;i&gt;window manager&lt;/i&gt;, etc. — et
+inversement sur ce serveur j&#39;ai besoin de python et haskell mais pas
+de xorg..
+&lt;/li&gt;
+&lt;li&gt;Je ne souhaites pas avoir à faire des liens symboliques, ou de
+scripts d&#39;installation. Je trouves que ça rends les choses plus
+compliquées. Du coup il faut que je puisse avoir plusieurs &lt;i&gt;dépots
+de configuration&lt;/i&gt; (repository)
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
