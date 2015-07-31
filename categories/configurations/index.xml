@@ -19,7 +19,7 @@
 Cela doit faire au moins 2 ans que je souhaite partager la façon dont
 je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
 longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
-écrire, je vais en faire une série de petit billet de blog dont
+écrire, je vais en faire une série de petits billets de blog dont
 celui-ci est l&#39;introduction. Nous y aborderons donc mon besoin, et mes
 choix.
 &lt;/p&gt;
@@ -30,7 +30,7 @@ choix.
 &lt;p&gt;
 En bon &lt;b&gt;geek&lt;/b&gt; que je suis, je suis fan des &lt;i&gt;dotfiles&lt;/i&gt;. Les &lt;i&gt;dotfiles&lt;/i&gt;
 — fichiers de configurations — sont de petits fichiers, habituellement
-dans votre dossier personnel (votre &lt;i&gt;$HOME&lt;/i&gt;), qui nous permettent de
+dans notre dossier personnel (votre &lt;i&gt;$HOME&lt;/i&gt;), qui nous permettent de
 paramétrer et personnaliser nos outils de tous les jours. C&#39;est
 principalement vrai pour des outils en ligne de commande — et ça tombe
 bien, j&#39;adore — mais pas uniquement limité à ces derniers.
@@ -44,7 +44,7 @@ personnalisation :
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;C&#39;est &lt;b&gt;fun&lt;/b&gt; à faire et c&#39;est relativement important de mon point de vue.
 &lt;/li&gt;
-&lt;li&gt;C&#39;est &lt;b&gt;éducatif&lt;/b&gt; ou /formateur ; on lit les documentations de nos
+&lt;li&gt;C&#39;est &lt;b&gt;éducatif&lt;/b&gt; ou formateur ; on lit les documentations de nos
 outils, leurs fonctionnalités un peu caché. On va souvent découvrir
 un peu la philosophie dans laquelle l&#39;outil a été créé. C&#39;est en
 mettant les &lt;i&gt;mains dans le cambouis&lt;/i&gt; et en &lt;i&gt;foutant un gros bordel&lt;/i&gt;
@@ -61,13 +61,13 @@ moins déjà).
 &lt;/ul&gt;
 
 &lt;p&gt;
-Revenons à nos moutons et faisons une petit liste de mes besoins, un
+Mais revenons à nos moutons et faisons une petite liste de mes besoins, un
 peu en vrac :
 &lt;/p&gt;
 
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;J&#39;ai plusieurs ordinateurs (laptop/desktop/serveurs) et je souhaite
-avoir mes configurations &lt;b&gt;synchroniser&lt;/b&gt; entre ceux-ci — et ce de
+avoir mes configurations &lt;b&gt;synchronisées&lt;/b&gt; entre ceux-ci — et ce de
 manière simple, c&#39;est à dire &lt;i&gt;une commande à exécuter&lt;/i&gt;.
 &lt;/li&gt;
 &lt;li&gt;C&#39;est lié au point précédent mais, je ne &lt;i&gt;peux pas vivre&lt;/i&gt; sans
@@ -85,8 +85,8 @@ Git all the thing ! \o/
 
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;En fonction de mes ordinateurs, mes besoins de configuration
-changent. Il me faut donc un outil &lt;b&gt;flexible&lt;/b&gt; qui me permet de dire
-par example : sur ce PC j&#39;ai un serveur &lt;code&gt;Xorg&lt;/code&gt; donc j&#39;ai besoin de
+changent. Il me faut donc un outil &lt;b&gt;flexible&lt;/b&gt; qui me permette de dire
+par exemple : sur ce PC j&#39;ai un serveur &lt;code&gt;Xorg&lt;/code&gt; donc j&#39;ai besoin de
 mes configuration xorg, de celle de mon &lt;i&gt;window manager&lt;/i&gt;, etc. — et
 inversement sur ce serveur j&#39;ai besoin de python et haskell mais pas
 de xorg..
@@ -100,7 +100,7 @@ que ce soit le bordel.
 &lt;li&gt;Le &lt;b&gt;partage&lt;/b&gt; est important pour moi. Il en découle deux choses :
 &lt;ol class=&#34;org-ol&#34;&gt;
 &lt;li&gt;Il faut que je puisse documenter un peu mon repository, avec un
-bon vieux &lt;code&gt;README&lt;/code&gt; ; sans que chaque &lt;code&gt;README&lt;/code&gt; se marchent dessus.
+bon vieux &lt;code&gt;README&lt;/code&gt; ; sans que chaque &lt;code&gt;README&lt;/code&gt; se marche dessus.
 &lt;/li&gt;
 &lt;li&gt;Il y a quelques &lt;b&gt;informations&lt;/b&gt; qui sont &lt;b&gt;personnelles&lt;/b&gt;, comme par
 exemple les clés ssh. Il me faut donc être capable d&#39;avoir des
@@ -112,18 +112,18 @@ par l&#39;aspect &lt;i&gt;flexibilité&lt;/i&gt; &lt;code&gt;:-)&lt;/code&gt;.
 &lt;li&gt;Un bonus que je souhaite, est de pouvoir disposer de &lt;b&gt;hooks&lt;/b&gt;, un peu
 à la manière de git (voir &lt;a href=&#34;https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks&#34;&gt;ici&lt;/a&gt;). L&#39;idée est par example de pouvoir
 &lt;b&gt;générer&lt;/b&gt; un fichier de configuration à partir d&#39;un ensemble de
-fichier qui viendraient de différents dépots. Le meilleur exemple
+fichiers qui viendraient de différents dépôts. Le meilleur exemple
 que je peux donner c&#39;est &lt;code&gt;~/.ssh/config&lt;/code&gt; dans lequel je vais y
 mettre des bouts publiques que je souhaites partager (comme le &lt;code&gt;Host
   *&lt;/code&gt; avec des trucs cool comme &lt;code&gt;ControlPersist&lt;/code&gt;, on en parlera plus
 tard) et des bouts privés (mes hosts privés, avec mes configurations
-de rebonds, etc..).
+de &lt;i&gt;rebonds&lt;/i&gt;, etc..).
 &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;
 Cette liste a mis un certain temps à se former dans ma tête, mais une
-fois qu&#39;elle était formé, j&#39;ai pu assez facilement faire des choix.
+fois qu&#39;elle était formée, j&#39;ai pu assez facilement faire des choix.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -246,7 +246,8 @@ encore &lt;code&gt;$HOME/.gitconfig&lt;/code&gt;).
 &lt;p&gt;
 &lt;code&gt;myrepos&lt;/code&gt; est l&#39;exemple de l&#39;outil simple et efficace qui fait une
 chose et le fait très bien, et dont je n&#39;arrive pas à me passer
-&lt;code&gt;:-D&lt;/code&gt;.
+&lt;code&gt;:-D&lt;/code&gt;. Je l&#39;utilise également dans plein d&#39;autres cas, comme  par
+exemple pour mettre à jour mes &lt;i&gt;forks&lt;/i&gt; de projets open-source.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
