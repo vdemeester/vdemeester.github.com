@@ -74,16 +74,14 @@ manière simple, c&#39;est à dire &lt;i&gt;une commande à exécuter&lt;/i&gt;.
 outil de gestion de version, comme &lt;b&gt;git&lt;/b&gt;. Il me faut donc un outil
 ou ensemble d&#39;outil qui sache utiliser des outils de gestion de
 version &lt;i&gt;du marché&lt;/i&gt;.
-&lt;/li&gt;
-&lt;/ul&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;
-Git all the thing ! \o/
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;./img/git-all-the-thing.jpg&#34; alt=&#34;git-all-the-thing.jpg&#34; /&gt;
 &lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/li&gt;
 
-&lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;En fonction de mes ordinateurs, mes besoins de configuration
 changent. Il me faut donc un outil &lt;b&gt;flexible&lt;/b&gt; qui me permette de dire
 par exemple : sur ce PC j&#39;ai un serveur &lt;code&gt;Xorg&lt;/code&gt; donc j&#39;ai besoin de
