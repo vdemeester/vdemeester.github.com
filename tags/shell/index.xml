@@ -55,8 +55,9 @@ GNU/Emacs).
 &lt;li&gt;Cela fait &lt;b&gt;gagner du temps&lt;/b&gt; et de manière non négligeable. Je suis
 né &lt;span class=&#34;underline&#34;&gt;courageux mais terriblement fainéant&lt;/span&gt; (et oui c&#39;est possible
 &lt;code&gt;:-P&lt;/code&gt;), j&#39;aime pas trop me répéter quand ça devient un peu compliqué
-/ chiant (e.g. &lt;code&gt;docker run monimage args&lt;/code&gt; ça va, &lt;code&gt;docker run -v /tmp:/tmp -v /var/run/docker.socket:/var/run/docker.socket […] run monimage arg1 arg2 arg3 […]&lt;/code&gt;
-moins déjà).
+/ chiant (e.g. &lt;code&gt;docker run monimage args&lt;/code&gt; ça va, &lt;code&gt;docker run&lt;/code&gt; avec
+&lt;code&gt;-v /tmp:/tmp -v /var/run/docker.socket:/var/run/docker.socket […]&lt;/code&gt;
+et &lt;code&gt;run monimage arg1 arg2 arg3 […]&lt;/code&gt; moins déjà).
 &lt;/li&gt;
 &lt;/ul&gt;
 
