@@ -15,7 +15,10 @@
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
-      <description>&lt;p&gt;
+      <description>&lt;div class=&#34;notice&#34;&gt;Cet article est également disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&#34;&gt;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
+
+
+&lt;p&gt;
 Cela doit faire au moins 2 ans que je souhaite partager la façon dont
 je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
 longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
