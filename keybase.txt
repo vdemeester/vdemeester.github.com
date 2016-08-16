@@ -1,0 +1,64 @@
+==================================================================
+https://keybase.io/vdemeester
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://vincent.demeester.fr
+  * I am vdemeester (https://keybase.io/vdemeester) on keybase.
+  * I have a public key ASB0nrLswAuS1D_HxuuboI1foJbXs_wkNx1cowoIS8FnSQo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01015b3dcc0898fa2b52302ba0c3221dc3adc094c2cac139c121f8591d41237568310a",
+            "host": "keybase.io",
+            "kid": "0120749eb2ecc00b92d43fc7c6eb9ba08d5fa096d7b3fc24371d5ca30a084bc167490a",
+            "uid": "1f15b8913c26751af59552855a0d2119",
+            "username": "vdemeester"
+        },
+        "service": {
+            "hostname": "vincent.demeester.fr",
+            "protocol": "http:"
+keybase prove web http://vincent.demeester.fr        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.17"
+    },
+    "ctime": 1471370830,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1471370809,
+        "hash": "1b7be9cfe0ac330e06b1bad1ddc3cb80492c9311d5e50bb0190f7fccd9176e1d18f7f246380a0ccfa9828682d2b8c4f8b940194bc51ed3ce078e9062cbb
+a24e2",
+        "seqno": 581852
+    },
+    "prev": "93fbf4cab533f74dfc6b5e67a22313cc718a5b76c54d93769055e1bf814c3a40",
+    "seqno": 15,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgdJ6y7MALktQ/x8brm6CNX6CW17P8JDcdXKMKCEvBZ0kKp3BheWxvYWTFAv57ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9r
+aWQiOiIwMTAxNWIzZGNjMDg5OGZhMmI1MjMwMmJhMGMzMjIxZGMzYWRjMDk0YzJjYWMxMzljMTIxZjg1OTFkNDEyMzc1NjgzMTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIw
+MTIwNzQ5ZWIyZWNjMDBiOTJkNDNmYzdjNmViOWJhMDhkNWZhMDk2ZDdiM2ZjMjQzNzFkNWNhMzBhMDg0YmMxNjc0OTBhIiwidWlkIjoiMWYxNWI4OTEzYzI2NzUxYWY1OTU1Mjg1NWEw
+ZDIxMTkiLCJ1c2VybmFtZSI6InZkZW1lZXN0ZXIifSwic2VydmljZSI6eyJob3N0bmFtZSI6InZpbmNlbnQuZGVtZWVzdGVyLmZyIiwicHJvdG9jb2wiOiJodHRwOiJ9LCJ0eXBlIjoi
+d2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4xNyJ9LCJjdGltZSI6MTQ3
+MTM3MDgzMCwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsIm1lcmtsZV9yb290Ijp7ImN0aW1lIjoxNDcxMzcwODA5LCJoYXNoIjoiMWI3YmU5Y2ZlMGFjMzMwZTA2YjFiYWQxZGRjM2NiODA0
+OTJjOTMxMWQ1ZTUwYmIwMTkwZjdmY2NkOTE3NmUxZDE4ZjdmMjQ2MzgwYTBjY2ZhOTgyODY4MmQyYjhjNGY4Yjk0MDE5NGJjNTFlZDNjZTA3OGU5MDYyY2JiYTI0ZTIiLCJzZXFubyI6
+NTgxODUyfSwicHJldiI6IjkzZmJmNGNhYjUzM2Y3NGRmYzZiNWU2N2EyMjMxM2NjNzE4YTViNzZjNTRkOTM3NjkwNTVlMWJmODE0YzNhNDAiLCJzZXFubyI6MTUsInRhZyI6InNpZ25h
+dHVyZSJ9o3NpZ8RA3pd575fPeqFrElFdZBuyypldUX2mxg4eneheFeztPdsEg31o4RPj8CffAR/+zd3fGCllpHeLp1WtItOiZ5UoCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWX$
+IEBP7j1CuW1KkZqyx7qYJC4eJNWXdM1hB/2ePtvyoPqno3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/vdemeester
+
+==================================================================
