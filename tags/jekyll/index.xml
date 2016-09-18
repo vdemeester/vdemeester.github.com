@@ -163,7 +163,7 @@ C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#3
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
 
-&lt;h2 id=&#34;redesign:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Redesign&lt;/h2&gt;
+&lt;h2 id=&#34;redesign&#34;&gt;Redesign&lt;/h2&gt;
 
 &lt;p&gt;Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris &lt;code&gt;\o/&lt;/code&gt;).
 Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas
@@ -177,7 +177,7 @@ J&amp;rsquo;adore ce genre de site, assez épuré mais avec une partie fixe (à 
 avec &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;. Il faut que je trouve un moyen d&amp;rsquo;optimiser un peu les images que j&amp;rsquo;utilise
 parce que là je joue un peu le bourrin.&lt;/p&gt;
 
-&lt;h2 id=&#34;résolutions:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Résolutions&lt;/h2&gt;
+&lt;h2 id=&#34;résolutions&#34;&gt;Résolutions&lt;/h2&gt;
 
 &lt;p&gt;Nouvelle année, nouveau boulot, implique nouvelles résolutions. Il y a deux aspects à ces &lt;em&gt;résolutions&lt;/em&gt; : sur un plan
 informatique/geek/travail/organisation, et sur un plan purement &lt;em&gt;physique&lt;/em&gt;.&lt;/p&gt;
@@ -217,7 +217,7 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
 all the tools that are quite awesome in Ruby.&lt;/p&gt;
 
-&lt;h1 id=&#34;goal:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Goal&lt;/h1&gt;
+&lt;h1 id=&#34;goal&#34;&gt;Goal&lt;/h1&gt;
 
 &lt;p&gt;The goal is simple :&lt;/p&gt;
 
@@ -230,23 +230,23 @@ all the tools that are quite awesome in Ruby.&lt;/p&gt;
 &lt;p&gt;We are going to play with : &lt;a href=&#34;http://gembundler.com/&#34;&gt;Bundler&lt;/a&gt;,
 &lt;a href=&#34;https://github.com/guard/guard&#34;&gt;Guard&lt;/a&gt; and &lt;a href=&#34;https://github.com/ddollar/foreman&#34;&gt;foreman&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;bundler:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Bundler&lt;/h2&gt;
+&lt;h2 id=&#34;bundler&#34;&gt;Bundler&lt;/h2&gt;
 
 &lt;p&gt;Bundler let us run &lt;code&gt;bundle install&lt;/code&gt; to get all Ruby Gems we will need ; It use
 a file name &lt;code&gt;Gemfile&lt;/code&gt;. The gems we need are simple : &lt;code&gt;jekyll&lt;/code&gt;, &lt;code&gt;guard&lt;/code&gt; and some
 Guard extensions.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;source &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://rubygems.org&amp;quot;&lt;/span&gt;
 
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-jekyll2&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-shell&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+source &#34;http://rubygems.org&#34;
 
-&lt;h2 id=&#34;guard:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Guard&lt;/h2&gt;
+gem &#39;jekyll&#39;
+gem &#39;guard&#39;
+gem &#39;guard-jekyll2&#39;
+gem &#39;guard-shell&#39;
+gem &#39;guard-bundler&#39;
+
+
+&lt;h2 id=&#34;guard&#34;&gt;Guard&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Guard is a command line tool to easily handle events on file system modifications.&lt;/p&gt;
@@ -255,18 +255,18 @@ gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&l
 &lt;p&gt;Guard will be watching file we told him and run action in consequence ; The file
 is name &lt;code&gt;Guardfile&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;guard &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-  watch &lt;span style=&#34;color: #BB6688&#34;&gt;%r{.*}&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-guard &lt;span style=&#34;color: #B8860B&#34;&gt;:bundler&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-  watch(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Gemfile&amp;#39;&lt;/span&gt;)
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# vim:filetype=ruby&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+guard &#39;jekyll2&#39; do
+  watch %r{.*}
+end
 
-&lt;h2 id=&#34;foreman:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Foreman&lt;/h2&gt;
+guard :bundler do
+  watch(&#39;Gemfile&#39;)
+end
+# vim:filetype=ruby
+
+
+&lt;h2 id=&#34;foreman&#34;&gt;Foreman&lt;/h2&gt;
 
 &lt;p&gt;Finally, foreman will let us declare our processes and will handle the start,
 forward the output and handle the shutdown. It can then export its configuration
@@ -280,10 +280,10 @@ into more &lt;em&gt;production-ready&lt;/em&gt; file (&lt;code&gt;init&lt;/code&
 &lt;li&gt;Guard, to handle file changes &lt;em&gt;in background&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;web: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;jekyll --server
-guard: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;guard
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+web: bundle exec jekyll --server
+guard: bundle exec guard
+
 
 &lt;p&gt;And that&amp;rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
 directory and edit your files.&lt;/p&gt;
@@ -318,33 +318,33 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
 id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;highlight:9c1aa07d0b2d69339bbe4c2e41552590&#34;&gt;Highlight&lt;/h2&gt;
+&lt;h2 id=&#34;highlight&#34;&gt;Highlight&lt;/h2&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;foo&lt;/span&gt;
-  &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+def foo
+  puts &#39;foo&#39;
+end
+
 
 &lt;p&gt;Some bash script…&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
-update_gems&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Update gems for all versions ? (y/N)&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;read &lt;/span&gt;UPDATE_GEMS
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;for&lt;/span&gt; version in &lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;ls --color&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;never &lt;span style=&#34;color: #B8860B&#34;&gt;$HOME&lt;/span&gt;/.rbenv/versions&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-            &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Updating &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
-            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem update
-            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem install bundler
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;done&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+#!/bin/bash
+update_gems() {
+    echo &#34;Update gems for all versions ? (y/N)&#34;
+    read UPDATE_GEMS
+    test -z &#34;${UPDATE_GEMS}&#34; &amp;&amp; UPDATE_GEMS=&#34;n&#34;
+    if test &#34;${UPDATE_GEMS}&#34; = &#34;y&#34;; then
+        for version in `ls --color=never $HOME/.rbenv/versions`; do
+            echo &#34;Updating ${version%/}&#34;
+            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem update
+            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem install bundler
+        done
+    fi
+}
 
 update_gems
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
 </description>
     </item>
     

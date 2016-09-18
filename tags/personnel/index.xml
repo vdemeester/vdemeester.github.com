@@ -33,23 +33,23 @@
 
 &lt;p&gt;Avec &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.&lt;/p&gt;
 
-&lt;h2 id=&#34;mise-en-place:4ec8b636d5075b710d87673b2f0e67dd&#34;&gt;Mise en place&lt;/h2&gt;
+&lt;h2 id=&#34;mise-en-place&#34;&gt;Mise en place&lt;/h2&gt;
 
 &lt;p&gt;La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&amp;rsquo;installation se fait par &lt;a href=&#34;rubygems.org&#34;&gt;RubyGem&lt;/a&gt; ou en clonant le repository.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Installation de gollum et du format markdown de github&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;gem install gollum gitub-markdown
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+# Installation de gollum et du format markdown de github
+$ gem install gollum gitub-markdown
+
 
 &lt;p&gt;Si vous n&amp;rsquo;utilisez pas &lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt; ou &lt;a href=&#34;https://rvm.io/&#34;&gt;rvm&lt;/a&gt; il est probable qu&amp;rsquo;il faille lancer la commande en root ou utiliser sudo.&lt;/p&gt;
 
 &lt;p&gt;Ensuite, il suffit de lancer &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; dans un dossier qui est un repository git ; le tour est joué&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# J&amp;#39;ulitise ~/desktop/wiki pour mon wiki&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;cd&lt;/span&gt; ~/desktop/wiki &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; gollum
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+# J&#39;ulitise ~/desktop/wiki pour mon wiki
+$ cd ~/desktop/wiki &amp;&amp; gollum
+
 
 &lt;p&gt;L&amp;rsquo;idée finale est d&amp;rsquo;automatiser deux choses :&lt;/p&gt;
 

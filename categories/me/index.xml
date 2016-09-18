@@ -19,7 +19,7 @@
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
 
-&lt;h2 id=&#34;redesign:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Redesign&lt;/h2&gt;
+&lt;h2 id=&#34;redesign&#34;&gt;Redesign&lt;/h2&gt;
 
 &lt;p&gt;Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris &lt;code&gt;\o/&lt;/code&gt;).
 Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas
@@ -33,7 +33,7 @@ J&amp;rsquo;adore ce genre de site, assez épuré mais avec une partie fixe (à 
 avec &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;. Il faut que je trouve un moyen d&amp;rsquo;optimiser un peu les images que j&amp;rsquo;utilise
 parce que là je joue un peu le bourrin.&lt;/p&gt;
 
-&lt;h2 id=&#34;résolutions:8abbede91708c406a0199f3dbd22fb95&#34;&gt;Résolutions&lt;/h2&gt;
+&lt;h2 id=&#34;résolutions&#34;&gt;Résolutions&lt;/h2&gt;
 
 &lt;p&gt;Nouvelle année, nouveau boulot, implique nouvelles résolutions. Il y a deux aspects à ces &lt;em&gt;résolutions&lt;/em&gt; : sur un plan
 informatique/geek/travail/organisation, et sur un plan purement &lt;em&gt;physique&lt;/em&gt;.&lt;/p&gt;
@@ -81,7 +81,7 @@ place. Voici une liste plus ou moins bien triés de ceux auxquels je suis
 souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post
 à jour ou en créerait un nouveau sinon :-).&lt;/p&gt;
 
-&lt;h2 id=&#34;geek-co:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Geek &amp;amp; co&lt;/h2&gt;
+&lt;h2 id=&#34;geek-co&#34;&gt;Geek &amp;amp; co&lt;/h2&gt;
 
 &lt;p&gt;Je suis un developpeur, un geek et convaincu des logiciels libres, les
 podcasts qui suivent reflète assez cette partie là de mon identité.&lt;/p&gt;
@@ -99,7 +99,7 @@ parfois s&amp;rsquo;accrocher.&lt;/li&gt;
 Git et des outils de son écosystème (vcsh, etc..).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;radio:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Radio&lt;/h2&gt;
+&lt;h2 id=&#34;radio&#34;&gt;Radio&lt;/h2&gt;
 
 &lt;p&gt;J&amp;rsquo;aime bien la radio, bien plus que la télévision (que j&amp;rsquo;allume si peu qu&amp;rsquo;à
 chaque fois la box se met à jour &lt;code&gt;;-p&lt;/code&gt;).&lt;/p&gt;
@@ -118,7 +118,7 @@ chaque fois la box se met à jour &lt;code&gt;;-p&lt;/code&gt;).&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.divergence-fm.org/-http-www-divergence-fm-org-ecrire-exec-rubrique-id_rubrique-61-.html&#34;&gt;Divergence Numerique&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;musique:8410639cdaaaec3498e0b93027c29df2&#34;&gt;Musique&lt;/h2&gt;
+&lt;h2 id=&#34;musique&#34;&gt;Musique&lt;/h2&gt;
 
 &lt;p&gt;Les podcast suivant sont purement musique, tous musique &lt;em&gt;techno&lt;/em&gt; ou
 trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
@@ -156,23 +156,23 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
 
 &lt;p&gt;Avec &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.&lt;/p&gt;
 
-&lt;h2 id=&#34;mise-en-place:4ec8b636d5075b710d87673b2f0e67dd&#34;&gt;Mise en place&lt;/h2&gt;
+&lt;h2 id=&#34;mise-en-place&#34;&gt;Mise en place&lt;/h2&gt;
 
 &lt;p&gt;La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&amp;rsquo;installation se fait par &lt;a href=&#34;rubygems.org&#34;&gt;RubyGem&lt;/a&gt; ou en clonant le repository.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Installation de gollum et du format markdown de github&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;gem install gollum gitub-markdown
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+# Installation de gollum et du format markdown de github
+$ gem install gollum gitub-markdown
+
 
 &lt;p&gt;Si vous n&amp;rsquo;utilisez pas &lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt; ou &lt;a href=&#34;https://rvm.io/&#34;&gt;rvm&lt;/a&gt; il est probable qu&amp;rsquo;il faille lancer la commande en root ou utiliser sudo.&lt;/p&gt;
 
 &lt;p&gt;Ensuite, il suffit de lancer &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; dans un dossier qui est un repository git ; le tour est joué&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# J&amp;#39;ulitise ~/desktop/wiki pour mon wiki&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;&lt;span style=&#34;color: #AA22FF&#34;&gt;cd&lt;/span&gt; ~/desktop/wiki &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; gollum
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+# J&#39;ulitise ~/desktop/wiki pour mon wiki
+$ cd ~/desktop/wiki &amp;&amp; gollum
+
 
 &lt;p&gt;L&amp;rsquo;idée finale est d&amp;rsquo;automatiser deux choses :&lt;/p&gt;
 
@@ -205,8 +205,7 @@ oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arri
 simplement fendue.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
   7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
@@ -229,10 +228,10 @@ y a une dizaine d&amp;rsquo;année et de monter facilement le &lt;em&gt;Grand Co
 principalement pour le boulot. J&amp;rsquo;annonce donc deux petits projets en cours :&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;
-: librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;
-: un composant vaadin hautement flexible (mais je suis mauvais pour les
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;un composant vaadin hautement flexible (mais je suis mauvais pour les
 noms).&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -269,33 +268,33 @@ Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
 id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h2 id=&#34;highlight:9c1aa07d0b2d69339bbe4c2e41552590&#34;&gt;Highlight&lt;/h2&gt;
+&lt;h2 id=&#34;highlight&#34;&gt;Highlight&lt;/h2&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color: #00A000&#34;&gt;foo&lt;/span&gt;
-  &lt;span style=&#34;color: #AA22FF&#34;&gt;puts&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+def foo
+  puts &#39;foo&#39;
+end
+
 
 &lt;p&gt;Some bash script…&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;#!/bin/bash&lt;/span&gt;
-update_gems&lt;span style=&#34;color: #666666&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Update gems for all versions ? (y/N)&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;read &lt;/span&gt;UPDATE_GEMS
-    &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; -z &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;n&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #AA22FF&#34;&gt;test&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;UPDATE_GEMS&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;y&amp;quot;&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;then&lt;/span&gt;
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;for&lt;/span&gt; version in &lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;ls --color&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;never &lt;span style=&#34;color: #B8860B&#34;&gt;$HOME&lt;/span&gt;/.rbenv/versions&lt;span style=&#34;color: #BB4444&#34;&gt;`&lt;/span&gt;; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-            &lt;span style=&#34;color: #AA22FF&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;Updating &lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;
-            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem update
-            &lt;span style=&#34;color: #B8860B&#34;&gt;RBENV_VERSION&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;version&lt;/span&gt;%/&lt;span style=&#34;color: #BB6688; font-weight: bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;&lt;/span&gt; rbenv &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;gem install bundler
-        &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;done&lt;/span&gt;
-    &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;fi&lt;/span&gt;
-&lt;span style=&#34;color: #666666&#34;&gt;}&lt;/span&gt;
+
+#!/bin/bash
+update_gems() {
+    echo &#34;Update gems for all versions ? (y/N)&#34;
+    read UPDATE_GEMS
+    test -z &#34;${UPDATE_GEMS}&#34; &amp;&amp; UPDATE_GEMS=&#34;n&#34;
+    if test &#34;${UPDATE_GEMS}&#34; = &#34;y&#34;; then
+        for version in `ls --color=never $HOME/.rbenv/versions`; do
+            echo &#34;Updating ${version%/}&#34;
+            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem update
+            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem install bundler
+        done
+    fi
+}
 
 update_gems
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
 </description>
     </item>
     

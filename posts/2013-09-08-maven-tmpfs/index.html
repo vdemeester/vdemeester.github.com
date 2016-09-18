@@ -6,35 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <base href="http://vincent.demeester.fr/">
-    <link rel="start" href="http://vincent.demeester.fr/" />
-
-    <title>Vincent Demeester</title>
-    <link rel="canonical" href="http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
-
-    <link rel="openid.server" href="https://indieauth.com/openid" />
-    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
-
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/wallpaper-1470931.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
-  </head>
-  
-  <body lang="fr"/>
-  
-
-
+    <base href="
   <header id="header">
 
     <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
@@ -61,7 +33,7 @@
         <h1 class="emphnext">Maven Tmpfs</h1><a href='http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/'></a>
         <address class="signature">
           <span class="date">Sun, 9 Sep, 2013</span>
-          <span class="words">(600 Words)</span>
+          <span class="words">(500 Words)</span>
         </address>
         <ul class="tag_box inline">
           
@@ -131,116 +103,116 @@ de le faire et c&rsquo;est cool <code>^_^</code>). La propriété utilisée sera
 <code>external.build.root</code>.</li>
 </ol>
 
-<p>Le code ci-dessous est repris directement de mon inspiration<sup class="footnote-ref" id="fnref:9530d562fd47526537cf94a30c56655c:inspiration"><a rel="footnote" href="#fn:9530d562fd47526537cf94a30c56655c:inspiration">1</a></sup>. Il
+<p>Le code ci-dessous est repris directement de mon inspiration<sup class="footnote-ref" id="fnref:inspiration"><a rel="footnote" href="#fn:inspiration">1</a></sup>. Il
 s&rsquo;occupe de créer le dossier <code>${groupId}:${artifactId}</code> dans
 <code>external.build.root</code> et de faire le lien dans le dossier courant.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;project&gt;</span>
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;profiles&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;profile&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>external-build-dir<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;activation&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;activeByDefault&gt;</span>false<span style="color: #008000; font-weight: bold">&lt;/activeByDefault&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;property&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;name&gt;</span>external.build.root<span style="color: #008000; font-weight: bold">&lt;/name&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;/property&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;/activation&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;build&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;plugins&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;plugin&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>com.alexecollins.maven.plugin<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>script-maven-plugin<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>1.0.0<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;executions&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;execution&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>prep-work-tree<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;goals&gt;</span>
-                                    <span style="color: #008000; font-weight: bold">&lt;goal&gt;</span>execute<span style="color: #008000; font-weight: bold">&lt;/goal&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;/goals&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;phase&gt;</span>initialize<span style="color: #008000; font-weight: bold">&lt;/phase&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
-                                    <span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+
+<project>
+    <!-- […] -->
+    <profiles>
+        <profile>
+            <id>external-build-dir</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+                <property>
+                    <name>external.build.root</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.alexecollins.maven.plugin</groupId>
+                        <artifactId>script-maven-plugin</artifactId>
+                        <version>1.0.0</version>
+                        <executions>
+                            <execution>
+                                <id>prep-work-tree</id>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <phase>initialize</phase>
+                                <configuration>
+                                    <script>
                                         import java.nio.file.*
                                         def dir =
-                                        &quot;${external.build.root}/${project.groupId}:${project.artifactId}&quot;
-                                        println &quot;using Maven dir ${dir}&quot;
+                                        "${external.build.root}/${project.groupId}:${project.artifactId}"
+                                        println "using Maven dir ${dir}"
                                         def dirPath = Paths.get(dir)
                                         if (!Files.exists(dirPath)) {
                                         Files.createDirectories(dirPath)
                                         }
-                                        def target = Paths.get(&quot;${project.build.directory}&quot;)
+                                        def target = Paths.get("${project.build.directory}")
                                         if (!Files.exists(target)) {
                                         Files.createSymbolicLink(target, dirPath)
-                                        }<span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;/execution&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;execution&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>drop-symlink<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;goals&gt;</span>
-                                    <span style="color: #008000; font-weight: bold">&lt;goal&gt;</span>execute<span style="color: #008000; font-weight: bold">&lt;/goal&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;/goals&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;phase&gt;</span>clean<span style="color: #008000; font-weight: bold">&lt;/phase&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
-                                    <span style="color: #008000; font-weight: bold">&lt;script&gt;</span>
+                                        }</script>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>drop-symlink</id>
+                                <goals>
+                                    <goal>execute</goal>
+                                </goals>
+                                <phase>clean</phase>
+                                <configuration>
+                                    <script>
                                         import java.nio.file.*
-                                        def target = Paths.get(&quot;${project.build.directory}&quot;)
+                                        def target = Paths.get("${project.build.directory}")
                                         if (Files.isSymbolicLink(target)) {
                                         Files.delete(target)
                                         }
-                                    <span style="color: #008000; font-weight: bold">&lt;/script&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;/execution&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;/executions&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;dependencies&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;dependency&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>org.codehaus.groovy<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>groovy<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
-                                <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>1.8.6<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;/dependency&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;/dependencies&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
-                            <span style="color: #008000; font-weight: bold">&lt;language&gt;</span>groovy<span style="color: #008000; font-weight: bold">&lt;/language&gt;</span>
-                        <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;/plugin&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;/plugins&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;/build&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;/profile&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;/profiles&gt;</span>
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;/project&gt;</span>
-</pre></div>
-</p>
+                                    </script>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.codehaus.groovy</groupId>
+                                <artifactId>groovy</artifactId>
+                                <version>1.8.6</version>
+                            </dependency>
+                        </dependencies>
+                        <configuration>
+                            <language>groovy</language>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    <!-- […] -->
+</project>
+
 
 <p>Ainsi, il suffit ensuite d&rsquo;avoir quelques choses du genre dans son
 <code>$HOME/.m2/settings.xml</code> pour que les builds qui ont ce profil se <em>build</em>
 dans <code>/tmp/m2/</code>. On peut aussi ne rien avoir dans <code>$HOME/.m2/settings.xml</code>
 et utilise <code>-Dexternal.build.root=/tmp/m2/</code> avec la commande <code>mvn</code>.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;settings&gt;</span>
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;profiles&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;profile&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;id&gt;</span>build-in-ramfs<span style="color: #008000; font-weight: bold">&lt;/id&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;properties&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;external.build.root&gt;</span>/tmp/m2/<span style="color: #008000; font-weight: bold">&lt;/external.build.root&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;/properties&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;/profile&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;/profiles&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;activeProfiles&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;activeProfile&gt;</span>build-in-ramfs<span style="color: #008000; font-weight: bold">&lt;/activeProfile&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;/activeProfiles&gt;</span>
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-<span style="color: #008000; font-weight: bold">&lt;/settings&gt;</span>
-</pre></div>
+<p>
+<settings>
+    <!-- […] -->
+    <profiles>
+        <profile>
+            <id>build-in-ramfs</id>
+            <properties>
+                <external.build.root>/tmp/m2/</external.build.root>
+            </properties>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>build-in-ramfs</activeProfile>
+    </activeProfiles>
+    <!-- […] -->
+</settings>
 </p>
 <div class="footnotes">
 
 <hr />
 
 <ol>
-<li id="fn:9530d562fd47526537cf94a30c56655c:inspiration"><a href="http://elehack.net/writings/programming/maven-target-in-tmpfs">Putting Maven build directories out-of-tree</a> par <a href="http://elehack.net/">Michal Ekstrand</a>
- <a class="footnote-return" href="#fnref:9530d562fd47526537cf94a30c56655c:inspiration"><sup>[return]</sup></a></li>
+<li id="fn:inspiration"><a href="http://elehack.net/writings/programming/maven-target-in-tmpfs">Putting Maven build directories out-of-tree</a> par <a href="http://elehack.net/">Michal Ekstrand</a>
+ <a class="footnote-return" href="#fnref:inspiration"><sup>[return]</sup></a></li>
 </ol>
 </div>
 

@@ -20,7 +20,7 @@
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
 all the tools that are quite awesome in Ruby.&lt;/p&gt;
 
-&lt;h1 id=&#34;goal:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Goal&lt;/h1&gt;
+&lt;h1 id=&#34;goal&#34;&gt;Goal&lt;/h1&gt;
 
 &lt;p&gt;The goal is simple :&lt;/p&gt;
 
@@ -33,23 +33,23 @@ all the tools that are quite awesome in Ruby.&lt;/p&gt;
 &lt;p&gt;We are going to play with : &lt;a href=&#34;http://gembundler.com/&#34;&gt;Bundler&lt;/a&gt;,
 &lt;a href=&#34;https://github.com/guard/guard&#34;&gt;Guard&lt;/a&gt; and &lt;a href=&#34;https://github.com/ddollar/foreman&#34;&gt;foreman&lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;bundler:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Bundler&lt;/h2&gt;
+&lt;h2 id=&#34;bundler&#34;&gt;Bundler&lt;/h2&gt;
 
 &lt;p&gt;Bundler let us run &lt;code&gt;bundle install&lt;/code&gt; to get all Ruby Gems we will need ; It use
 a file name &lt;code&gt;Gemfile&lt;/code&gt;. The gems we need are simple : &lt;code&gt;jekyll&lt;/code&gt;, &lt;code&gt;guard&lt;/code&gt; and some
 Guard extensions.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;source &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;quot;http://rubygems.org&amp;quot;&lt;/span&gt;
 
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-jekyll2&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-shell&amp;#39;&lt;/span&gt;
-gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+source &#34;http://rubygems.org&#34;
 
-&lt;h2 id=&#34;guard:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Guard&lt;/h2&gt;
+gem &#39;jekyll&#39;
+gem &#39;guard&#39;
+gem &#39;guard-jekyll2&#39;
+gem &#39;guard-shell&#39;
+gem &#39;guard-bundler&#39;
+
+
+&lt;h2 id=&#34;guard&#34;&gt;Guard&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Guard is a command line tool to easily handle events on file system modifications.&lt;/p&gt;
@@ -58,18 +58,18 @@ gem &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;guard-bundler&amp;#39;&l
 &lt;p&gt;Guard will be watching file we told him and run action in consequence ; The file
 is name &lt;code&gt;Guardfile&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;guard &lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;jekyll2&amp;#39;&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-  watch &lt;span style=&#34;color: #BB6688&#34;&gt;%r{.*}&lt;/span&gt;
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
 
-guard &lt;span style=&#34;color: #B8860B&#34;&gt;:bundler&lt;/span&gt; &lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;do&lt;/span&gt;
-  watch(&lt;span style=&#34;color: #BB4444&#34;&gt;&amp;#39;Gemfile&amp;#39;&lt;/span&gt;)
-&lt;span style=&#34;color: #AA22FF; font-weight: bold&#34;&gt;end&lt;/span&gt;
-&lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# vim:filetype=ruby&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+guard &#39;jekyll2&#39; do
+  watch %r{.*}
+end
 
-&lt;h2 id=&#34;foreman:8f9f48985fc9fc30a1303da056ae0779&#34;&gt;Foreman&lt;/h2&gt;
+guard :bundler do
+  watch(&#39;Gemfile&#39;)
+end
+# vim:filetype=ruby
+
+
+&lt;h2 id=&#34;foreman&#34;&gt;Foreman&lt;/h2&gt;
 
 &lt;p&gt;Finally, foreman will let us declare our processes and will handle the start,
 forward the output and handle the shutdown. It can then export its configuration
@@ -83,10 +83,10 @@ into more &lt;em&gt;production-ready&lt;/em&gt; file (&lt;code&gt;init&lt;/code&
 &lt;li&gt;Guard, to handle file changes &lt;em&gt;in background&lt;/em&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;web: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;jekyll --server
-guard: bundle &lt;span style=&#34;color: #AA22FF&#34;&gt;exec &lt;/span&gt;guard
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+web: bundle exec jekyll --server
+guard: bundle exec guard
+
 
 &lt;p&gt;And that&amp;rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
 directory and edit your files.&lt;/p&gt;

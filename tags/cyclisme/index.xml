@@ -27,8 +27,7 @@ oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arri
 simplement fendue.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
   7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
@@ -51,10 +50,10 @@ y a une dizaine d&amp;rsquo;année et de monter facilement le &lt;em&gt;Grand Co
 principalement pour le boulot. J&amp;rsquo;annonce donc deux petits projets en cours :&lt;/p&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;
-: librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;
-: un composant vaadin hautement flexible (mais je suis mauvais pour les
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;un composant vaadin hautement flexible (mais je suis mauvais pour les
 noms).&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
 &lt;/ul&gt;

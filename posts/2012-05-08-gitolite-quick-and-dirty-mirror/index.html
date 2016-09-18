@@ -6,35 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <base href="http://vincent.demeester.fr/">
-    <link rel="start" href="http://vincent.demeester.fr/" />
-
-    <title>Vincent Demeester</title>
-    <link rel="canonical" href="http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
-
-    <link rel="openid.server" href="https://indieauth.com/openid" />
-    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
-
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
-  </head>
-  
-  <body lang=""/>
-  
-
-
+    <base href="
   <header id="header">
 
     <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
@@ -61,7 +33,7 @@
         <h1 class="emphnext">Gitolite quick and dirty mirror</h1><a href='http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/'></a>
         <address class="signature">
           <span class="date">Tue, 5 May, 2012</span>
-          <span class="words">(700 Words)</span>
+          <span class="words">(500 Words)</span>
         </address>
         <ul class="tag_box inline">
           
@@ -107,7 +79,7 @@ stuff.</li>
 a simple mirroring.</li>
 </ol>
 
-<h1 id="gitolite-commands:56bca63520f3b7058489b7be9bf67456">Gitolite commands</h1>
+<h1 id="gitolite-commands">Gitolite commands</h1>
 
 <p>Gitolite 3 has been rewritten to be more flexible : <a href="http://sitaramc.github.com/gitolite/g3why.html">Why a completely new version</a>.
 The rewrite made it really easy to extend gitolite. <del>I&rsquo;ve fork <a href="https://github.com/vdemeester/gitolite">gitolite</a> on github</del>
@@ -121,77 +93,77 @@ rewritten in <code>Perl</code>.</p>
 <p>The command is <code>write-git-config</code> because a <code>git-config</code> command already exists
 in the built-in commands.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
 
-<span style="color: #008800; font-style: italic"># Usage:    ssh git@host write-git-config &lt;repo&gt; &lt;key&gt; &lt;value&gt;</span>
-<span style="color: #008800; font-style: italic">#</span>
-<span style="color: #008800; font-style: italic"># Set git-config value for user-created (&quot;wild&quot;) repo.</span>
+#!/bin/sh
 
-die<span style="color: #666666">()</span> <span style="color: #666666">{</span> <span style="color: #AA22FF">echo</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$@</span><span style="color: #BB4444">&quot;</span> &gt;&amp;2; <span style="color: #AA22FF">exit </span>1; <span style="color: #666666">}</span>
-usage<span style="color: #666666">()</span> <span style="color: #666666">{</span> perl -lne <span style="color: #BB4444">&#39;print substr($_, 2) if /^# Usage/../^$/&#39;</span> &lt; <span style="color: #B8860B">$0</span>; <span style="color: #AA22FF">exit </span>1; <span style="color: #666666">}</span>
-<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$1</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$2</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$3</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> usage
-<span style="color: #666666">[</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$1</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">=</span> <span style="color: #BB4444">&quot;-h&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> usage
-<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$GL_USER</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> die GL_USER not <span style="color: #AA22FF">set</span>
+# Usage:    ssh git@host write-git-config <repo> <key> <value>
+#
+# Set git-config value for user-created ("wild") repo.
 
-<span style="color: #008800; font-style: italic"># ----------------------------------------------------------------------</span>
-<span style="color: #B8860B">repo</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
-<span style="color: #B8860B">key</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
-<span style="color: #B8860B">value</span><span style="color: #666666">=</span><span style="color: #B8860B">$1</span>; <span style="color: #AA22FF">shift</span>
+die() { echo "$@" >&2; exit 1; }
+usage() { perl -lne 'print substr($_, 2) if /^# Usage/../^$/' < $0; exit 1; }
+[ -z "$1" ] && [ -z "$2" ] && [ -z "$3" ] && usage
+[ "$1" = "-h" ] && usage
+[ -z "$GL_USER" ] && die GL_USER not set
 
-<span style="color: #008800; font-style: italic"># this shell script takes arguments that are completely under the user&#39;s</span>
-<span style="color: #008800; font-style: italic"># control, so make sure you quote those suckers!</span>
+# ----------------------------------------------------------------------
+repo=$1; shift
+key=$1; shift
+value=$1; shift
 
-<span style="color: #AA22FF; font-weight: bold">if</span> gitolite query-rc -q WRITER_CAN_UPDATE_DESC
-<span style="color: #AA22FF; font-weight: bold">then</span>
-    gitolite access -q <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span> <span style="color: #B8860B">$GL_USER</span> W any <span style="color: #666666">||</span> die You are not authorised
-<span style="color: #AA22FF; font-weight: bold">else</span>
-    gitolite creator <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span> <span style="color: #B8860B">$GL_USER</span> <span style="color: #666666">||</span> die You are not authorised
-<span style="color: #AA22FF; font-weight: bold">fi</span>
+# this shell script takes arguments that are completely under the user's
+# control, so make sure you quote those suckers!
 
-<span style="color: #008800; font-style: italic"># if it passes, $repo is a valid repo name so it is known to contain only sane</span>
-<span style="color: #008800; font-style: italic"># characters.  This is because &#39;gitolite creator&#39; return true only if there</span>
-<span style="color: #008800; font-style: italic"># *is* a repo of that name and it has a gl-creator file that contains the same</span>
-<span style="color: #008800; font-style: italic"># text as $GL_USER.</span>
+if gitolite query-rc -q WRITER_CAN_UPDATE_DESC
+then
+    gitolite access -q "$repo" $GL_USER W any || die You are not authorised
+else
+    gitolite creator "$repo" $GL_USER || die You are not authorised
+fi
 
-<span style="color: #B8860B">configfile</span><span style="color: #666666">=</span><span style="color: #BB4444">`</span>gitolite query-rc GL_REPO_BASE<span style="color: #BB4444">`</span>/<span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$repo</span><span style="color: #BB4444">&quot;</span>.git/config
+# if it passes, $repo is a valid repo name so it is known to contain only sane
+# characters.  This is because 'gitolite creator' return true only if there
+# *is* a repo of that name and it has a gl-creator file that contains the same
+# text as $GL_USER.
 
-git config --file <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$configfile</span><span style="color: #BB4444">&quot;</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$key</span><span style="color: #BB4444">&quot;</span> <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$value</span><span style="color: #BB4444">&quot;</span>
-</pre></div>
-</p>
+configfile=`gitolite query-rc GL_REPO_BASE`/"$repo".git/config
 
-<h1 id="gitolite-hooks:56bca63520f3b7058489b7be9bf67456">Gitolite hooks</h1>
+git config --file "$configfile" "$key" "$value"
+
+
+<h1 id="gitolite-hooks">Gitolite hooks</h1>
 
 <p>The next step is to write a quick <code>post-receive</code> hook that check if there is a
 certain <code>git-config</code> entry and run <code>git push --mirror</code>. The file is in
 <code>$HOME/.gitolite/hooks/common/post-receive</code> ; you could add a better system to
 hooks (to be able to add &ldquo;dynamic&rdquo; hooks, …).</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic">#!/bin/sh</span>
 
-<span style="color: #008800; font-style: italic"># Simple gitolite mirroring</span>
+#!/bin/sh
 
-<span style="color: #008800; font-style: italic"># flush STDIN coming from git, because gitolite&#39;s own post-receive.mirrorpush</span>
-<span style="color: #008800; font-style: italic"># script does the same thing</span>
-<span style="color: #666666">[</span> -t <span style="color: #666666">0</span> <span style="color: #666666">]</span> <span style="color: #666666">||</span> cat &gt;/dev/null
+# Simple gitolite mirroring
 
-<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$GL_REPO</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> die GL_REPO not <span style="color: #AA22FF">set</span>
+# flush STDIN coming from git, because gitolite's own post-receive.mirrorpush
+# script does the same thing
+[ -t 0 ] || cat >/dev/null
 
-<span style="color: #B8860B">target</span><span style="color: #666666">=</span><span style="color: #BB4444">`</span>git config --get mirror.url<span style="color: #BB4444">`</span>
-<span style="color: #666666">[</span> -z <span style="color: #BB4444">&quot;</span><span style="color: #B8860B">$target</span><span style="color: #BB4444">&quot;</span> <span style="color: #666666">]</span> <span style="color: #666666">&amp;&amp;</span> <span style="color: #AA22FF">exit </span>0
+[ -z "$GL_REPO" ] && die GL_REPO not set
 
-<span style="color: #008800; font-style: italic"># Support a REPO variable for wildcard mirrors</span>
-<span style="color: #B8860B">gl_repo_escaped</span><span style="color: #666666">=</span><span style="color: #AA22FF; font-weight: bold">$(</span><span style="color: #AA22FF">echo</span> <span style="color: #B8860B">$GL_REPO</span> | sed <span style="color: #BB4444">&#39;s/\//\\\//g&#39;</span><span style="color: #AA22FF; font-weight: bold">)</span>
-<span style="color: #B8860B">target</span><span style="color: #666666">=</span><span style="color: #AA22FF; font-weight: bold">$(</span><span style="color: #AA22FF">echo</span> <span style="color: #B8860B">$target</span> | sed -e <span style="color: #BB4444">&quot;s/REPO/</span><span style="color: #B8860B">$gl_repo_escaped</span><span style="color: #BB4444">/g&quot;</span><span style="color: #AA22FF; font-weight: bold">)</span>
+target=`git config --get mirror.url`
+[ -z "$target" ] && exit 0
 
-<span style="color: #008800; font-style: italic"># Do the mirror push</span>
-git push --mirror <span style="color: #B8860B">$target</span>
-</pre></div>
-</p>
+# Support a REPO variable for wildcard mirrors
+gl_repo_escaped=$(echo $GL_REPO | sed 's/\//\\\//g')
+target=$(echo $target | sed -e "s/REPO/$gl_repo_escaped/g")
+
+# Do the mirror push
+git push --mirror $target
+
 
 <p>The next, and final step is to run <code>gitolite compile</code> to update links to hooks
 for every repositories.</p>
 
-<h1 id="for-real:56bca63520f3b7058489b7be9bf67456">For real</h1>
+<h1 id="for-real">For real</h1>
 
 <p>And finaly, this is the final step you&rsquo;ll do.</p>
 

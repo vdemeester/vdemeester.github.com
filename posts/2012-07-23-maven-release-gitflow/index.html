@@ -6,35 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <base href="http://vincent.demeester.fr/">
-    <link rel="start" href="http://vincent.demeester.fr/" />
-
-    <title>Vincent Demeester</title>
-    <link rel="canonical" href="http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
-
-    <link rel="openid.server" href="https://indieauth.com/openid" />
-    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
-
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
-  </head>
-  
-  <body lang="fr"/>
-  
-
-
+    <base href="
   <header id="header">
 
     <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
@@ -100,36 +72,36 @@ the work done. One of them is <a href="http://maven.apache.org/plugins/maven-rel
 a cool way of doing things (let say we want to release a 0.1 version of an
 artifact) :</p>
 
-<h1 id="prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced">Prepare the pom.xml.</h1>
+<h1 id="prepare-the-pom-xml">Prepare the pom.xml.</h1>
 
 <p>It needs <code>&lt;scm&gt;</code> entries, <code>&lt;distributionManagement&gt;</code> entries
 (to know where to deploy the release artifact) and few options for the
 maven-release-plugin :</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">&lt;project&gt;</span>
 
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;build&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;plugins&gt;</span>
-            <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;plugin&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color: #008000; font-weight: bold">&lt;/groupId&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color: #008000; font-weight: bold">&lt;/artifactId&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;version&gt;</span>2.3.2<span style="color: #008000; font-weight: bold">&lt;/version&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;configuration&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;tagNameFormat&gt;</span>v@{project.version}<span style="color: #008000; font-weight: bold">&lt;/tagNameFormat&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;pushChanges&gt;</span>false<span style="color: #008000; font-weight: bold">&lt;/pushChanges&gt;</span>
-                    <span style="color: #008000; font-weight: bold">&lt;localCheckout&gt;</span>true<span style="color: #008000; font-weight: bold">&lt;/localCheckout&gt;</span>
-                <span style="color: #008000; font-weight: bold">&lt;/configuration&gt;</span>
-            <span style="color: #008000; font-weight: bold">&lt;/plugin&gt;</span>
-            <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
-        <span style="color: #008000; font-weight: bold">&lt;/plugins&gt;</span>
-    <span style="color: #008000; font-weight: bold">&lt;/build&gt;</span>
-    <span style="color: #008800; font-style: italic">&lt;!-- […] --&gt;</span>
+<project>
 
-<span style="color: #008000; font-weight: bold">&lt;/project&gt;</span>
-</pre></div>
-</p>
+    <!-- […] -->
+    <build>
+        <plugins>
+            <!-- […] -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <pushChanges>false</pushChanges>
+                    <localCheckout>true</localCheckout>
+                </configuration>
+            </plugin>
+            <!-- […] -->
+        </plugins>
+    </build>
+    <!-- […] -->
+
+</project>
+
 
 <p>Few explanation here :</p>
 
@@ -142,33 +114,33 @@ local repository (not distant). This is especially useful here because we
 didn&rsquo;t push anything (so not setting this option would result in a failure).</li>
 </ul>
 
-<h1 id="the-real-stuff:5b48b9cc71274145577975feb51b5ced">The real stuff</h1>
+<h1 id="the-real-stuff">The real stuff</h1>
 
 <p>First create a release branch from develop.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>git checkout -b release/v0.1 develop
-</pre></div>
-</p>
+
+$ git checkout -b release/v0.1 develop
+
 
 <p>Then run the maven release stuff.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>mvn release:prepare               <span style="color: #008800; font-style: italic"># change the pom, commit and tag version, and</span>
-                                    <span style="color: #008800; font-style: italic"># re-change pom (by incrementing SNAPSHOT version)</span>
-<span style="color: #B8860B">$ </span>mvn release:perform               <span style="color: #008800; font-style: italic"># get the tagged version, compile and deploy</span>
-</pre></div>
-</p>
+
+$ mvn release:prepare               # change the pom, commit and tag version, and
+                                    # re-change pom (by incrementing SNAPSHOT version)
+$ mvn release:perform               # get the tagged version, compile and deploy
+
 
 <p>And the real fun begins.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #B8860B">$ </span>git checkout develop              <span style="color: #008800; font-style: italic"># get back to the develop branch</span>
-<span style="color: #B8860B">$ </span>git merge --no-ff release/v0.1    <span style="color: #008800; font-style: italic"># merge the version back into develop</span>
-<span style="color: #B8860B">$ </span>git checkout master               <span style="color: #008800; font-style: italic"># go to the master branch</span>
-<span style="color: #B8860B">$ </span>git merge --no-ff release/v0.1~1  <span style="color: #008800; font-style: italic"># merge the version back into master but</span>
-                                    <span style="color: #008800; font-style: italic"># the tagged version instead of the release/v0.1 HEAD</span>
-<span style="color: #B8860B">$ </span>git branch -D release/v0.1        <span style="color: #008800; font-style: italic"># Removing the release branch</span>
-<span style="color: #B8860B">$ </span>git push --all <span style="color: #666666">&amp;&amp;</span> git push --tags <span style="color: #008800; font-style: italic"># Finally push everything</span>
-</pre></div>
-</p>
+
+$ git checkout develop              # get back to the develop branch
+$ git merge --no-ff release/v0.1    # merge the version back into develop
+$ git checkout master               # go to the master branch
+$ git merge --no-ff release/v0.1~1  # merge the version back into master but
+                                    # the tagged version instead of the release/v0.1 HEAD
+$ git branch -D release/v0.1        # Removing the release branch
+$ git push --all && git push --tags # Finally push everything
+
 
 <p>The real magic here is the <code>git merge --no-ff release/v0.1~1</code> which will
 merge into master the commit before the HEAD of the branch <code>release/v0.1</code>.</p>

@@ -25,36 +25,36 @@ the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/ma
 a cool way of doing things (let say we want to release a 0.1 version of an
 artifact) :&lt;/p&gt;
 
-&lt;h1 id=&#34;prepare-the-pom-xml:5b48b9cc71274145577975feb51b5ced&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
+&lt;h1 id=&#34;prepare-the-pom-xml&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
 
 &lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
 (to know where to deploy the release artifact) and few options for the
 maven-release-plugin :&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
 
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-release-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.3.2&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;tagNameFormat&amp;gt;&lt;/span&gt;v@{project.version}&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/tagNameFormat&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;pushChanges&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/pushChanges&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;localCheckout&amp;gt;&lt;/span&gt;true&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/localCheckout&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
+&lt;project&gt;
 
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+    &lt;!-- […] --&gt;
+    &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;!-- […] --&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
+                &lt;version&gt;2.3.2&lt;/version&gt;
+                &lt;configuration&gt;
+                    &lt;tagNameFormat&gt;v@{project.version}&lt;/tagNameFormat&gt;
+                    &lt;pushChanges&gt;false&lt;/pushChanges&gt;
+                    &lt;localCheckout&gt;true&lt;/localCheckout&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+            &lt;!-- […] --&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+    &lt;!-- […] --&gt;
+
+&lt;/project&gt;
+
 
 &lt;p&gt;Few explanation here :&lt;/p&gt;
 
@@ -67,33 +67,33 @@ local repository (not distant). This is especially useful here because we
 didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;the-real-stuff:5b48b9cc71274145577975feb51b5ced&#34;&gt;The real stuff&lt;/h1&gt;
+&lt;h1 id=&#34;the-real-stuff&#34;&gt;The real stuff&lt;/h1&gt;
 
 &lt;p&gt;First create a release branch from develop.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout -b release/v0.1 develop
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+$ git checkout -b release/v0.1 develop
+
 
 &lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:prepare               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# change the pom, commit and tag version, and&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# re-change pom (by incrementing SNAPSHOT version)&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;mvn release:perform               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get the tagged version, compile and deploy&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+$ mvn release:prepare               # change the pom, commit and tag version, and
+                                    # re-change pom (by incrementing SNAPSHOT version)
+$ mvn release:perform               # get the tagged version, compile and deploy
+
 
 &lt;p&gt;And the real fun begins.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout develop              &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# get back to the develop branch&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into develop&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git checkout master               &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# go to the master branch&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git merge --no-ff release/v0.1~1  &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# merge the version back into master but&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# the tagged version instead of the release/v0.1 HEAD&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git branch -D release/v0.1        &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Removing the release branch&lt;/span&gt;
-&lt;span style=&#34;color: #B8860B&#34;&gt;$ &lt;/span&gt;git push --all &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; git push --tags &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;# Finally push everything&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+
+$ git checkout develop              # get back to the develop branch
+$ git merge --no-ff release/v0.1    # merge the version back into develop
+$ git checkout master               # go to the master branch
+$ git merge --no-ff release/v0.1~1  # merge the version back into master but
+                                    # the tagged version instead of the release/v0.1 HEAD
+$ git branch -D release/v0.1        # Removing the release branch
+$ git push --all &amp;&amp; git push --tags # Finally push everything
+
 
 &lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
 merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;

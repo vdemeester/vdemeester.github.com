@@ -62,116 +62,116 @@ de le faire et c&amp;rsquo;est cool &lt;code&gt;^_^&lt;/code&gt;). La propriét�
 &lt;code&gt;external.build.root&lt;/code&gt;.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;Le code ci-dessous est repris directement de mon inspiration&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Il
+&lt;p&gt;Le code ci-dessous est repris directement de mon inspiration&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:inspiration&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:inspiration&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Il
 s&amp;rsquo;occupe de créer le dossier &lt;code&gt;${groupId}:${artifactId}&lt;/code&gt; dans
 &lt;code&gt;external.build.root&lt;/code&gt; et de faire le lien dans le dossier courant.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;project&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;external-build-dir&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activation&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeByDefault&amp;gt;&lt;/span&gt;false&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeByDefault&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;property&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;name&amp;gt;&lt;/span&gt;external.build.root&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/name&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activation&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;build&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugins&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.alexecollins.maven.plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;script-maven-plugin&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.0.0&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;prep-work-tree&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;execute&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;initialize&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+
+&lt;project&gt;
+    &lt;!-- […] --&gt;
+    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;external-build-dir&lt;/id&gt;
+            &lt;activation&gt;
+                &lt;activeByDefault&gt;false&lt;/activeByDefault&gt;
+                &lt;property&gt;
+                    &lt;name&gt;external.build.root&lt;/name&gt;
+                &lt;/property&gt;
+            &lt;/activation&gt;
+            &lt;build&gt;
+                &lt;plugins&gt;
+                    &lt;plugin&gt;
+                        &lt;groupId&gt;com.alexecollins.maven.plugin&lt;/groupId&gt;
+                        &lt;artifactId&gt;script-maven-plugin&lt;/artifactId&gt;
+                        &lt;version&gt;1.0.0&lt;/version&gt;
+                        &lt;executions&gt;
+                            &lt;execution&gt;
+                                &lt;id&gt;prep-work-tree&lt;/id&gt;
+                                &lt;goals&gt;
+                                    &lt;goal&gt;execute&lt;/goal&gt;
+                                &lt;/goals&gt;
+                                &lt;phase&gt;initialize&lt;/phase&gt;
+                                &lt;configuration&gt;
+                                    &lt;script&gt;
                                         import java.nio.file.*
                                         def dir =
-                                        &amp;quot;${external.build.root}/${project.groupId}:${project.artifactId}&amp;quot;
-                                        println &amp;quot;using Maven dir ${dir}&amp;quot;
+                                        &#34;${external.build.root}/${project.groupId}:${project.artifactId}&#34;
+                                        println &#34;using Maven dir ${dir}&#34;
                                         def dirPath = Paths.get(dir)
                                         if (!Files.exists(dirPath)) {
                                         Files.createDirectories(dirPath)
                                         }
-                                        def target = Paths.get(&amp;quot;${project.build.directory}&amp;quot;)
+                                        def target = Paths.get(&#34;${project.build.directory}&#34;)
                                         if (!Files.exists(target)) {
                                         Files.createSymbolicLink(target, dirPath)
-                                        }&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;drop-symlink&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;execute&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;clean&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
+                                        }&lt;/script&gt;
+                                &lt;/configuration&gt;
+                            &lt;/execution&gt;
+                            &lt;execution&gt;
+                                &lt;id&gt;drop-symlink&lt;/id&gt;
+                                &lt;goals&gt;
+                                    &lt;goal&gt;execute&lt;/goal&gt;
+                                &lt;/goals&gt;
+                                &lt;phase&gt;clean&lt;/phase&gt;
+                                &lt;configuration&gt;
+                                    &lt;script&gt;
                                         import java.nio.file.*
-                                        def target = Paths.get(&amp;quot;${project.build.directory}&amp;quot;)
+                                        def target = Paths.get(&#34;${project.build.directory}&#34;)
                                         if (Files.isSymbolicLink(target)) {
                                         Files.delete(target)
                                         }
-                                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.codehaus.groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
-                                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.8.6&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;language&amp;gt;&lt;/span&gt;groovy&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/language&amp;gt;&lt;/span&gt;
-                        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
-                    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/plugins&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/build&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/project&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
+                                    &lt;/script&gt;
+                                &lt;/configuration&gt;
+                            &lt;/execution&gt;
+                        &lt;/executions&gt;
+                        &lt;dependencies&gt;
+                            &lt;dependency&gt;
+                                &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
+                                &lt;artifactId&gt;groovy&lt;/artifactId&gt;
+                                &lt;version&gt;1.8.6&lt;/version&gt;
+                            &lt;/dependency&gt;
+                        &lt;/dependencies&gt;
+                        &lt;configuration&gt;
+                            &lt;language&gt;groovy&lt;/language&gt;
+                        &lt;/configuration&gt;
+                    &lt;/plugin&gt;
+                &lt;/plugins&gt;
+            &lt;/build&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;
+    &lt;!-- […] --&gt;
+&lt;/project&gt;
+
 
 &lt;p&gt;Ainsi, il suffit ensuite d&amp;rsquo;avoir quelques choses du genre dans son
 &lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt; pour que les builds qui ont ce profil se &lt;em&gt;build&lt;/em&gt;
 dans &lt;code&gt;/tmp/m2/&lt;/code&gt;. On peut aussi ne rien avoir dans &lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;
 et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la commande &lt;code&gt;mvn&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;settings&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;build-in-ramfs&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
-                &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;external.build.root&amp;gt;&lt;/span&gt;/tmp/m2/&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/external.build.root&amp;gt;&lt;/span&gt;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profile&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/profiles&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeProfiles&amp;gt;&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;activeProfile&amp;gt;&lt;/span&gt;build-in-ramfs&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeProfile&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/activeProfiles&amp;gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008800; font-style: italic&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;
+&lt;settings&gt;
+    &lt;!-- […] --&gt;
+    &lt;profiles&gt;
+        &lt;profile&gt;
+            &lt;id&gt;build-in-ramfs&lt;/id&gt;
+            &lt;properties&gt;
+                &lt;external.build.root&gt;/tmp/m2/&lt;/external.build.root&gt;
+            &lt;/properties&gt;
+        &lt;/profile&gt;
+    &lt;/profiles&gt;
+    &lt;activeProfiles&gt;
+        &lt;activeProfile&gt;build-in-ramfs&lt;/activeProfile&gt;
+    &lt;/activeProfiles&gt;
+    &lt;!-- […] --&gt;
+&lt;/settings&gt;
 &lt;/p&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;a href=&#34;http://elehack.net/writings/programming/maven-target-in-tmpfs&#34;&gt;Putting Maven build directories out-of-tree&lt;/a&gt; par &lt;a href=&#34;http://elehack.net/&#34;&gt;Michal Ekstrand&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:9530d562fd47526537cf94a30c56655c:inspiration&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:inspiration&#34;&gt;&lt;a href=&#34;http://elehack.net/writings/programming/maven-target-in-tmpfs&#34;&gt;Putting Maven build directories out-of-tree&lt;/a&gt; par &lt;a href=&#34;http://elehack.net/&#34;&gt;Michal Ekstrand&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:inspiration&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>

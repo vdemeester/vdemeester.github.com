@@ -6,35 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <base href="http://vincent.demeester.fr/">
-    <link rel="start" href="http://vincent.demeester.fr/" />
-
-    <title>Vincent Demeester</title>
-    <link rel="canonical" href="http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
-
-    <link rel="openid.server" href="https://indieauth.com/openid" />
-    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
-
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
-  </head>
-  
-  <body lang=""/>
-  
-
-
+    <base href="
   <header id="header">
 
     <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
@@ -95,7 +67,7 @@
 <p>This post is a quick &ldquo;How did I setup my Jekyll environnement ?&rdquo;. We are going
 all the tools that are quite awesome in Ruby.</p>
 
-<h1 id="goal:8f9f48985fc9fc30a1303da056ae0779">Goal</h1>
+<h1 id="goal">Goal</h1>
 
 <p>The goal is simple :</p>
 
@@ -108,23 +80,23 @@ all the tools that are quite awesome in Ruby.</p>
 <p>We are going to play with : <a href="http://gembundler.com/">Bundler</a>,
 <a href="https://github.com/guard/guard">Guard</a> and <a href="https://github.com/ddollar/foreman">foreman</a>.</p>
 
-<h2 id="bundler:8f9f48985fc9fc30a1303da056ae0779">Bundler</h2>
+<h2 id="bundler">Bundler</h2>
 
 <p>Bundler let us run <code>bundle install</code> to get all Ruby Gems we will need ; It use
 a file name <code>Gemfile</code>. The gems we need are simple : <code>jekyll</code>, <code>guard</code> and some
 Guard extensions.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">source <span style="color: #BB4444">&quot;http://rubygems.org&quot;</span>
 
-gem <span style="color: #BB4444">&#39;jekyll&#39;</span>
-gem <span style="color: #BB4444">&#39;guard&#39;</span>
-gem <span style="color: #BB4444">&#39;guard-jekyll2&#39;</span>
-gem <span style="color: #BB4444">&#39;guard-shell&#39;</span>
-gem <span style="color: #BB4444">&#39;guard-bundler&#39;</span>
-</pre></div>
-</p>
+source "http://rubygems.org"
 
-<h2 id="guard:8f9f48985fc9fc30a1303da056ae0779">Guard</h2>
+gem 'jekyll'
+gem 'guard'
+gem 'guard-jekyll2'
+gem 'guard-shell'
+gem 'guard-bundler'
+
+
+<h2 id="guard">Guard</h2>
 
 <blockquote>
 <p>Guard is a command line tool to easily handle events on file system modifications.</p>
@@ -133,18 +105,18 @@ gem <span style="color: #BB4444">&#39;guard-bundler&#39;</span>
 <p>Guard will be watching file we told him and run action in consequence ; The file
 is name <code>Guardfile</code>.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">guard <span style="color: #BB4444">&#39;jekyll2&#39;</span> <span style="color: #AA22FF; font-weight: bold">do</span>
-  watch <span style="color: #BB6688">%r{.*}</span>
-<span style="color: #AA22FF; font-weight: bold">end</span>
 
-guard <span style="color: #B8860B">:bundler</span> <span style="color: #AA22FF; font-weight: bold">do</span>
-  watch(<span style="color: #BB4444">&#39;Gemfile&#39;</span>)
-<span style="color: #AA22FF; font-weight: bold">end</span>
-<span style="color: #008800; font-style: italic"># vim:filetype=ruby</span>
-</pre></div>
-</p>
+guard 'jekyll2' do
+  watch %r{.*}
+end
 
-<h2 id="foreman:8f9f48985fc9fc30a1303da056ae0779">Foreman</h2>
+guard :bundler do
+  watch('Gemfile')
+end
+# vim:filetype=ruby
+
+
+<h2 id="foreman">Foreman</h2>
 
 <p>Finally, foreman will let us declare our processes and will handle the start,
 forward the output and handle the shutdown. It can then export its configuration
@@ -158,10 +130,10 @@ into more <em>production-ready</em> file (<code>init</code>, <code>upstard</code
 <li>Guard, to handle file changes <em>in background</em>.</li>
 </ul>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%">web: bundle <span style="color: #AA22FF">exec </span>jekyll --server
-guard: bundle <span style="color: #AA22FF">exec </span>guard
-</pre></div>
-</p>
+
+web: bundle exec jekyll --server
+guard: bundle exec guard
+
 
 <p>And that&rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
 directory and edit your files.</p>

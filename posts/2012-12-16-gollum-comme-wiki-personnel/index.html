@@ -6,35 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 
-    <base href="http://vincent.demeester.fr/">
-    <link rel="start" href="http://vincent.demeester.fr/" />
-
-    <title>Vincent Demeester</title>
-    <link rel="canonical" href="http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
-
-    <link rel="openid.server" href="https://indieauth.com/openid" />
-    <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
-    <link rel="stylesheet" href="/css/screen.css" type="text/css" />
-    <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
-
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
-  </head>
-  
-  <body lang="fr"/>
-  
-
-
+    <base href="
   <header id="header">
 
     <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
@@ -105,23 +77,23 @@
 
 <p>Avec <a href="https://github.com/github/gollum">Gollum</a> vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.</p>
 
-<h2 id="mise-en-place:4ec8b636d5075b710d87673b2f0e67dd">Mise en place</h2>
+<h2 id="mise-en-place">Mise en place</h2>
 
 <p>La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&rsquo;installation se fait par <a href="rubygems.org">RubyGem</a> ou en clonant le repository.</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># Installation de gollum et du format markdown de github</span>
-<span style="color: #B8860B">$ </span>gem install gollum gitub-markdown
-</pre></div>
-</p>
+
+# Installation de gollum et du format markdown de github
+$ gem install gollum gitub-markdown
+
 
 <p>Si vous n&rsquo;utilisez pas <a href="https://github.com/sstephenson/rbenv">rbenv</a> ou <a href="https://rvm.io/">rvm</a> il est probable qu&rsquo;il faille lancer la commande en root ou utiliser sudo.</p>
 
 <p>Ensuite, il suffit de lancer <a href="https://github.com/github/gollum">Gollum</a> dans un dossier qui est un repository git ; le tour est joué</p>
 
-<p><div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008800; font-style: italic"># J&#39;ulitise ~/desktop/wiki pour mon wiki</span>
-<span style="color: #B8860B">$ </span><span style="color: #AA22FF">cd</span> ~/desktop/wiki <span style="color: #666666">&amp;&amp;</span> gollum
-</pre></div>
-</p>
+
+# J'ulitise ~/desktop/wiki pour mon wiki
+$ cd ~/desktop/wiki && gollum
+
 
 <p>L&rsquo;idée finale est d&rsquo;automatiser deux choses :</p>
 
