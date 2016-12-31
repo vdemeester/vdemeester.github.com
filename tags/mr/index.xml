@@ -15,10 +15,7 @@
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
-      <description>&lt;div class=&#34;notice&#34;&gt;Cet article est également disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&#34;&gt;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
-
-
-&lt;p&gt;
+      <description>&lt;p&gt;
 Cela doit faire au moins 2 ans que je souhaite partager la façon dont
 je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
 longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
@@ -210,31 +207,31 @@ nouvelles. Cela se présente comme suit :
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #6434A3;&#34;&gt;foo&lt;/span&gt;]
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;update&lt;/span&gt; = git pull --rebase
+&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #FFCC80;&#34;&gt;foo&lt;/span&gt;]
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;update&lt;/span&gt; = git pull --rebase
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;bar&lt;/span&gt;]
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; =
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;bar&lt;/span&gt;]
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; =
     git clone git@github.com:joeyh/bar.git
     cd bar
     git remote add upstream git@github.com:barbar/bar.git
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;zap&lt;/span&gt; =
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;zap&lt;/span&gt; =
     git pull upstream
     git merge upstream/master
     git push origin master
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;mystuff&lt;/span&gt;]
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;mystuff&lt;/span&gt;]
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;DEFAULT&lt;/span&gt;]
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #008000;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;DEFAULT&lt;/span&gt;]
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 

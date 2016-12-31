@@ -36,14 +36,14 @@ lutté cette fois ci, cet article va me servir de pense-bête pour le
 futur.
 &lt;/p&gt;
 
-&lt;div id=&#34;outline-container-orgheadline1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline1&#34;&gt;Places&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;
+&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Places&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
 &lt;p&gt;
 C&#39;est le petit nom que possède cette fonctionnalité dans le cœur de
 Firefox. C&#39;est un nom relativement commun, du coup ça n&#39;aide pas trop
 la recherche d&#39;information… Le meilleur endroit pour se documenter
-reste alors le &lt;a href=&#34;https://developer.mozilla.org/&#34;&gt;Mozilla Developer Network&lt;/a&gt;… 
+reste alors le &lt;a href=&#34;https://developer.mozilla.org&#34;&gt;Mozilla Developer Network&lt;/a&gt;… 
 &lt;/p&gt;
 
 &lt;p&gt;
@@ -88,9 +88,9 @@ les bookmarks, …).
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-orgheadline2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline2&#34;&gt;Places dans les bookmarks&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline2&#34;&gt;
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Places dans les bookmarks&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
 &lt;p&gt;
 L&#39;idée est d&#39;utiliser cette fonctionnalité pour faire des bookmarks
 dynamique. Pour poser un peu de contexte, j&#39;utilise surtout la
@@ -121,7 +121,7 @@ Nous allons donc ruser un peu et utiliser les &lt;i&gt;places&lt;/i&gt; dans nos
 bookmarks pour en faire des dossiers dynamique, à l&#39;instar de &lt;code&gt;Most
 Visited&lt;/code&gt;. Pour se faire, il faut déjà trouver un peu de documentation
 sur l&#39;utilisation de ces fameuses &lt;i&gt;places&lt;/i&gt; au sein de bookmarks — et
-ça pèche un peu… Toujours sur le &lt;a href=&#34;https://developer.mozilla.org/&#34;&gt;Mozilla Developer Network&lt;/a&gt;, une page
+ça pèche un peu… Toujours sur le &lt;a href=&#34;https://developer.mozilla.org&#34;&gt;Mozilla Developer Network&lt;/a&gt;, une page
 &lt;i&gt;un peu caché&lt;/i&gt; nous révèle quelques informations : &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Places_query_URIs&#34;&gt;Places query URIs&lt;/a&gt;.
 &lt;/p&gt;
 
@@ -192,9 +192,9 @@ faire des &lt;code&gt;ET&lt;/code&gt; sur mes tags — par exemple, dans mon dos
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-orgheadline3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline3&#34;&gt;Rétrospective&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline3&#34;&gt;
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Rétrospective&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
 &lt;p&gt;
 Voilà, vous avez maintenant tout ce qu&#39;il faut pour faire des dossiers
 dynamiques dans vos bookmarks Firefox et vous organiser au mieux (
@@ -204,18 +204,22 @@ dynamiques dans vos bookmarks Firefox et vous organiser au mieux (
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;L&#39;icône du dossier dynamique — ou même la fonctionnalité à
 proprement parler= n&#39;apparaît pas de suite. Il faut parfois
-redémarrez Firefox pour profiter du nouveau dossier dynamique.&lt;/li&gt;
+redémarrez Firefox pour profiter du nouveau dossier dynamique.
+&lt;/li&gt;
 &lt;li&gt;Une fois que le bookmark est vu comme un dossier dynamique, il n&#39;est
 plus possible d&#39;éditer l&#39;&lt;code&gt;URI&lt;/code&gt;. Si vous voulez en changer un, il
-faut tout bonnement le recréer.&lt;/li&gt;
+faut tout bonnement le recréer.
+&lt;/li&gt;
 &lt;li&gt;Bien que ce soit une fonctionnalité que je trouve géniale, il y a
 peu de &lt;i&gt;presse&lt;/i&gt; sur le sujet et à mon grand étonnement, aucun plugin
 pour gérer ça plus proprement. Est-ce le signe qu&#39;un jour ce ne sera
-plus supporter, je n&#39;en ai aucune idée.&lt;/li&gt;
+plus supporter, je n&#39;en ai aucune idée.
+&lt;/li&gt;
 &lt;li&gt;Un point très positif si vous utilisez Firefox Sync : ça marche bien
 (pas vraiment étonnant en fait), ces dossiers se synchronise comme
 le reste et seront donc à disponible quelque soit l&#39;appareil sur lequel
-vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.&lt;/li&gt;
+vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;

@@ -36,14 +36,14 @@ lutté cette fois ci, cet article va me servir de pense-bête pour le
 futur.
 &lt;/p&gt;
 
-&lt;div id=&#34;outline-container-orgheadline1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline1&#34;&gt;Places&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline1&#34;&gt;
+&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Places&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
 &lt;p&gt;
 C&#39;est le petit nom que possède cette fonctionnalité dans le cœur de
 Firefox. C&#39;est un nom relativement commun, du coup ça n&#39;aide pas trop
 la recherche d&#39;information… Le meilleur endroit pour se documenter
-reste alors le &lt;a href=&#34;https://developer.mozilla.org/&#34;&gt;Mozilla Developer Network&lt;/a&gt;… 
+reste alors le &lt;a href=&#34;https://developer.mozilla.org&#34;&gt;Mozilla Developer Network&lt;/a&gt;… 
 &lt;/p&gt;
 
 &lt;p&gt;
@@ -88,9 +88,9 @@ les bookmarks, …).
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-orgheadline2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline2&#34;&gt;Places dans les bookmarks&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline2&#34;&gt;
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Places dans les bookmarks&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
 &lt;p&gt;
 L&#39;idée est d&#39;utiliser cette fonctionnalité pour faire des bookmarks
 dynamique. Pour poser un peu de contexte, j&#39;utilise surtout la
@@ -121,7 +121,7 @@ Nous allons donc ruser un peu et utiliser les &lt;i&gt;places&lt;/i&gt; dans nos
 bookmarks pour en faire des dossiers dynamique, à l&#39;instar de &lt;code&gt;Most
 Visited&lt;/code&gt;. Pour se faire, il faut déjà trouver un peu de documentation
 sur l&#39;utilisation de ces fameuses &lt;i&gt;places&lt;/i&gt; au sein de bookmarks — et
-ça pèche un peu… Toujours sur le &lt;a href=&#34;https://developer.mozilla.org/&#34;&gt;Mozilla Developer Network&lt;/a&gt;, une page
+ça pèche un peu… Toujours sur le &lt;a href=&#34;https://developer.mozilla.org&#34;&gt;Mozilla Developer Network&lt;/a&gt;, une page
 &lt;i&gt;un peu caché&lt;/i&gt; nous révèle quelques informations : &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Places_query_URIs&#34;&gt;Places query URIs&lt;/a&gt;.
 &lt;/p&gt;
 
@@ -192,9 +192,9 @@ faire des &lt;code&gt;ET&lt;/code&gt; sur mes tags — par exemple, dans mon dos
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-orgheadline3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;orgheadline3&#34;&gt;Rétrospective&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgheadline3&#34;&gt;
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Rétrospective&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
 &lt;p&gt;
 Voilà, vous avez maintenant tout ce qu&#39;il faut pour faire des dossiers
 dynamiques dans vos bookmarks Firefox et vous organiser au mieux (
@@ -204,18 +204,22 @@ dynamiques dans vos bookmarks Firefox et vous organiser au mieux (
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;L&#39;icône du dossier dynamique — ou même la fonctionnalité à
 proprement parler= n&#39;apparaît pas de suite. Il faut parfois
-redémarrez Firefox pour profiter du nouveau dossier dynamique.&lt;/li&gt;
+redémarrez Firefox pour profiter du nouveau dossier dynamique.
+&lt;/li&gt;
 &lt;li&gt;Une fois que le bookmark est vu comme un dossier dynamique, il n&#39;est
 plus possible d&#39;éditer l&#39;&lt;code&gt;URI&lt;/code&gt;. Si vous voulez en changer un, il
-faut tout bonnement le recréer.&lt;/li&gt;
+faut tout bonnement le recréer.
+&lt;/li&gt;
 &lt;li&gt;Bien que ce soit une fonctionnalité que je trouve géniale, il y a
 peu de &lt;i&gt;presse&lt;/i&gt; sur le sujet et à mon grand étonnement, aucun plugin
 pour gérer ça plus proprement. Est-ce le signe qu&#39;un jour ce ne sera
-plus supporter, je n&#39;en ai aucune idée.&lt;/li&gt;
+plus supporter, je n&#39;en ai aucune idée.
+&lt;/li&gt;
 &lt;li&gt;Un point très positif si vous utilisez Firefox Sync : ça marche bien
 (pas vraiment étonnant en fait), ces dossiers se synchronise comme
 le reste et seront donc à disponible quelque soit l&#39;appareil sur lequel
-vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.&lt;/li&gt;
+vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -228,10 +232,7 @@ vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.&lt;/li&gt;
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
-      <description>&lt;div class=&#34;notice&#34;&gt;Cet article est également disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&#34;&gt;http://blog.zenika.com/index.php?post/2015/08/03/Gestion-de-configuration-introduction&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
-
-
-&lt;p&gt;
+      <description>&lt;p&gt;
 Cela doit faire au moins 2 ans que je souhaite partager la façon dont
 je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
 longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à
@@ -423,31 +424,31 @@ nouvelles. Cela se présente comme suit :
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #6434A3;&#34;&gt;foo&lt;/span&gt;]
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;update&lt;/span&gt; = git pull --rebase
+&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #FFCC80;&#34;&gt;foo&lt;/span&gt;]
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;update&lt;/span&gt; = git pull --rebase
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;bar&lt;/span&gt;]
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; =
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;bar&lt;/span&gt;]
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; =
     git clone git@github.com:joeyh/bar.git
     cd bar
     git remote add upstream git@github.com:barbar/bar.git
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;zap&lt;/span&gt; =
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;zap&lt;/span&gt; =
     git pull upstream
     git merge upstream/master
     git push origin master
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;mystuff&lt;/span&gt;]
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;mystuff&lt;/span&gt;]
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
 
-[&lt;span style=&#34;color: #6434A3;&#34;&gt;DEFAULT&lt;/span&gt;]
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
-&lt;span style=&#34;color: #BA36A5;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #008000;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
+[&lt;span style=&#34;color: #FFCC80;&#34;&gt;DEFAULT&lt;/span&gt;]
+&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
+&lt;span style=&#34;color: #80CBC4;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1170,43 +1171,43 @@ L&#39;idée c&#39;est de définir un projet avec plusieurs &lt;i&gt;components&l
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Variables&lt;/span&gt;
-&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
-      &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
-      &lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
-      &lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;
-      &lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #374478;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span style=&#34;color: #783778;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span style=&#34;color: #757575;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Variables&lt;/span&gt;
+&lt;span style=&#34;color: #9575CD;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #E1BEE7;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
+      &lt;span style=&#34;color: #a6bb99;&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #bb99b4;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;
+      &lt;span style=&#34;color: #b3c0a7;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;)&lt;/span&gt;
 
-&lt;span style=&#34;color: #8D8D84;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #8D8D84; font-style: italic;&#34;&gt;Project&lt;/span&gt;
-&lt;span style=&#34;color: #707183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #784437;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #784437;&#34;&gt;org-publish-project-alist&lt;/span&gt;
-      `&lt;span style=&#34;color: #7388D6;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;org&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #513f78;&#34;&gt;vdf-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:exclude&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:section-numbers&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-toc&lt;/span&gt; &lt;span style=&#34;color: #43783f;&#34;&gt;nil&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:with-drawers&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #4f7e67;&#34;&gt;org-html-publish-to-html&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:headline-levels&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;4&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:body-only&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;css&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #43783f;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
-         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #7a4f7e;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;png&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;jpg&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;gif&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;pdf&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;mp3&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;ogg&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #374478;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #4f5c7e;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #006FE0;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #783f5a;&#34;&gt;org-publish-attachment&lt;/span&gt;
-         &lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #909183;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span style=&#34;color: #006FE0;&#34;&gt;:components&lt;/span&gt; &lt;span style=&#34;color: #709870;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span style=&#34;color: #008000;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span style=&#34;color: #709870;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #909183;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #7388D6;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #707183;&#34;&gt;)&lt;/span&gt;
+&lt;span style=&#34;color: #757575;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Project&lt;/span&gt;
+&lt;span style=&#34;color: #9575CD;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #E1BEE7;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #a7aac0;&#34;&gt;org-publish-project-alist&lt;/span&gt;
+      `&lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;org&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #a6bb99;&#34;&gt;vdf-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:exclude&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:section-numbers&lt;/span&gt; &lt;span style=&#34;color: #bb99b4;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:with-toc&lt;/span&gt; &lt;span style=&#34;color: #bb99b4;&#34;&gt;nil&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:with-drawers&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #a3e0a0;&#34;&gt;org-html-publish-to-html&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:headline-levels&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;4&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:body-only&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;css&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #bb99b4;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #99bbb4;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;png&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;jpg&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;gif&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;pdf&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;mp3&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;ogg&#34;&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b3c0a7;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
+         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #99bbb4;&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span style=&#34;color: #80DEEA;&#34;&gt;:components&lt;/span&gt; &lt;span style=&#34;color: #42A5F5;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span style=&#34;color: #42A5F5;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
+        &lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;)&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 
