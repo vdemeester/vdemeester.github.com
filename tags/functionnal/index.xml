@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/golang/</link>
-    <description>Recent content in Golang on Vincent Demeester</description>
+    <title>Functionnal on Vincent Demeester</title>
+    <link>http://vincent.demeester.fr/tags/functionnal/</link>
+    <description>Recent content in Functionnal on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Wed, 11 Jan 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://vincent.demeester.fr/tags/functionnal/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
@@ -493,116 +493,6 @@ In summary, using these types of builder have several advantages :
 nothing tied to &lt;code&gt;testing&lt;/code&gt;.
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Migration vers hugo</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
-      <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
-      
-      <guid>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
-      <description>&lt;p&gt;
-Et voilà, une semaine après m&#39;être remis en route sur ce blog, je fais
-déjà une migration &lt;code&gt;&amp;gt;_&amp;lt;&lt;/code&gt;. Je me suis rendu compte que &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;
-m&#39;énervait un peu, et comme je suis à fond dans &lt;a href=&#34;http://golang.org/&#34;&gt;go&lt;/a&gt; en ce moment, j&#39;ai
-regardé du côté des générateurs de sites static et &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; a clairement
-retenu mon attention.
-&lt;/p&gt;
-
-&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-1&#34;&gt;Pourquoi Hugo ?&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
-&lt;blockquote&gt;
-&lt;p&gt;
-&lt;b&gt;Make the Web Fun Again&lt;/b&gt;
-&lt;/p&gt;
-
-&lt;p&gt;
-Introducing Hugo, a new idea around making website creation simple again. Hugo flexibly works with many formats and is ideal for blogs, docs, portfolios and much more. Hugo’s speed fosters creativity and makes building a website fun again.
-&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;
-Presque tout est dit dans cette citation.
-&lt;/p&gt;
-
-&lt;ul class=&#34;org-ul&#34;&gt;
-&lt;li&gt;Hugo est rapide.
-&lt;/li&gt;
-&lt;li&gt;Le système de content est un régale.
-&lt;/li&gt;
-&lt;li&gt;L&#39;organisation d&#39;un &lt;i&gt;projet hugo&lt;/i&gt; est simple :
-&lt;ul class=&#34;org-ul&#34;&gt;
-&lt;li&gt;&lt;code&gt;content&lt;/code&gt; pour le contenu, avec ce qu&#39;on veut dedans,
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;static&lt;/code&gt; pour le contenu statique (&lt;code&gt;css&lt;/code&gt;, &lt;code&gt;javascript&lt;/code&gt;, &lt;code&gt;images&lt;/code&gt;, …),
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;layouts&lt;/code&gt; pour les templates (super facile de mettre des templates différents en fonction des contenus, voir &lt;a href=&#34;http://gohugo.io/templates/content/&#34;&gt;ici&lt;/a&gt;),
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;themes&lt;/code&gt; pour les themes applicables (qui définissent eux même &lt;code&gt;layouts&lt;/code&gt; et &lt;code&gt;static&lt;/code&gt;.
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Le système de template est &lt;a href=&#34;http://gohugo.io/templates/go-templates/&#34;&gt;puissant&lt;/a&gt; et un vrai régale.
-&lt;/li&gt;
-&lt;li&gt;Le mode &lt;code&gt;server&lt;/code&gt; a la possiblité de surveiller les fichiers(avec le &lt;i&gt;flag&lt;/i&gt; &lt;code&gt;-w&lt;/code&gt;, et implémente &lt;a href=&#34;http://gohugo.io/extras/livereload/&#34;&gt;LiveReload&lt;/a&gt; ce qui est un petit bonus non négligeable.
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-2&#34;&gt;Ce qui changes&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
-&lt;p&gt;
-Le principale changement est sur le/les repository utilisés. Avant tout était dans &lt;a href=&#34;https://github.com/vdemeester/vdemeester.github.com&#34;&gt;vdemeester.github.com&lt;/a&gt;, puisque c&#39;est github qui générait le résultat final avec Jekyll. Ce n&#39;est maintenant plus le cas : &lt;a href=&#34;https://github.com/vdemeester/blog&#34;&gt;blog&lt;/a&gt; héberge les sources du blog (les fichiers content en Markdown ou &lt;i&gt;HTML-from-orgmode&lt;/i&gt; ainsi que les templates et la configuration &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; — &lt;a href=&#34;https://github.com/vdemeester/vdemeester.github.com&#34;&gt;vdemeester.github.com&lt;/a&gt; héberge désormais le résultat.
-&lt;/p&gt;
-
-&lt;p&gt;
-J&#39;en ai profité également pour faire quelques ajustements graphique, principalement sur les tags qui ont maintenant, parfois, des couleurs différentes.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-3&#34;&gt;Intégration avec Emacs &amp;amp; orgmode&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
-&lt;p&gt;
-Il me manque encore quelques petits &lt;i&gt;trucs&lt;/i&gt; pour rendre ça automatique, mais dans l&#39;idée, voilà le workflow que j&#39;utilise quand je publie un article (comme maintenant) :
-&lt;/p&gt;
-
-&lt;ol class=&#34;org-ol&#34;&gt;
-&lt;li&gt;Démarre &lt;code&gt;hugo server -w&lt;/code&gt; dans mon repository &lt;code&gt;blog&lt;/code&gt;.
-&lt;/li&gt;
-&lt;li&gt;Je créer mon fichier &lt;code&gt;org&lt;/code&gt; au bon endroit (soit &lt;code&gt;$HOME/desktop/org/notes/vdf/monfichier.org&lt;/code&gt;). Par rapport au &lt;a href=&#34;http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/&#34;&gt;billet précédent&lt;/a&gt;, le header de mes fichiers &lt;code&gt;org&lt;/code&gt; change un peu :
-
-&lt;pre class=&#34;example&#34;&gt;
-#+begin_html
-+++
-title=&#34;Migration vers hugo&#34;
-date=&#34;2015-05-09&#34;
-categories=[&#34;developement&#34;]
-tags=[&#34;hugo&#34;,&#34;golang&#34;,&#34;blog&#34;,&#34;emacs&#34;,&#34;orgmode&#34;,&#34;html&#34;]
-lang=&#34;fr&#34;
-+++
-#+end_html
-
-Et voilà, une semaine après  m&#39;être remis en route sur ce blog, je fais déjà une migration =&amp;gt;_&amp;lt;=. Je me suis rendu compte que [[http://jekyllrb.com/][Jekyll]] m&#39;énervait un peu, et comme je suis à fond dans [[http://golang.org/][go]] en ce moment, j&#39;ai regardé du côté des générateurs de sites static et [[http://gohugo.io/][Hugo]] a clairement retenu mon attention.
-&lt;/pre&gt;
-&lt;/li&gt;
-
-&lt;li&gt;J&#39;exécute &lt;code&gt;org-publish-current-project&lt;/code&gt; (qu&#39;il faut que je &lt;i&gt;bind&lt;/i&gt; pour éviter de me le taper à la main..)
-&lt;/li&gt;
-&lt;li&gt;Et je regarde le résultat dans mon navigateur (merci encore &lt;a href=&#34;http://gohugo.io/extras/livereload/&#34;&gt;LiveReload&lt;/a&gt;).
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;
-Pour me simplifier la vie, il me resterais à démarrer et arrêter facilement &lt;code&gt;hugo server -w&lt;/code&gt; dans le bon dossier directement depuis emacs (un peu à-la &lt;code&gt;compile&lt;/code&gt;), &lt;i&gt;binder&lt;/i&gt; &lt;code&gt;org-publish-current-project&lt;/code&gt; et un petit script final qui copie le rendu de &lt;code&gt;blog&lt;/code&gt; vers &lt;code&gt;vincent.demeester.fr&lt;/code&gt; et qui commit (le tout appellable depuis Emacs &lt;code&gt;;-P&lt;/code&gt;).
-&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 </description>

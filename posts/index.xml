@@ -6,8 +6,497 @@
     <description>Recent content in Posts on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Jan 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://vincent.demeester.fr/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Golang testing — functional arguments for wonderful builders</title>
+      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <pubDate>Wed, 11 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;
+Programming is not easy; even the best programmers are incapable of
+writing programs that work exactly as intended every time. Therefore
+an important part of the software development process is
+testing. Writing tests for our code is a good way to ensure quality
+and improve reliability.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;
+Go programs, when properly implemented, are fairly simple to test
+programatically. The &lt;code&gt;testing&lt;/code&gt; built-in library and the features of
+the language itself offer plenty of ways to write good tests. As this
+is a subject I particularly like, I&#39;m gonna write a bunch of articles
+about it, that, &lt;i&gt;hopefully&lt;/i&gt; do not get old or boring.
+&lt;/p&gt;
+
+&lt;p&gt;
+I&#39;m not going to start by introducing how &lt;code&gt;testing&lt;/code&gt; works, it&#39;s
+already widely described in &lt;a href=&#34;https://golang.org/pkg/testing/&#34;&gt;the &lt;code&gt;testing&lt;/code&gt; godoc&lt;/a&gt;, &lt;a href=&#34;https://blog.golang.org/examples&#34;&gt;some&lt;/a&gt; &lt;a href=&#34;https://www.golang-book.com/books/intro/12&#34;&gt;articles&lt;/a&gt; and
+&lt;a href=&#34;https://jonathanmh.com/golang-unit-testing-for-absolute-beginners/&#34;&gt;blogs&lt;/a&gt;. I&#39;m going to jump ahead on a more advanced techinque to write
+tests, the &lt;code&gt;builders&lt;/code&gt; for tests.
+&lt;/p&gt;
+
+&lt;p&gt;
+One of the most important characteristic of a &lt;b&gt;unit test&lt;/b&gt; (and any
+type of test really) is &lt;b&gt;readability&lt;/b&gt;. This means it should be &lt;i&gt;easy
+to read&lt;/i&gt; but most importantly it should &lt;b&gt;clearly show the intent of
+the test&lt;/b&gt;. The setup (and cleanup) of the tests should be as small as
+possible to avoid the noise. And as we are going to see below, &lt;code&gt;go&lt;/code&gt;
+makes it pretty easy to do so.
+&lt;/p&gt;
+
+&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-1&#34;&gt;Builders in tests&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;p&gt;
+Sometimes, your need to create data structure for your test that
+might take a lot of line and introduce noise. In &lt;code&gt;golang&lt;/code&gt; we don&#39;t
+have method overload or even &lt;i&gt;constructors&lt;/i&gt; as some other language
+have. This means most of the time, we end up building our data using
+directly the struct expression, as below.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt; := &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
+        &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage&#34;&lt;/span&gt;,
+        &lt;span class=&#34;org-constant&#34;&gt;Hostname&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage.sbr.pm&#34;&lt;/span&gt;,
+        &lt;span class=&#34;org-constant&#34;&gt;Platform&lt;/span&gt;: &lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;:           &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;,
+        },
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+Let&#39;s imagine we have a &lt;code&gt;Validate&lt;/code&gt; function that make sure the
+specified &lt;code&gt;Node&lt;/code&gt; is supported on our structure. We would write some
+tests that ensure that.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;Hostname&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage.sbr.pm&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;Platform&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
+                        &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;:           &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;,
+                },
+        })
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; !&lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux should be supported, it was not&#34;&lt;/span&gt;)
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateDarwinIsNotSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;babylon&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;Hostname&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;babylon.sbr.pm&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;Platform&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
+                        &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;:           &lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;,
+                },
+        })
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;darwin should not be supported, it was&#34;&lt;/span&gt;)
+        }
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+This is quickly hard to read, there is too much noise on that
+test. We setup a whole &lt;code&gt;Node&lt;/code&gt; struct, but the only thing we really
+intend to test is the &lt;code&gt;Platform.OS&lt;/code&gt; part. The rest is just required
+fields for the function to correctly compile and run.
+&lt;/p&gt;
+
+&lt;p&gt;
+This is where test builders (and builders in general) comes into
+play. In &lt;a href=&#34;http://www.growing-object-oriented-software.com/&#34;&gt;Growing Object-Oriented Software Guided by Tests&lt;/a&gt;, the
+Chapter 22 &#34;Constructing Complex Test Data&#34; is exactly about that
+and guide us through the why and the how of these builders. The
+examples in the book are in &lt;code&gt;java&lt;/code&gt; and uses wisely the
+object-oriented nature of the language. Here is an example from the
+book.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-java&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;I just want an order from a customer that has no post code&lt;/span&gt;
+&lt;span class=&#34;org-type&#34;&gt;Order&lt;/span&gt; &lt;span class=&#34;org-variable-name&#34;&gt;order&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;anOrder&lt;/span&gt;()
+    .&lt;span class=&#34;org-rainbow-identifiers-identifier-7&#34;&gt;from&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;aCustomer&lt;/span&gt;().&lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;with&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;anAddress&lt;/span&gt;().&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;withNotPostCode&lt;/span&gt;()))
+    .&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;build&lt;/span&gt;()
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+These builders helps &lt;b&gt;keep tests expressive&lt;/b&gt;, as it&#39;s pretty obvious
+when reading it, what we want to test. They remove the &lt;b&gt;visual
+noise&lt;/b&gt; you have when building an object (or a &lt;code&gt;struct{}&lt;/code&gt; in Go) and
+allows you to put sane default. They also make &lt;b&gt;tests resilient to
+change&lt;/b&gt;. If the structure changes, only the builder has to be
+updated, not the tests depending on it. They also make default case
+really simple to write, and special cases not much more complicated.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-2&#34;&gt;Builder in Go&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
+&lt;p&gt;
+The naive way to create builders in &lt;code&gt;go&lt;/code&gt; could be to create a
+&lt;code&gt;builder&lt;/code&gt; struct that have methods to construct the final struct and
+a &lt;code&gt;build&lt;/code&gt; method. Let&#39;s see how it looks.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &amp;amp;&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;node&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;node&#34;&lt;/span&gt;,
+                        &lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Other defaults&lt;/span&gt;
+                },
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;struct&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt; &amp;amp;&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;Node&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;Build&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;Hostname&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;hostname&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Hostname&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;hostname&lt;/span&gt;
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;Name&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;name&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Name&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;name&lt;/span&gt;
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt;
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+This looks decent, and using it is pretty straightforward. At least
+it make building the &lt;code&gt;struct&lt;/code&gt; more expressive, less noisy and
+resilient to change. We can update the previous test as follow.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;:           &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;,
+        }).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;())
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; !&lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux should be supported, it was not&#34;&lt;/span&gt;)
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateDarwinIsNotSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;:           &lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;,
+        }).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;())
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;darwin should not be supported, it was&#34;&lt;/span&gt;)
+        }
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+There is room for improvement :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;There is still some noise, mainly &lt;code&gt;build()&lt;/code&gt; and the platform
+&lt;code&gt;struct&lt;/code&gt;, as it still shows too much.
+&lt;/li&gt;
+&lt;li&gt;It&#39;s not that extensible yet. If you want to update the &lt;code&gt;Node&lt;/code&gt; a
+certain way that the builder is not written for, you have to
+update the builder.
+&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;NodeBuilder&lt;/code&gt; struct feels a little empty, it&#39;s just there to
+hold on the &lt;code&gt;Node&lt;/code&gt; being constructed until it is &lt;code&gt;build&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+One improvement we could make is to have a &lt;code&gt;Platform&lt;/code&gt; builder, even
+if it&#39;s a small struct here. Let&#39;s do that in the same way we did
+with &lt;code&gt;Node&lt;/code&gt;.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &amp;amp;&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;platform&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x64_86&#34;&lt;/span&gt;,
+                        &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;,
+                },
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;struct&lt;/span&gt;{
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt; *&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt;) &lt;span class=&#34;org-function-name&#34;&gt;OS&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;os&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) *&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;OS&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;os&lt;/span&gt;
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;b&lt;/span&gt;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+And our tests becomes 🐻.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(
+                &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;OS&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;()
+        ).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;())
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; !&lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux should be supported, it was not&#34;&lt;/span&gt;)
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateDarwinIsNotSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(
+                &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;OS&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;()
+        ).&lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;())
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;darwin should not be supported, it was&#34;&lt;/span&gt;)
+        }
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+It does not really improve the visual noise as there is now quite a
+few duplication : several &lt;code&gt;build&lt;/code&gt;, &lt;code&gt;APlatform&lt;/code&gt; inside &lt;code&gt;Platform&lt;/code&gt;, …
+It is a small improvement on readability but not that much compared
+to the previous one. This is were the Go language features comes
+into play.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;sec-3&#34;&gt;Functional arguments to the rescue&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
+&lt;p&gt;
+Go has two interesting feature that are going to be useful here.
+&lt;/p&gt;
+
+&lt;p&gt;
+First, a function in Go is a type on its own and thus is considered
+a &lt;i&gt;first class citizen&lt;/i&gt;. It means it&#39;s possible to pass a function
+as argument, or define a variable that holds it.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;ApplyTo&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;fn&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;fn&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt;)
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;world&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;fmt&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Sprintf&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;%s, world!&#34;&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt;)
+}
+
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Usage&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;a&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;ApplyTo&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;hello&#34;&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;world&lt;/span&gt;)
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a == &#34;hello, world!&#34;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The second feature that comes into play here, is the possiblity to
+have &lt;i&gt;variadic&lt;/i&gt; functions. A variadic function is a function that
+takes a variable number of arguments (from &lt;code&gt;0&lt;/code&gt; to any number of
+argument).
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Print&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;strs&lt;/span&gt; ...&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt; {
+        &lt;span class=&#34;org-keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;_&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt; := &lt;span class=&#34;org-keyword&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;strs&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;fmt&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Println&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt;)
+        }
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+As we are going to see below, combining these two feature makes our
+builders pretty easy to write and to use with simple case, while
+staying very customizable, even outside of the builder. This is
+really well described in a talk from Dave Cheney : &lt;a href=&#34;https://www.youtube.com/watch?v=24lFtGHWxAQ&amp;index=15&amp;list=PLMW8Xq7bXrG58Qk-9QSy2HRh2WVeIrs7e&#34;&gt;Functional
+options for friendly APIs&lt;/a&gt; (&lt;a href=&#34;https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis&#34;&gt;transcription&lt;/a&gt;).
+&lt;/p&gt;
+
+&lt;p&gt;
+Let&#39;s apply that to our new builders.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;nodeBuilders&lt;/span&gt; ...&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(*&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;)) *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt; := &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;node&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Other defaults&lt;/span&gt;
+        }
+
+        &lt;span class=&#34;org-keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;_&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;build&lt;/span&gt; := &lt;span class=&#34;org-keyword&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;nodeBuilders&lt;/span&gt; {
+                &lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;)
+        }
+
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt;
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;platformBuilders&lt;/span&gt; ...&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(*&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;)) *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt; := &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
+                &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x64_86&#34;&lt;/span&gt;,
+                &lt;span class=&#34;org-constant&#34;&gt;OS&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;,
+        }
+
+        &lt;span class=&#34;org-keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;_&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;build&lt;/span&gt; := &lt;span class=&#34;org-keyword&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;platformBuilders&lt;/span&gt; {
+                &lt;span class=&#34;org-function-name&#34;&gt;build&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt;)
+        }
+
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;platform&lt;/span&gt;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+And that is it for the actual builder code. It is &lt;b&gt;small&lt;/b&gt; and
+simple, there is &lt;b&gt;no more &lt;code&gt;NodeBuilder&lt;/code&gt;&lt;/b&gt; struct, and this is highly
+extensible. Let&#39;s see how to use it.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a default node&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;node1&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;()
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a node with a specific Hostname&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node2&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Hostname&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;custom-hostname&#34;&lt;/span&gt;
+})
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a node with a specific name and platform&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;node3&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Name&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;custom-name&#34;&lt;/span&gt;
+}, &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt; = &lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;OS&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;
+        })
+})
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The last step is to define some &lt;i&gt;function builder&lt;/i&gt; for common or
+widely used customization, to make this &lt;b&gt;expressive&lt;/b&gt;. And let
+complex, &lt;i&gt;one-time&lt;/i&gt; function builder in the end of the user. Now our
+tests looks like.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;WithPlatform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;Linux&lt;/span&gt;)))
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; !&lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux should be supported, it was not&#34;&lt;/span&gt;)
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateDarwinIsNotSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;WithPlatform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;Darwin&lt;/span&gt;)))
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;darwin should not be supported, it was&#34;&lt;/span&gt;)
+        }
+}
+
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Function builders&lt;/span&gt;
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;WithPlatform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;builders&lt;/span&gt; ...&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(*&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;)) &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt; = &lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;builders&lt;/span&gt;...)
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Linux&lt;/span&gt;() &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;OS&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;
+        }
+}
+
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Darwin&lt;/span&gt;() &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;OS&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;
+        }
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+The intent is now clear. It&#39;s readable and still resilient to
+change. The code &lt;code&gt;Node(WithPlatform(Linux))&lt;/code&gt; is easy to understand
+for a human. It makes what are the &lt;i&gt;tested&lt;/i&gt; characteristics of
+&lt;code&gt;struct&lt;/code&gt; pretty clear. It&#39;s easy to combine multiple builders as the
+&lt;code&gt;WithPlatform&lt;/code&gt; function shows 👼. It&#39;s also easy to create a
+&lt;i&gt;function builder&lt;/i&gt;, even in a different package (as long as the ways
+to modify the struct are exported) and complex or &lt;i&gt;on-off&lt;/i&gt; builder
+can be embedded in the function call (&lt;code&gt;Node(func(n *Node) { // …
+  })&lt;/code&gt;).
+&lt;/p&gt;
+
+&lt;p&gt;
+In summary, using these types of builder have several advantages :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;tests are &lt;b&gt;easy to read&lt;/b&gt;, and reduce the visual noise
+&lt;/li&gt;
+&lt;li&gt;tests are &lt;b&gt;resilient to change&lt;/b&gt;
+&lt;/li&gt;
+&lt;li&gt;builders are &lt;b&gt;easy to compose&lt;/b&gt; and very extensible
+&lt;/li&gt;
+&lt;li&gt;builders could even be &lt;b&gt;shared&lt;/b&gt; with production code as there is
+nothing tied to &lt;code&gt;testing&lt;/code&gt;.
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
@@ -31,9 +520,8 @@ dynamique.
 &lt;/p&gt;
 
 &lt;p&gt;
-&lt;span class=&#34;underline&#34;&gt;Note&lt;/span&gt;: comme j&#39;avais grave lutté à l&#39;époque, et que j&#39;ai encore
-lutté cette fois ci, cet article va me servir de pense-bête pour le
-futur.
+&lt;span class=&#34;underline&#34;&gt;Note&lt;/span&gt;: comme j&#39;avais grave lutté à l&#39;époque, et que j&#39;ai encore lutté
+cette fois ci, cet article va me servir de pense-bête pour le futur.
 &lt;/p&gt;
 
 &lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
@@ -424,31 +912,31 @@ nouvelles. Cela se présente comme suit :
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #FFCC80;&#34;&gt;foo&lt;/span&gt;]
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;update&lt;/span&gt; = git pull --rebase
+&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span class=&#34;org-type&#34;&gt;foo&lt;/span&gt;]
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span class=&#34;org-variable-name&#34;&gt;update&lt;/span&gt; = git pull --rebase
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;bar&lt;/span&gt;]
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; =
+[&lt;span class=&#34;org-type&#34;&gt;bar&lt;/span&gt;]
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;set up a remote on checkout.&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; =
     git clone git@github.com:joeyh/bar.git
     cd bar
     git remote add upstream git@github.com:barbar/bar.git
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;zap&lt;/span&gt; =
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;zap&lt;/span&gt; =
     git pull upstream
     git merge upstream/master
     git push origin master
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;mystuff&lt;/span&gt;]
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
+[&lt;span class=&#34;org-type&#34;&gt;mystuff&lt;/span&gt;]
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;DEFAULT&lt;/span&gt;]
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
+[&lt;span class=&#34;org-type&#34;&gt;DEFAULT&lt;/span&gt;]
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span class=&#34;org-string&#34;&gt;&#34;$@&#34;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 
@@ -988,7 +1476,11 @@ Nous allons finir avec une liste non-exhaustive et un peu orientée des évènem
       
       <guid>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
       <description>&lt;p&gt;
-Et voilà, une semaine après  m&#39;être remis en route sur ce blog, je fais déjà une migration &lt;code&gt;&amp;gt;_&amp;lt;&lt;/code&gt;. Je me suis rendu compte que &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt; m&#39;énervait un peu, et comme je suis à fond dans &lt;a href=&#34;http://golang.org/&#34;&gt;go&lt;/a&gt; en ce moment, j&#39;ai regardé du côté des générateurs de sites static et &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; a clairement retenu mon attention.
+Et voilà, une semaine après m&#39;être remis en route sur ce blog, je fais
+déjà une migration &lt;code&gt;&amp;gt;_&amp;lt;&lt;/code&gt;. Je me suis rendu compte que &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;
+m&#39;énervait un peu, et comme je suis à fond dans &lt;a href=&#34;http://golang.org/&#34;&gt;go&lt;/a&gt; en ce moment, j&#39;ai
+regardé du côté des générateurs de sites static et &lt;a href=&#34;http://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; a clairement
+retenu mon attention.
 &lt;/p&gt;
 
 &lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
@@ -1171,43 +1663,43 @@ L&#39;idée c&#39;est de définir un projet avec plusieurs &lt;i&gt;components&l
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span style=&#34;color: #757575;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Variables&lt;/span&gt;
-&lt;span style=&#34;color: #9575CD;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #E1BEE7;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
-      &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
-      &lt;span style=&#34;color: #a6bb99;&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;
-      &lt;span style=&#34;color: #bb99b4;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;
-      &lt;span style=&#34;color: #b3c0a7;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #b3c0a7;&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span style=&#34;color: #a7c0b9;&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;)&lt;/span&gt;
+&lt;pre class=&#34;src src-emacs-lisp&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;;; &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Variables&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-delimiters-depth-1&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-keyword&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;vdf-base-directory&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;~/desktop/org/notes/vdf/&#34;&lt;/span&gt;
+      &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;vdf-site-directory&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;~/src/github/vdemeester/vdemeester.github.com&#34;&lt;/span&gt;
+      &lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;vdf-publishing-directory&lt;/span&gt; &lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;expand-file-name&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;_posts&#34;&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;vdf-css-publishing-directory&lt;/span&gt; &lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;expand-file-name&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;css&#34;&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt; &lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;expand-file-name&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;assets&#34;&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;vdf-site-directory&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-1&#34;&gt;)&lt;/span&gt;
 
-&lt;span style=&#34;color: #757575;&#34;&gt;;; &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Project&lt;/span&gt;
-&lt;span style=&#34;color: #9575CD;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #E1BEE7;&#34;&gt;setq&lt;/span&gt; &lt;span style=&#34;color: #a7aac0;&#34;&gt;org-publish-project-alist&lt;/span&gt;
-      `&lt;span style=&#34;color: #7986CB;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;org&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #a6bb99;&#34;&gt;vdf-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:exclude&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:section-numbers&lt;/span&gt; &lt;span style=&#34;color: #bb99b4;&#34;&gt;nil&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:with-toc&lt;/span&gt; &lt;span style=&#34;color: #bb99b4;&#34;&gt;nil&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:with-drawers&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #a3e0a0;&#34;&gt;org-html-publish-to-html&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:headline-levels&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;4&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:body-only&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;css&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #bb99b4;&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #99bbb4;&#34;&gt;org-publish-attachment&lt;/span&gt;
-         &lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b6a0e0;&#34;&gt;vdf-base-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:base-extension&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;png&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;jpg&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;gif&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;pdf&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;mp3&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;\\&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;ogg&#34;&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span style=&#34;color: #b3c0a7;&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:recursive&lt;/span&gt; &lt;span style=&#34;color: #a0d6e0;&#34;&gt;t&lt;/span&gt;
-         &lt;span style=&#34;color: #80DEEA;&#34;&gt;:publishing-function&lt;/span&gt; &lt;span style=&#34;color: #99bbb4;&#34;&gt;org-publish-attachment&lt;/span&gt;
-         &lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #26C6DA;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span style=&#34;color: #80DEEA;&#34;&gt;:components&lt;/span&gt; &lt;span style=&#34;color: #42A5F5;&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span style=&#34;color: #42A5F5;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #26C6DA;&#34;&gt;)&lt;/span&gt;
-        &lt;span style=&#34;color: #7986CB;&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color: #9575CD;&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;;; &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Project&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-delimiters-depth-1&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-keyword&#34;&gt;setq&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;org-publish-project-alist&lt;/span&gt;
+      `&lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-extension&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;org&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;vdf-publishing-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:exclude&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;FIXME&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:section-numbers&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;nil&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:with-toc&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;nil&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:with-drawers&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:htmlized-source&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-function&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-7&#34;&gt;org-html-publish-to-html&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:headline-levels&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;4&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:body-only&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-extension&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;css&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;vdf-css-publishing-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:recursive&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-function&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;vdf-base-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:base-extension&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;png&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-backslash&#34;&gt;\\&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-construct&#34;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;jpg&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-backslash&#34;&gt;\\&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-construct&#34;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;gif&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-backslash&#34;&gt;\\&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-construct&#34;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;pdf&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-backslash&#34;&gt;\\&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-construct&#34;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;mp3&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-backslash&#34;&gt;\\&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&lt;span class=&#34;org-regexp-grouping-construct&#34;&gt;|&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;ogg&#34;&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-directory&lt;/span&gt; ,&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;vdf-assets-publishing-directory&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:recursive&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;
+         &lt;span class=&#34;org-builtin&#34;&gt;:publishing-function&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;org-publish-attachment&lt;/span&gt;
+         &lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&#34;vdf&#34;&lt;/span&gt; &lt;span class=&#34;org-builtin&#34;&gt;:components&lt;/span&gt; &lt;span class=&#34;org-rainbow-delimiters-depth-4&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;org-string&#34;&gt;&#34;vdf-notes&#34;&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;vdf-static-css&#34;&lt;/span&gt; &lt;span class=&#34;org-string&#34;&gt;&#34;vdf-static-assets&#34;&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-4&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-3&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;org-rainbow-delimiters-depth-2&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;org-rainbow-delimiters-depth-1&#34;&gt;)&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 
@@ -2204,64 +2696,6 @@ To git@host:vincent/vcsh-home.git
 
 &lt;p&gt;&lt;strong&gt;Update 2012/10/04&lt;/strong&gt; : Moved from gitolite fork to &lt;em&gt;gitolite local code&lt;/em&gt;
 repository.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Reinit and Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
-      <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
-      <description>
-
-&lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process
-of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant
-that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this &lt;em&gt;identity site&lt;/em&gt; on the
-github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should
-still be up for a while.&lt;/p&gt;
-
-&lt;p&gt;And I&amp;rsquo;m switching on Jekyll for this website as It is supported by Github page, easy to use and easy
-to deploy elsewhere (if one day I want to move from Github).&lt;/p&gt;
-
-&lt;p&gt;The rest of the post is going to be used as a &lt;em&gt;sandbox&lt;/em&gt; post to test the site styles.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
-
-&lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&#34;highlight&#34;&gt;Highlight&lt;/h2&gt;
-
-
-def foo
-  puts &#39;foo&#39;
-end
-
-
-&lt;p&gt;Some bash script…&lt;/p&gt;
-
-
-#!/bin/bash
-update_gems() {
-    echo &#34;Update gems for all versions ? (y/N)&#34;
-    read UPDATE_GEMS
-    test -z &#34;${UPDATE_GEMS}&#34; &amp;&amp; UPDATE_GEMS=&#34;n&#34;
-    if test &#34;${UPDATE_GEMS}&#34; = &#34;y&#34;; then
-        for version in `ls --color=never $HOME/.rbenv/versions`; do
-            echo &#34;Updating ${version%/}&#34;
-            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem update
-            RBENV_VERSION=&#34;${version%/}&#34; rbenv exec gem install bundler
-        done
-    fi
-}
-
-update_gems
-
 </description>
     </item>
     

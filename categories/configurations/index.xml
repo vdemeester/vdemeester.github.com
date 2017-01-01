@@ -31,9 +31,8 @@ dynamique.
 &lt;/p&gt;
 
 &lt;p&gt;
-&lt;span class=&#34;underline&#34;&gt;Note&lt;/span&gt;: comme j&#39;avais grave lutté à l&#39;époque, et que j&#39;ai encore
-lutté cette fois ci, cet article va me servir de pense-bête pour le
-futur.
+&lt;span class=&#34;underline&#34;&gt;Note&lt;/span&gt;: comme j&#39;avais grave lutté à l&#39;époque, et que j&#39;ai encore lutté
+cette fois ci, cet article va me servir de pense-bête pour le futur.
 &lt;/p&gt;
 
 &lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
@@ -424,31 +423,31 @@ nouvelles. Cela se présente comme suit :
 
 &lt;div class=&#34;org-src-container&#34;&gt;
 
-&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span style=&#34;color: #FFCC80;&#34;&gt;foo&lt;/span&gt;]
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;update&lt;/span&gt; = git pull --rebase
+&lt;pre class=&#34;src src-conf&#34;&gt;[&lt;span class=&#34;org-type&#34;&gt;foo&lt;/span&gt;]
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span class=&#34;org-variable-name&#34;&gt;update&lt;/span&gt; = git pull --rebase
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;bar&lt;/span&gt;]
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;set up a remote on checkout.&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; =
+[&lt;span class=&#34;org-type&#34;&gt;bar&lt;/span&gt;]
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;This repository has an upstream, which I&#39;ve forked;&lt;/span&gt;
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;set up a remote on checkout.&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; =
     git clone git@github.com:joeyh/bar.git
     cd bar
     git remote add upstream git@github.com:barbar/bar.git
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;zap&lt;/span&gt; =
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;make `mr zap` integrate from upstream&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;zap&lt;/span&gt; =
     git pull upstream
     git merge upstream/master
     git push origin master
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;mystuff&lt;/span&gt;]
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
+[&lt;span class=&#34;org-type&#34;&gt;mystuff&lt;/span&gt;]
+&lt;span class=&#34;org-variable-name&#34;&gt;checkout&lt;/span&gt; = git@github.com:joeyh/foo.git
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Skip if the current user is not joey&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;skip&lt;/span&gt; = test `whoami` != joey
 
-[&lt;span style=&#34;color: #FFCC80;&#34;&gt;DEFAULT&lt;/span&gt;]
-&lt;span style=&#34;color: #757575;&#34;&gt;# &lt;/span&gt;&lt;span style=&#34;color: #757575;&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
-&lt;span style=&#34;color: #80CBC4;&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span style=&#34;color: #C5E1A5;&#34;&gt;&#34;$@&#34;&lt;/span&gt;
+[&lt;span class=&#34;org-type&#34;&gt;DEFAULT&lt;/span&gt;]
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;# &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Teach mr how to `mr gc` in git repos.&lt;/span&gt;
+&lt;span class=&#34;org-variable-name&#34;&gt;git_gc&lt;/span&gt; = git gc &lt;span class=&#34;org-string&#34;&gt;&#34;$@&#34;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/div&gt;
 
