@@ -406,16 +406,16 @@ extensible. Let&#39;s see how to use it.
 &lt;div class=&#34;org-src-container&#34;&gt;
 
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a default node&lt;/span&gt;
-&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;node1&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;()
+&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;node1&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;()
 &lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a node with a specific Hostname&lt;/span&gt;
-&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node2&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node2&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Hostname&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;custom-hostname&#34;&lt;/span&gt;
 })
 &lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a node with a specific name and platform&lt;/span&gt;
-&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;node3&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
+&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;node3&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Name&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;custom-name&#34;&lt;/span&gt;
 }, &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;) {
-        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt; = &lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;n&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Platform&lt;/span&gt; = &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;(&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; (&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;) {
                 &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;p&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;OS&lt;/span&gt; = &lt;span class=&#34;org-string&#34;&gt;&#34;darwin&#34;&lt;/span&gt;
         })
 })
