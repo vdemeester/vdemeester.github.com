@@ -6,8 +6,248 @@
     <description>Recent content in Testing on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Apr 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://vincent.demeester.fr/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Golang testing — golden file</title>
+      <link>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
+      <description>&lt;p&gt;
+Tests are all about &lt;b&gt;maintainability&lt;/b&gt; and &lt;b&gt;readability&lt;/b&gt;. You want the
+least visual noise possible and it should not be a hassle to
+maintain. When testing functions that output a long of string, in case
+of a command line output testing, readability and maintainance tend to
+be tricky to achieve.
+&lt;/p&gt;
+
+
+&lt;div id=&#34;outline-container-org2f1fc39&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;org2f1fc39&#34;&gt;The problem&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-org2f1fc39&#34;&gt;
+&lt;p&gt;
+As an example let&#39;s say we want to test out the output of a command
+that displays a list as a table. The output would look like the
+following:
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+&lt;pre class=&#34;src src-sh&#34;&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;ID:&lt;/span&gt;                     &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;nodeID&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Name:&lt;/span&gt;                   &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;defaultNodeName&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Hostname:&lt;/span&gt;               &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;defaultNodeHostname&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;Joined&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;at:&lt;/span&gt;              &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;2009-11-10&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;23:00:00&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;+0000&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;utc&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;Status:&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;State:&lt;/span&gt;                 &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Ready&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;Availability:&lt;/span&gt;          &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Active&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;Address:&lt;/span&gt;               &lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;127.0.0.1&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;Manager&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;Status:&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;Address:&lt;/span&gt;               &lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;127.0.0.1&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;Raft&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;Status:&lt;/span&gt;           &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Reachable&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Leader:&lt;/span&gt;                &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;No&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;Platform:&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;Operating&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;System:&lt;/span&gt;      &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;linux&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Architecture:&lt;/span&gt;          &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;x86_64&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;Resources:&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;CPUs:&lt;/span&gt;                  &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;0&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;Memory:&lt;/span&gt;                &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;MiB&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;Plugins:&lt;/span&gt;
+  &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;Network:&lt;/span&gt;              &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;bridge,&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;overlay&lt;/span&gt;
+  &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;Volume:&lt;/span&gt;               &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;local&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Engine&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;Version:&lt;/span&gt;         &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;1.13.0&lt;/span&gt;
+&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;Engine&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;Labels:&lt;/span&gt;
+ &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;org-variable-name&#34;&gt;engine&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;label&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+Let&#39;s see how we would test that output, naively.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestNodeInspectPretty&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt; := &lt;span class=&#34;org-string&#34;&gt;```&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;ID:                     nodeID&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Name:                   defaultNodeName&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Hostname:               defaultNodeHostname&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Joined at:              2009-11-10 23:00:00 +0000 utc&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Status:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; State:                 Ready&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Availability:          Active&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Address:               127.0.0.1&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Manager Status:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Address:               127.0.0.1&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Raft Status:           Reachable&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Leader:                No&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Platform:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Operating System:      linux&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Architecture:          x86_64&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Resources:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; CPUs:                  0&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; Memory:                20 MiB&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Plugins:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;  Network:              bridge, overlay&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;  Volume:               local&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Engine Version:         1.13.0&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;Engine Labels:&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt; - engine = label&lt;/span&gt;
+&lt;span class=&#34;org-string&#34;&gt;```&lt;/span&gt;
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt; := &lt;span class=&#34;org-builtin&#34;&gt;new&lt;/span&gt;(&lt;span class=&#34;org-type&#34;&gt;bytes.Buffer&lt;/span&gt;)
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;newInspectCommand&lt;/span&gt;(
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;test&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;NewFakeCli&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;fakeClient&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;nodeInspectFunc&lt;/span&gt;: &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;() (&lt;span class=&#34;org-type&#34;&gt;swarm.Node&lt;/span&gt;, []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt;, &lt;span class=&#34;org-type&#34;&gt;error&lt;/span&gt;) {
+                                &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; *&lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;Manager&lt;/span&gt;()), []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt;{}, &lt;span class=&#34;org-constant&#34;&gt;nil&lt;/span&gt;
+                        },
+                }, &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt;))
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;SetArgs&lt;/span&gt;([]&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;{&lt;span class=&#34;org-string&#34;&gt;&#34;nodeID&#34;&lt;/span&gt;})
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Flags&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Set&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;pretty&#34;&lt;/span&gt;, &lt;span class=&#34;org-string&#34;&gt;&#34;true&#34;&lt;/span&gt;)
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;NilError&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Execute&lt;/span&gt;())
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;String&lt;/span&gt;()
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;EqualNormalizedString&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;RemoveSpace&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt;, &lt;span class=&#34;org-function-name&#34;&gt;string&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt;))
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+This might look ok as is, but a few problem are present:
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;The output is quite large and adds some noise to the test&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Lot&#39;s of value in the &lt;code&gt;expected&lt;/code&gt; string comes from default values
+of our &lt;code&gt;Node&lt;/code&gt; builder.
+&lt;/p&gt;
+
+&lt;p&gt;
+This means any time we change our builder default values, we would
+need to update this test, &lt;i&gt;painful&lt;/i&gt;.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;If the output changes for a good reason (add a field, fix a typo,
+…), this test has to be updated too.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id=&#34;outline-container-org0519f3e&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;org0519f3e&#34;&gt;Golden files to the rescue&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-org0519f3e&#34;&gt;
+&lt;p&gt;
+First, let&#39;s get back at what is our test about and what we actually
+want to test.
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;We want to ensure, the output of the function does not change by
+mistake (i.e. change that wasn&#39;t supposed to change the output)&lt;/li&gt;
+&lt;li&gt;We want to have an update version of the output if that was the
+purpose of our change. And we want this update to be the least
+painful possible.&lt;/li&gt;
+&lt;li&gt;We don&#39;t really care about the final outputs as long as it stays
+the same for the same inputs (i.e. we don&#39;t test for any number of
+space, or that word are valid English, or …).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+This is where the concept of &lt;b&gt;golden file&lt;/b&gt; is useful. In a
+nutshell, a golden file is a file where we store the output and that
+will be used by the test as the expected output. This file should be
+updated any time the output changes for good reason. That&#39;s that
+simple 👼.
+&lt;/p&gt;
+
+&lt;p&gt;
+Once again, the way go &lt;code&gt;testing&lt;/code&gt; works, introducing and using golden
+files in our tests is pretty straightforward and easy to use.
+&lt;/p&gt;
+
+&lt;p&gt;
+Let&#39;s write a small &lt;i&gt;golden file helper&lt;/i&gt; so that our test has no
+visual noise, in a &lt;code&gt;golden&lt;/code&gt; package.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;update&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;flag&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Bool&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;test.update&#34;&lt;/span&gt;, &lt;span class=&#34;org-constant&#34;&gt;false&lt;/span&gt;, &lt;span class=&#34;org-string&#34;&gt;&#34;update golden file&#34;&lt;/span&gt;)
+
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;Get returns the golden file content. If the `test.update` is specified, it updates the&lt;/span&gt;
+&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;file with the current output and returns it.&lt;/span&gt;
+&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Get&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt; []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;filename&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt; {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;golden&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;filepath&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Join&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;testdata&#34;&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;filename&lt;/span&gt;)
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; *&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;update&lt;/span&gt; {
+                &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;ioutil&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;WriteFile&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;golden&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-4&#34;&gt;0644&lt;/span&gt;); &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt; != &lt;span class=&#34;org-constant&#34;&gt;nil&lt;/span&gt; {
+                        &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt;)
+                }
+        }
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;ioutil&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;ReadFile&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;golden&lt;/span&gt;)
+        &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt; != &lt;span class=&#34;org-constant&#34;&gt;nil&lt;/span&gt; {
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Fatal&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-10&#34;&gt;err&lt;/span&gt;)
+        }
+        &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt;
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;We define a &lt;i&gt;global&lt;/i&gt; flag, &lt;code&gt;-test.update&lt;/code&gt; that will &lt;i&gt;enhance&lt;/i&gt; the
+&lt;code&gt;go test&lt;/code&gt; command with it (as soon as we import this &lt;code&gt;golden&lt;/code&gt; package).&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+We define a &lt;code&gt;golden.Get&lt;/code&gt; function that takes the current output
+and the path of the golden file. It also takes &lt;code&gt;testing.T&lt;/code&gt; so any
+failure happening here (like reading file, …) will make the test
+fail (one less thing to write in the test calling this function).
+&lt;/p&gt;
+
+&lt;p&gt;
+If the flag is present when running the test, it will update the
+file with the actual content.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+The initial test becomes.
+&lt;/p&gt;
+
+&lt;div class=&#34;org-src-container&#34;&gt;
+&lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestNodeInspectPretty&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt; := &lt;span class=&#34;org-builtin&#34;&gt;new&lt;/span&gt;(&lt;span class=&#34;org-type&#34;&gt;bytes.Buffer&lt;/span&gt;)
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;newInspectCommand&lt;/span&gt;(
+                &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;test&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;NewFakeCli&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;fakeClient&lt;/span&gt;{
+                        &lt;span class=&#34;org-constant&#34;&gt;nodeInspectFunc&lt;/span&gt;: &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;() (&lt;span class=&#34;org-type&#34;&gt;swarm.Node&lt;/span&gt;, []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt;, &lt;span class=&#34;org-type&#34;&gt;error&lt;/span&gt;) {
+                                &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; *&lt;span class=&#34;org-function-name&#34;&gt;Node&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;Manager&lt;/span&gt;()), []&lt;span class=&#34;org-type&#34;&gt;byte&lt;/span&gt;{}, &lt;span class=&#34;org-constant&#34;&gt;nil&lt;/span&gt;
+                        },
+                }, &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt;))
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;SetArgs&lt;/span&gt;([]&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;{&lt;span class=&#34;org-string&#34;&gt;&#34;nodeID&#34;&lt;/span&gt;})
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Flags&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Set&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;pretty&#34;&lt;/span&gt;, &lt;span class=&#34;org-string&#34;&gt;&#34;true&#34;&lt;/span&gt;)
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;NilError&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;cmd&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Execute&lt;/span&gt;())
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;buf&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;String&lt;/span&gt;()
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt; := &lt;span class=&#34;org-rainbow-identifiers-identifier-1&#34;&gt;golden&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Get&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;, []&lt;span class=&#34;org-function-name&#34;&gt;byte&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt;), &lt;span class=&#34;org-string&#34;&gt;&#34;myfile.golden&#34;&lt;/span&gt;)
+        &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;EqualNormalizedString&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;assert&lt;/span&gt;.&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;RemoveSpace&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-15&#34;&gt;actual&lt;/span&gt;, &lt;span class=&#34;org-function-name&#34;&gt;string&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-14&#34;&gt;expected&lt;/span&gt;))
+}
+&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;
+If we change the output, the workflow becomes the following :
+&lt;/p&gt;
+
+&lt;ul class=&#34;org-ul&#34;&gt;
+&lt;li&gt;run &lt;code&gt;go test&lt;/code&gt; and make sure it&#39;s failing,&lt;/li&gt;
+&lt;li&gt;Validate that the current output is correct,&lt;/li&gt;
+&lt;li&gt;run &lt;code&gt;go test -test.update&lt;/code&gt; to update the golden file(s),&lt;/li&gt;
+&lt;li&gt;re-run &lt;code&gt;go test&lt;/code&gt; to make sure it&#39;s now green,&lt;/li&gt;
+&lt;li&gt;you are done 👼.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;
+With this simple trick, our test now &lt;b&gt;contains less noise&lt;/b&gt; and is
+way more &lt;b&gt;maintainable&lt;/b&gt; (you just have a command to run to update
+the expected content).
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
@@ -49,9 +289,9 @@ possible to avoid the noise. And as we are going to see below, &lt;code&gt;go&lt
 makes it pretty easy to do so.
 &lt;/p&gt;
 
-&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-1&#34;&gt;Builders in tests&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
+&lt;div id=&#34;outline-container-org1afcfe7&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;org1afcfe7&#34;&gt;Builders in tests&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-org1afcfe7&#34;&gt;
 &lt;p&gt;
 Sometimes, your need to create data structure for your test that
 might take a lot of line and introduce noise. In &lt;code&gt;golang&lt;/code&gt; we don&#39;t
@@ -61,7 +301,6 @@ directly the struct expression, as below.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt; := &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
         &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage&#34;&lt;/span&gt;,
         &lt;span class=&#34;org-constant&#34;&gt;Hostname&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage.sbr.pm&#34;&lt;/span&gt;,
@@ -80,7 +319,6 @@ tests that ensure that.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
                 &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;carthage&#34;&lt;/span&gt;,
@@ -129,7 +367,6 @@ book.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-java&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;I just want an order from a customer that has no post code&lt;/span&gt;
 &lt;span class=&#34;org-type&#34;&gt;Order&lt;/span&gt; &lt;span class=&#34;org-variable-name&#34;&gt;order&lt;/span&gt; = &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;anOrder&lt;/span&gt;()
     .&lt;span class=&#34;org-rainbow-identifiers-identifier-7&#34;&gt;from&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;aCustomer&lt;/span&gt;().&lt;span class=&#34;org-rainbow-identifiers-identifier-11&#34;&gt;with&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-13&#34;&gt;anAddress&lt;/span&gt;().&lt;span class=&#34;org-rainbow-identifiers-identifier-3&#34;&gt;withNotPostCode&lt;/span&gt;()))
@@ -149,9 +386,9 @@ really simple to write, and special cases not much more complicated.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-sec-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-2&#34;&gt;Builder in Go&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-2&#34;&gt;
+&lt;div id=&#34;outline-container-orgff90129&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;orgff90129&#34;&gt;Builder in Go&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-orgff90129&#34;&gt;
 &lt;p&gt;
 The naive way to create builders in &lt;code&gt;go&lt;/code&gt; could be to create a
 &lt;code&gt;builder&lt;/code&gt; struct that have methods to construct the final struct and
@@ -159,7 +396,6 @@ a &lt;code&gt;build&lt;/code&gt; method. Let&#39;s see how it looks.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt; {
         &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &amp;amp;&lt;span class=&#34;org-type&#34;&gt;NodeBuilder&lt;/span&gt;{
                 &lt;span class=&#34;org-constant&#34;&gt;node&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
@@ -201,7 +437,6 @@ resilient to change. We can update the previous test as follow.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(&amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
                 &lt;span class=&#34;org-constant&#34;&gt;Architecture&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;x86_64&#34;&lt;/span&gt;,
@@ -230,15 +465,12 @@ There is room for improvement :
 
 &lt;ul class=&#34;org-ul&#34;&gt;
 &lt;li&gt;There is still some noise, mainly &lt;code&gt;build()&lt;/code&gt; and the platform
-&lt;code&gt;struct&lt;/code&gt;, as it still shows too much.
-&lt;/li&gt;
+&lt;code&gt;struct&lt;/code&gt;, as it still shows too much.&lt;/li&gt;
 &lt;li&gt;It&#39;s not that extensible yet. If you want to update the &lt;code&gt;Node&lt;/code&gt; a
 certain way that the builder is not written for, you have to
-update the builder.
-&lt;/li&gt;
+update the builder.&lt;/li&gt;
 &lt;li&gt;The &lt;code&gt;NodeBuilder&lt;/code&gt; struct feels a little empty, it&#39;s just there to
-hold on the &lt;code&gt;Node&lt;/code&gt; being constructed until it is &lt;code&gt;build&lt;/code&gt;.
-&lt;/li&gt;
+hold on the &lt;code&gt;Node&lt;/code&gt; being constructed until it is &lt;code&gt;build&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;
@@ -248,7 +480,6 @@ with &lt;code&gt;Node&lt;/code&gt;.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;() *&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt; {
         &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &amp;amp;&lt;span class=&#34;org-type&#34;&gt;PlatformBuilder&lt;/span&gt;{
                 &lt;span class=&#34;org-constant&#34;&gt;platform&lt;/span&gt;: &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Platform&lt;/span&gt;{
@@ -278,7 +509,6 @@ And our tests becomes 🐻.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;Platform&lt;/span&gt;(
                 &lt;span class=&#34;org-function-name&#34;&gt;APlatform&lt;/span&gt;().&lt;span class=&#34;org-function-name&#34;&gt;OS&lt;/span&gt;(&lt;span class=&#34;org-string&#34;&gt;&#34;linux&#34;&lt;/span&gt;).&lt;span class=&#34;org-function-name&#34;&gt;Build&lt;/span&gt;()
@@ -309,9 +539,9 @@ into play.
 &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div id=&#34;outline-container-sec-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;sec-3&#34;&gt;Functional arguments to the rescue&lt;/h2&gt;
-&lt;div class=&#34;outline-text-2&#34; id=&#34;text-3&#34;&gt;
+&lt;div id=&#34;outline-container-org28e3042&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;org28e3042&#34;&gt;Functional arguments to the rescue&lt;/h2&gt;
+&lt;div class=&#34;outline-text-2&#34; id=&#34;text-org28e3042&#34;&gt;
 &lt;p&gt;
 Go has two interesting feature that are going to be useful here.
 &lt;/p&gt;
@@ -323,7 +553,6 @@ as argument, or define a variable that holds it.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;ApplyTo&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-12&#34;&gt;fn&lt;/span&gt; &lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt; {
         &lt;span class=&#34;org-keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;fn&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt;)
 }
@@ -346,7 +575,6 @@ argument).
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;Print&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;strs&lt;/span&gt; ...&lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt;) &lt;span class=&#34;org-type&#34;&gt;string&lt;/span&gt; {
         &lt;span class=&#34;org-keyword&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;_&lt;/span&gt;, &lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt; := &lt;span class=&#34;org-keyword&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;strs&lt;/span&gt; {
                 &lt;span class=&#34;org-rainbow-identifiers-identifier-9&#34;&gt;fmt&lt;/span&gt;.&lt;span class=&#34;org-function-name&#34;&gt;Println&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;s&lt;/span&gt;)
@@ -359,7 +587,7 @@ argument).
 As we are going to see below, combining these two feature makes our
 builders pretty easy to write and to use with simple case, while
 staying very customizable, even outside of the builder. This is
-really well described in a talk from Dave Cheney : &lt;a href=&#34;https://www.youtube.com/watch?v=24lFtGHWxAQ&amp;index=15&amp;list=PLMW8Xq7bXrG58Qk-9QSy2HRh2WVeIrs7e&#34;&gt;Functional
+really well described in a talk from Dave Cheney : &lt;a href=&#34;https://www.youtube.com/watch?v=24lFtGHWxAQ&amp;amp;index=15&amp;amp;list=PLMW8Xq7bXrG58Qk-9QSy2HRh2WVeIrs7e&#34;&gt;Functional
 options for friendly APIs&lt;/a&gt; (&lt;a href=&#34;https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis&#34;&gt;transcription&lt;/a&gt;).
 &lt;/p&gt;
 
@@ -368,7 +596,6 @@ Let&#39;s apply that to our new builders.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;nodeBuilders&lt;/span&gt; ...&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt;(*&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;)) *&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt; {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-5&#34;&gt;node&lt;/span&gt; := &amp;amp;&lt;span class=&#34;org-type&#34;&gt;Node&lt;/span&gt;{
                 &lt;span class=&#34;org-constant&#34;&gt;Name&lt;/span&gt;: &lt;span class=&#34;org-string&#34;&gt;&#34;node&#34;&lt;/span&gt;,
@@ -404,7 +631,6 @@ extensible. Let&#39;s see how to use it.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a default node&lt;/span&gt;
 &lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;node1&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;()
 &lt;span class=&#34;org-comment-delimiter&#34;&gt;// &lt;/span&gt;&lt;span class=&#34;org-comment&#34;&gt;a node with a specific Hostname&lt;/span&gt;
@@ -430,7 +656,6 @@ tests looks like.
 &lt;/p&gt;
 
 &lt;div class=&#34;org-src-container&#34;&gt;
-
 &lt;pre class=&#34;src src-go&#34;&gt;&lt;span class=&#34;org-keyword&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;org-function-name&#34;&gt;TestValidateLinuxIsSupported&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-8&#34;&gt;t&lt;/span&gt; *&lt;span class=&#34;org-type&#34;&gt;testing.T&lt;/span&gt;) {
         &lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; := &lt;span class=&#34;org-function-name&#34;&gt;Validate&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;ANode&lt;/span&gt;(&lt;span class=&#34;org-function-name&#34;&gt;WithAPlatform&lt;/span&gt;(&lt;span class=&#34;org-rainbow-identifiers-identifier-2&#34;&gt;Linux&lt;/span&gt;)))
         &lt;span class=&#34;org-keyword&#34;&gt;if&lt;/span&gt; !&lt;span class=&#34;org-rainbow-identifiers-identifier-6&#34;&gt;valid&lt;/span&gt; {
@@ -479,15 +704,11 @@ In summary, using these types of builder have several advantages :
 &lt;/p&gt;
 
 &lt;ul class=&#34;org-ul&#34;&gt;
-&lt;li&gt;tests are &lt;b&gt;easy to read&lt;/b&gt;, and reduce the visual noise
-&lt;/li&gt;
-&lt;li&gt;tests are &lt;b&gt;resilient to change&lt;/b&gt;
-&lt;/li&gt;
-&lt;li&gt;builders are &lt;b&gt;easy to compose&lt;/b&gt; and very extensible
-&lt;/li&gt;
+&lt;li&gt;tests are &lt;b&gt;easy to read&lt;/b&gt;, and reduce the visual noise&lt;/li&gt;
+&lt;li&gt;tests are &lt;b&gt;resilient to change&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;builders are &lt;b&gt;easy to compose&lt;/b&gt; and very extensible&lt;/li&gt;
 &lt;li&gt;builders could even be &lt;b&gt;shared&lt;/b&gt; with production code as there is
-nothing tied to &lt;code&gt;testing&lt;/code&gt;.
-&lt;/li&gt;
+nothing tied to &lt;code&gt;testing&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
