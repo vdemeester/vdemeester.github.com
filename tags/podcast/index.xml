@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sat, 12 Oct 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Podcasts</title>
@@ -15,68 +17,8 @@
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
-      <description>
-
-&lt;blockquote&gt;
-&lt;p&gt;Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou
-moins régulièrement.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec
-des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande
-place. Voici une liste plus ou moins bien triés de ceux auxquels je suis
-souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post
-à jour ou en créerait un nouveau sinon :-).&lt;/p&gt;
-
-&lt;h2 id=&#34;geek-co&#34;&gt;Geek &amp;amp; co&lt;/h2&gt;
-
-&lt;p&gt;Je suis un developpeur, un geek et convaincu des logiciels libres, les
-podcasts qui suivent reflète assez cette partie là de mon identité.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.captainweb.net/&#34;&gt;L&amp;rsquo;apéro de Captain (fr)&lt;/a&gt; : dans le genre geeky, déjanté et sauvage, en français, on ne fait pas mieux. Pas vraiment safe for work, et pas tout à fait &amp;ldquo;libriste&amp;rdquo; comme j&amp;rsquo;aime, les tranches de rires sont garanties ; même si parfois on est un peu verreux d&amp;rsquo;avoir écouter jusqu&amp;rsquo;à la fin et le bien nommé &amp;ldquo;wazzuf&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.agencetousgeeks.com/&#34;&gt;Agence Tous Geeks (fr)&lt;/a&gt; : fils caché de l&amp;rsquo;apéro du captain, on y retrouve des amis (et membres de ce dernier), mais c&amp;rsquo;est un peu plus calme.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://bazingcast.com/about/&#34;&gt;Bazingcast (fr)&lt;/a&gt; : podcast geek, plus posé que les deux précédents mais avec
-des débats, des trolls et tout ce que l&amp;rsquo;on peut attendre de geeks.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.captainposix.net/&#34;&gt;Parole de Tux (fr-be)&lt;/a&gt; : podcast venant de nos voisin belge, pas trop long et plutôt sympa ; et si comme moi vous adorez l&amp;rsquo;accent belge, c&amp;rsquo;est le top.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://faif.us/&#34;&gt;Free as in Freedom (en)&lt;/a&gt; : podcast parlant de logiciel
-libre principalement côté license, truc légal, etc.. en anglais, faut
-parfois s&amp;rsquo;accrocher.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://episodes.gitminutes.com/&#34;&gt;Git Minutes (en)&lt;/a&gt; : podcast à propos de
-Git et des outils de son écosystème (vcsh, etc..).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;radio&#34;&gt;Radio&lt;/h2&gt;
-
-&lt;p&gt;J&amp;rsquo;aime bien la radio, bien plus que la télévision (que j&amp;rsquo;allume si peu qu&amp;rsquo;à
-chaque fois la box se met à jour &lt;code&gt;;-p&lt;/code&gt;).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-laura-leishman-project&#34;&gt;France Inter - LLP (Laura leishman Project)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12265.xml&#34;&gt;Le Mouv&amp;rsquo; - Laura Leishman Project&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.franceinter.fr/emission-interception&#34;&gt;France Inter - Interception&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.la-bas.org/&#34;&gt;France Inter - là-bas si j&amp;rsquo;y suis&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689840&#34;&gt;France Culture - Pixel&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4685228&#34;&gt;France Culture - Place de la toile&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.franceculture.fr/podcast/4689418&#34;&gt;France Culture - Philippe Meyer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12582.xml&#34;&gt;Le Mouv&amp;rsquo; - Glitch (sur le Mouv&amp;rsquo;)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12691.xml&#34;&gt;Le Mouv&amp;rsquo; - Code Source&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://radiofrance-podcast.net/podcast09/rss_12190.xml&#34;&gt;Le Mouv&amp;rsquo; - Suivez le geek&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.divergence-fm.org/-http-www-divergence-fm-org-ecrire-exec-rubrique-id_rubrique-61-.html&#34;&gt;Divergence Numerique&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;musique&#34;&gt;Musique&lt;/h2&gt;
-
-&lt;p&gt;Les podcast suivant sont purement musique, tous musique &lt;em&gt;techno&lt;/em&gt; ou
-trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://podcasts.flaix.fr/corstencountdown&#34;&gt;Ferry Corsten - Corsten Countdown&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.galexmusic.com/podcast/gareth.xml&#34;&gt;Gareth Emery Podcast&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://feedproxy.feedburner.com/Tiestos_club_life&#34;&gt;Tiesto Club Life&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://oakenfold.libsyn.com/rss&#34;&gt;Oakenfold Perfecto Podcast&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+      <description>Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou moins régulièrement.
+ J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande place. Voici une liste plus ou moins bien triés de ceux auxquels je suis souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post à jour ou en créerait un nouveau sinon :-).</description>
     </item>
     
   </channel>

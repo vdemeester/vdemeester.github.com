@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 08 Sep 2013 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/maven/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Maven Tmpfs</title>
@@ -15,166 +17,7 @@
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
-      <description>&lt;p&gt;Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
-&lt;strong&gt;&amp;ldquo;Convention over configuration&amp;rdquo;&lt;/strong&gt; me va vraiment bien. Que ce soit au boulot ou
-à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
-disque traditionnel (mécanique ?). Pour augmenter un peu la durée de vie de
-ces disques SSD, j&amp;rsquo;ai cherché à savoir comment &lt;em&gt;déporter&lt;/em&gt; le &lt;em&gt;build&lt;/em&gt; de maven
-(qui, pour rappel, se passe dans le dossier &lt;code&gt;target/&lt;/code&gt;) hors du SSD ; ici ce
-sera dans le dossier &lt;code&gt;/tmp/&lt;/code&gt; qui est monté en mémoire (merci &lt;code&gt;tmpfs&lt;/code&gt;),
-mais on peut imaginer déporter ça sur un autre disque, etc.. Après quelques
-recherches j&amp;rsquo;ai trouvés quelques inspirations.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Limitations&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Dans la solution présentée ci-dessous les principales limitations sont
-les suivantes (que j&amp;rsquo;essaierais de diminuer au fil du temp ;P) :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Il est nécessaire de modifier le pom.xml du projet ; cela ne s&amp;rsquo;appliquera
-donc pas à tous les projets maven sans modification du pom.xml.&lt;/li&gt;
-&lt;li&gt;Cela ne fonctionne que sur une plateforme qui support les liens
-symboliques (Linux, Mac OS X, et autre UNIX).&lt;/li&gt;
-&lt;li&gt;Cela ne fonctionne qu&amp;rsquo;avec Java 7 ou plus.&lt;/li&gt;
-&lt;li&gt;Si vous utilisez m2e, il va gentillement gueuler et c&amp;rsquo;est moche ; pour
-résoudre le problème, il faut faire un tour vers &lt;a href=&#34;http://wiki.eclipse.org/M2E_plugin_execution_not_covered&#34;&gt;M2E plugin execution
-not covered&lt;/a&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Pour [maven](), le dossier &lt;code&gt;target/&lt;/code&gt; vient de la propriété
-&lt;code&gt;project.build.directory&lt;/code&gt;. Dans la théorie, il suffirait de modifier (dans
-&lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;) cette propriété et le tour serait jouer.
-Malheuresement ce n&amp;rsquo;est pas possible, &lt;code&gt;project.build.directory&lt;/code&gt; est une
-propriété interne et n&amp;rsquo;est, à priori, pas modifiable.&lt;/p&gt;
-
-&lt;p&gt;Notre souhait est le suivant :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Le build doit se faire dans &lt;code&gt;/tmp/m2/&lt;/code&gt;, ce qui pour un projet se traduit
-par &lt;code&gt;/tmp/m2/${groupId}:${artifactId}&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Le dossier &lt;code&gt;target/&lt;/code&gt; dans les sources est un lien symbolique vers le
-dossier dans &lt;code&gt;/tmp/m2/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;On passe par un &lt;strong&gt;profile&lt;/strong&gt; qui n&amp;rsquo;est &lt;strong&gt;pas actif&lt;/strong&gt; par défaut (pour ne pas
-faire chier le monde) mais &lt;strong&gt;activable via une propriété&lt;/strong&gt; (maven nous permet
-de le faire et c&amp;rsquo;est cool &lt;code&gt;^_^&lt;/code&gt;). La propriété utilisée sera
-&lt;code&gt;external.build.root&lt;/code&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Le code ci-dessous est repris directement de mon inspiration&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:inspiration&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:inspiration&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;. Il
-s&amp;rsquo;occupe de créer le dossier &lt;code&gt;${groupId}:${artifactId}&lt;/code&gt; dans
-&lt;code&gt;external.build.root&lt;/code&gt; et de faire le lien dans le dossier courant.&lt;/p&gt;
-
-
-&lt;project&gt;
-    &lt;!-- […] --&gt;
-    &lt;profiles&gt;
-        &lt;profile&gt;
-            &lt;id&gt;external-build-dir&lt;/id&gt;
-            &lt;activation&gt;
-                &lt;activeByDefault&gt;false&lt;/activeByDefault&gt;
-                &lt;property&gt;
-                    &lt;name&gt;external.build.root&lt;/name&gt;
-                &lt;/property&gt;
-            &lt;/activation&gt;
-            &lt;build&gt;
-                &lt;plugins&gt;
-                    &lt;plugin&gt;
-                        &lt;groupId&gt;com.alexecollins.maven.plugin&lt;/groupId&gt;
-                        &lt;artifactId&gt;script-maven-plugin&lt;/artifactId&gt;
-                        &lt;version&gt;1.0.0&lt;/version&gt;
-                        &lt;executions&gt;
-                            &lt;execution&gt;
-                                &lt;id&gt;prep-work-tree&lt;/id&gt;
-                                &lt;goals&gt;
-                                    &lt;goal&gt;execute&lt;/goal&gt;
-                                &lt;/goals&gt;
-                                &lt;phase&gt;initialize&lt;/phase&gt;
-                                &lt;configuration&gt;
-                                    &lt;script&gt;
-                                        import java.nio.file.*
-                                        def dir =
-                                        &#34;${external.build.root}/${project.groupId}:${project.artifactId}&#34;
-                                        println &#34;using Maven dir ${dir}&#34;
-                                        def dirPath = Paths.get(dir)
-                                        if (!Files.exists(dirPath)) {
-                                        Files.createDirectories(dirPath)
-                                        }
-                                        def target = Paths.get(&#34;${project.build.directory}&#34;)
-                                        if (!Files.exists(target)) {
-                                        Files.createSymbolicLink(target, dirPath)
-                                        }&lt;/script&gt;
-                                &lt;/configuration&gt;
-                            &lt;/execution&gt;
-                            &lt;execution&gt;
-                                &lt;id&gt;drop-symlink&lt;/id&gt;
-                                &lt;goals&gt;
-                                    &lt;goal&gt;execute&lt;/goal&gt;
-                                &lt;/goals&gt;
-                                &lt;phase&gt;clean&lt;/phase&gt;
-                                &lt;configuration&gt;
-                                    &lt;script&gt;
-                                        import java.nio.file.*
-                                        def target = Paths.get(&#34;${project.build.directory}&#34;)
-                                        if (Files.isSymbolicLink(target)) {
-                                        Files.delete(target)
-                                        }
-                                    &lt;/script&gt;
-                                &lt;/configuration&gt;
-                            &lt;/execution&gt;
-                        &lt;/executions&gt;
-                        &lt;dependencies&gt;
-                            &lt;dependency&gt;
-                                &lt;groupId&gt;org.codehaus.groovy&lt;/groupId&gt;
-                                &lt;artifactId&gt;groovy&lt;/artifactId&gt;
-                                &lt;version&gt;1.8.6&lt;/version&gt;
-                            &lt;/dependency&gt;
-                        &lt;/dependencies&gt;
-                        &lt;configuration&gt;
-                            &lt;language&gt;groovy&lt;/language&gt;
-                        &lt;/configuration&gt;
-                    &lt;/plugin&gt;
-                &lt;/plugins&gt;
-            &lt;/build&gt;
-        &lt;/profile&gt;
-    &lt;/profiles&gt;
-    &lt;!-- […] --&gt;
-&lt;/project&gt;
-
-
-&lt;p&gt;Ainsi, il suffit ensuite d&amp;rsquo;avoir quelques choses du genre dans son
-&lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt; pour que les builds qui ont ce profil se &lt;em&gt;build&lt;/em&gt;
-dans &lt;code&gt;/tmp/m2/&lt;/code&gt;. On peut aussi ne rien avoir dans &lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;
-et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la commande &lt;code&gt;mvn&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;
-&lt;settings&gt;
-    &lt;!-- […] --&gt;
-    &lt;profiles&gt;
-        &lt;profile&gt;
-            &lt;id&gt;build-in-ramfs&lt;/id&gt;
-            &lt;properties&gt;
-                &lt;external.build.root&gt;/tmp/m2/&lt;/external.build.root&gt;
-            &lt;/properties&gt;
-        &lt;/profile&gt;
-    &lt;/profiles&gt;
-    &lt;activeProfiles&gt;
-        &lt;activeProfile&gt;build-in-ramfs&lt;/activeProfile&gt;
-    &lt;/activeProfiles&gt;
-    &lt;!-- […] --&gt;
-&lt;/settings&gt;
-&lt;/p&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-
-&lt;hr /&gt;
-
-&lt;ol&gt;
-&lt;li id=&#34;fn:inspiration&#34;&gt;&lt;a href=&#34;http://elehack.net/writings/programming/maven-target-in-tmpfs&#34;&gt;Putting Maven build directories out-of-tree&lt;/a&gt; par &lt;a href=&#34;http://elehack.net/&#34;&gt;Michal Ekstrand&lt;/a&gt;
- &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:inspiration&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-</description>
+      <description>Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto &amp;ldquo;Convention over configuration&amp;rdquo; me va vraiment bien. Que ce soit au boulot ou à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de disque traditionnel (mécanique ?). Pour augmenter un peu la durée de vie de ces disques SSD, j&amp;rsquo;ai cherché à savoir comment déporter le build de maven (qui, pour rappel, se passe dans le dossier target/) hors du SSD ; ici ce sera dans le dossier /tmp/ qui est monté en mémoire (merci tmpfs), mais on peut imaginer déporter ça sur un autre disque, etc.</description>
     </item>
     
     <item>
@@ -183,94 +26,9 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
-      <description>
-
-&lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
-When working on maven project, there is few great plugins that helps to get
-the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/maven-release-plugin&#34;&gt;maven-release-plugin&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Inspired on this &lt;a href=&#34;https://gist.github.com/1043970&#34;&gt;gist&lt;/a&gt;, I&amp;rsquo;ve come with
-a cool way of doing things (let say we want to release a 0.1 version of an
-artifact) :&lt;/p&gt;
-
-&lt;h1 id=&#34;prepare-the-pom-xml&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
-
-&lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
-(to know where to deploy the release artifact) and few options for the
-maven-release-plugin :&lt;/p&gt;
-
-
-&lt;project&gt;
-
-    &lt;!-- […] --&gt;
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;!-- […] --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.3.2&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;tagNameFormat&gt;v@{project.version}&lt;/tagNameFormat&gt;
-                    &lt;pushChanges&gt;false&lt;/pushChanges&gt;
-                    &lt;localCheckout&gt;true&lt;/localCheckout&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-            &lt;!-- […] --&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;
-    &lt;!-- […] --&gt;
-
-&lt;/project&gt;
-
-
-&lt;p&gt;Few explanation here :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tagNameFormat&lt;/code&gt; is here to change the default tag name (which is &lt;code&gt;${project.artifactId}-${project.version}&lt;/code&gt;) to a better one.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pushChanges&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt; tells  maven-release-plugin not to push
-changes (this will become useful)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;localCheckout&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; tells maven-release-plugin to clone from
-local repository (not distant). This is especially useful here because we
-didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;the-real-stuff&#34;&gt;The real stuff&lt;/h1&gt;
-
-&lt;p&gt;First create a release branch from develop.&lt;/p&gt;
-
-
-$ git checkout -b release/v0.1 develop
-
-
-&lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
-
-
-$ mvn release:prepare               # change the pom, commit and tag version, and
-                                    # re-change pom (by incrementing SNAPSHOT version)
-$ mvn release:perform               # get the tagged version, compile and deploy
-
-
-&lt;p&gt;And the real fun begins.&lt;/p&gt;
-
-
-$ git checkout develop              # get back to the develop branch
-$ git merge --no-ff release/v0.1    # merge the version back into develop
-$ git checkout master               # go to the master branch
-$ git merge --no-ff release/v0.1~1  # merge the version back into master but
-                                    # the tagged version instead of the release/v0.1 HEAD
-$ git branch -D release/v0.1        # Removing the release branch
-$ git push --all &amp;&amp; git push --tags # Finally push everything
-
-
-&lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
-merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The next step would be to create a helper script that automates this and
-verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration options.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Edit 17:58&lt;/strong&gt; : You can take a look &lt;a href=&#34;https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>I like a lot the gitflow way of managing project. When working on maven project, there is few great plugins that helps to get the work done. One of them is maven-release-plugin.
+Inspired on this gist, I&amp;rsquo;ve come with a cool way of doing things (let say we want to release a 0.1 version of an artifact) :
+Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionManagement&amp;gt; entries (to know where to deploy the release artifact) and few options for the maven-release-plugin :</description>
     </item>
     
   </channel>

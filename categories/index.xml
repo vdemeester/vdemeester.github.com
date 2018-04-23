@@ -6,14 +6,43 @@
     <description>Recent content in Categories on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <atom:link href="http://vincent.demeester.fr/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/categories/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
-      <title>Categories</title>
-      <link>http://vincent.demeester.fr/categories/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Configurations</title>
+      <link>http://vincent.demeester.fr/categories/configurations/</link>
+      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/</guid>
+      <guid>http://vincent.demeester.fr/categories/configurations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Developement</title>
+      <link>http://vincent.demeester.fr/categories/developement/</link>
+      <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/categories/developement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Me</title>
+      <link>http://vincent.demeester.fr/categories/me/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/categories/me/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zenika</title>
+      <link>http://vincent.demeester.fr/categories/zenika/</link>
+      <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://vincent.demeester.fr/categories/zenika/</guid>
       <description></description>
     </item>
     

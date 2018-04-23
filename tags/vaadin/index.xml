@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sat, 21 Jul 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/vaadin/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/vaadin/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>News</title>
@@ -15,51 +17,8 @@
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
-      <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
-vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes.
-Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en
-rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de
-tourner les pédales. Intrigué, j&amp;rsquo;ai jeté un coup d&amp;rsquo;œil au vélo, et &lt;em&gt;oh rage
-oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arrière&lt;/em&gt; du vélo c&amp;rsquo;était tout
-simplement fendue.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
-  7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
-
-&lt;p&gt;Bien entendu ce n&amp;rsquo;est que matériel mais ce vélo avait une grande importance
-  sentimentale : il avait mon âge et appartenait à mon père quand j&amp;rsquo;étais
-  petit.&lt;/p&gt;
-
-&lt;p&gt;Maintenant il ne reste plus qu&amp;rsquo;à sortir la carte bleue pour m&amp;rsquo;en procurer un
-  nouveau…&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Je suis actuellement en vacances pour deux petites semaines (ouf !). Cela me
-permet, entre autre, de me réentrainer à monter des cols (vu que je suis
-dans les Alpes) ; parce qu&amp;rsquo;à Bordeaux, c&amp;rsquo;est assez difficile d&amp;rsquo;en trouver.
-Par contre il me reste beaucoup de boulot pour retrouver ma forme d&amp;rsquo;il
-y a une dizaine d&amp;rsquo;année et de monter facilement le &lt;em&gt;Grand Colombier&lt;/em&gt; !&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Je joue pas mal avec &lt;a href=&#34;http://vaadin.com&#34;&gt;Vaadin&lt;/a&gt; en ce moment,
-principalement pour le boulot. J&amp;rsquo;annonce donc deux petits projets en cours :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-container-utils&#34;&gt;vaadin-container-utils&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;librarie utilitaire pour la création de Container vaadin.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://vdemeester.github.com/vaadin-composite-layout&#34;&gt;vaadin-composite-layout&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;un composant vaadin hautement flexible (mais je suis mauvais pour les
-noms).&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Et &amp;ldquo;c&amp;rsquo;est tout pour le moment&amp;rdquo;.&lt;/p&gt;
-</description>
+      <description>Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je vais donc remédier un peu à ça en publiant un petit post news :-).
+ Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes. Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de tourner les pédales.</description>
     </item>
     
   </channel>

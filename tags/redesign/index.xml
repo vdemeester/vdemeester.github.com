@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 24 Mar 2014 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/redesign/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/redesign/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Redesign Et Résolutions</title>
@@ -15,51 +17,8 @@
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
-      <description>
-
-&lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
-
-&lt;h2 id=&#34;redesign&#34;&gt;Redesign&lt;/h2&gt;
-
-&lt;p&gt;Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris &lt;code&gt;\o/&lt;/code&gt;).
-Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas
-fait &lt;code&gt;;-P&lt;/code&gt;), j&amp;rsquo;avais envie de &lt;em&gt;déménager&lt;/em&gt; le site en quelques sortes.&lt;/p&gt;
-
-&lt;p&gt;Pour l&amp;rsquo;inspiration c&amp;rsquo;est assez facile à trouver, regarder &lt;a href=&#34;http://medium.com&#34;&gt;medium&lt;/a&gt;, le site de
-&lt;a href=&#34;http://www.viksit.com/&#34;&gt;Viksit Gaur&lt;/a&gt; ou encore celui de &lt;a href=&#34;http://silent-strength.com/&#34;&gt;Michael&lt;/a&gt; (coucou &lt;code&gt;:-P&lt;/code&gt;).
-J&amp;rsquo;adore ce genre de site, assez épuré mais avec une partie fixe (à gauche ou à droite) et avec des images changeantes.&lt;/p&gt;
-
-&lt;p&gt;Les images en fond de l&amp;rsquo;espace de gauche peuvent changer d&amp;rsquo;une page à l&amp;rsquo;autre. Je suis en train de m&amp;rsquo;amuser un peu
-avec &lt;a href=&#34;http://jekyllrb.com&#34;&gt;Jekyll&lt;/a&gt;. Il faut que je trouve un moyen d&amp;rsquo;optimiser un peu les images que j&amp;rsquo;utilise
-parce que là je joue un peu le bourrin.&lt;/p&gt;
-
-&lt;h2 id=&#34;résolutions&#34;&gt;Résolutions&lt;/h2&gt;
-
-&lt;p&gt;Nouvelle année, nouveau boulot, implique nouvelles résolutions. Il y a deux aspects à ces &lt;em&gt;résolutions&lt;/em&gt; : sur un plan
-informatique/geek/travail/organisation, et sur un plan purement &lt;em&gt;physique&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;Mon retour sur Paris devrait me permettre de participer à un peu plus d&amp;rsquo;évènements, notamment du côté des Java User Group, mais
-aussi FSFE, et j&amp;rsquo;en passe. Je compte également continué à jouer le &lt;em&gt;factotum&lt;/em&gt; en me gardant un peu de temps au niveau
-personnel pour travailler sur des aspects &lt;em&gt;geek&lt;/em&gt; que je n&amp;rsquo;aurais peut-être pas l&amp;rsquo;occasion de pratiquer au travail.
-Au niveau de mes &lt;em&gt;points d&amp;rsquo;entrées&lt;/em&gt; sur le web, je compte remettre un peu en route la partie blog de ce site et
-tourner shortbrain.org (ou autre) en un site plus &amp;ldquo;documentation&amp;rdquo; en me basant sur mes notes (powered by &lt;a href=&#34;http://org-mode.org&#34;&gt;org-mode&lt;/a&gt;).
-Je me suis également remis à &lt;a href=&#34;https://www.gnu.org/software/emacs/&#34;&gt;Gnu Emacs&lt;/a&gt; et &lt;em&gt;oh god&lt;/em&gt; qu&amp;rsquo;est-ce que c&amp;rsquo;est bon &lt;code&gt;:-D&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Au niveau phyisque, dans la continuité de la fin 2012, l&amp;rsquo;année 2013 a probablement été la pire de ma vie. Les
-problèmes de dos c&amp;rsquo;est pas facile tous les jours.. En février, j&amp;rsquo;avais peur de ne jamais remonter sur un vélo ; en Mai
-je remontais pour la première fois sur le vélo, en Septembre je faisais 40km par semaine et en décembre j&amp;rsquo;étais
-presque capable de faire 30km en une journée. Mème si l&amp;rsquo;année 2014 a mal commencé (je me suis felé un côte en Janvier),
-mes objectifs pour cette année et les futurs sont nettement plus positif. Le &lt;a href=&#34;http://fitbit.com&#34;&gt;fitbit&lt;/a&gt; que j&amp;rsquo;ai
-acquis en Février me permet d&amp;rsquo;avoir un objectif de marche (certes assez modeste) de 10000 pas et 8,05 km par jour.
-Je compte bien me fixer d&amp;rsquo;autre objectifs : monter la barre plus haut (15000 voir plus), faire 50km de vélo
-sur une journée.&lt;/p&gt;
-
-&lt;p&gt;Les objectifs physiques à très long termes sont également assez simples : retrouver ma forme physique et ne plus être
-géné à cause du dos. En gros c&amp;rsquo;est : être capable de faire 120km de vélo et monter des cols (Col du Sapenay, Mont Revard)
-et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi-marathon, marathon :D).&lt;/p&gt;
-
-&lt;p&gt;Sur ce, je vais retourner à mes cartons :-P.&lt;/p&gt;
-</description>
+      <description>Un tout petit post pour parler rapidement, entre autre, du redesign de vincent.demeester.fr et de mes résolutions.
+Redesign Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris \o/). Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas fait ;-P), j&amp;rsquo;avais envie de déménager le site en quelques sortes.</description>
     </item>
     
   </channel>

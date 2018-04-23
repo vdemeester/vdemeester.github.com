@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Mon, 23 Jul 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/release/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Maven Release Gitflow</title>
@@ -15,94 +17,9 @@
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
-      <description>
-
-&lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
-When working on maven project, there is few great plugins that helps to get
-the work done. One of them is &lt;a href=&#34;http://maven.apache.org/plugins/maven-release-plugin&#34;&gt;maven-release-plugin&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Inspired on this &lt;a href=&#34;https://gist.github.com/1043970&#34;&gt;gist&lt;/a&gt;, I&amp;rsquo;ve come with
-a cool way of doing things (let say we want to release a 0.1 version of an
-artifact) :&lt;/p&gt;
-
-&lt;h1 id=&#34;prepare-the-pom-xml&#34;&gt;Prepare the pom.xml.&lt;/h1&gt;
-
-&lt;p&gt;It needs &lt;code&gt;&amp;lt;scm&amp;gt;&lt;/code&gt; entries, &lt;code&gt;&amp;lt;distributionManagement&amp;gt;&lt;/code&gt; entries
-(to know where to deploy the release artifact) and few options for the
-maven-release-plugin :&lt;/p&gt;
-
-
-&lt;project&gt;
-
-    &lt;!-- […] --&gt;
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;!-- […] --&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-                &lt;artifactId&gt;maven-release-plugin&lt;/artifactId&gt;
-                &lt;version&gt;2.3.2&lt;/version&gt;
-                &lt;configuration&gt;
-                    &lt;tagNameFormat&gt;v@{project.version}&lt;/tagNameFormat&gt;
-                    &lt;pushChanges&gt;false&lt;/pushChanges&gt;
-                    &lt;localCheckout&gt;true&lt;/localCheckout&gt;
-                &lt;/configuration&gt;
-            &lt;/plugin&gt;
-            &lt;!-- […] --&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;
-    &lt;!-- […] --&gt;
-
-&lt;/project&gt;
-
-
-&lt;p&gt;Few explanation here :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tagNameFormat&lt;/code&gt; is here to change the default tag name (which is &lt;code&gt;${project.artifactId}-${project.version}&lt;/code&gt;) to a better one.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;pushChanges&lt;/code&gt; set to &lt;code&gt;false&lt;/code&gt; tells  maven-release-plugin not to push
-changes (this will become useful)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;localCheckout&lt;/code&gt; set to &lt;code&gt;true&lt;/code&gt; tells maven-release-plugin to clone from
-local repository (not distant). This is especially useful here because we
-didn&amp;rsquo;t push anything (so not setting this option would result in a failure).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;the-real-stuff&#34;&gt;The real stuff&lt;/h1&gt;
-
-&lt;p&gt;First create a release branch from develop.&lt;/p&gt;
-
-
-$ git checkout -b release/v0.1 develop
-
-
-&lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
-
-
-$ mvn release:prepare               # change the pom, commit and tag version, and
-                                    # re-change pom (by incrementing SNAPSHOT version)
-$ mvn release:perform               # get the tagged version, compile and deploy
-
-
-&lt;p&gt;And the real fun begins.&lt;/p&gt;
-
-
-$ git checkout develop              # get back to the develop branch
-$ git merge --no-ff release/v0.1    # merge the version back into develop
-$ git checkout master               # go to the master branch
-$ git merge --no-ff release/v0.1~1  # merge the version back into master but
-                                    # the tagged version instead of the release/v0.1 HEAD
-$ git branch -D release/v0.1        # Removing the release branch
-$ git push --all &amp;&amp; git push --tags # Finally push everything
-
-
-&lt;p&gt;The real magic here is the &lt;code&gt;git merge --no-ff release/v0.1~1&lt;/code&gt; which will
-merge into master the commit before the HEAD of the branch &lt;code&gt;release/v0.1&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The next step would be to create a helper script that automates this and
-verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration options.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Edit 17:58&lt;/strong&gt; : You can take a look &lt;a href=&#34;https://github.com/vdemeester/java-config/blob/master/bin/mvn-release-flow&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>I like a lot the gitflow way of managing project. When working on maven project, there is few great plugins that helps to get the work done. One of them is maven-release-plugin.
+Inspired on this gist, I&amp;rsquo;ve come with a cool way of doing things (let say we want to release a 0.1 version of an artifact) :
+Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionManagement&amp;gt; entries (to know where to deploy the release artifact) and few options for the maven-release-plugin :</description>
     </item>
     
   </channel>

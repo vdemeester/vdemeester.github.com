@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 13 May 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/bundler/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/bundler/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
@@ -15,82 +17,9 @@
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
-      <description>
-
-&lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
-all the tools that are quite awesome in Ruby.&lt;/p&gt;
-
-&lt;h1 id=&#34;goal&#34;&gt;Goal&lt;/h1&gt;
-
-&lt;p&gt;The goal is simple :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;I want to be able to install any dependent &lt;a href=&#34;http://rubygems.org&#34;&gt;Gem&lt;/a&gt; with a
-&lt;em&gt;on-liner&lt;/em&gt; command&lt;/li&gt;
-&lt;li&gt;I want to be able to run a &lt;em&gt;Jekyll server&lt;/em&gt; that auto updates.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;We are going to play with : &lt;a href=&#34;http://gembundler.com/&#34;&gt;Bundler&lt;/a&gt;,
-&lt;a href=&#34;https://github.com/guard/guard&#34;&gt;Guard&lt;/a&gt; and &lt;a href=&#34;https://github.com/ddollar/foreman&#34;&gt;foreman&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;bundler&#34;&gt;Bundler&lt;/h2&gt;
-
-&lt;p&gt;Bundler let us run &lt;code&gt;bundle install&lt;/code&gt; to get all Ruby Gems we will need ; It use
-a file name &lt;code&gt;Gemfile&lt;/code&gt;. The gems we need are simple : &lt;code&gt;jekyll&lt;/code&gt;, &lt;code&gt;guard&lt;/code&gt; and some
-Guard extensions.&lt;/p&gt;
-
-
-source &#34;http://rubygems.org&#34;
-
-gem &#39;jekyll&#39;
-gem &#39;guard&#39;
-gem &#39;guard-jekyll2&#39;
-gem &#39;guard-shell&#39;
-gem &#39;guard-bundler&#39;
-
-
-&lt;h2 id=&#34;guard&#34;&gt;Guard&lt;/h2&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Guard is a command line tool to easily handle events on file system modifications.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Guard will be watching file we told him and run action in consequence ; The file
-is name &lt;code&gt;Guardfile&lt;/code&gt;.&lt;/p&gt;
-
-
-guard &#39;jekyll2&#39; do
-  watch %r{.*}
-end
-
-guard :bundler do
-  watch(&#39;Gemfile&#39;)
-end
-# vim:filetype=ruby
-
-
-&lt;h2 id=&#34;foreman&#34;&gt;Foreman&lt;/h2&gt;
-
-&lt;p&gt;Finally, foreman will let us declare our processes and will handle the start,
-forward the output and handle the shutdown. It can then export its configuration
-into more &lt;em&gt;production-ready&lt;/em&gt; file (&lt;code&gt;init&lt;/code&gt;, &lt;code&gt;upstard&lt;/code&gt;, …) ; It uses a file named
-&lt;code&gt;Procfile&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;We will tell foreman to run :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The jekyll build-in server : &lt;code&gt;jekyll --server&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Guard, to handle file changes &lt;em&gt;in background&lt;/em&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-
-web: bundle exec jekyll --server
-guard: bundle exec guard
-
-
-&lt;p&gt;And that&amp;rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
-directory and edit your files.&lt;/p&gt;
-</description>
+      <description>This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going all the tools that are quite awesome in Ruby.
+Goal The goal is simple :
+ I want to be able to install any dependent Gem with a on-liner command I want to be able to run a Jekyll server that auto updates.  We are going to play with : Bundler, Guard and foreman.</description>
     </item>
     
   </channel>

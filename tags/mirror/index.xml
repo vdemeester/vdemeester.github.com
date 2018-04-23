@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Tue, 08 May 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
@@ -15,129 +17,9 @@
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
-      <description>
-
-&lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
-(personnal, private or public) ; and I am quickly going to share with you how I
-setup a &lt;em&gt;quick and dirty&lt;/em&gt; mirror feature.&lt;/p&gt;
-
-&lt;p&gt;First, I am using &lt;strong&gt;gitolite 3&lt;/strong&gt;. The mirroring we are going to setup is not the
-&lt;em&gt;supported&lt;/em&gt; &lt;a href=&#34;http://sitaramc.github.com/gitolite/mirroring.html&#34;&gt;mirroring &lt;strong&gt;built-in&lt;/strong&gt;&lt;/a&gt;.
-We are going to implement a simplier way to set mirror thing :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Write a custom gitolite command ; the idea is to be able to write &lt;code&gt;git-config&lt;/code&gt;
-stuff.&lt;/li&gt;
-&lt;li&gt;Write a hook that take a specific &lt;code&gt;git-config&lt;/code&gt; (let say &lt;code&gt;mirror.url&lt;/code&gt;) and do
-a simple mirroring.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;gitolite-commands&#34;&gt;Gitolite commands&lt;/h1&gt;
-
-&lt;p&gt;Gitolite 3 has been rewritten to be more flexible : &lt;a href=&#34;http://sitaramc.github.com/gitolite/g3why.html&#34;&gt;Why a completely new version&lt;/a&gt;.
-The rewrite made it really easy to extend gitolite. &lt;del&gt;I&amp;rsquo;ve fork &lt;a href=&#34;https://github.com/vdemeester/gitolite&#34;&gt;gitolite&lt;/a&gt; on github&lt;/del&gt;
-I&amp;rsquo;ve created a &lt;a href=&#34;http://github.com/vdemeester/vdemeester-gitolite-local-code&#34;&gt;repository git&lt;/a&gt;
-to easily add commands to my gitolite instance via &lt;em&gt;local code&lt;/em&gt;. The gitolite command I wrote is
-a quick and dirty script in shell to add &lt;code&gt;git config&lt;/code&gt;. The source should speek
-for itself ; It &lt;em&gt;should&lt;/em&gt; include some way to check if the given config is not
-already present in the &lt;code&gt;gitolite-admin&lt;/code&gt; configuration file — and so might be
-rewritten in &lt;code&gt;Perl&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The command is &lt;code&gt;write-git-config&lt;/code&gt; because a &lt;code&gt;git-config&lt;/code&gt; command already exists
-in the built-in commands.&lt;/p&gt;
-
-
-#!/bin/sh
-
-# Usage:    ssh git@host write-git-config &lt;repo&gt; &lt;key&gt; &lt;value&gt;
-#
-# Set git-config value for user-created (&#34;wild&#34;) repo.
-
-die() { echo &#34;$@&#34; &gt;&amp;2; exit 1; }
-usage() { perl -lne &#39;print substr($_, 2) if /^# Usage/../^$/&#39; &lt; $0; exit 1; }
-[ -z &#34;$1&#34; ] &amp;&amp; [ -z &#34;$2&#34; ] &amp;&amp; [ -z &#34;$3&#34; ] &amp;&amp; usage
-[ &#34;$1&#34; = &#34;-h&#34; ] &amp;&amp; usage
-[ -z &#34;$GL_USER&#34; ] &amp;&amp; die GL_USER not set
-
-# ----------------------------------------------------------------------
-repo=$1; shift
-key=$1; shift
-value=$1; shift
-
-# this shell script takes arguments that are completely under the user&#39;s
-# control, so make sure you quote those suckers!
-
-if gitolite query-rc -q WRITER_CAN_UPDATE_DESC
-then
-    gitolite access -q &#34;$repo&#34; $GL_USER W any || die You are not authorised
-else
-    gitolite creator &#34;$repo&#34; $GL_USER || die You are not authorised
-fi
-
-# if it passes, $repo is a valid repo name so it is known to contain only sane
-# characters.  This is because &#39;gitolite creator&#39; return true only if there
-# *is* a repo of that name and it has a gl-creator file that contains the same
-# text as $GL_USER.
-
-configfile=`gitolite query-rc GL_REPO_BASE`/&#34;$repo&#34;.git/config
-
-git config --file &#34;$configfile&#34; &#34;$key&#34; &#34;$value&#34;
-
-
-&lt;h1 id=&#34;gitolite-hooks&#34;&gt;Gitolite hooks&lt;/h1&gt;
-
-&lt;p&gt;The next step is to write a quick &lt;code&gt;post-receive&lt;/code&gt; hook that check if there is a
-certain &lt;code&gt;git-config&lt;/code&gt; entry and run &lt;code&gt;git push --mirror&lt;/code&gt;. The file is in
-&lt;code&gt;$HOME/.gitolite/hooks/common/post-receive&lt;/code&gt; ; you could add a better system to
-hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
-
-
-#!/bin/sh
-
-# Simple gitolite mirroring
-
-# flush STDIN coming from git, because gitolite&#39;s own post-receive.mirrorpush
-# script does the same thing
-[ -t 0 ] || cat &gt;/dev/null
-
-[ -z &#34;$GL_REPO&#34; ] &amp;&amp; die GL_REPO not set
-
-target=`git config --get mirror.url`
-[ -z &#34;$target&#34; ] &amp;&amp; exit 0
-
-# Support a REPO variable for wildcard mirrors
-gl_repo_escaped=$(echo $GL_REPO | sed &#39;s/\//\\\//g&#39;)
-target=$(echo $target | sed -e &#34;s/REPO/$gl_repo_escaped/g&#34;)
-
-# Do the mirror push
-git push --mirror $target
-
-
-&lt;p&gt;The next, and final step is to run &lt;code&gt;gitolite compile&lt;/code&gt; to update links to hooks
-for every repositories.&lt;/p&gt;
-
-&lt;h1 id=&#34;for-real&#34;&gt;For real&lt;/h1&gt;
-
-&lt;p&gt;And finaly, this is the final step you&amp;rsquo;ll do.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ssh git@host write-git-config vincent/vcsh-home mirror.url git@github.com:vdemeester/vcsh-home.git
-$ git push
-Counting objects: 5, done.
-Delta compression using up to 2 threads.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 294 bytes, done.
-Total 3 (delta 2), reused 0 (delta 0)
-remote: To git@github.com:vdemeester/vcsh-home.git
-remote:    65681a8..701c990  master -&amp;gt; master
-To git@host:vincent/vcsh-home.git
-   65681a8..701c990  master -&amp;gt; master
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And that should be it !&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Update 2012/10/04&lt;/strong&gt; : Moved from gitolite fork to &lt;em&gt;gitolite local code&lt;/em&gt;
-repository.&lt;/p&gt;
-</description>
+      <description>I&amp;rsquo;m running a gitolite instance on my personal server to manage my repositories (personnal, private or public) ; and I am quickly going to share with you how I setup a quick and dirty mirror feature.
+First, I am using gitolite 3. The mirroring we are going to setup is not the supported mirroring built-in. We are going to implement a simplier way to set mirror thing :
+ Write a custom gitolite command ; the idea is to be able to write git-config stuff.</description>
     </item>
     
   </channel>

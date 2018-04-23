@@ -11,7 +11,7 @@
 
     <title>Vincent Demeester</title>
     <link rel="canonical" href="http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/">
-    <link href="" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
+    <link href="http://vincent.demeester.fr/index.xml" rel="alternate" type="application/rss+xml" title="Vincent Demeester" />
 
     <link rel="openid.server" href="https://indieauth.com/openid" />
     <link rel="openid.delegate" href="http://vincent.demeester.fr/" />
@@ -21,38 +21,24 @@
     <link rel="stylesheet" href="/css/sbrain.css" type="text/css" />
     <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
-
-    <style type="text/css">
-      #header {
-      
-      background: url('/images/2014/03/83029.jpg') repeat scroll center center / cover transparent;
-      
-      }
-    </style>
-
   </head>
   
-  <body lang=""/>
-  
+  <body lang="" class="gray">
+    
 
 
-  <header id="header">
+<header id="header">
 
-    <a href="" title="Vincent Demeester"><img id="header-illustration" src="/images/vde.png" /></a>
-
-    <div>
-      <h1>
-        <summary>
-          <em>French</em> developer, sysadmin, <abbr title="who does all kinds of work">factotum</abbr> and <span class="fan"><abbr title="as in free speek">free</abbr>-software <abbr title="You could say Evangelist">fan</abbr></span>.
-        </summary>
-      </h1>
-      <ul class="nav">
-        <li class="archive"><a href="/archive/">Archive</a></li>
-        <li class="categories"><a href="/categories/">Categories</a></li>
-        <li class="tags"><a href="/tags/">Tags</a></li>
-      </ul>
-    </div>
-  </header>
+  <div class="home">
+    <a href="http://vincent.demeester.fr" title="Vincent Demeester">code <span class="amp">&</span> rants</a> of <a href="/about">Vincent Demeester</a>
+    
+    <ul class="nav">
+      <li class="archive"><a href="/archive/">Archive</a></li>
+      <li class="categories"><a href="/categories/">Categories</a></li>
+      <li class="tags"><a href="/tags/">Tags</a></li>
+    </ul>
+  </div>
+</header>
 
 
 <div id="main-container">
@@ -105,31 +91,27 @@ id sem consectetuer libero luctus adipiscing.</p>
 
 <h2 id="highlight">Highlight</h2>
 
-
-def foo
-  puts 'foo'
-end
-
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00f"></span><span style="color:#666"></span><span style="color:#00a000">foo</span>
+  <span style="color:#a2f">puts</span> <span style="color:#b44">&#39;foo&#39;</span>
+<span style="color:#a2f;font-weight:bold">end</span></code></pre></div>
 
 <p>Some bash script…</p>
 
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#080">#!/bin/bash
+</span><span style="color:#080"></span>update_gems<span style="color:#666">()</span> <span style="color:#666">{</span>
+    <span style="color:#a2f">echo</span> <span style="color:#b44">&#34;Update gems for all versions ? (y/N)&#34;</span>
+    <span style="color:#a2f">read</span> UPDATE_GEMS
+    <span style="color:#a2f">test</span> -z <span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#666">=</span><span style="color:#b44">&#34;n&#34;</span>
+    <span style="color:#a2f;font-weight:bold">if</span> <span style="color:#a2f">test</span> <span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> <span style="color:#666">=</span> <span style="color:#b44">&#34;y&#34;</span>; <span style="color:#a2f;font-weight:bold">then</span>
+        <span style="color:#a2f;font-weight:bold">for</span> version in <span style="color:#b44">`</span>ls --color<span style="color:#666">=</span>never <span style="color:#b8860b">$HOME</span>/.rbenv/versions<span style="color:#b44">`</span>; <span style="color:#a2f;font-weight:bold">do</span>
+            <span style="color:#a2f">echo</span> <span style="color:#b44">&#34;Updating </span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span>
+            <span style="color:#b8860b">RBENV_VERSION</span><span style="color:#666">=</span><span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> rbenv <span style="color:#a2f">exec</span> gem update
+            <span style="color:#b8860b">RBENV_VERSION</span><span style="color:#666">=</span><span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> rbenv <span style="color:#a2f">exec</span> gem install bundler
+        <span style="color:#a2f;font-weight:bold">done</span>
+    <span style="color:#a2f;font-weight:bold">fi</span>
+<span style="color:#666">}</span>
 
-#!/bin/bash
-update_gems() {
-    echo "Update gems for all versions ? (y/N)"
-    read UPDATE_GEMS
-    test -z "${UPDATE_GEMS}" && UPDATE_GEMS="n"
-    if test "${UPDATE_GEMS}" = "y"; then
-        for version in `ls --color=never $HOME/.rbenv/versions`; do
-            echo "Updating ${version%/}"
-            RBENV_VERSION="${version%/}" rbenv exec gem update
-            RBENV_VERSION="${version%/}" rbenv exec gem install bundler
-        done
-    fi
-}
-
-update_gems
-
+update_gems</code></pre></div>
 
     </article>
     <div class="prev-next">
@@ -152,7 +134,7 @@ update_gems
   			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)
   		</span><br />
   		<span class="engine">
-  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  			Powered by <a href="http://gethugo.io" title="A static, minimalist CMS">Hugo</a>
   		</span>
   	</address>
   </div>

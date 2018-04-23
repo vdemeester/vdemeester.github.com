@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
     <lastBuildDate>Sun, 16 Dec 2012 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://vincent.demeester.fr/tags/gollum/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="http://vincent.demeester.fr/tags/gollum/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
@@ -15,53 +17,7 @@
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
-      <description>
-
-&lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
-
-&lt;p&gt;Une des principales &lt;em&gt;action&lt;/em&gt; que j&amp;rsquo;ai pris est d&amp;rsquo;utiliser un wiki local et synchronisé sur &lt;em&gt;tout&lt;/em&gt; mes PCs. Le &lt;em&gt;format&lt;/em&gt; wiki est assez adapté à une prise de note et à la création de contenu plus complet (comme des &lt;a href=&#34;http://shortbrain.org&#34;&gt;articles&lt;/a&gt; ou de la documentation pour des projets en cours). Les conditions étaient les suivantes :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Facilité de mise en place.&lt;/li&gt;
-&lt;li&gt;Pas de base de données.&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;Merging&lt;/em&gt; facile (&lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt; &lt;em&gt;rules my world&lt;/em&gt;).&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/&#34;&gt;Markdown&lt;/a&gt; comme syntaxe, car utilisé à peu près partout (blogs, articles, READMEs, documentations).&lt;/li&gt;
-&lt;li&gt;Éditable à partir d&amp;rsquo;une interface web ou de mon éditeur favoris.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;L&amp;rsquo;outil qui remplit presque toutes ces conditions s&amp;rsquo;appelle &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;gollum&lt;/a&gt;. C&amp;rsquo;est un moteur wiki, écris en ruby, qui se base sur un repository &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;. Il est développer par l&amp;rsquo;équipe de &lt;a href=&#34;http://github.com&#34;&gt;Github&lt;/a&gt; et c&amp;rsquo;est celui qui est utilisé par les pages wiki là-bas. Il permet d&amp;rsquo;utiliser à peu près n&amp;rsquo;importe quel syntaxe (dont &lt;a href=&#34;https://github.com/github/github-flavored-markdown&#34;&gt;github-markdown&lt;/a&gt; qui est assez proche de celle de &lt;a href=&#34;http://johnmacfarlane.net/pandoc&#34;&gt;pandoc&lt;/a&gt;). Par ailleurs, comme il se base sur &lt;a href=&#34;http://git-scm.com&#34;&gt;git&lt;/a&gt;, les points &lt;em&gt;&amp;ldquo;pas de base de données&amp;rdquo;&lt;/em&gt;, &lt;em&gt;&amp;ldquo;merging facile&amp;rdquo;&lt;/em&gt; et &lt;em&gt;&amp;ldquo;éditable également à partir de mon éditeur favoris&amp;rdquo;&lt;/em&gt; sont toutes remplies.&lt;/p&gt;
-
-&lt;p&gt;Avec &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; vous avez un wiki markdown décentralisé, éditable via une interface web ou via votre éditeur favoris.&lt;/p&gt;
-
-&lt;h2 id=&#34;mise-en-place&#34;&gt;Mise en place&lt;/h2&gt;
-
-&lt;p&gt;La mise en place est relativement simple ; après tout dépend du besoin que vous avez. L&amp;rsquo;installation se fait par &lt;a href=&#34;rubygems.org&#34;&gt;RubyGem&lt;/a&gt; ou en clonant le repository.&lt;/p&gt;
-
-
-# Installation de gollum et du format markdown de github
-$ gem install gollum gitub-markdown
-
-
-&lt;p&gt;Si vous n&amp;rsquo;utilisez pas &lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt; ou &lt;a href=&#34;https://rvm.io/&#34;&gt;rvm&lt;/a&gt; il est probable qu&amp;rsquo;il faille lancer la commande en root ou utiliser sudo.&lt;/p&gt;
-
-&lt;p&gt;Ensuite, il suffit de lancer &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; dans un dossier qui est un repository git ; le tour est joué&lt;/p&gt;
-
-
-# J&#39;ulitise ~/desktop/wiki pour mon wiki
-$ cd ~/desktop/wiki &amp;&amp; gollum
-
-
-&lt;p&gt;L&amp;rsquo;idée finale est d&amp;rsquo;automatiser deux choses :&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Le démarrage de gollum&lt;/li&gt;
-&lt;li&gt;La synchronisation du repository avec les différents autres &lt;em&gt;remotes&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Suivant le système d&amp;rsquo;exploitation et/ou la distribution utilisées, il y a énormément de possibilité d&amp;rsquo;effectuer cette automatisation. Dans mon cas, j&amp;rsquo;ai une &lt;a href=&#34;http://debian.org&#34;&gt;Debian&lt;/a&gt; assez light, avec surtout plein de scripts. Je démarre donc &lt;a href=&#34;https://github.com/github/gollum&#34;&gt;Gollum&lt;/a&gt; au démarrage de ma session grâce à une script qui est lancé dans la foulée du gestionnaire de fenêtre. La synchronisation se fait grâce à une tâche planifiée &lt;em&gt;cron&lt;/em&gt; qui est &amp;ldquo;distribué&amp;rdquo; sur chacune de mes machines.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;C&amp;rsquo;est tout pour le moment&lt;/em&gt; ;-).&lt;/p&gt;
-</description>
+      <description>Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).</description>
     </item>
     
   </channel>
