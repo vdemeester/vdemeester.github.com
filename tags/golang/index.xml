@@ -6,10 +6,20 @@
     <description>Recent content in Golang on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 22 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Jul 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://vincent.demeester.fr/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing — gotest.tools introduction</title>
+      <link>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-into/</link>
+      <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-into/</guid>
+      <description>I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue writing about it. It took me a bit more time than I thought, but getting back to it. Since the last post, Daniel Nephin and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.
+Let me introduce it to you this library : gotest.tools. As described in the godoc package comment, gotest.</description>
+    </item>
     
     <item>
       <title>Golang testing — golden file</title>

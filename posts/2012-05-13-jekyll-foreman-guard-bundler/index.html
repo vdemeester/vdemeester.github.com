@@ -100,13 +100,13 @@ all the tools that are quite awesome in Ruby.</p>
 a file name <code>Gemfile</code>. The gems we need are simple : <code>jekyll</code>, <code>guard</code> and some
 Guard extensions.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">source <span style="color:#b44">&#34;http://rubygems.org&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">source</span> <span class="s2">&#34;http://rubygems.org&#34;</span>
 
-gem <span style="color:#b44">&#39;jekyll&#39;</span>
-gem <span style="color:#b44">&#39;guard&#39;</span>
-gem <span style="color:#b44">&#39;guard-jekyll2&#39;</span>
-gem <span style="color:#b44">&#39;guard-shell&#39;</span>
-gem <span style="color:#b44">&#39;guard-bundler&#39;</span></code></pre></div>
+<span class="n">gem</span> <span class="s1">&#39;jekyll&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;guard&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;guard-jekyll2&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;guard-shell&#39;</span>
+<span class="n">gem</span> <span class="s1">&#39;guard-bundler&#39;</span></code></pre></div>
 
 <h2 id="guard">Guard</h2>
 
@@ -117,14 +117,14 @@ gem <span style="color:#b44">&#39;guard-bundler&#39;</span></code></pre></div>
 <p>Guard will be watching file we told him and run action in consequence ; The file
 is name <code>Guardfile</code>.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">guard <span style="color:#b44">&#39;jekyll2&#39;</span> <span style="color:#a2f;font-weight:bold">do</span>
-  watch <span style="color:#b68">%r{.*}</span>
-<span style="color:#a2f;font-weight:bold">end</span>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="n">guard</span> <span class="s1">&#39;jekyll2&#39;</span> <span class="k">do</span>
+  <span class="n">watch</span> <span class="sr">%r{.*}</span>
+<span class="k">end</span>
 
-guard <span style="color:#b8860b">:bundler</span> <span style="color:#a2f;font-weight:bold">do</span>
-  watch(<span style="color:#b44">&#39;Gemfile&#39;</span>)
-<span style="color:#a2f;font-weight:bold">end</span>
-<span style="color:#080;font-style:italic"># vim:filetype=ruby</span></code></pre></div>
+<span class="n">guard</span> <span class="ss">:bundler</span> <span class="k">do</span>
+  <span class="n">watch</span><span class="p">(</span><span class="s1">&#39;Gemfile&#39;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="c1"># vim:filetype=ruby</span></code></pre></div>
 
 <h2 id="foreman">Foreman</h2>
 
@@ -140,8 +140,8 @@ into more <em>production-ready</em> file (<code>init</code>, <code>upstard</code
 <li>Guard, to handle file changes <em>in background</em>.</li>
 </ul>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">web: bundle <span style="color:#a2f">exec</span> jekyll --server
-guard: bundle <span style="color:#a2f">exec</span> guard</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">web: bundle <span class="nb">exec</span> jekyll --server
+guard: bundle <span class="nb">exec</span> guard</code></pre></div>
 
 <p>And that&rsquo;s all folk. Now, you just need to run foreman in the Jekyll-powered
 directory and edit your files.</p>

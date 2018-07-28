@@ -92,28 +92,28 @@ artifact) :</p>
 (to know where to deploy the release artifact) and few options for the
 maven-release-plugin :</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;project&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;project&gt;</span>
 
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
-            <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.apache.maven.plugins<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>maven-release-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>2.3.2<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;tagNameFormat&gt;</span>v@{project.version}<span style="color:#008000;font-weight:bold">&lt;/tagNameFormat&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;pushChanges&gt;</span>false<span style="color:#008000;font-weight:bold">&lt;/pushChanges&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;localCheckout&gt;</span>true<span style="color:#008000;font-weight:bold">&lt;/localCheckout&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
-            <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
+    <span class="nt">&lt;build&gt;</span>
+        <span class="nt">&lt;plugins&gt;</span>
+            <span class="c">&lt;!-- […] --&gt;</span>
+            <span class="nt">&lt;plugin&gt;</span>
+                <span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+                <span class="nt">&lt;artifactId&gt;</span>maven-release-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                <span class="nt">&lt;version&gt;</span>2.3.2<span class="nt">&lt;/version&gt;</span>
+                <span class="nt">&lt;configuration&gt;</span>
+                    <span class="nt">&lt;tagNameFormat&gt;</span>v@{project.version}<span class="nt">&lt;/tagNameFormat&gt;</span>
+                    <span class="nt">&lt;pushChanges&gt;</span>false<span class="nt">&lt;/pushChanges&gt;</span>
+                    <span class="nt">&lt;localCheckout&gt;</span>true<span class="nt">&lt;/localCheckout&gt;</span>
+                <span class="nt">&lt;/configuration&gt;</span>
+            <span class="nt">&lt;/plugin&gt;</span>
+            <span class="c">&lt;!-- […] --&gt;</span>
+        <span class="nt">&lt;/plugins&gt;</span>
+    <span class="nt">&lt;/build&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
 
-<span style="color:#008000;font-weight:bold">&lt;/project&gt;</span></code></pre></div>
+<span class="nt">&lt;/project&gt;</span></code></pre></div>
 
 <p>Few explanation here :</p>
 
@@ -130,23 +130,23 @@ didn&rsquo;t push anything (so not setting this option would result in a failure
 
 <p>First create a release branch from develop.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout -b release/v0.1 develop</code></pre></div></p>
+<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git checkout -b release/v0.1 develop</code></pre></div></p>
 
 <p>Then run the maven release stuff.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mvn release:prepare               <span style="color:#080;font-style:italic"># change the pom, commit and tag version, and
-</span><span style="color:#080;font-style:italic"></span>                                    <span style="color:#080;font-style:italic"># re-change pom (by incrementing SNAPSHOT version)
-</span><span style="color:#080;font-style:italic"></span>$ mvn release:perform               # get the tagged version, compile and deploy</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mvn release:prepare               <span class="c1"># change the pom, commit and tag version, and
+</span><span class="c1"></span>                                    <span class="c1"># re-change pom (by incrementing SNAPSHOT version)
+</span><span class="c1"></span>$ mvn release:perform               # get the tagged version, compile and deploy</code></pre></div>
 
 <p>And the real fun begins.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git checkout develop              <span style="color:#080;font-style:italic"># get back to the develop branch
-</span><span style="color:#080;font-style:italic"></span>$ git merge --no-ff release/v0.1    <span style="color:#080;font-style:italic"># merge the version back into develop
-</span><span style="color:#080;font-style:italic"></span>$ git checkout master               <span style="color:#080;font-style:italic"># go to the master branch
-</span><span style="color:#080;font-style:italic"></span>$ git merge --no-ff release/v0.1~1  <span style="color:#080;font-style:italic"># merge the version back into master but
-</span><span style="color:#080;font-style:italic"></span>                                    <span style="color:#080;font-style:italic"># the tagged version instead of the release/v0.1 HEAD
-</span><span style="color:#080;font-style:italic"></span>$ git branch -D release/v0.1        <span style="color:#080;font-style:italic"># Removing the release branch
-</span><span style="color:#080;font-style:italic"></span>$ git push --all <span style="color:#666">&amp;&amp;</span> git push --tags # Finally push everything</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git checkout develop              <span class="c1"># get back to the develop branch
+</span><span class="c1"></span>$ git merge --no-ff release/v0.1    <span class="c1"># merge the version back into develop
+</span><span class="c1"></span>$ git checkout master               <span class="c1"># go to the master branch
+</span><span class="c1"></span>$ git merge --no-ff release/v0.1~1  <span class="c1"># merge the version back into master but
+</span><span class="c1"></span>                                    <span class="c1"># the tagged version instead of the release/v0.1 HEAD
+</span><span class="c1"></span>$ git branch -D release/v0.1        <span class="c1"># Removing the release branch
+</span><span class="c1"></span>$ git push --all <span class="o">&amp;&amp;</span> git push --tags # Finally push everything</code></pre></div>
 
 <p>The real magic here is the <code>git merge --no-ff release/v0.1~1</code> which will
 merge into master the commit before the HEAD of the branch <code>release/v0.1</code>.</p>

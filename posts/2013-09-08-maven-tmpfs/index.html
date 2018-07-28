@@ -121,32 +121,32 @@ de le faire et c&rsquo;est cool <code>^_^</code>). La propriété utilisée sera
 s&rsquo;occupe de créer le dossier <code>${groupId}:${artifactId}</code> dans
 <code>external.build.root</code> et de faire le lien dans le dossier courant.</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;project&gt;</span>
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;profiles&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;profile&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>external-build-dir<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;activation&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;activeByDefault&gt;</span>false<span style="color:#008000;font-weight:bold">&lt;/activeByDefault&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;property&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;name&gt;</span>external.build.root<span style="color:#008000;font-weight:bold">&lt;/name&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;/property&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;/activation&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;build&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;plugins&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;plugin&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>com.alexecollins.maven.plugin<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>script-maven-plugin<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>1.0.0<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;executions&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;execution&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>prep-work-tree<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;goals&gt;</span>
-                                    <span style="color:#008000;font-weight:bold">&lt;goal&gt;</span>execute<span style="color:#008000;font-weight:bold">&lt;/goal&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;/goals&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;phase&gt;</span>initialize<span style="color:#008000;font-weight:bold">&lt;/phase&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
-                                    <span style="color:#008000;font-weight:bold">&lt;script&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;project&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
+    <span class="nt">&lt;profiles&gt;</span>
+        <span class="nt">&lt;profile&gt;</span>
+            <span class="nt">&lt;id&gt;</span>external-build-dir<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;activation&gt;</span>
+                <span class="nt">&lt;activeByDefault&gt;</span>false<span class="nt">&lt;/activeByDefault&gt;</span>
+                <span class="nt">&lt;property&gt;</span>
+                    <span class="nt">&lt;name&gt;</span>external.build.root<span class="nt">&lt;/name&gt;</span>
+                <span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/activation&gt;</span>
+            <span class="nt">&lt;build&gt;</span>
+                <span class="nt">&lt;plugins&gt;</span>
+                    <span class="nt">&lt;plugin&gt;</span>
+                        <span class="nt">&lt;groupId&gt;</span>com.alexecollins.maven.plugin<span class="nt">&lt;/groupId&gt;</span>
+                        <span class="nt">&lt;artifactId&gt;</span>script-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+                        <span class="nt">&lt;version&gt;</span>1.0.0<span class="nt">&lt;/version&gt;</span>
+                        <span class="nt">&lt;executions&gt;</span>
+                            <span class="nt">&lt;execution&gt;</span>
+                                <span class="nt">&lt;id&gt;</span>prep-work-tree<span class="nt">&lt;/id&gt;</span>
+                                <span class="nt">&lt;goals&gt;</span>
+                                    <span class="nt">&lt;goal&gt;</span>execute<span class="nt">&lt;/goal&gt;</span>
+                                <span class="nt">&lt;/goals&gt;</span>
+                                <span class="nt">&lt;phase&gt;</span>initialize<span class="nt">&lt;/phase&gt;</span>
+                                <span class="nt">&lt;configuration&gt;</span>
+                                    <span class="nt">&lt;script&gt;</span>
                                         import java.nio.file.*
                                         def dir =
                                         &#34;${external.build.root}/${project.groupId}:${project.artifactId}&#34;
@@ -158,64 +158,64 @@ s&rsquo;occupe de créer le dossier <code>${groupId}:${artifactId}</code> dans
                                         def target = Paths.get(&#34;${project.build.directory}&#34;)
                                         if (!Files.exists(target)) {
                                         Files.createSymbolicLink(target, dirPath)
-                                        }<span style="color:#008000;font-weight:bold">&lt;/script&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;/execution&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;execution&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>drop-symlink<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;goals&gt;</span>
-                                    <span style="color:#008000;font-weight:bold">&lt;goal&gt;</span>execute<span style="color:#008000;font-weight:bold">&lt;/goal&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;/goals&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;phase&gt;</span>clean<span style="color:#008000;font-weight:bold">&lt;/phase&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
-                                    <span style="color:#008000;font-weight:bold">&lt;script&gt;</span>
+                                        }<span class="nt">&lt;/script&gt;</span>
+                                <span class="nt">&lt;/configuration&gt;</span>
+                            <span class="nt">&lt;/execution&gt;</span>
+                            <span class="nt">&lt;execution&gt;</span>
+                                <span class="nt">&lt;id&gt;</span>drop-symlink<span class="nt">&lt;/id&gt;</span>
+                                <span class="nt">&lt;goals&gt;</span>
+                                    <span class="nt">&lt;goal&gt;</span>execute<span class="nt">&lt;/goal&gt;</span>
+                                <span class="nt">&lt;/goals&gt;</span>
+                                <span class="nt">&lt;phase&gt;</span>clean<span class="nt">&lt;/phase&gt;</span>
+                                <span class="nt">&lt;configuration&gt;</span>
+                                    <span class="nt">&lt;script&gt;</span>
                                         import java.nio.file.*
                                         def target = Paths.get(&#34;${project.build.directory}&#34;)
                                         if (Files.isSymbolicLink(target)) {
                                         Files.delete(target)
                                         }
-                                    <span style="color:#008000;font-weight:bold">&lt;/script&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;/execution&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;/executions&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;dependencies&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;dependency&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;groupId&gt;</span>org.codehaus.groovy<span style="color:#008000;font-weight:bold">&lt;/groupId&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;artifactId&gt;</span>groovy<span style="color:#008000;font-weight:bold">&lt;/artifactId&gt;</span>
-                                <span style="color:#008000;font-weight:bold">&lt;version&gt;</span>1.8.6<span style="color:#008000;font-weight:bold">&lt;/version&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;/dependency&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;/dependencies&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;configuration&gt;</span>
-                            <span style="color:#008000;font-weight:bold">&lt;language&gt;</span>groovy<span style="color:#008000;font-weight:bold">&lt;/language&gt;</span>
-                        <span style="color:#008000;font-weight:bold">&lt;/configuration&gt;</span>
-                    <span style="color:#008000;font-weight:bold">&lt;/plugin&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;/plugins&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;/build&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;/profile&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/profiles&gt;</span>
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-<span style="color:#008000;font-weight:bold">&lt;/project&gt;</span></code></pre></div>
+                                    <span class="nt">&lt;/script&gt;</span>
+                                <span class="nt">&lt;/configuration&gt;</span>
+                            <span class="nt">&lt;/execution&gt;</span>
+                        <span class="nt">&lt;/executions&gt;</span>
+                        <span class="nt">&lt;dependencies&gt;</span>
+                            <span class="nt">&lt;dependency&gt;</span>
+                                <span class="nt">&lt;groupId&gt;</span>org.codehaus.groovy<span class="nt">&lt;/groupId&gt;</span>
+                                <span class="nt">&lt;artifactId&gt;</span>groovy<span class="nt">&lt;/artifactId&gt;</span>
+                                <span class="nt">&lt;version&gt;</span>1.8.6<span class="nt">&lt;/version&gt;</span>
+                            <span class="nt">&lt;/dependency&gt;</span>
+                        <span class="nt">&lt;/dependencies&gt;</span>
+                        <span class="nt">&lt;configuration&gt;</span>
+                            <span class="nt">&lt;language&gt;</span>groovy<span class="nt">&lt;/language&gt;</span>
+                        <span class="nt">&lt;/configuration&gt;</span>
+                    <span class="nt">&lt;/plugin&gt;</span>
+                <span class="nt">&lt;/plugins&gt;</span>
+            <span class="nt">&lt;/build&gt;</span>
+        <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;/profiles&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
+<span class="nt">&lt;/project&gt;</span></code></pre></div>
 
 <p>Ainsi, il suffit ensuite d&rsquo;avoir quelques choses du genre dans son
 <code>$HOME/.m2/settings.xml</code> pour que les builds qui ont ce profil se <em>build</em>
 dans <code>/tmp/m2/</code>. On peut aussi ne rien avoir dans <code>$HOME/.m2/settings.xml</code>
 et utilise <code>-Dexternal.build.root=/tmp/m2/</code> avec la commande <code>mvn</code>.</p>
 
-<p><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#008000;font-weight:bold">&lt;settings&gt;</span>
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;profiles&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;profile&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;id&gt;</span>build-in-ramfs<span style="color:#008000;font-weight:bold">&lt;/id&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;properties&gt;</span>
-                <span style="color:#008000;font-weight:bold">&lt;external.build.root&gt;</span>/tmp/m2/<span style="color:#008000;font-weight:bold">&lt;/external.build.root&gt;</span>
-            <span style="color:#008000;font-weight:bold">&lt;/properties&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;/profile&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/profiles&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;activeProfiles&gt;</span>
-        <span style="color:#008000;font-weight:bold">&lt;activeProfile&gt;</span>build-in-ramfs<span style="color:#008000;font-weight:bold">&lt;/activeProfile&gt;</span>
-    <span style="color:#008000;font-weight:bold">&lt;/activeProfiles&gt;</span>
-    <span style="color:#080;font-style:italic">&lt;!-- […] --&gt;</span>
-<span style="color:#008000;font-weight:bold">&lt;/settings&gt;</span></code></pre></div></p>
+<p><div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;settings&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
+    <span class="nt">&lt;profiles&gt;</span>
+        <span class="nt">&lt;profile&gt;</span>
+            <span class="nt">&lt;id&gt;</span>build-in-ramfs<span class="nt">&lt;/id&gt;</span>
+            <span class="nt">&lt;properties&gt;</span>
+                <span class="nt">&lt;external.build.root&gt;</span>/tmp/m2/<span class="nt">&lt;/external.build.root&gt;</span>
+            <span class="nt">&lt;/properties&gt;</span>
+        <span class="nt">&lt;/profile&gt;</span>
+    <span class="nt">&lt;/profiles&gt;</span>
+    <span class="nt">&lt;activeProfiles&gt;</span>
+        <span class="nt">&lt;activeProfile&gt;</span>build-in-ramfs<span class="nt">&lt;/activeProfile&gt;</span>
+    <span class="nt">&lt;/activeProfiles&gt;</span>
+    <span class="c">&lt;!-- […] --&gt;</span>
+<span class="nt">&lt;/settings&gt;</span></code></pre></div></p>
 <div class="footnotes">
 
 <hr />

@@ -91,32 +91,32 @@ id sem consectetuer libero luctus adipiscing.</p>
 
 <h2 id="highlight">Highlight</h2>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#a2f;font-weight:bold">def</span> <span style="color:#00f"></span><span style="color:#666"></span><span style="color:#00a000">foo</span>
-  <span style="color:#a2f">puts</span> <span style="color:#b44">&#39;foo&#39;</span>
-<span style="color:#a2f;font-weight:bold">end</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nc"></span><span class="o"></span><span class="nf">foo</span>
+  <span class="nb">puts</span> <span class="s1">&#39;foo&#39;</span>
+<span class="k">end</span></code></pre></div>
 
 <p>Some bash script…</p>
 
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#080">#!/bin/bash
-</span><span style="color:#080"></span>update_gems<span style="color:#666">()</span> <span style="color:#666">{</span>
-    <span style="color:#a2f">echo</span> <span style="color:#b44">&#34;Update gems for all versions ? (y/N)&#34;</span>
-    <span style="color:#a2f">read</span> UPDATE_GEMS
-    <span style="color:#a2f">test</span> -z <span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> <span style="color:#666">&amp;&amp;</span> <span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#666">=</span><span style="color:#b44">&#34;n&#34;</span>
-    <span style="color:#a2f;font-weight:bold">if</span> <span style="color:#a2f">test</span> <span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">UPDATE_GEMS</span><span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> <span style="color:#666">=</span> <span style="color:#b44">&#34;y&#34;</span>; <span style="color:#a2f;font-weight:bold">then</span>
-        <span style="color:#a2f;font-weight:bold">for</span> version in <span style="color:#b44">`</span>ls --color<span style="color:#666">=</span>never <span style="color:#b8860b">$HOME</span>/.rbenv/versions<span style="color:#b44">`</span>; <span style="color:#a2f;font-weight:bold">do</span>
-            <span style="color:#a2f">echo</span> <span style="color:#b44">&#34;Updating </span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span>
-            <span style="color:#b8860b">RBENV_VERSION</span><span style="color:#666">=</span><span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> rbenv <span style="color:#a2f">exec</span> gem update
-            <span style="color:#b8860b">RBENV_VERSION</span><span style="color:#666">=</span><span style="color:#b44">&#34;</span><span style="color:#b68;font-weight:bold">${</span><span style="color:#b8860b">version</span>%/<span style="color:#b68;font-weight:bold">}</span><span style="color:#b44">&#34;</span> rbenv <span style="color:#a2f">exec</span> gem install bundler
-        <span style="color:#a2f;font-weight:bold">done</span>
-    <span style="color:#a2f;font-weight:bold">fi</span>
-<span style="color:#666">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/bash
+</span><span class="cp"></span>update_gems<span class="o">()</span> <span class="o">{</span>
+    <span class="nb">echo</span> <span class="s2">&#34;Update gems for all versions ? (y/N)&#34;</span>
+    <span class="nb">read</span> UPDATE_GEMS
+    <span class="nb">test</span> -z <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UPDATE_GEMS</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">&amp;&amp;</span> <span class="nv">UPDATE_GEMS</span><span class="o">=</span><span class="s2">&#34;n&#34;</span>
+    <span class="k">if</span> <span class="nb">test</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">UPDATE_GEMS</span><span class="si">}</span><span class="s2">&#34;</span> <span class="o">=</span> <span class="s2">&#34;y&#34;</span><span class="p">;</span> <span class="k">then</span>
+        <span class="k">for</span> version in <span class="sb">`</span>ls --color<span class="o">=</span>never <span class="nv">$HOME</span>/.rbenv/versions<span class="sb">`</span><span class="p">;</span> <span class="k">do</span>
+            <span class="nb">echo</span> <span class="s2">&#34;Updating </span><span class="si">${</span><span class="nv">version</span><span class="p">%/</span><span class="si">}</span><span class="s2">&#34;</span>
+            <span class="nv">RBENV_VERSION</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">version</span><span class="p">%/</span><span class="si">}</span><span class="s2">&#34;</span> rbenv <span class="nb">exec</span> gem update
+            <span class="nv">RBENV_VERSION</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">version</span><span class="p">%/</span><span class="si">}</span><span class="s2">&#34;</span> rbenv <span class="nb">exec</span> gem install bundler
+        <span class="k">done</span>
+    <span class="k">fi</span>
+<span class="o">}</span>
 
 update_gems</code></pre></div>
 
     </article>
     <div class="prev-next">
       
-      <a class="paging-link prev" href="/archive/" title="Archive">← Previous post</a>
+      <a class="paging-link prev" href="/about/" title="About">← Previous post</a>
       
 
       
