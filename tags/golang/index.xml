@@ -6,10 +6,21 @@
     <description>Recent content in Golang on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 28 Jul 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 16 Aug 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://vincent.demeester.fr/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing : gotest.tools assertions</title>
+      <link>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
+      <description>Let&amp;rsquo;s take a closer look at gotest.tools assertions packages. This is mainly about assert, assert/cmp and assert/opt.
+ Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error message is printed.
+ There is two main functions (Assert and Check) and some helpers (like NilError, …). They all take a *testing.T as a first argument, pretty common across testing Go libraries. Let&amp;rsquo;s dive into those !</description>
+    </item>
     
     <item>
       <title>Golang testing — gotest.tools introduction</title>
