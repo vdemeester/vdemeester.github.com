@@ -6,10 +6,21 @@
     <description>Recent content in Developement on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Thu, 16 Aug 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://vincent.demeester.fr/categories/developement/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing — gotest.tools skip</title>
+      <link>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
+      <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
+      <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the skip package. This is a really simple one so this should be quick.
+ skip provides functions for skipping a test and printing the source code of the condition used to skip the test.
+ The package consists of only one function : If. The idea comes mainly from docker/docker integration test suite, where we wanted to skip some test (or test suites) given different context.</description>
+    </item>
     
     <item>
       <title>Golang testing — gotest.tools assertions</title>
