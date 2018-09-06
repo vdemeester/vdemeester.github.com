@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</loc>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</loc>
     <lastmod>2018-09-01T00:00:00+02:00</lastmod>
   </url>
@@ -187,7 +192,7 @@
   
   <url>
     <loc>http://vincent.demeester.fr/categories/developement/</loc>
-    <lastmod>2018-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -259,7 +264,7 @@
   
   <url>
     <loc>http://vincent.demeester.fr/tags/golang/</loc>
-    <lastmod>2018-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -415,7 +420,7 @@
   
   <url>
     <loc>http://vincent.demeester.fr/posts/</loc>
-    <lastmod>2018-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -473,7 +478,7 @@
   
   <url>
     <loc>http://vincent.demeester.fr/tags/testing/</loc>
-    <lastmod>2018-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -503,7 +508,7 @@
   
   <url>
     <loc>http://vincent.demeester.fr/</loc>
-    <lastmod>2018-09-01T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-06T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

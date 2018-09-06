@@ -6,10 +6,22 @@
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-fr</language>
-    <lastBuildDate>Sat, 01 Sep 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="http://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing — gotest.tools golden</title>
+      <link>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
+      <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
+      <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the golden package. This is a quick follow-up on a previous golden post, but focused on the gotest.tools implementation. I&amp;rsquo;m gonna be quicker, please read that one if golden files is a new concept for you.
+ Package golden provides tools for comparing large mutli-line strings.
+Golden files are files in the ./testdata/ subdirectory of the package under test.
+ In the previous article, we described the problem, and how to fix it by writing a small helper.</description>
+    </item>
     
     <item>
       <title>Golang testing — gotest.tools skip</title>
