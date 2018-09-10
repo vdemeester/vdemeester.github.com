@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Podcast on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/podcast/</link>
+    <link>https://vincent.demeester.fr/tags/podcast/</link>
     <description>Recent content in Podcast on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 12 Oct 2013 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/podcast/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Podcasts</title>
-      <link>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
+      <link>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
+      <guid>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
       <description>Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou moins régulièrement.
  J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande place. Voici une liste plus ou moins bien triés de ceux auxquels je suis souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post à jour ou en créerait un nouveau sinon :-).</description>
     </item>

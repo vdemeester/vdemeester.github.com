@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zenika on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/categories/zenika/</link>
+    <link>https://vincent.demeester.fr/categories/zenika/</link>
     <description>Recent content in Zenika on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 01 Jun 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/categories/zenika/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/categories/zenika/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Docker 1.6 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
       <description>Cet article est disponible sur le Blog de Zenika à l&#39;adresse suivante : http://blog.zenika.com/index.php?post/2015/06/01/Docker-1-6-et-son-ecosysteme. Cet publication me sert de mirroir / sauvegarde. Introduction  Le 28 octobre dernier, nous avions parlé de la sortie de Docker 1.3, des évolutions entre la version 1 et cette dernière et de son écosystème. Je vous proposes de remettre ça, bientôt 6 mois après, avec un peu le même plan : les principales nouveautés entre la version 1.</description>
     </item>
     
     <item>
       <title>Docker 1.3 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
       <pubDate>Mon, 27 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
       <description>Cet article est disponible sur le Blog de Zenika à l&#39;adresse suivante : http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme. Cet publication me sert de mirroir / sauvegarde. Le 16 octobre dernier, Docker est passé en version 1.3. C&#39;est une bonne occasion de faire un point sur ce qu&#39;apportent les mises à jour qui sont sorties depuis la 1.0. Nous allons également en profiter pour regarder les news importantes de l&#39;écosystème Docker.
 Rappel très rapide, Docker est une plate-forme ouverte à destination des développeurs et administrateurs systèmes visant à faciliter la construction et le déploiement d&#39;applications distribuées.</description>
     </item>

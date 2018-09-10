@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>News on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/news/</link>
+    <link>https://vincent.demeester.fr/tags/news/</link>
     <description>Recent content in News on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 21 Jul 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/news/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/news/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>News</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je vais donc remédier un peu à ça en publiant un petit post news :-).
  Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes. Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de tourner les pédales.</description>
     </item>

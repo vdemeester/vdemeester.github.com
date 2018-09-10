@@ -2,46 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/categories/</link>
+    <link>https://vincent.demeester.fr/categories/</link>
     <description>Recent content in Categories on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="http://vincent.demeester.fr/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Configurations</title>
-      <link>http://vincent.demeester.fr/categories/configurations/</link>
+      <link>https://vincent.demeester.fr/categories/configurations/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/configurations/</guid>
+      <guid>https://vincent.demeester.fr/categories/configurations/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Developement</title>
-      <link>http://vincent.demeester.fr/categories/developement/</link>
+      <link>https://vincent.demeester.fr/categories/developement/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/developement/</guid>
+      <guid>https://vincent.demeester.fr/categories/developement/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Me</title>
-      <link>http://vincent.demeester.fr/categories/me/</link>
+      <link>https://vincent.demeester.fr/categories/me/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/me/</guid>
+      <guid>https://vincent.demeester.fr/categories/me/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zenika</title>
-      <link>http://vincent.demeester.fr/categories/zenika/</link>
+      <link>https://vincent.demeester.fr/categories/zenika/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/zenika/</guid>
+      <guid>https://vincent.demeester.fr/categories/zenika/</guid>
       <description></description>
     </item>
     

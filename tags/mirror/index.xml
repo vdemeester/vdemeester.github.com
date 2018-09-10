@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mirror on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/mirror/</link>
+    <link>https://vincent.demeester.fr/tags/mirror/</link>
     <description>Recent content in Mirror on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 08 May 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>I&amp;rsquo;m running a gitolite instance on my personal server to manage my repositories (personnal, private or public) ; and I am quickly going to share with you how I setup a quick and dirty mirror feature.
 First, I am using gitolite 3. The mirroring we are going to setup is not the supported mirroring built-in. We are going to implement a simplier way to set mirror thing :
  Write a custom gitolite command ; the idea is to be able to write git-config stuff.</description>

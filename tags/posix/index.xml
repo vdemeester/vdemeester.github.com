@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posix on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/posix/</link>
+    <link>https://vincent.demeester.fr/tags/posix/</link>
     <description>Recent content in Posix on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 31 Jul 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/posix/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/posix/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Gestion de configuration : introduction</title>
-      <link>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
       <description>Cela doit faire au moins 2 ans que je souhaite partager la façon dont je gère mes configurations (en anglais dotfiles). Comme j&#39;ai longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à écrire, je vais en faire une série de petits billets de blog dont celui-ci est l&#39;introduction. Nous y aborderons donc mon besoin, et mes choix. Besoin(s)  En bon geek que je suis, je suis fan des dotfiles.</description>
     </item>
     

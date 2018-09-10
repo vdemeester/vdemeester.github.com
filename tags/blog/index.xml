@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/blog/</link>
+    <link>https://vincent.demeester.fr/tags/blog/</link>
     <description>Recent content in Blog on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 09 May 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Migration vers hugo</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
       <description>Et voilà, une semaine après m&#39;être remis en route sur ce blog, je fais déjà une migration &amp;gt;_&amp;lt;. Je me suis rendu compte que Jekyll m&#39;énervait un peu, et comme je suis à fond dans go en ce moment, j&#39;ai regardé du côté des générateurs de sites static et Hugo a clairement retenu mon attention. Pourquoi Hugo ?   Make the Web Fun Again  Introducing Hugo, a new idea around making website creation simple again.</description>
     </item>
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>Un peu plus d&#39;un an..  .. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici plus souvent.   Au niveau de mes points d&#39;entrées sur le web, je compte remettre un peu en route la partie blog de ce site et tourner shortbrain.org (ou autre) en un site plus &#34;documentation&#34; en me basant sur mes notes (powered by org-mode).</description>
     </item>
     

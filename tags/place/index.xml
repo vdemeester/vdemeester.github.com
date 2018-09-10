@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Place on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/place/</link>
+    <link>https://vincent.demeester.fr/tags/place/</link>
     <description>Recent content in Place on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/place/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/place/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
-      <link>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
+      <link>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
+      <guid>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
       <description>Je réalise que j&#39;utilise Firefox depuis bien plus de 10 ans maintenant (on doit être à minimum 15 ans en fait…). Et je me souviens d&#39;un temps où je souhaitais rendre mes bookmarks (marque-pages 👼) dynamique. Après tout ils existent de base dans Firefox (e.g. Most visited), il doit donc être possible d&#39;en faire soit même.  Il fut un temps où c&#39;était facile à mettre en place — ouvrir la gestion des marques pages, chercher quelque chose et cliquer sur le bouton save pour sauvegarder cette recherche en tant de bookmark dynamique.</description>
     </item>
     

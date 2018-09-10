@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/java/</link>
+    <link>https://vincent.demeester.fr/tags/java/</link>
     <description>Recent content in Java on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 22 Apr 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang testing — golden file</title>
-      <link>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      <link>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
       <description>Tests are all about maintainability and readability. You want the least visual noise possible and it should not be a hassle to maintain. When testing functions that output a long of string, in case of a command line output testing, readability and maintainance tend to be tricky to achieve. The problem  As an example let&#39;s say we want to test out the output of a command that displays a list as a table.</description>
     </item>
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
-      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
       <description>Programming is not easy; even the best programmers are incapable of writing programs that work exactly as intended every time. Therefore an important part of the software development process is testing. Writing tests for our code is a good way to ensure quality and improve reliability.   Go programs, when properly implemented, are fairly simple to test programatically. The testing built-in library and the features of the language itself offer plenty of ways to write good tests.</description>
     </item>
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>I like a lot the gitflow way of managing project. When working on maven project, there is few great plugins that helps to get the work done. One of them is maven-release-plugin.
 Inspired on this gist, I&amp;rsquo;ve come with a cool way of doing things (let say we want to release a 0.1 version of an artifact) :
 Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionManagement&amp;gt; entries (to know where to deploy the release artifact) and few options for the maven-release-plugin :</description>
@@ -41,10 +41,10 @@ Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionM
     
     <item>
       <title>News</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je vais donc remédier un peu à ça en publiant un petit post news :-).
  Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes. Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de tourner les pédales.</description>
     </item>

@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jekyll on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/jekyll/</link>
+    <link>https://vincent.demeester.fr/tags/jekyll/</link>
     <description>Recent content in Jekyll on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 01 May 2015 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/jekyll/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>Un peu plus d&#39;un an..  .. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici plus souvent.   Au niveau de mes points d&#39;entrées sur le web, je compte remettre un peu en route la partie blog de ce site et tourner shortbrain.org (ou autre) en un site plus &#34;documentation&#34; en me basant sur mes notes (powered by org-mode).</description>
     </item>
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>Un tout petit post pour parler rapidement, entre autre, du redesign de vincent.demeester.fr et de mes résolutions.
 Redesign Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris \o/). Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas fait ;-P), j&amp;rsquo;avais envie de déménager le site en quelques sortes.</description>
     </item>
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going all the tools that are quite awesome in Ruby.
 Goal The goal is simple :
  I want to be able to install any dependent Gem with a on-liner command I want to be able to run a Jekyll server that auto updates.  We are going to play with : Bundler, Guard and foreman.</description>
@@ -42,10 +42,10 @@ Goal The goal is simple :
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>Two weeks ago, my online personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this identity site on the github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should still be up for a while.</description>
     </item>
     

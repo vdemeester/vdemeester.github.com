@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Testing on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/testing/</link>
+    <link>https://vincent.demeester.fr/tags/testing/</link>
     <description>Recent content in Testing on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/testing/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/testing/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang testing — gotest.tools golden</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
       <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the golden package. This is a quick follow-up on a previous golden post, but focused on the gotest.tools implementation. I&amp;rsquo;m gonna be quicker, please read that one if golden files is a new concept for you.
  Package golden provides tools for comparing large mutli-line strings.
 Golden files are files in the ./testdata/ subdirectory of the package under test.
@@ -24,10 +24,10 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools skip</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
       <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the skip package. This is a really simple one so this should be quick.
  skip provides functions for skipping a test and printing the source code of the condition used to skip the test.
  The package consists of only one function : If. The idea comes mainly from docker/docker integration test suite, where we wanted to skip some test (or test suites) given different context.</description>
@@ -35,10 +35,10 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools assertions</title>
-      <link>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      <link>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
       <description>Let&amp;rsquo;s take a closer look at gotest.tools assertions packages. This is mainly about assert, assert/cmp and assert/opt.
  Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error message is printed.
  There is two main functions (Assert and Check) and some helpers (like NilError, …). They all take a *testing.T as a first argument, pretty common across testing Go libraries. Let&amp;rsquo;s dive into those !</description>
@@ -46,29 +46,29 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools introduction</title>
-      <link>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
       <description>I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue writing about it. It took me a bit more time than I thought, but getting back to it. Since the last post, Daniel Nephin and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.
 Let me introduce it to you this library : gotest.tools. As described in the godoc package comment, gotest.</description>
     </item>
     
     <item>
       <title>Golang testing — golden file</title>
-      <link>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      <link>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
       <description>Tests are all about maintainability and readability. You want the least visual noise possible and it should not be a hassle to maintain. When testing functions that output a long of string, in case of a command line output testing, readability and maintainance tend to be tricky to achieve. The problem  As an example let&#39;s say we want to test out the output of a command that displays a list as a table.</description>
     </item>
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
-      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
       <description>Programming is not easy; even the best programmers are incapable of writing programs that work exactly as intended every time. Therefore an important part of the software development process is testing. Writing tests for our code is a good way to ensure quality and improve reliability.   Go programs, when properly implemented, are fairly simple to test programatically. The testing built-in library and the features of the language itself offer plenty of ways to write good tests.</description>
     </item>
     

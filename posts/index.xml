@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/posts/</link>
+    <link>https://vincent.demeester.fr/posts/</link>
     <description>Recent content in Posts on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang testing — gotest.tools golden</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
       <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the golden package. This is a quick follow-up on a previous golden post, but focused on the gotest.tools implementation. I&amp;rsquo;m gonna be quicker, please read that one if golden files is a new concept for you.
  Package golden provides tools for comparing large mutli-line strings.
 Golden files are files in the ./testdata/ subdirectory of the package under test.
@@ -24,10 +24,10 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools skip</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
       <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the skip package. This is a really simple one so this should be quick.
  skip provides functions for skipping a test and printing the source code of the condition used to skip the test.
  The package consists of only one function : If. The idea comes mainly from docker/docker integration test suite, where we wanted to skip some test (or test suites) given different context.</description>
@@ -35,10 +35,10 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools assertions</title>
-      <link>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      <link>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
       <description>Let&amp;rsquo;s take a closer look at gotest.tools assertions packages. This is mainly about assert, assert/cmp and assert/opt.
  Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error message is printed.
  There is two main functions (Assert and Check) and some helpers (like NilError, …). They all take a *testing.T as a first argument, pretty common across testing Go libraries. Let&amp;rsquo;s dive into those !</description>
@@ -46,131 +46,131 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
     
     <item>
       <title>Golang testing — gotest.tools introduction</title>
-      <link>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
       <description>I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue writing about it. It took me a bit more time than I thought, but getting back to it. Since the last post, Daniel Nephin and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.
 Let me introduce it to you this library : gotest.tools. As described in the godoc package comment, gotest.</description>
     </item>
     
     <item>
       <title>Golang testing — golden file</title>
-      <link>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      <link>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
       <description>Tests are all about maintainability and readability. You want the least visual noise possible and it should not be a hassle to maintain. When testing functions that output a long of string, in case of a command line output testing, readability and maintainance tend to be tricky to achieve. The problem  As an example let&#39;s say we want to test out the output of a command that displays a list as a table.</description>
     </item>
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
-      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
       <description>Programming is not easy; even the best programmers are incapable of writing programs that work exactly as intended every time. Therefore an important part of the software development process is testing. Writing tests for our code is a good way to ensure quality and improve reliability.   Go programs, when properly implemented, are fairly simple to test programatically. The testing built-in library and the features of the language itself offer plenty of ways to write good tests.</description>
     </item>
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
-      <link>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
+      <link>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
+      <guid>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
       <description>Je réalise que j&#39;utilise Firefox depuis bien plus de 10 ans maintenant (on doit être à minimum 15 ans en fait…). Et je me souviens d&#39;un temps où je souhaitais rendre mes bookmarks (marque-pages 👼) dynamique. Après tout ils existent de base dans Firefox (e.g. Most visited), il doit donc être possible d&#39;en faire soit même.  Il fut un temps où c&#39;était facile à mettre en place — ouvrir la gestion des marques pages, chercher quelque chose et cliquer sur le bouton save pour sauvegarder cette recherche en tant de bookmark dynamique.</description>
     </item>
     
     <item>
       <title>Gestion de configuration : introduction</title>
-      <link>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
       <description>Cela doit faire au moins 2 ans que je souhaite partager la façon dont je gère mes configurations (en anglais dotfiles). Comme j&#39;ai longtemps repoussé l&#39;échéance, probablement de peur d&#39;avoir un roman à écrire, je vais en faire une série de petits billets de blog dont celui-ci est l&#39;introduction. Nous y aborderons donc mon besoin, et mes choix. Besoin(s)  En bon geek que je suis, je suis fan des dotfiles.</description>
     </item>
     
     <item>
       <title>Docker 1.6 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
       <description>Cet article est disponible sur le Blog de Zenika à l&#39;adresse suivante : http://blog.zenika.com/index.php?post/2015/06/01/Docker-1-6-et-son-ecosysteme. Cet publication me sert de mirroir / sauvegarde. Introduction  Le 28 octobre dernier, nous avions parlé de la sortie de Docker 1.3, des évolutions entre la version 1 et cette dernière et de son écosystème. Je vous proposes de remettre ça, bientôt 6 mois après, avec un peu le même plan : les principales nouveautés entre la version 1.</description>
     </item>
     
     <item>
       <title>Migration vers hugo</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
       <description>Et voilà, une semaine après m&#39;être remis en route sur ce blog, je fais déjà une migration &amp;gt;_&amp;lt;. Je me suis rendu compte que Jekyll m&#39;énervait un peu, et comme je suis à fond dans go en ce moment, j&#39;ai regardé du côté des générateurs de sites static et Hugo a clairement retenu mon attention. Pourquoi Hugo ?   Make the Web Fun Again  Introducing Hugo, a new idea around making website creation simple again.</description>
     </item>
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>Un peu plus d&#39;un an..  .. que je n&#39;ai rien posté ici. Le temps passe bien vite, mais c&#39;est plutôt une bonne chose. Je crois que quelque chose me manquait pour poster ici plus souvent.   Au niveau de mes points d&#39;entrées sur le web, je compte remettre un peu en route la partie blog de ce site et tourner shortbrain.org (ou autre) en un site plus &#34;documentation&#34; en me basant sur mes notes (powered by org-mode).</description>
     </item>
     
     <item>
       <title>Docker 1.3 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
       <pubDate>Mon, 27 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
       <description>Cet article est disponible sur le Blog de Zenika à l&#39;adresse suivante : http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme. Cet publication me sert de mirroir / sauvegarde. Le 16 octobre dernier, Docker est passé en version 1.3. C&#39;est une bonne occasion de faire un point sur ce qu&#39;apportent les mises à jour qui sont sorties depuis la 1.0. Nous allons également en profiter pour regarder les news importantes de l&#39;écosystème Docker.
 Rappel très rapide, Docker est une plate-forme ouverte à destination des développeurs et administrateurs systèmes visant à faciliter la construction et le déploiement d&#39;applications distribuées.</description>
     </item>
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>Un tout petit post pour parler rapidement, entre autre, du redesign de vincent.demeester.fr et de mes résolutions.
 Redesign Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris \o/). Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas fait ;-P), j&amp;rsquo;avais envie de déménager le site en quelques sortes.</description>
     </item>
     
     <item>
       <title>Podcasts</title>
-      <link>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
+      <link>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
+      <guid>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
       <description>Voici un petit billet présentant les différents podcast que j&amp;rsquo;écoute plus ou moins régulièrement.
  J&amp;rsquo;écoute énormément de musique et de podcast ; je passe beaucoup de temps avec des écouteurs sur la tête ou la chaine hifi en route. Les podcasts ont une grande place. Voici une liste plus ou moins bien triés de ceux auxquels je suis souscrit et/ou que j&amp;rsquo;écoute en ce moment. Je tiendrais peut-être ce post à jour ou en créerait un nouveau sinon :-).</description>
     </item>
     
     <item>
       <title>Maven Tmpfs</title>
-      <link>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
+      <link>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
+      <guid>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
       <description>Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto &amp;ldquo;Convention over configuration&amp;rdquo; me va vraiment bien. Que ce soit au boulot ou à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de disque traditionnel (mécanique ?). Pour augmenter un peu la durée de vie de ces disques SSD, j&amp;rsquo;ai cherché à savoir comment déporter le build de maven (qui, pour rappel, se passe dans le dossier target/) hors du SSD ; ici ce sera dans le dossier /tmp/ qui est monté en mémoire (merci tmpfs), mais on peut imaginer déporter ça sur un autre disque, etc.</description>
     </item>
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
-      <link>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <link>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
       <description>Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).</description>
     </item>
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>I like a lot the gitflow way of managing project. When working on maven project, there is few great plugins that helps to get the work done. One of them is maven-release-plugin.
 Inspired on this gist, I&amp;rsquo;ve come with a cool way of doing things (let say we want to release a 0.1 version of an artifact) :
 Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionManagement&amp;gt; entries (to know where to deploy the release artifact) and few options for the maven-release-plugin :</description>
@@ -178,20 +178,20 @@ Prepare the pom.xml. It needs &amp;lt;scm&amp;gt; entries, &amp;lt;distributionM
     
     <item>
       <title>News</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je vais donc remédier un peu à ça en publiant un petit post news :-).
  Je suis fan de cyclisme. Mon vélo de course est ma seconde paire de jambes. Enfin, le mot juste serait plutôt était. Il y a quelques semaines, en rentrant du boulot, j&amp;rsquo;ai sentis un grosse vibration, puis plus moyen de tourner les pédales.</description>
     </item>
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going all the tools that are quite awesome in Ruby.
 Goal The goal is simple :
  I want to be able to install any dependent Gem with a on-liner command I want to be able to run a Jekyll server that auto updates.  We are going to play with : Bundler, Guard and foreman.</description>
@@ -199,10 +199,10 @@ Goal The goal is simple :
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>I&amp;rsquo;m running a gitolite instance on my personal server to manage my repositories (personnal, private or public) ; and I am quickly going to share with you how I setup a quick and dirty mirror feature.
 First, I am using gitolite 3. The mirroring we are going to setup is not the supported mirroring built-in. We are going to implement a simplier way to set mirror thing :
  Write a custom gitolite command ; the idea is to be able to write git-config stuff.</description>
@@ -210,10 +210,10 @@ First, I am using gitolite 3. The mirroring we are going to setup is not the sup
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>Two weeks ago, my online personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process of re-installation of it but I&amp;rsquo;m going to hardened a bit the security on it. Anyway, this crash meant that every piece of site I maintain has been down. That&amp;rsquo;s why I moved this identity site on the github pages, using a CNAME ; That way I can crash as much as I want my server(s), this page should still be up for a while.</description>
     </item>
     

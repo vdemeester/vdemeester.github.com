@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bundler on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/bundler/</link>
+    <link>https://vincent.demeester.fr/tags/bundler/</link>
     <description>Recent content in Bundler on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 13 May 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/bundler/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/bundler/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going all the tools that are quite awesome in Ruby.
 Goal The goal is simple :
  I want to be able to install any dependent Gem with a on-liner command I want to be able to run a Jekyll server that auto updates.  We are going to play with : Bundler, Guard and foreman.</description>

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Builder on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/builder/</link>
+    <link>https://vincent.demeester.fr/tags/builder/</link>
     <description>Recent content in Builder on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 01 Jan 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/builder/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/builder/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
-      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
       <description>Programming is not easy; even the best programmers are incapable of writing programs that work exactly as intended every time. Therefore an important part of the software development process is testing. Writing tests for our code is a good way to ensure quality and improve reliability.   Go programs, when properly implemented, are fairly simple to test programatically. The testing built-in library and the features of the language itself offer plenty of ways to write good tests.</description>
     </item>
     

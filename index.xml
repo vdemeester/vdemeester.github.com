@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/</link>
+    <link>https://vincent.demeester.fr/</link>
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0200</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Golang testing — gotest.tools golden</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
       <description>
 
 &lt;p&gt;Let&amp;rsquo;s continue the &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt; serie, this time with the &lt;code&gt;golden&lt;/code&gt; package. This is a
-&lt;a href=&#34;http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;&lt;em&gt;quick follow-up&lt;/em&gt; on a previous &lt;code&gt;golden&lt;/code&gt; post&lt;/a&gt;, but focused on the &lt;code&gt;gotest.tools&lt;/code&gt;
+&lt;a href=&#34;https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;&lt;em&gt;quick follow-up&lt;/em&gt; on a previous &lt;code&gt;golden&lt;/code&gt; post&lt;/a&gt;, but focused on the &lt;code&gt;gotest.tools&lt;/code&gt;
 implementation. I&amp;rsquo;m gonna be quicker, please read that one if &lt;code&gt;golden&lt;/code&gt; files is a new
 concept for you.&lt;/p&gt;
 
@@ -61,7 +61,7 @@ depend as less as possible of the system (&lt;code&gt;\n&lt;/code&gt; vs &lt;cod
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;golden&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;AssertBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;foo-content.golden&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;bytes-and-string&#34;&gt;&lt;code&gt;Bytes&lt;/code&gt; and &lt;code&gt;String&lt;/code&gt;&lt;/h2&gt;
 
-&lt;p&gt;As written in a &lt;a href=&#34;http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;previous post (about the &lt;code&gt;assert&lt;/code&gt; package)&lt;/a&gt;, I prefer to use &lt;code&gt;cmp.Comparison&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As written in a &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;previous post (about the &lt;code&gt;assert&lt;/code&gt; package)&lt;/a&gt;, I prefer to use &lt;code&gt;cmp.Comparison&lt;/code&gt;.&lt;/p&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;All those helper functions have a equivalent function in the &lt;code&gt;cmp&lt;/code&gt; package that returns a
@@ -79,18 +79,18 @@ counter-part &lt;code&gt;golden.Assert&lt;/code&gt; and &lt;code&gt;golden.Asser
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;golden&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Bytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;([]&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;byte&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;foo-content.golden&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion…&lt;/h2&gt;
 
-&lt;p&gt;… that&amp;rsquo;s a wrap. As for &lt;a href=&#34;http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt;, this is a small package, so the post was going to be
-quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
+&lt;p&gt;… that&amp;rsquo;s a wrap. As for &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt;, this is a small package, so the post was going to be
+quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
 in a simple way.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Golang testing — gotest.tools skip</title>
-      <link>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
+      <link>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
       <description>&lt;p&gt;Let&amp;rsquo;s continue the &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt; serie, this time with the &lt;code&gt;skip&lt;/code&gt; package. This is a
 really simple one so this should be quick.&lt;/p&gt;
 
@@ -146,10 +146,10 @@ it&amp;rsquo;s dead code. &lt;em&gt;But more on that in later posts 😉&lt;/em&
     
     <item>
       <title>Golang testing — gotest.tools assertions</title>
-      <link>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      <link>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
       <description>
 
 &lt;p&gt;Let&amp;rsquo;s take a closer look at &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt; assertions packages. This is mainly about &lt;code&gt;assert&lt;/code&gt;, &lt;code&gt;assert/cmp&lt;/code&gt; and
@@ -454,10 +454,10 @@ error inside of your &lt;code&gt;Comparison&lt;/code&gt; function, you can use &
     
     <item>
       <title>Golang testing — gotest.tools introduction</title>
-      <link>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
       <description>&lt;p&gt;I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue
 writing about it. It took me a bit more time than I thought, but getting back to it. Since the &lt;a href=&#34;http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;last post&lt;/a&gt;, Daniel Nephin
 and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.&lt;/p&gt;
@@ -470,13 +470,13 @@ project here at &lt;a href=&#34;https://github.com&#34;&gt;Docker&lt;/a&gt;.&lt;
 &lt;p&gt;There is a bunch of packages that will all have their own post (linked here when available) :&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;&lt;code&gt;assert&lt;/code&gt;&lt;/a&gt; (with &lt;code&gt;assert/cmp&lt;/code&gt; and &lt;code&gt;assert/opt&lt;/code&gt;) that provides assertions for comparing expected values to actual values.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;&lt;code&gt;assert&lt;/code&gt;&lt;/a&gt; (with &lt;code&gt;assert/cmp&lt;/code&gt; and &lt;code&gt;assert/opt&lt;/code&gt;) that provides assertions for comparing expected values to actual values.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;env&lt;/code&gt; that provides functions to test code that read environment variable or the current working directory.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;fs&lt;/code&gt; that provides tools for creating temporary files, and testing the contents and structure of a directory.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;golden&lt;/code&gt; that provides tools for comparing large multi-line strings.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;icmd&lt;/code&gt; that executes binaries and provides convenient assertions for testing the results.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;poll&lt;/code&gt; that provides tools for testing asynchronous code.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt; that provides functions for skipping a test and printing the source code of the condition used to skip the test.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt; that provides functions for skipping a test and printing the source code of the condition used to skip the test.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There is also experimental package, using the &lt;code&gt;x&lt;/code&gt; notation (as the golang team uses, for example with &lt;code&gt;golang.org/x/sync&lt;/code&gt;) :&lt;/p&gt;
@@ -500,10 +500,10 @@ why create a new one ? There is multiple reason for it, most of them can be seen
     
     <item>
       <title>Golang testing — golden file</title>
-      <link>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      <link>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
       <description>&lt;p&gt;
 Tests are all about &lt;b&gt;maintainability&lt;/b&gt; and &lt;b&gt;readability&lt;/b&gt;. You want the
 least visual noise possible and it should not be a hassle to
@@ -740,10 +740,10 @@ the expected content).
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
-      <link>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
+      <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;
 Programming is not easy; even the best programmers are incapable of
@@ -1206,10 +1206,10 @@ nothing tied to &lt;code&gt;testing&lt;/code&gt;.&lt;/li&gt;
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
-      <link>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
+      <link>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
+      <guid>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
       <description>&lt;p&gt;
 Je réalise que j&#39;utilise Firefox depuis bien plus de 10 ans maintenant
 (on doit être à minimum 15 ans en fait…). Et je me souviens d&#39;un temps
@@ -1422,10 +1422,10 @@ vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.
     
     <item>
       <title>Gestion de configuration : introduction</title>
-      <link>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
+      <link>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
       <description>&lt;p&gt;
 Cela doit faire au moins 2 ans que je souhaite partager la façon dont
 je gère mes configurations (en anglais &lt;i&gt;dotfiles&lt;/i&gt;). Comme j&#39;ai
@@ -1684,10 +1684,10 @@ spécifiques pour les différents outils (comme &lt;a href=&#34;https://github.c
     
     <item>
       <title>Docker 1.6 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
       <description>&lt;div class=&#34;notice&#34;&gt;Cet article est disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2015/06/01/Docker-1-6-et-son-ecosysteme&#34;&gt;http://blog.zenika.com/index.php?post/2015/06/01/Docker-1-6-et-son-ecosysteme&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
 
 &lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
@@ -2177,10 +2177,10 @@ Nous allons finir avec une liste non-exhaustive et un peu orientée des évènem
     
     <item>
       <title>Migration vers hugo</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
       <description>&lt;p&gt;
 Et voilà, une semaine après m&#39;être remis en route sur ce blog, je fais
 déjà une migration &lt;code&gt;&amp;gt;_&amp;lt;&lt;/code&gt;. Je me suis rendu compte que &lt;a href=&#34;http://jekyllrb.com/&#34;&gt;Jekyll&lt;/a&gt;
@@ -2287,10 +2287,10 @@ Pour me simplifier la vie, il me resterais à démarrer et arrêter facilement &
     
     <item>
       <title>Orgmode et Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
       <description>&lt;div id=&#34;outline-container-sec-1&#34; class=&#34;outline-2&#34;&gt;
 &lt;h2 id=&#34;sec-1&#34;&gt;Un peu plus d&#39;un an..&lt;/h2&gt;
 &lt;div class=&#34;outline-text-2&#34; id=&#34;text-1&#34;&gt;
@@ -2431,10 +2431,10 @@ C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#3
     
     <item>
       <title>Docker 1.3 et son écosystème</title>
-      <link>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
+      <link>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
       <pubDate>Mon, 27 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
       <description>&lt;div class=&#34;notice&#34;&gt;Cet article est disponible sur le &lt;a href=&#34;http://blog.zenika.com/&#34;&gt;Blog de Zenika&lt;/a&gt; à l&#39;adresse suivante : &lt;a href=&#34;http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme&#34;&gt;http://blog.zenika.com/index.php?post/2014/10/27/Docker-1-3-et-son-ecosysteme&lt;/a&gt;. Cet publication me sert de mirroir / sauvegarde.&lt;/div&gt;
 
 &lt;p&gt;Le &lt;strong&gt;16 octobre dernier&lt;/strong&gt;, &lt;ins&gt;Docker est passé en version 1.3&lt;/ins&gt;. C&#39;est une
@@ -2443,7 +2443,7 @@ qui sont sorties depuis la 1.0. Nous allons également en profiter pour
 regarder les news &lt;strong&gt;importantes&lt;/strong&gt; de l&#39;écosystème Docker.&lt;/p&gt;
 
 
-&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/public/Billet_0511/docker_container_engine_logo.png&#34; alt=&#34;Docker&#34; title=&#34;Docker&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vincent.demeester.fr/public/Billet_0511/docker_container_engine_logo.png&#34; alt=&#34;Docker&#34; title=&#34;Docker&#34; /&gt;&lt;/p&gt;
 
 
 &lt;p&gt;Rappel très rapide, &lt;strong&gt;Docker est une plate-forme ouverte à destination des développeurs et administrateurs systèmes visant à faciliter la construction et le déploiement d&#39;applications distribuées&lt;/strong&gt;. De manière
@@ -2697,10 +2697,10 @@ de son écosystème. Rendez-vous mi-décembre pour faire un petit retour
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>
 
 &lt;p&gt;Un &lt;em&gt;tout petit&lt;/em&gt; post pour parler rapidement, entre autre, du redesign de &lt;a href=&#34;http://vincent.demeester.fr&#34;&gt;vincent.demeester.fr&lt;/a&gt; et de mes résolutions.&lt;/p&gt;
@@ -2750,10 +2750,10 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
     
     <item>
       <title>Podcasts</title>
-      <link>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
+      <link>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
+      <guid>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
       <description>
 
 &lt;blockquote&gt;
@@ -2820,10 +2820,10 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
     
     <item>
       <title>Maven Tmpfs</title>
-      <link>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
+      <link>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
+      <guid>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
       <description>&lt;p&gt;Je suis un utilisateur convaincu de [maven](), malgré ces défauts, le moto
 &lt;strong&gt;&amp;ldquo;Convention over configuration&amp;rdquo;&lt;/strong&gt; me va vraiment bien. Que ce soit au boulot ou
 à la maison, j&amp;rsquo;ai plus d&amp;rsquo;ordinateurs équipés de ssd (ou de mémoire flash) que de
@@ -2984,10 +2984,10 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
-      <link>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      <link>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
       <description>
 
 &lt;p&gt;Il y a environ 4 mois j&amp;rsquo;ai eu un accident de vélo ; un traumatisme crânien, des brulures sur la face, quelques points de sutures, un doigt cassé et une hernie discale m&amp;rsquo;ont cloué (et me clou encore) plus que d&amp;rsquo;habitude sur ma chaise de bureau. Le bon côté des choses, c&amp;rsquo;est que cela m&amp;rsquo;a permit de me poser et de réfléchir une bonne façon d&amp;rsquo;être efficace et organiser, au travail et à la maison :-).&lt;/p&gt;
@@ -3035,10 +3035,10 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Maven Release Gitflow</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
       <description>
 
 &lt;p&gt;I like a lot the &lt;a href=&#34;http://nvie.com/posts/a-successful-git-branching-model/&#34;&gt;gitflow&lt;/a&gt; way of managing project.
@@ -3123,10 +3123,10 @@ verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration opt
     
     <item>
       <title>News</title>
-      <link>http://vincent.demeester.fr/posts/2012-07-21-news/</link>
+      <link>https://vincent.demeester.fr/posts/2012-07-21-news/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-07-21-news/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-07-21-news/</guid>
       <description>&lt;p&gt;Je suis resté assez longtemps silencieux, à cause du boulot entre autre. Je
 vais donc remédier un peu à ça en publiant un petit post &lt;em&gt;news&lt;/em&gt; :-).&lt;/p&gt;
 
@@ -3139,7 +3139,7 @@ oh désespoir&lt;/em&gt; j&amp;rsquo;ai découvert que la &lt;em&gt;fourche arri
 simplement fendue.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://vincent.demeester.fr/images/2012/velo_casse.jpg&#34; alt=&#34;Fourche arrière du vélo&#34; title=&#34;Fourche arrière du vélo&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Il ne me restait plus que mes yeux pour pleurer et mes jambes pour faire les
   7kms qui restait à effectuer jusqu&amp;rsquo;à mon appartement.&lt;/p&gt;
@@ -3176,10 +3176,10 @@ noms).&lt;/li&gt;
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
       <description>
 
 &lt;p&gt;This post is a quick &amp;ldquo;How did I setup my Jekyll environnement ?&amp;rdquo;. We are going
@@ -3254,10 +3254,10 @@ directory and edit your files.&lt;/p&gt;
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
       <description>
 
 &lt;p&gt;I&amp;rsquo;m running a gitolite &lt;em&gt;instance&lt;/em&gt; on my personal server to manage my repositories
@@ -3381,10 +3381,10 @@ repository.&lt;/p&gt;
     
     <item>
       <title>Reinit and Jekyll</title>
-      <link>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
+      <link>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
+      <guid>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
       <description>
 
 &lt;p&gt;Two weeks ago, my &lt;em&gt;online&lt;/em&gt; personal server has been attacked and, somehow, died. I&amp;rsquo;m in the process
@@ -3435,37 +3435,37 @@ update_gems&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>About</title>
-      <link>http://vincent.demeester.fr/about/</link>
+      <link>https://vincent.demeester.fr/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/about/</guid>
+      <guid>https://vincent.demeester.fr/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Archive</title>
-      <link>http://vincent.demeester.fr/archive/</link>
+      <link>https://vincent.demeester.fr/archive/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/archive/</guid>
+      <guid>https://vincent.demeester.fr/archive/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Categories</title>
-      <link>http://vincent.demeester.fr/categories/</link>
+      <link>https://vincent.demeester.fr/categories/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/categories/</guid>
+      <guid>https://vincent.demeester.fr/categories/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Tags</title>
-      <link>http://vincent.demeester.fr/tags/</link>
+      <link>https://vincent.demeester.fr/tags/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/tags/</guid>
+      <guid>https://vincent.demeester.fr/tags/</guid>
       <description></description>
     </item>
     

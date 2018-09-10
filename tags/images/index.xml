@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Images on Vincent Demeester</title>
-    <link>http://vincent.demeester.fr/tags/images/</link>
+    <link>https://vincent.demeester.fr/tags/images/</link>
     <description>Recent content in Images on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 24 Mar 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://vincent.demeester.fr/tags/images/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vincent.demeester.fr/tags/images/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redesign Et Résolutions</title>
-      <link>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      <link>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
+      <guid>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
       <description>Un tout petit post pour parler rapidement, entre autre, du redesign de vincent.demeester.fr et de mes résolutions.
 Redesign Les raisons de ce redesign sont assez simple : je change d&amp;rsquo;employeur et de ville (retour sur Paris \o/). Cela fait pas mal de changement, et en voulant mettre à jour la page d&amp;rsquo;accueil (ce que je n&amp;rsquo;ai toujours pas fait ;-P), j&amp;rsquo;avais envie de déménager le site en quelques sortes.</description>
     </item>
