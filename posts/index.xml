@@ -5,10 +5,21 @@
     <link>https://vincent.demeester.fr/posts/</link>
     <description>Recent content in Posts on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 06 Sep 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 14 Sep 2018 00:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing — gotest.tools fs</title>
+      <link>https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/</link>
+      <pubDate>Fri, 14 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/</guid>
+      <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the fs package.
+ Package fs provides tools for creating temporary files, and testing the contents and structure of a directory.
+ This package is heavily using functional arguments (as we saw in functional arguments for wonderful builders). Functional arguments is, in a nutshell, a combinaison of two Go features : variadic functions (... operation in a function signature) and the fact that func are first class citizen.</description>
+    </item>
     
     <item>
       <title>Golang testing — gotest.tools golden</title>
