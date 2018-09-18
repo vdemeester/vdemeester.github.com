@@ -139,7 +139,7 @@ certain <code>git-config</code> entry and run <code>git push --mirror</code>. Th
 <code>$HOME/.gitolite/hooks/common/post-receive</code> ; you could add a better system to
 hooks (to be able to add &ldquo;dynamic&rdquo; hooks, …).</p>
 
-<p><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
 </span><span class="cp"></span>
 <span class="c1"># Simple gitolite mirroring
 </span><span class="c1"></span>
@@ -157,7 +157,7 @@ hooks (to be able to add &ldquo;dynamic&rdquo; hooks, …).</p>
 <span class="nv">target</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$target</span> <span class="p">|</span> sed -e <span class="s2">&#34;s/REPO/</span><span class="nv">$gl_repo_escaped</span><span class="s2">/g&#34;</span><span class="k">)</span>
 
 <span class="c1"># Do the mirror push
-</span><span class="c1"></span>git push --mirror <span class="nv">$target</span></code></pre></div></p>
+</span><span class="c1"></span>git push --mirror <span class="nv">$target</span></code></pre></div>
 
 <p>The next, and final step is to run <code>gitolite compile</code> to update links to hooks
 for every repositories.</p>

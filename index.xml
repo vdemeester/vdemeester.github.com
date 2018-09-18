@@ -641,9 +641,9 @@ project here at &lt;a href=&#34;https://github.com&#34;&gt;Docker&lt;/a&gt;.&lt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;&lt;code&gt;assert&lt;/code&gt;&lt;/a&gt; (with &lt;code&gt;assert/cmp&lt;/code&gt; and &lt;code&gt;assert/opt&lt;/code&gt;) that provides assertions for comparing expected values to actual values.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;env&lt;/code&gt; that provides functions to test code that read environment variable or the current working directory.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;fs&lt;/code&gt; that provides tools for creating temporary files, and testing the contents and structure of a directory.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;golden&lt;/code&gt; that provides tools for comparing large multi-line strings.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;icmd&lt;/code&gt; that executes binaries and provides convenient assertions for testing the results.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/&#34;&gt;&lt;code&gt;fs&lt;/code&gt;&lt;/a&gt; that provides tools for creating temporary files, and testing the contents and structure of a directory.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/&#34;&gt;&lt;code&gt;golden&lt;/code&gt;&lt;/a&gt; that provides tools for comparing large multi-line strings.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-19-gotest-tools-icmd/&#34;&gt;&lt;code&gt;icmd&lt;/code&gt;&lt;/a&gt; that executes binaries and provides convenient assertions for testing the results.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;poll&lt;/code&gt; that provides tools for testing asynchronous code.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt; that provides functions for skipping a test and printing the source code of the condition used to skip the test.&lt;/li&gt;
 &lt;/ul&gt;
@@ -3124,7 +3124,7 @@ s&amp;rsquo;occupe de créer le dossier &lt;code&gt;${groupId}:${artifactId}&lt;
 dans &lt;code&gt;/tmp/m2/&lt;/code&gt;. On peut aussi ne rien avoir dans &lt;code&gt;$HOME/.m2/settings.xml&lt;/code&gt;
 et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la commande &lt;code&gt;mvn&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;settings&amp;gt;&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;settings&amp;gt;&lt;/span&gt;
     &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
     &lt;span class=&#34;nt&#34;&gt;&amp;lt;profiles&amp;gt;&lt;/span&gt;
         &lt;span class=&#34;nt&#34;&gt;&amp;lt;profile&amp;gt;&lt;/span&gt;
@@ -3138,7 +3138,7 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
         &lt;span class=&#34;nt&#34;&gt;&amp;lt;activeProfile&amp;gt;&lt;/span&gt;build-in-ramfs&lt;span class=&#34;nt&#34;&gt;&amp;lt;/activeProfile&amp;gt;&lt;/span&gt;
     &lt;span class=&#34;nt&#34;&gt;&amp;lt;/activeProfiles&amp;gt;&lt;/span&gt;
     &lt;span class=&#34;c&#34;&gt;&amp;lt;!-- […] --&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;nt&#34;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;span class=&#34;nt&#34;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&#34;footnotes&#34;&gt;
 
 &lt;hr /&gt;
@@ -3262,7 +3262,7 @@ didn&amp;rsquo;t push anything (so not setting this option would result in a fai
 
 &lt;p&gt;First create a release branch from develop.&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b release/v0.1 develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git checkout -b release/v0.1 develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Then run the maven release stuff.&lt;/p&gt;
 
@@ -3501,7 +3501,7 @@ certain &lt;code&gt;git-config&lt;/code&gt; entry and run &lt;code&gt;git push -
 &lt;code&gt;$HOME/.gitolite/hooks/common/post-receive&lt;/code&gt; ; you could add a better system to
 hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
 
-&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
 &lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
 &lt;span class=&#34;c1&#34;&gt;# Simple gitolite mirroring
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
@@ -3519,7 +3519,7 @@ hooks (to be able to add &amp;ldquo;dynamic&amp;rdquo; hooks, …).&lt;/p&gt;
 &lt;span class=&#34;nv&#34;&gt;target&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$target&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; sed -e &lt;span class=&#34;s2&#34;&gt;&amp;#34;s/REPO/&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$gl_repo_escaped&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;/g&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;c1&#34;&gt;# Do the mirror push
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;git push --mirror &lt;span class=&#34;nv&#34;&gt;$target&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;git push --mirror &lt;span class=&#34;nv&#34;&gt;$target&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;The next, and final step is to run &lt;code&gt;gitolite compile&lt;/code&gt; to update links to hooks
 for every repositories.&lt;/p&gt;
@@ -3578,7 +3578,7 @@ id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
 
 &lt;h2 id=&#34;highlight&#34;&gt;Highlight&lt;/h2&gt;
 
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;foo&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ruby&#34; data-lang=&#34;ruby&#34;&gt;&lt;span class=&#34;k&#34;&gt;def&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;foo&lt;/span&gt;
   &lt;span class=&#34;nb&#34;&gt;puts&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;foo&amp;#39;&lt;/span&gt;
 &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
