@@ -437,7 +437,7 @@ message that shows the diff between the expected and the actual structs compared
 &lt;code&gt;nil&lt;/code&gt; slice or map the same as empty ones ; or more common, your &lt;em&gt;struct&lt;/em&gt; contains some unexported fields that you
 cannot use when comparing (as they are not exported 😓). In those case, you can use &lt;code&gt;go-cmp&lt;/code&gt; options.&lt;/p&gt;
 
-&lt;p&gt;Some existings one are :&lt;/p&gt;
+&lt;p&gt;Some existing one are :&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://godoc.org/github.com/google/go-cmp/cmp/cmpopts#EquateEmpty&#34;&gt;&lt;code&gt;EquateEmpty&lt;/code&gt;&lt;/a&gt; returns a Comparer option that determines all maps and slices with a length of zero to be equal,

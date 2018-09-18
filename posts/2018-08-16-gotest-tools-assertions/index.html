@@ -174,7 +174,7 @@ message that shows the diff between the expected and the actual structs compared
 <code>nil</code> slice or map the same as empty ones ; or more common, your <em>struct</em> contains some unexported fields that you
 cannot use when comparing (as they are not exported 😓). In those case, you can use <code>go-cmp</code> options.</p>
 
-<p>Some existings one are :</p>
+<p>Some existing one are :</p>
 
 <ul>
 <li><a href="https://godoc.org/github.com/google/go-cmp/cmp/cmpopts#EquateEmpty"><code>EquateEmpty</code></a> returns a Comparer option that determines all maps and slices with a length of zero to be equal,
