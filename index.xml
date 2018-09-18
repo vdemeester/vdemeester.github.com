@@ -164,7 +164,8 @@ the expectation.&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// ExitCode was 99 expected 101
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Expected command to finish, but it hit the timeout
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Expected stdout to contain &amp;#34;Something else&amp;#34;
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;//&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Expected&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;stderr&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;to&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;contain&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;[NOTHING]&amp;#34;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Expected stderr to contain &amp;#34;[NOTHING]&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;…&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally, we listed &lt;code&gt;Equal&lt;/code&gt; above, that returns a &lt;code&gt;Comparison&lt;/code&gt; struct. This means we can
 use it easily with the &lt;code&gt;assert&lt;/code&gt; package. As written in a &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/&#34;&gt;previous post (about the &lt;code&gt;assert&lt;/code&gt;
 package)&lt;/a&gt;, I tend prefer to use &lt;code&gt;cmp.Comparison&lt;/code&gt;. Let&amp;rsquo;s convert the above examples using
@@ -833,7 +834,7 @@ project here at &lt;a href=&#34;https://github.com&#34;&gt;Docker&lt;/a&gt;.&lt;
 &lt;li&gt;&lt;code&gt;env&lt;/code&gt; that provides functions to test code that read environment variable or the current working directory.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/&#34;&gt;&lt;code&gt;fs&lt;/code&gt;&lt;/a&gt; that provides tools for creating temporary files, and testing the contents and structure of a directory.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/&#34;&gt;&lt;code&gt;golden&lt;/code&gt;&lt;/a&gt; that provides tools for comparing large multi-line strings.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-19-gotest-tools-icmd/&#34;&gt;&lt;code&gt;icmd&lt;/code&gt;&lt;/a&gt; that executes binaries and provides convenient assertions for testing the results.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/&#34;&gt;&lt;code&gt;icmd&lt;/code&gt;&lt;/a&gt; that executes binaries and provides convenient assertions for testing the results.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;poll&lt;/code&gt; that provides tools for testing asynchronous code.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt; that provides functions for skipping a test and printing the source code of the condition used to skip the test.&lt;/li&gt;
 &lt;/ul&gt;

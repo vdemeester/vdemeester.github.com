@@ -210,7 +210,8 @@ the expectation.</p>
 </span><span class="c1">// ExitCode was 99 expected 101
 </span><span class="c1">// Expected command to finish, but it hit the timeout
 </span><span class="c1">// Expected stdout to contain &#34;Something else&#34;
-</span><span class="c1"></span><span class="o">//</span> <span class="nx">Expected</span> <span class="nx">stderr</span> <span class="nx">to</span> <span class="nx">contain</span> <span class="s">&#34;[NOTHING]&#34;</span></code></pre></div>
+</span><span class="c1">// Expected stderr to contain &#34;[NOTHING]&#34;
+</span><span class="c1"></span><span class="err">…</span></code></pre></div>
 <p>Finally, we listed <code>Equal</code> above, that returns a <code>Comparison</code> struct. This means we can
 use it easily with the <code>assert</code> package. As written in a <a href="/posts/2018-08-16-gotest-tools-assertions/">previous post (about the <code>assert</code>
 package)</a>, I tend prefer to use <code>cmp.Comparison</code>. Let&rsquo;s convert the above examples using
