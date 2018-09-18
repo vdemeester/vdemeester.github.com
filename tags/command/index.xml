@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/command/</link>
+    <description>Recent content in Command on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 18 Sep 2018 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang testing — gotest.tools icmd</title>
+      <link>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</guid>
+      <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the icmd package.
+ Package icmd executes binaries and provides convenient assertions for testing the results.
+ After filesystem operations (seen in fs), antoher common use-case in tests is to execute a command. The reasons can be you&amp;rsquo;re testing the cli you&amp;rsquo;re currently writing or you need to setup something using a command line. A classic execution in a test might lookup like the following.</description>
+    </item>
+    
+  </channel>
+</rss>

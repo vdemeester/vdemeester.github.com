@@ -65,6 +65,15 @@
     </item>
     
     <item>
+      <title>Command</title>
+      <link>https://vincent.demeester.fr/tags/command/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Compose</title>
       <link>https://vincent.demeester.fr/tags/compose/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
@@ -115,6 +124,15 @@
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Exec</title>
+      <link>https://vincent.demeester.fr/tags/exec/</link>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/exec/</guid>
       <description></description>
     </item>
     
@@ -211,7 +229,7 @@
     <item>
       <title>Golang</title>
       <link>https://vincent.demeester.fr/tags/golang/</link>
-      <pubDate>Fri, 14 Sep 2018 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/golang/</guid>
       <description></description>
@@ -499,7 +517,7 @@
     <item>
       <title>Testing</title>
       <link>https://vincent.demeester.fr/tags/testing/</link>
-      <pubDate>Fri, 14 Sep 2018 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/testing/</guid>
       <description></description>

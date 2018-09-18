@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</loc>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/</loc>
     <lastmod>2018-09-14T00:00:00+02:00</lastmod>
   </url>
@@ -166,6 +171,12 @@
   </url>
   
   <url>
+    <loc>https://vincent.demeester.fr/tags/command/</loc>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/tags/compose/</loc>
     <lastmod>2015-06-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -197,7 +208,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/categories/developement/</loc>
-    <lastmod>2018-09-14T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -210,6 +221,12 @@
   <url>
     <loc>https://vincent.demeester.fr/tags/emacs/</loc>
     <lastmod>2015-05-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vincent.demeester.fr/tags/exec/</loc>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -275,7 +292,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/golang/</loc>
-    <lastmod>2018-09-14T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -431,7 +448,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/posts/</loc>
-    <lastmod>2018-09-14T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -489,7 +506,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/testing/</loc>
-    <lastmod>2018-09-14T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -519,7 +536,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/</loc>
-    <lastmod>2018-09-14T00:00:00+02:00</lastmod>
+    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
