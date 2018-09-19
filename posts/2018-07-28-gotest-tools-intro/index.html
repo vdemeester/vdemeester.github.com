@@ -58,11 +58,11 @@
 	  
 	</ul>
       </header>
-      <p>I already wrote 2 previous posts about golang and testing. It&rsquo;s something I care deeply about and I wanted to continue
-writing about it. It took me a bit more time than I thought, but getting back to it. Since the <a href="http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/">last post</a>, Daniel Nephin
-and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.</p>
-
-<p>Let me introduce it to you this library : <a href="https://gotest.tools"><code>gotest.tools</code></a>. As described in the <a href="https://godoc.org/gotest.tools">godoc</a> package comment, <code>gotest.tools</code> is a
+      I already wrote 2 previous posts about golang and testing. It&rsquo;s something I care deeply about and I wanted to continue
+  writing about it. It took me a bit more time than I thought, but getting back to it. Since the <a href="http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/">last post</a>, Daniel Nephin
+  and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.
+      
+      <p>Let me introduce it to you this library : <a href="https://gotest.tools"><code>gotest.tools</code></a>. As described in the <a href="https://godoc.org/gotest.tools">godoc</a> package comment, <code>gotest.tools</code> is a
 collection of packages to augment <code>testing</code> and support common patterns. It&rsquo;s an enhanced and growing version of the
 initial helpers we (the docker/moby maintainers) wrote initially in <a href="https://github.com/docker/docker"><code>docker/docker</code></a> repository. We are using in quite some
 project here at <a href="https://github.com">Docker</a>.</p>
@@ -92,8 +92,8 @@ why create a new one ? There is multiple reason for it, most of them can be seen
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ go get -u gotest.tools/assert/cmd/gty-migrate-from-testify
 <span class="c1"># […]
 </span><span class="c1"></span>$ go list <span class="se">\
-</span><span class="se"></span>	 -f <span class="s1">&#39;{{.ImportPath}} {{if .XTestGoFiles}}{{&#34;\n&#34;}}{{.ImportPath}}_test{{end}}&#39;</span> <span class="se">\
-</span><span class="se"></span>	 ./... <span class="p">|</span> xargs gty-migrate-from-testify</code></pre></div>
+</span><span class="se"></span>     -f <span class="s1">&#39;{{.ImportPath}} {{if .XTestGoFiles}}{{&#34;\n&#34;}}{{.ImportPath}}_test{{end}}&#39;</span> <span class="se">\
+</span><span class="se"></span>     ./... <span class="p">|</span> xargs gty-migrate-from-testify</code></pre></div>
 <p>In the next post, let&rsquo;s dig into the assertion part of the library, package <code>assert</code> 👼.</p>
 
     </article>

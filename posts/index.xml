@@ -61,9 +61,8 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
-      <description>Let&amp;rsquo;s take a closer look at gotest.tools assertions packages. This is mainly about assert, assert/cmp and assert/opt.
- Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error message is printed.
- There is two main functions (Assert and Check) and some helpers (like NilError, …). They all take a *testing.T as a first argument, pretty common across testing Go libraries. Let&amp;rsquo;s dive into those !</description>
+      <description>Table of Contents  Assert and Check More assert helpers cmp.Comparison  Equality with Equal and DeepEqual Errors with Error, ErrorContains and ErrorType Bonus with Panics Miscellaneous with Contains, Len and Nil Write your own Comparison  Conclusion…   
+Assert and Check Both those functions accept a Comparison (we&amp;rsquo;ll check what it is later on) and fail the test when that comparison fails. The one difference is that Assert will end the test execution at immediately whereas Check will fail the test and proceed with the rest of the test case.</description>
     </item>
     
     <item>
@@ -72,8 +71,8 @@ Golden files are files in the ./testdata/ subdirectory of the package under test
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
-      <description>I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue writing about it. It took me a bit more time than I thought, but getting back to it. Since the last post, Daniel Nephin and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.
-Let me introduce it to you this library : gotest.tools. As described in the godoc package comment, gotest.</description>
+      <description>Let me introduce it to you this library : gotest.tools. As described in the godoc package comment, gotest.tools is a collection of packages to augment testing and support common patterns. It&amp;rsquo;s an enhanced and growing version of the initial helpers we (the docker/moby maintainers) wrote initially in docker/docker repository. We are using in quite some project here at Docker.
+There is a bunch of packages that will all have their own post (linked here when available) :</description>
     </item>
     
     <item>

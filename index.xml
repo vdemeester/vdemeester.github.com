@@ -512,16 +512,28 @@ it&amp;rsquo;s dead code. &lt;em&gt;But more on that in later posts 😉&lt;/em&
       <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
       <description>
 
-&lt;p&gt;Let&amp;rsquo;s take a closer look at &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt; assertions packages. This is mainly about &lt;code&gt;assert&lt;/code&gt;, &lt;code&gt;assert/cmp&lt;/code&gt; and
-&lt;code&gt;assert/opt&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;ox-hugo-toc toc&#34;&gt;
+&lt;div&gt;&lt;/div&gt;
 
-&lt;blockquote&gt;
-&lt;p&gt;Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error
-message is printed.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;div class=&#34;heading&#34;&gt;Table of Contents&lt;/div&gt;
 
-&lt;p&gt;There is two main functions (&lt;code&gt;Assert&lt;/code&gt; and &lt;code&gt;Check&lt;/code&gt;) and some helpers (like &lt;code&gt;NilError&lt;/code&gt;, …). They all take a &lt;code&gt;*testing.T&lt;/code&gt; as
-a first argument, pretty common across testing Go libraries. Let&amp;rsquo;s dive into those !&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#assert-and-check&#34;&gt;&lt;code&gt;Assert&lt;/code&gt; and &lt;code&gt;Check&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#more-assert-helpers&#34;&gt;More &lt;code&gt;assert&lt;/code&gt; helpers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#cmp-dot-comparison&#34;&gt;&lt;code&gt;cmp.Comparison&lt;/code&gt;&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#equality-with-equal-and-deepequal&#34;&gt;Equality with &lt;code&gt;Equal&lt;/code&gt; and &lt;code&gt;DeepEqual&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#errors-with-error-errorcontains-and-errortype&#34;&gt;Errors with &lt;code&gt;Error&lt;/code&gt;, &lt;code&gt;ErrorContains&lt;/code&gt; and &lt;code&gt;ErrorType&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bonus-with-panics&#34;&gt;Bonus with &lt;code&gt;Panics&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#miscellaneous-with-contains-len-and-nil&#34;&gt;Miscellaneous with &lt;code&gt;Contains&lt;/code&gt;, &lt;code&gt;Len&lt;/code&gt; and &lt;code&gt;Nil&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#write-your-own-comparison&#34;&gt;Write your own &lt;code&gt;Comparison&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion…&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/div&gt;
+&lt;!--endtoc--&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;assert-and-check&#34;&gt;&lt;code&gt;Assert&lt;/code&gt; and &lt;code&gt;Check&lt;/code&gt;&lt;/h2&gt;
 
@@ -668,7 +680,7 @@ an option for that.&lt;/p&gt;
 	&lt;span class=&#34;kd&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;threshold&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;time&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Second&lt;/span&gt;
 
 	&lt;span class=&#34;c1&#34;&gt;// Apply withinThreshold only for the following fields
-&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nx&#34;&gt;metaTimeFields&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cmp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;	&lt;span class=&#34;nx&#34;&gt;metaTimeFields&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;kd&#34;&gt;func&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cmp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 		&lt;span class=&#34;k&#34;&gt;switch&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
 		&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Meta.CreatedAt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Meta.UpdatedAt&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;
 			&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;
@@ -719,7 +731,7 @@ Now let&amp;rsquo;s look at &lt;code&gt;ErrorType&lt;/code&gt;.&lt;/p&gt;
 &lt;span class=&#34;nx&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Check&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;cmp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;ErrorType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;foo&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;StubError&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{}))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;bonus-with-panics&#34;&gt;Bonus with &lt;code&gt;Panics&lt;/code&gt;&lt;/h3&gt;
 
-&lt;p&gt;Sometimes, a code is supposed to &lt;em&gt;panic&lt;/em&gt;, see &lt;a href=&#34;https://golang.org/doc/effective_go.html#panic&#34;&gt;Effective Go (#Panic)&lt;/a&gt; for more information. And thus, you may want to make
+&lt;p&gt;Sometimes, a code is supposed to &lt;em&gt;panic&lt;/em&gt;, see &lt;a href=&#34;https://golang.org/doc/effective%5Fgo.html#panic&#34;&gt;Effective Go (#Panic)&lt;/a&gt; for more information. And thus, you may want to make
 sure you&amp;rsquo;re code panics in such cases. It&amp;rsquo;s always a bit tricky to test a code that panic as you have to use a deferred
 function to recover the panic — but then if the panic doesn&amp;rsquo;t happen how do you fail the test ?&lt;/p&gt;
 
@@ -818,11 +830,7 @@ error inside of your &lt;code&gt;Comparison&lt;/code&gt; function, you can use &
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
-      <description>&lt;p&gt;I already wrote 2 previous posts about golang and testing. It&amp;rsquo;s something I care deeply about and I wanted to continue
-writing about it. It took me a bit more time than I thought, but getting back to it. Since the &lt;a href=&#34;http://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;last post&lt;/a&gt;, Daniel Nephin
-and I worked (but mainly Daniel 🤗) on bootstrapping a testing helper library.&lt;/p&gt;
-
-&lt;p&gt;Let me introduce it to you this library : &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt;. As described in the &lt;a href=&#34;https://godoc.org/gotest.tools&#34;&gt;godoc&lt;/a&gt; package comment, &lt;code&gt;gotest.tools&lt;/code&gt; is a
+      <description>&lt;p&gt;Let me introduce it to you this library : &lt;a href=&#34;https://gotest.tools&#34;&gt;&lt;code&gt;gotest.tools&lt;/code&gt;&lt;/a&gt;. As described in the &lt;a href=&#34;https://godoc.org/gotest.tools&#34;&gt;godoc&lt;/a&gt; package comment, &lt;code&gt;gotest.tools&lt;/code&gt; is a
 collection of packages to augment &lt;code&gt;testing&lt;/code&gt; and support common patterns. It&amp;rsquo;s an enhanced and growing version of the
 initial helpers we (the docker/moby maintainers) wrote initially in &lt;a href=&#34;https://github.com/docker/docker&#34;&gt;&lt;code&gt;docker/docker&lt;/code&gt;&lt;/a&gt; repository. We are using in quite some
 project here at &lt;a href=&#34;https://github.com&#34;&gt;Docker&lt;/a&gt;.&lt;/p&gt;
@@ -852,8 +860,8 @@ why create a new one ? There is multiple reason for it, most of them can be seen
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;$ go get -u gotest.tools/assert/cmd/gty-migrate-from-testify
 &lt;span class=&#34;c1&#34;&gt;# […]
 &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;$ go list &lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	 -f &lt;span class=&#34;s1&#34;&gt;&amp;#39;{{.ImportPath}} {{if .XTestGoFiles}}{{&amp;#34;\n&amp;#34;}}{{.ImportPath}}_test{{end}}&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
-&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;	 ./... &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs gty-migrate-from-testify&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;     -f &lt;span class=&#34;s1&#34;&gt;&amp;#39;{{.ImportPath}} {{if .XTestGoFiles}}{{&amp;#34;\n&amp;#34;}}{{.ImportPath}}_test{{end}}&amp;#39;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;\
+&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;&lt;/span&gt;     ./... &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; xargs gty-migrate-from-testify&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In the next post, let&amp;rsquo;s dig into the assertion part of the library, package &lt;code&gt;assert&lt;/code&gt; 👼.&lt;/p&gt;
 </description>
     </item>

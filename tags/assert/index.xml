@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assert on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/assert/</link>
+    <description>Recent content in Assert on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 16 Aug 2018 00:00:00 +0200</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/assert/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Golang testing — gotest.tools assertions</title>
+      <link>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
+      <description>Table of Contents  Assert and Check More assert helpers cmp.Comparison  Equality with Equal and DeepEqual Errors with Error, ErrorContains and ErrorType Bonus with Panics Miscellaneous with Contains, Len and Nil Write your own Comparison  Conclusion…   
+Assert and Check Both those functions accept a Comparison (we&amp;rsquo;ll check what it is later on) and fail the test when that comparison fails. The one difference is that Assert will end the test execution at immediately whereas Check will fail the test and proceed with the rest of the test case.</description>
+    </item>
+    
+  </channel>
+</rss>

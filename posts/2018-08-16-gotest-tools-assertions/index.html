@@ -36,7 +36,7 @@
         <h1 class="emphnext">Golang testing — gotest.tools assertions</h1><a href='https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/'></a>
         <address class="signature">
           <span class="date">Thu, 8 August, 2018</span>
-          <span class="words">(2100 Words)</span>
+          <span class="words">(2000 Words)</span>
         </address>
 	<ul class="tag_box inline">
 	  
@@ -51,14 +51,18 @@
 	  
 	  <li class="tag tag-golang"><a href="/tags/#golang">golang<span>9</span></a></li>
 	  
+	  
+	  <li class="tag tag-assert"><a href="/tags/#assert">assert<span>1</span></a></li>
+	  
 	  <br/>
 	  
 	</ul>
       </header>
-      
+      <p>Faster way to send the same command to each and every <em>pane</em> in your
+  tmux <em>session</em>.</p>
 
 <p>Let&rsquo;s take a closer look at <a href="https://gotest.tools"><code>gotest.tools</code></a> assertions packages. This is mainly about <code>assert</code>, <code>assert/cmp</code> and
-<code>assert/opt</code>.</p>
+  <code>assert/opt</code>.</p>
 
 <blockquote>
 <p>Package assert provides assertions for comparing expected values to actual values. When assertion fails a helpful error
@@ -66,7 +70,33 @@ message is printed.</p>
 </blockquote>
 
 <p>There is two main functions (<code>Assert</code> and <code>Check</code>) and some helpers (like <code>NilError</code>, …). They all take a <code>*testing.T</code> as
-a first argument, pretty common across testing Go libraries. Let&rsquo;s dive into those !</p>
+  a first argument, pretty common across testing Go libraries. Let&rsquo;s dive into those !</p>
+
+      
+      
+
+<div class="ox-hugo-toc toc">
+<div></div>
+
+<div class="heading">Table of Contents</div>
+
+<ul>
+<li><a href="#assert-and-check"><code>Assert</code> and <code>Check</code></a></li>
+<li><a href="#more-assert-helpers">More <code>assert</code> helpers</a></li>
+<li><a href="#cmp-dot-comparison"><code>cmp.Comparison</code></a>
+
+<ul>
+<li><a href="#equality-with-equal-and-deepequal">Equality with <code>Equal</code> and <code>DeepEqual</code></a></li>
+<li><a href="#errors-with-error-errorcontains-and-errortype">Errors with <code>Error</code>, <code>ErrorContains</code> and <code>ErrorType</code></a></li>
+<li><a href="#bonus-with-panics">Bonus with <code>Panics</code></a></li>
+<li><a href="#miscellaneous-with-contains-len-and-nil">Miscellaneous with <code>Contains</code>, <code>Len</code> and <code>Nil</code></a></li>
+<li><a href="#write-your-own-comparison">Write your own <code>Comparison</code></a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion…</a></li>
+</ul>
+
+<p></div>
+<!--endtoc--></p>
 
 <h2 id="assert-and-check"><code>Assert</code> and <code>Check</code></h2>
 
@@ -213,7 +243,7 @@ an option for that.</p>
 	<span class="kd">const</span> <span class="nx">threshold</span> <span class="p">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="nx">time</span><span class="p">.</span><span class="nx">Second</span>
 
 	<span class="c1">// Apply withinThreshold only for the following fields
-</span><span class="c1"></span>	<span class="nx">metaTimeFields</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">path</span> <span class="nx">cmp</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span> <span class="kt">bool</span> <span class="p">{</span>
+</span><span class="c1"></span>	<span class="nx">metaTimeFields</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">path</span> <span class="nx">cmp</span><span class="p">.</span><span class="nx">Path</span><span class="p">)</span><span class="kt">bool</span> <span class="p">{</span>
 		<span class="k">switch</span> <span class="nx">path</span><span class="p">.</span><span class="nx">String</span><span class="p">()</span> <span class="p">{</span>
 		<span class="k">case</span> <span class="s">&#34;Meta.CreatedAt&#34;</span><span class="p">,</span> <span class="s">&#34;Meta.UpdatedAt&#34;</span><span class="p">:</span>
 			<span class="k">return</span> <span class="kc">true</span>
@@ -264,7 +294,7 @@ Now let&rsquo;s look at <code>ErrorType</code>.</p>
 <span class="nx">assert</span><span class="p">.</span><span class="nx">Check</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">cmp</span><span class="p">.</span><span class="nx">ErrorType</span><span class="p">(</span><span class="nx">foo</span><span class="p">,</span> <span class="nx">StubError</span><span class="p">{}))</span></code></pre></div>
 <h3 id="bonus-with-panics">Bonus with <code>Panics</code></h3>
 
-<p>Sometimes, a code is supposed to <em>panic</em>, see <a href="https://golang.org/doc/effective_go.html#panic">Effective Go (#Panic)</a> for more information. And thus, you may want to make
+<p>Sometimes, a code is supposed to <em>panic</em>, see <a href="https://golang.org/doc/effective%5Fgo.html#panic">Effective Go (#Panic)</a> for more information. And thus, you may want to make
 sure you&rsquo;re code panics in such cases. It&rsquo;s always a bit tricky to test a code that panic as you have to use a deferred
 function to recover the panic — but then if the panic doesn&rsquo;t happen how do you fail the test ?</p>
 
