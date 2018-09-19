@@ -24,7 +24,7 @@
 &lt;p&gt;Package icmd executes binaries and provides convenient assertions for testing the results.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;After filesystem operations (seen in &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/&#34;&gt;&lt;code&gt;fs&lt;/code&gt;&lt;/a&gt;), antoher common use-case in tests is to
+&lt;p&gt;After file-system operations (seen in &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/&#34;&gt;&lt;code&gt;fs&lt;/code&gt;&lt;/a&gt;), another common use-case in tests is to
 &lt;strong&gt;execute a command&lt;/strong&gt;. The reasons can be you&amp;rsquo;re testing the &lt;code&gt;cli&lt;/code&gt; you&amp;rsquo;re currently writing
 or you need to setup something using a command line. A classic execution in a test might
 lookup like the following.&lt;/p&gt;
@@ -194,7 +194,7 @@ on several &lt;code&gt;docker/*&lt;/code&gt; projects (the engine, the cli)…&l
 &lt;hr /&gt;
 
 &lt;ol&gt;
-&lt;li id=&#34;fn:fn-1&#34;&gt;The &lt;code&gt;icmd&lt;/code&gt; package is one of the oldest &lt;code&gt;gotest.tools&lt;/code&gt; package, that comes from the &lt;a href=&#34;https://github.com/docker/docker&#34;&gt;&lt;code&gt;docker/docker&lt;/code&gt;&lt;/a&gt; initialy. We introduced these &lt;code&gt;CmdOp&lt;/code&gt; but implementations were in &lt;code&gt;docker/docker&lt;/code&gt; at first and we never really updated them.
+&lt;li id=&#34;fn:fn-1&#34;&gt;The &lt;code&gt;icmd&lt;/code&gt; package is one of the oldest &lt;code&gt;gotest.tools&lt;/code&gt; package, that comes from the &lt;a href=&#34;https://github.com/docker/docker&#34;&gt;&lt;code&gt;docker/docker&lt;/code&gt;&lt;/a&gt; initially. We introduced these &lt;code&gt;CmdOp&lt;/code&gt; but implementations were in &lt;code&gt;docker/docker&lt;/code&gt; at first and we never really updated them.
  &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fn-1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -328,7 +328,7 @@ Manifest.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;A &lt;code&gt;Manifest&lt;/code&gt; stores the expected structure and properties of files and directories in a
-filesystem. You can create a &lt;code&gt;Manifest&lt;/code&gt; using either the functions &lt;code&gt;Expected&lt;/code&gt; or
+file-system. You can create a &lt;code&gt;Manifest&lt;/code&gt; using either the functions &lt;code&gt;Expected&lt;/code&gt; or
 &lt;code&gt;ManifestFromDir&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;We&amp;rsquo;re going to focus on the &lt;code&gt;Expected&lt;/code&gt; function, as &lt;code&gt;ManifestFromDir&lt;/code&gt; does pretty much
@@ -350,11 +350,11 @@ them on &lt;code&gt;fs.NewDir&lt;/code&gt;.&lt;/p&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;operationWhichCreatesFiles&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;span class=&#34;nx&#34;&gt;expected&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Expected&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-	&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;one&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;one&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithBytes&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;golden&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;one.golden&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
 	&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithMode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mo&#34;&gt;0600&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
-	&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-		&lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MatchAnyFileContent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+	    &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;WithFile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;config&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MatchAnyFileContent&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 
 &lt;span class=&#34;nx&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;fs&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;Equal&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;path&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;expected&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -386,7 +386,7 @@ concept for you.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Package &lt;code&gt;golden&lt;/code&gt; provides tools for comparing large mutli-line strings.&lt;/p&gt;
 
-&lt;p&gt;Golden files are files in the &lt;code&gt;./testdata/&lt;/code&gt; subdirectory of the package under test.&lt;/p&gt;
+&lt;p&gt;Golden files are files in the &lt;code&gt;./testdata/&lt;/code&gt; sub-directory of the package under test.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;In the previous article, we described the problem, and how to fix it by writing a small
@@ -440,7 +440,7 @@ counter-part &lt;code&gt;golden.Assert&lt;/code&gt; and &lt;code&gt;golden.Asser
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion…&lt;/h2&gt;
 
 &lt;p&gt;… that&amp;rsquo;s a wrap. As for &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt;, this is a small package, so the post was going to be
-quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
+quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;https://vincent.demeester.fr/posts/2017--04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
 in a simple way.&lt;/p&gt;
 </description>
     </item>

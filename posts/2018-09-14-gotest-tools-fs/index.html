@@ -51,6 +51,9 @@
 	  
 	  <li class="tag tag-golang"><a href="/tags/#golang">golang<span>9</span></a></li>
 	  
+	  
+	  <li class="tag tag-filesystem"><a href="/tags/#filesystem">filesystem<span>1</span></a></li>
+	  
 	  <br/>
 	  
 	</ul>
@@ -178,7 +181,7 @@ Manifest.</p>
 </blockquote>
 
 <p>A <code>Manifest</code> stores the expected structure and properties of files and directories in a
-filesystem. You can create a <code>Manifest</code> using either the functions <code>Expected</code> or
+file-system. You can create a <code>Manifest</code> using either the functions <code>Expected</code> or
 <code>ManifestFromDir</code>.</p>
 
 <p>We&rsquo;re going to focus on the <code>Expected</code> function, as <code>ManifestFromDir</code> does pretty much
@@ -200,11 +203,11 @@ them on <code>fs.NewDir</code>.</p>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">path</span> <span class="o">:=</span> <span class="nx">operationWhichCreatesFiles</span><span class="p">()</span>
 <span class="nx">expected</span> <span class="o">:=</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">Expected</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span>
-	<span class="nx">fs</span><span class="p">.</span><span class="nx">WithFile</span><span class="p">(</span><span class="s">&#34;one&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">WithFile</span><span class="p">(</span><span class="s">&#34;one&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span>
 	<span class="nx">fs</span><span class="p">.</span><span class="nx">WithBytes</span><span class="p">(</span><span class="nx">golden</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="s">&#34;one.golden&#34;</span><span class="p">)),</span>
 	<span class="nx">fs</span><span class="p">.</span><span class="nx">WithMode</span><span class="p">(</span><span class="mo">0600</span><span class="p">)),</span>
-	<span class="nx">fs</span><span class="p">.</span><span class="nx">WithDir</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">,</span>
-		<span class="nx">fs</span><span class="p">.</span><span class="nx">WithFile</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">MatchAnyFileContent</span><span class="p">)),</span>
+    <span class="nx">fs</span><span class="p">.</span><span class="nx">WithDir</span><span class="p">(</span><span class="s">&#34;data&#34;</span><span class="p">,</span>
+	    <span class="nx">fs</span><span class="p">.</span><span class="nx">WithFile</span><span class="p">(</span><span class="s">&#34;config&#34;</span><span class="p">,</span> <span class="s">&#34;&#34;</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">MatchAnyFileContent</span><span class="p">)),</span>
 <span class="p">)</span>
 
 <span class="nx">assert</span><span class="p">.</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">expected</span><span class="p">))</span></code></pre></div>
