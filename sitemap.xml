@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vincent.demeester.fr/posts/2018-12-16-link/</loc>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</loc>
     <lastmod>2018-09-18T00:00:00+02:00</lastmod>
   </url>
@@ -214,7 +219,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/categories/developement/</loc>
-    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -304,7 +309,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/golang/</loc>
-    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -460,7 +465,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/posts/</loc>
-    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -524,7 +529,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/testing/</loc>
-    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -554,7 +559,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/</loc>
-    <lastmod>2018-09-18T00:00:00+02:00</lastmod>
+    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
