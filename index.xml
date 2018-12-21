@@ -12,7 +12,9 @@
     
     <item>
       <title>Go testing style guide</title>
-      <link>https://vincent.demeester.fr/posts/2018-12-16-link/</link>
+      
+      <link>https://arp242.net/weblog/go-testing-style.html</link>
+      
       <pubDate>Sun, 16 Dec 2018 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-12-16-link/</guid>
@@ -21,7 +23,9 @@
     
     <item>
       <title>Golang testing — gotest.tools icmd</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</link>
+      
       <pubDate>Tue, 18 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-09-18-gotest-tools-icmd/</guid>
@@ -212,7 +216,9 @@ on several &lt;code&gt;docker/*&lt;/code&gt; projects (the engine, the cli)…&l
     
     <item>
       <title>Golang testing — gotest.tools fs</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/</link>
+      
       <pubDate>Fri, 14 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-09-14-gotest-tools-fs/</guid>
@@ -381,7 +387,9 @@ without the noise that usually comes with it.&lt;/p&gt;
     
     <item>
       <title>Golang testing — gotest.tools golden</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</link>
+      
       <pubDate>Thu, 06 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-09-06-gotest-tools-golden/</guid>
@@ -456,7 +464,9 @@ in a simple way.&lt;/p&gt;
     
     <item>
       <title>Golang testing — gotest.tools skip</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</link>
+      
       <pubDate>Sat, 01 Sep 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/</guid>
@@ -515,7 +525,9 @@ it&amp;rsquo;s dead code. &lt;em&gt;But more on that in later posts 😉&lt;/em&
     
     <item>
       <title>Golang testing — gotest.tools assertions</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</link>
+      
       <pubDate>Thu, 16 Aug 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-08-16-gotest-tools-assertions/</guid>
@@ -835,7 +847,9 @@ error inside of your &lt;code&gt;Comparison&lt;/code&gt; function, you can use &
     
     <item>
       <title>Golang testing — gotest.tools introduction</title>
+      
       <link>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</link>
+      
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-07-28-gotest-tools-intro/</guid>
@@ -877,7 +891,9 @@ why create a new one ? There is multiple reason for it, most of them can be seen
     
     <item>
       <title>Golang testing — golden file</title>
+      
       <link>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</link>
+      
       <pubDate>Sat, 22 Apr 2017 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/</guid>
@@ -1117,7 +1133,9 @@ the expected content).
     
     <item>
       <title>Golang testing — functional arguments for wonderful builders</title>
+      
       <link>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</link>
+      
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2017-01-01-go-testing-functionnal-builders/</guid>
@@ -1583,7 +1601,9 @@ nothing tied to &lt;code&gt;testing&lt;/code&gt;.&lt;/li&gt;
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
+      
       <link>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</link>
+      
       <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2016-09-18-firefox-places-and-bookmarks/</guid>
@@ -1799,7 +1819,9 @@ vous utilisez firefox &lt;code&gt;\o/&lt;/code&gt;.
     
     <item>
       <title>Gestion de configuration : introduction</title>
+      
       <link>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</link>
+      
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2015-07-31-config-managment-intro/</guid>
@@ -2061,7 +2083,9 @@ spécifiques pour les différents outils (comme &lt;a href=&#34;https://github.c
     
     <item>
       <title>Docker 1.6 et son écosystème</title>
+      
       <link>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</link>
+      
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2015-06-01-docker-1.6-ecosystem/</guid>
@@ -2555,7 +2579,9 @@ Nous allons finir avec une liste non-exhaustive et un peu orientée des évènem
     
     <item>
       <title>Migration vers hugo</title>
+      
       <link>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</link>
+      
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2015-05-09-migration-to-hugo/</guid>
@@ -2665,7 +2691,9 @@ Pour me simplifier la vie, il me resterais à démarrer et arrêter facilement &
     
     <item>
       <title>Orgmode et Jekyll</title>
+      
       <link>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</link>
+      
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2015-05-01-orgmode-et-jekyll/</guid>
@@ -2809,7 +2837,9 @@ C&#39;est tout pour le moment, la fréquence des billets de ce blog devrait s&#3
     
     <item>
       <title>Docker 1.3 et son écosystème</title>
+      
       <link>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</link>
+      
       <pubDate>Mon, 27 Oct 2014 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2014-10-27-docker-1.3-ecosystem/</guid>
@@ -3076,7 +3106,9 @@ de son écosystème. Rendez-vous mi-décembre pour faire un petit retour
     
     <item>
       <title>Redesign Et Résolutions</title>
+      
       <link>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</link>
+      
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2014-03-24-redesign-et-r%C3%A9solutions/</guid>
@@ -3129,7 +3161,9 @@ et à long terme, faire des courses de footing (i.e. 10km, Paris-Versaille, Semi
     
     <item>
       <title>Podcasts</title>
+      
       <link>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</link>
+      
       <pubDate>Sat, 12 Oct 2013 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2013-10-12-podcasts/</guid>
@@ -3199,7 +3233,9 @@ trance (que j&amp;rsquo;aime bien).&lt;/p&gt;
     
     <item>
       <title>Maven Tmpfs</title>
+      
       <link>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</link>
+      
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2013-09-08-maven-tmpfs/</guid>
@@ -3363,7 +3399,9 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Gollum Comme Wiki Personnel</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</link>
+      
       <pubDate>Sun, 16 Dec 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-12-16-gollum-comme-wiki-personnel/</guid>
@@ -3414,7 +3452,9 @@ et utilise &lt;code&gt;-Dexternal.build.root=/tmp/m2/&lt;/code&gt; avec la comma
     
     <item>
       <title>Maven Release Gitflow</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</link>
+      
       <pubDate>Mon, 23 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-07-23-maven-release-gitflow/</guid>
@@ -3502,7 +3542,9 @@ verify that the &lt;code&gt;pom.xml&lt;/code&gt; has the right configuration opt
     
     <item>
       <title>News</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-07-21-news/</link>
+      
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-07-21-news/</guid>
@@ -3555,7 +3597,9 @@ noms).&lt;/li&gt;
     
     <item>
       <title>Jekyll Forman Guard Bundler</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</link>
+      
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-05-13-jekyll-foreman-guard-bundler/</guid>
@@ -3633,7 +3677,9 @@ directory and edit your files.&lt;/p&gt;
     
     <item>
       <title>Gitolite quick and dirty mirror</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</link>
+      
       <pubDate>Tue, 08 May 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-05-08-gitolite-quick-and-dirty-mirror/</guid>
@@ -3760,7 +3806,9 @@ repository.&lt;/p&gt;
     
     <item>
       <title>Reinit and Jekyll</title>
+      
       <link>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</link>
+      
       <pubDate>Mon, 07 May 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2012-05-07-reinit-and-jekyll/</guid>
@@ -3814,7 +3862,9 @@ update_gems&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>About</title>
+      
       <link>https://vincent.demeester.fr/about/</link>
+      
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/about/</guid>
@@ -3823,7 +3873,9 @@ update_gems&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Archive</title>
+      
       <link>https://vincent.demeester.fr/archive/</link>
+      
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/archive/</guid>
@@ -3832,7 +3884,9 @@ update_gems&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Categories</title>
+      
       <link>https://vincent.demeester.fr/categories/</link>
+      
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/categories/</guid>
@@ -3841,7 +3895,9 @@ update_gems&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     
     <item>
       <title>Tags</title>
+      
       <link>https://vincent.demeester.fr/tags/</link>
+      
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/</guid>
