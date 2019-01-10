@@ -146,6 +146,15 @@
     </item>
     
     <item>
+      <title>Fatal</title>
+      <link>https://vincent.demeester.fr/tags/fatal/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/fatal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Featured</title>
       <link>https://vincent.demeester.fr/tags/featured/</link>
       <pubDate>Sat, 28 Jul 2018 00:00:00 +0200</pubDate>
@@ -247,7 +256,7 @@
     <item>
       <title>Golang</title>
       <link>https://vincent.demeester.fr/tags/golang/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 +0100</pubDate>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/golang/</guid>
       <description></description>
@@ -362,6 +371,15 @@
     </item>
     
     <item>
+      <title>Log</title>
+      <link>https://vincent.demeester.fr/tags/log/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Machine</title>
       <link>https://vincent.demeester.fr/tags/machine/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
@@ -430,6 +448,15 @@
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/orgmode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Panic</title>
+      <link>https://vincent.demeester.fr/tags/panic/</link>
+      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/panic/</guid>
       <description></description>
     </item>
     
