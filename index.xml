@@ -5,10 +5,194 @@
     <link>https://vincent.demeester.fr/</link>
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Jan 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018 year review</title>
+      
+      <link>https://vincent.demeester.fr/posts/2019-01-20-2018-year-review/</link>
+      
+      <pubDate>Sun, 20 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-01-20-2018-year-review/</guid>
+      <description>
+
+&lt;p&gt;Here is my review of 2018, the first of its kind, hopefully not the last 👼. I saw
+some&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fn-1&#34;&gt;&lt;a href=&#34;#fn:fn-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;em&gt;2018&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fn-2&#34;&gt;&lt;a href=&#34;#fn:fn-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; reviews&lt;/em&gt;&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fn-3&#34;&gt;&lt;a href=&#34;#fn:fn-3&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; articles&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:fn-4&#34;&gt;&lt;a href=&#34;#fn:fn-4&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; in my Feedly feed and I thought it
+would be a good idea to write my own too.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ll try in the next year — maybe month if I ever want to do monthly reviews — to automate
+some of it ; using the beloved &lt;code&gt;org-mode&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;work&#34;&gt;Work&lt;/h2&gt;
+
+&lt;p&gt;The big change this year is : I changed job 👼. I went from Docker Inc. to Red Hat. I
+needed a change and 5 month in, I think it was the &lt;strong&gt;best choice I made in my life&lt;/strong&gt; so far
+💃. I&amp;rsquo;m doing open-source for a living and best part, I am working remotely (more on that
+later).&lt;/p&gt;
+
+&lt;p&gt;Before that, at Docker Inc., I continued the work I started years before,
+a.k.a. maintaining the Moby project and the docker engine, among other Docker project
+(both open-source and closed-source). I also helped the work on the compose side, from the
+root of &lt;code&gt;docker/compose-on-kubernetes&lt;/code&gt; (before it got open-sourced), to the &lt;code&gt;docker/app&lt;/code&gt;
+experiments.&lt;/p&gt;
+
+&lt;p&gt;At Red Hat, I started to work upstream in the Kubernetes community, mainly on the Knative
+projects. I also work on the Openshift Cloud Function project (and thus team), and those
+fellows are awesome ! Digging more into Openshift, and other part of the Red Hat portfolio
+is a really good learning experience, and it&amp;rsquo;s just the start !&lt;/p&gt;
+
+&lt;p&gt;As stated above, I am now working home, full-time. I could work from home from time to
+time when I was at Docker inc, but working home full-time is another kind of beast. So far
+it is really good, some adjustments were needed but it&amp;rsquo;s for the best. Here is a small
+take on &amp;ldquo;working from home&amp;rdquo;:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s easy to have &lt;strong&gt;no distraction&lt;/strong&gt;, thus having &lt;strong&gt;really productive&lt;/strong&gt; piece of time&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s also &lt;strong&gt;really easy to work long day or really long period of time&lt;/strong&gt;. It&amp;rsquo;s especially
+true if, like me, you work on a distributed team (across multiple timezones).
+
+&lt;ul&gt;
+&lt;li&gt;I ended up using the Pomodoro technique to make sure I move at least few times a day&lt;/li&gt;
+&lt;li&gt;I try to make sure I don&amp;rsquo;t make an habits of checking out work code, email and other
+material after a certain hour in the evening. It&amp;rsquo;s ok to do it sometimes, but for your
+sanity, you need some rest time.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s easy to adapt your day to circumstance. If you got to run errands in the middle of
+the day, it&amp;rsquo;s no big deal. You can take the time back later on.&lt;/li&gt;
+&lt;li&gt;It&amp;rsquo;s so good to have &lt;strong&gt;no&lt;/strong&gt; commmute time. That said I end up &lt;em&gt;walking or taking the bike&lt;/em&gt;
+early morning to clear my head before work 😝.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;personal&#34;&gt;Personal&lt;/h2&gt;
+
+&lt;p&gt;Health wise, it&amp;rsquo;s a mix of good and bad year. The first half was really good, the second
+way less. End of august, I felt something weird in the right knee, and well, turns out my
+internal meniscus is in a real bad shape. Just as before joining Docker, I&amp;rsquo;m gonna need a
+surgery, on the right knee that time. It&amp;rsquo;s gonna affect 2019 (the first half, I&amp;rsquo;m not
+gonna be able to move around much but.. meh, it&amp;rsquo;s life).&lt;/p&gt;
+
+&lt;p&gt;Now that I work from home, I&amp;rsquo;m really glad I got a standing desk at the end of 2017. I
+tend to work standing most of the time &amp;ndash; except when my knee hurts (and most likely for
+few months after the surgery 😅). I invested on a ultrawide screen, to get the same
+experience I had at Docker. And oh boy those screens are good !&lt;/p&gt;
+
+&lt;p&gt;I also try to clean my desk and it&amp;rsquo;s &amp;ldquo;neighboorhood&amp;rdquo;. As I get older, I want less messy
+stuuf (desk, flat, &amp;hellip;). I&amp;rsquo;m leaning towards having less stuff, being commputer related or
+not. It&amp;rsquo;s not minimalism, but it feel good to have less stuff, but stuff that you actually
+use. I still have trouble throwing old computer away, mainly because I fell they can be
+useful in some way.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;img src=&#34;https://vincent.demeester.fr/images/2019/01/desk1.jpg&#34;/&gt; 
+&lt;/figure&gt;
+
+
+&lt;p&gt;This year I migrate all of my &amp;ldquo;infrastructure&amp;rdquo; computer to NixOS. I learned a lot of Nix,
+reworked my configuration multiple time to end up with a &lt;a href=&#34;https://github.com/vdemeester/nixos-configuration.git&#34;&gt;system configuration repository&lt;/a&gt;
+that uses modules, and a &lt;a href=&#34;https://github.com/vdemeester/home.git&#34;&gt;&lt;em&gt;home configuration repository&lt;/em&gt;&lt;/a&gt; (for user configuration). The
+&lt;a href=&#34;https://github.com/vdemeester/home.git&#34;&gt;home&lt;/a&gt; repository uses &lt;a href=&#34;https://github.com/rycee/home-manager.git&#34;&gt;&lt;code&gt;home-manager&lt;/code&gt;&lt;/a&gt; and thus doesn&amp;rsquo;t make any assumption of running on top
+of NixOS. This allows me to have an &lt;em&gt;easy to get&lt;/em&gt; setup on any system that &lt;code&gt;nixpkgs&lt;/code&gt;
+supports (any Linux distribution, Mac OSX, Windows Subsystem Linux). The current
+configuration is not yet optimal but I&amp;rsquo;m pretty happy about what I got :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Custom DNS server @home to make it easier to target local hosts.&lt;/li&gt;
+&lt;li&gt;Local proxies and mirrors for docker images, nixpkgs binary package and go modules to
+eat less bandwidth.&lt;/li&gt;
+&lt;li&gt;Easy to setup VPN using &lt;a href=&#34;https://www.wireguard.com/&#34;&gt;WireGuard&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;File replication using &lt;code&gt;syncthing&lt;/code&gt; and automatic backup on my local NAS.&lt;/li&gt;
+&lt;li&gt;Automatic system upgrade, thanks to NixOS. I&amp;rsquo;ll probably write an article about that
+later on this year.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I started to use &lt;code&gt;todoist&lt;/code&gt; in 2017, and boy, oh boy, it helped me quite a lot ! I&amp;rsquo;m using
+it daily to organize my work and quickly get idea, and &lt;em&gt;todos&lt;/em&gt; out of my head. The main
+problem with it is it&amp;rsquo;s not integrated with another tool I&amp;rsquo;m using daily : Emacs and
+&lt;code&gt;org-mode&lt;/code&gt;. &lt;code&gt;org-mode&lt;/code&gt; is a fantastic piece of software and is, on its own, the main
+reason for me to invest time in Emacs. I&amp;rsquo;m taking note in &lt;code&gt;org-mode&lt;/code&gt;, I write my daily
+standup notes in there too. I end up going back and forth between &lt;code&gt;org-mode&lt;/code&gt; and &lt;code&gt;todoist&lt;/code&gt;
+for those daily standup. I am lazy, I want to automate that. And the best way to do it, is
+to also use &lt;code&gt;org-mode&lt;/code&gt; for task management. I&amp;rsquo;m in a &lt;em&gt;transition&lt;/em&gt; mode right now, but my
+goal for 2019 is to use todoist to take quick note/todo(s) on the move (aka on the phone)
+and use &lt;code&gt;org-mode&lt;/code&gt; for the rest.&lt;/p&gt;
+
+&lt;h2 id=&#34;reading-and-writing&#34;&gt;Reading &amp;amp; Writing&lt;/h2&gt;
+
+&lt;p&gt;I used to like reading, but the past years, I didn&amp;rsquo;t really read that much, except some
+technical books. 2018 in, that respect, is not an exception, I didn&amp;rsquo;t read too much. Worse
+than that, I started some book and stopped at some point, for no apparent reason ; and
+now, I need to start back from the beginning, which, well, is not helping me want to read
+them again.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m trying two thing to counter that and consume more books for the years to come.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;I now have a reading list on my &lt;code&gt;org-mode&lt;/code&gt; files, where I track which one I read and
+when I read them ; and maybe notes too. I have a lot of book on my kindle, that only
+wait for one thing, being read..&lt;/li&gt;
+&lt;li&gt;I subscribed to &lt;a href=&#34;https://www.audible.fr&#34;&gt;Audible&lt;/a&gt; 👼. Working from home, I tend to take a long break after lunch,
+where I&amp;rsquo;m going for a walk, for around an hour. I can&amp;rsquo;t read while walking but I
+definitely can listen - that make audio books perfect for these moments. I also
+alternate between audio books and non-musical podcasts.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;On the writing side, 2017 was a slow year in terms of writing (only 2 posts), 2018 was a
+bit better, 6 posts &amp;ndash; it&amp;rsquo;s a bit cheating, as it was mainly between changing jobs, and
+on a series I still need to finish. I&amp;rsquo;m hoping to write more this year, hence the goals
+I&amp;rsquo;ve set to myself below.&lt;/p&gt;
+
+&lt;h2 id=&#34;2019-goals&#34;&gt;2019 Goals&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Get back on my feet after knee surgery (exercices, …)&lt;/strong&gt; 🏃&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Read at least one book per month (be audible, ebook or paper)&lt;/strong&gt; 📖&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Giving at least a talk (on Knative, containers, nixos, ..)&lt;/strong&gt; 🙊&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t give too much talk in 2018 (at least less than 2017). I&amp;rsquo;m gonna try to get back
+at it this year. The surgery won&amp;rsquo;t help but it&amp;rsquo;s just few months.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;At least 1 video per month&lt;/strong&gt; 📹&lt;/p&gt;
+
+&lt;p&gt;I want to start recording some video, as I feel it&amp;rsquo;s an easier medium than writing and,
+well, I wanna try !&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;At least 1 post per month&lt;/strong&gt; ✍️&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Enhance my emacs skills (aka don&amp;rsquo;t be afraid of the lisp)&lt;/strong&gt; ⌨️&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Emacs for almost anything that doesn&amp;rsquo;t happen in a web browser. But I still
+feel like a newbie. I want to learn more, to write more lisp that help me being even
+more lazier (aka achieve more doing less 😝)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Enhance my Nix(OS) skills&lt;/strong&gt; 🐧&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Learn / master a new language&lt;/strong&gt; 🎽&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m working with Go 90% of my time. I want to master and learn more language. On my list
+are Emacs Lisp, Rust, Typescript and Haskell.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:fn-1&#34;&gt;&lt;a href=&#34;https://punchagan.muse-amuse.in/blog/2018-in-review/&#34;&gt;2018 in Review - Noetic Nought&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fn-1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:fn-2&#34;&gt;&lt;a href=&#34;https://medium.com/@buster/42-dig-deeper-e2278d1fe015&#34;&gt;42 — Dig deeper – Buster Benson – Medium&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fn-2&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:fn-3&#34;&gt;&lt;a href=&#34;https://jvns.ca/blog/2018/12/23/2018--year-in-review/&#34;&gt;2018: Year in review - Julia Evans&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fn-3&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li id=&#34;fn:fn-4&#34;&gt;&lt;a href=&#34;https://writing.natwelch.com/post/685&#34;&gt;Nat? Nat. Nat! | #685 2018 Year in Review&lt;/a&gt;
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:fn-4&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>log.Fatal vs log.Panic · Iskander Sharipov technical blog</title>
