@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nixos on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/nixos/</link>
+    <description>Recent content in Nixos on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0100</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/nixos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>nix run aliases</title>
+      <link>https://vincent.demeester.fr/posts/2019-01-26-nix-run-alias/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-01-26-nix-run-alias/</guid>
+      <description>I use NixOS each and every day, everywhere. One really cool feature of nix is nix-shell and more recently (with nix &amp;gt;= 2.0.0), nix run.
+Usage: nix run &amp;lt;FLAGS&amp;gt;... &amp;lt;INSTALLABLES&amp;gt;... Summary: run a shell in which the specified packages are available. Flags: --arg &amp;lt;NAME&amp;gt; &amp;lt;EXPR&amp;gt; argument to be passed to Nix functions --argstr &amp;lt;NAME&amp;gt; &amp;lt;STRING&amp;gt; string-valued argument to be passed to Nix functions -c, --command &amp;lt;COMMAND&amp;gt; &amp;lt;ARGS&amp;gt; command and arguments to be executed; defaults to &amp;#39;bash&amp;#39; -f, --file &amp;lt;FILE&amp;gt; evaluate FILE rather than the default -i, --ignore-environment clear the entire environment (except those specified with --keep) -I, --include &amp;lt;PATH&amp;gt; add a path to the list of locations used to look up &amp;lt;.</description>
+    </item>
+    
+  </channel>
+</rss>
