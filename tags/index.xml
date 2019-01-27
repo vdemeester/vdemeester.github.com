@@ -5,10 +5,19 @@
     <link>https://vincent.demeester.fr/tags/</link>
     <description>Recent content in Tags on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 16 Aug 2018 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jan 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Alias</title>
+      <link>https://vincent.demeester.fr/tags/alias/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/alias/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Assert</title>
@@ -200,6 +209,15 @@
     </item>
     
     <item>
+      <title>Fish</title>
+      <link>https://vincent.demeester.fr/tags/fish/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/fish/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Foreman</title>
       <link>https://vincent.demeester.fr/tags/foreman/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
@@ -299,6 +317,15 @@
     </item>
     
     <item>
+      <title>Home</title>
+      <link>https://vincent.demeester.fr/tags/home/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/home/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Html</title>
       <link>https://vincent.demeester.fr/tags/html/</link>
       <pubDate>Sat, 09 May 2015 00:00:00 +0000</pubDate>
@@ -389,6 +416,15 @@
     </item>
     
     <item>
+      <title>Manager</title>
+      <link>https://vincent.demeester.fr/tags/manager/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/manager/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Maven</title>
       <link>https://vincent.demeester.fr/tags/maven/</link>
       <pubDate>Sun, 08 Sep 2013 00:00:00 +0000</pubDate>
@@ -439,6 +475,15 @@
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/news/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nix</title>
+      <link>https://vincent.demeester.fr/tags/nix/</link>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/nix/</guid>
       <description></description>
     </item>
     
@@ -553,7 +598,7 @@
     <item>
       <title>Shell</title>
       <link>https://vincent.demeester.fr/tags/shell/</link>
-      <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/shell/</guid>
       <description></description>
