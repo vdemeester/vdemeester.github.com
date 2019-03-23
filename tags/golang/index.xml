@@ -5,10 +5,21 @@
     <link>https://vincent.demeester.fr/tags/golang/</link>
     <description>Recent content in Golang on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 10 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Mar 2019 00:00:00 +0100</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Golang testing — gotest.tools poll</title>
+      <link>https://vincent.demeester.fr/posts/2019-03-23-gotest-tools-poll/</link>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-03-23-gotest-tools-poll/</guid>
+      <description>Let&amp;rsquo;s continue the gotest.tools serie, this time with the poll package.
+ Package poll provides tools for testing asynchronous code.
+ When you write test, you may test a piece of code that work asynchronously, where the state you&amp;rsquo;re expecting is gonna take a bit of time to be achieved. This is especially true when you work on networking or file-system code. And this happens a lot when you write integration (or end-to-end) test, less for unit-tests.</description>
+    </item>
     
     <item>
       <title>log.Fatal vs log.Panic · Iskander Sharipov technical blog</title>

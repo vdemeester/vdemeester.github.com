@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vincent.demeester.fr/posts/2019-03-23-gotest-tools-poll/</loc>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/posts/2019-03-12-link/</loc>
     <lastmod>2019-03-12T00:00:00+00:00</lastmod>
   </url>
@@ -272,7 +277,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/categories/developement/</loc>
-    <lastmod>2019-01-10T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -398,7 +403,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/golang/</loc>
-    <lastmod>2019-01-10T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -595,6 +600,12 @@
   </url>
   
   <url>
+    <loc>https://vincent.demeester.fr/tags/poll/</loc>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/tags/posix/</loc>
     <lastmod>2015-07-31T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -602,7 +613,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/posts/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -684,7 +695,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/testing/</loc>
-    <lastmod>2018-12-16T00:00:00+01:00</lastmod>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -714,7 +725,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
     <priority>0</priority>
   </url>
   

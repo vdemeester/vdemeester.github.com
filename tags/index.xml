@@ -319,7 +319,7 @@
     <item>
       <title>Golang</title>
       <link>https://vincent.demeester.fr/tags/golang/</link>
-      <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/golang/</guid>
       <description></description>
@@ -605,6 +605,15 @@
     </item>
     
     <item>
+      <title>Poll</title>
+      <link>https://vincent.demeester.fr/tags/poll/</link>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/poll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Posix</title>
       <link>https://vincent.demeester.fr/tags/posix/</link>
       <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
@@ -715,7 +724,7 @@
     <item>
       <title>Testing</title>
       <link>https://vincent.demeester.fr/tags/testing/</link>
-      <pubDate>Sun, 16 Dec 2018 00:00:00 +0100</pubDate>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/testing/</guid>
       <description></description>
