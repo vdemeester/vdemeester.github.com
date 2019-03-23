@@ -124,19 +124,19 @@ didn&rsquo;t push anything (so not setting this option would result in a failure
 
 <p>Then run the maven release stuff.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mvn release:prepare               <span class="c1"># change the pom, commit and tag version, and
-</span><span class="c1"></span>                                    <span class="c1"># re-change pom (by incrementing SNAPSHOT version)
-</span><span class="c1"></span>$ mvn release:perform               # get the tagged version, compile and deploy</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mvn release:prepare               <span class="c1"># change the pom, commit and tag version, and</span>
+                                    <span class="c1"># re-change pom (by incrementing SNAPSHOT version)</span>
+$ mvn release:perform               <span class="c1"># get the tagged version, compile and deploy</span></code></pre></div>
 
 <p>And the real fun begins.</p>
 
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git checkout develop              <span class="c1"># get back to the develop branch
-</span><span class="c1"></span>$ git merge --no-ff release/v0.1    <span class="c1"># merge the version back into develop
-</span><span class="c1"></span>$ git checkout master               <span class="c1"># go to the master branch
-</span><span class="c1"></span>$ git merge --no-ff release/v0.1~1  <span class="c1"># merge the version back into master but
-</span><span class="c1"></span>                                    <span class="c1"># the tagged version instead of the release/v0.1 HEAD
-</span><span class="c1"></span>$ git branch -D release/v0.1        <span class="c1"># Removing the release branch
-</span><span class="c1"></span>$ git push --all <span class="o">&amp;&amp;</span> git push --tags # Finally push everything</code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git checkout develop              <span class="c1"># get back to the develop branch</span>
+$ git merge --no-ff release/v0.1    <span class="c1"># merge the version back into develop</span>
+$ git checkout master               <span class="c1"># go to the master branch</span>
+$ git merge --no-ff release/v0.1~1  <span class="c1"># merge the version back into master but</span>
+                                    <span class="c1"># the tagged version instead of the release/v0.1 HEAD</span>
+$ git branch -D release/v0.1        <span class="c1"># Removing the release branch</span>
+$ git push --all <span class="o">&amp;&amp;</span> git push --tags <span class="c1"># Finally push everything</span></code></pre></div>
 
 <p>The real magic here is the <code>git merge --no-ff release/v0.1~1</code> which will
 merge into master the commit before the HEAD of the branch <code>release/v0.1</code>.</p>

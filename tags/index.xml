@@ -65,6 +65,15 @@
     </item>
     
     <item>
+      <title>Buildkit</title>
+      <link>https://vincent.demeester.fr/tags/buildkit/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/buildkit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Bundler</title>
       <link>https://vincent.demeester.fr/tags/bundler/</link>
       <pubDate>Sun, 13 May 2012 00:00:00 +0000</pubDate>
@@ -110,6 +119,15 @@
     </item>
     
     <item>
+      <title>Contracts</title>
+      <link>https://vincent.demeester.fr/tags/contracts/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/contracts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Cyclisme</title>
       <link>https://vincent.demeester.fr/tags/cyclisme/</link>
       <pubDate>Sat, 21 Jul 2012 00:00:00 +0000</pubDate>
@@ -130,7 +148,7 @@
     <item>
       <title>Development</title>
       <link>https://vincent.demeester.fr/tags/development/</link>
-      <pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/development/</guid>
       <description></description>
@@ -139,7 +157,7 @@
     <item>
       <title>Docker</title>
       <link>https://vincent.demeester.fr/tags/docker/</link>
-      <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/docker/</guid>
       <description></description>
@@ -281,6 +299,24 @@
     </item>
     
     <item>
+      <title>Go</title>
+      <link>https://vincent.demeester.fr/tags/go/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go2</title>
+      <link>https://vincent.demeester.fr/tags/go2/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/go2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Golang</title>
       <link>https://vincent.demeester.fr/tags/golang/</link>
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
@@ -376,6 +412,15 @@
       <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/images/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Interfaces</title>
+      <link>https://vincent.demeester.fr/tags/interfaces/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/interfaces/</guid>
       <description></description>
     </item>
     
@@ -643,7 +688,7 @@
     <item>
       <title>Software</title>
       <link>https://vincent.demeester.fr/tags/software/</link>
-      <pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/software/</guid>
       <description></description>

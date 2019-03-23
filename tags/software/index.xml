@@ -5,10 +5,37 @@
     <link>https://vincent.demeester.fr/tags/software/</link>
     <description>Recent content in Software on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 27 Jan 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 12 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Go2 Contracts Go Too Far · npf.io</title>
+      <link>https://vincent.demeester.fr/posts/2019-03-12-link/</link>
+      <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-03-12-link/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go Interfaces - fREW Schmidt&#39;s Foolish Manifesto</title>
+      <link>https://vincent.demeester.fr/posts/2019-02-25-link/</link>
+      <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-02-25-link/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>$ docker build -f Mockerfile.yaml .</title>
+      <link>https://vincent.demeester.fr/posts/2019-02-15-link/</link>
+      <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-02-15-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Self-care tips for new developers</title>

@@ -75,14 +75,14 @@
 <strong>execute a command</strong>. The reasons can be you&rsquo;re testing the <code>cli</code> you&rsquo;re currently writing
 or you need to setup something using a command line. A classic execution in a test might
 lookup like the following.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&#34;echo&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">cmd</span> <span class="o">:=</span> <span class="nx">exec</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;echo&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">)</span>
 <span class="nx">cmd</span><span class="p">.</span><span class="nx">Stout</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">stdout</span>
 <span class="nx">cmd</span><span class="p">.</span><span class="nx">Env</span> <span class="p">=</span> <span class="nx">env</span>
-<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nx">Run</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
-	<span class="nx">t</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">cmd</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+	<span class="nx">t</span><span class="p">.</span><span class="nf">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="k">if</span> <span class="nb">string</span><span class="p">(</span><span class="nx">stdout</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#34;foo&#34;</span> <span class="p">{</span>
-	<span class="nx">t</span><span class="p">.</span><span class="nx">Fatalf</span><span class="p">(</span><span class="s">&#34;expected: foo, got %s&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">stdout</span><span class="p">))</span>
+	<span class="nx">t</span><span class="p">.</span><span class="nf">Fatalf</span><span class="p">(</span><span class="s">&#34;expected: foo, got %s&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">stdout</span><span class="p">))</span>
 <span class="p">}</span></code></pre></div>
 <p>The package <code>icmd</code> is there to ease your pain (as usual 😉) — we used <em>the name <code>icmd</code></em>
 instead of <code>cmd</code> because it&rsquo;s a pretty common identifier in Go source code, thus would be
@@ -107,13 +107,13 @@ about <code>Assert</code> in the next section 👼.</p>
 
 <p>The simplest way to create and run a command is using <code>RunCommand</code>, it has the same
 signature as <code>os/exec.Command</code>. A simple command execution goes as below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCommand</span><span class="p">(</span><span class="s">&#34;echo&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">).</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Sucess</span><span class="p">)</span></code></pre></div>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCommand</span><span class="p">(</span><span class="s">&#34;echo&#34;</span><span class="p">,</span> <span class="s">&#34;foo&#34;</span><span class="p">).</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Sucess</span><span class="p">)</span></code></pre></div>
 <p>Sometimes, you need to customize the command a bit more, like adding some environment
 variable. In those case, you are going to use <code>RunCmd</code>, it takes a <code>Cmd</code> and operators.
 Let&rsquo;s look at those functions.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nx">RunCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="nx">Cmd</span><span class="p">,</span> <span class="nx">cmdOperators</span> <span class="o">...</span><span class="nx">CmdOp</span><span class="p">)</span> <span class="o">*</span><span class="nx">Result</span>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">RunCmd</span><span class="p">(</span><span class="nx">cmd</span> <span class="nx">Cmd</span><span class="p">,</span> <span class="nx">cmdOperators</span> <span class="o">...</span><span class="nx">CmdOp</span><span class="p">)</span> <span class="o">*</span><span class="nx">Result</span>
 
-<span class="kd">func</span> <span class="nx">Command</span><span class="p">(</span><span class="nx">command</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="nx">Cmd</span>
+<span class="kd">func</span> <span class="nf">Command</span><span class="p">(</span><span class="nx">command</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">args</span> <span class="o">...</span><span class="kt">string</span><span class="p">)</span> <span class="nx">Cmd</span>
 
 <span class="kd">type</span> <span class="nx">Cmd</span> <span class="kd">struct</span> <span class="p">{</span>
 	<span class="nx">Command</span> <span class="p">[]</span><span class="kt">string</span>
@@ -128,18 +128,18 @@ time I wrote this post, the <code>icmd</code> package doesn&rsquo;t contains too
 propose two version for each example : one with <code>CmdOpt</code> present in <a href="https://github.com/gotestyourself/gotest.tools/pull/122">this PR</a> and one
 without them.</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// With
-</span><span class="c1"></span><span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&#34;sh&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;echo $FOO&#34;</span><span class="p">),</span>
-	<span class="nx">icmd</span><span class="p">.</span><span class="nx">WithEnv</span><span class="p">(</span><span class="s">&#34;FOO=bar&#34;</span><span class="p">,</span> <span class="s">&#34;BAR=baz&#34;</span><span class="p">),</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Dir</span><span class="p">(</span><span class="s">&#34;/tmp&#34;</span><span class="p">),</span>
-	<span class="nx">icmd</span><span class="p">.</span><span class="nx">WithTimeout</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">),</span>
-<span class="p">).</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span>
+</span><span class="c1"></span><span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;sh&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;echo $FOO&#34;</span><span class="p">),</span>
+	<span class="nx">icmd</span><span class="p">.</span><span class="nf">WithEnv</span><span class="p">(</span><span class="s">&#34;FOO=bar&#34;</span><span class="p">,</span> <span class="s">&#34;BAR=baz&#34;</span><span class="p">),</span> <span class="nx">icmd</span><span class="p">.</span><span class="nf">Dir</span><span class="p">(</span><span class="s">&#34;/tmp&#34;</span><span class="p">),</span>
+	<span class="nx">icmd</span><span class="p">.</span><span class="nf">WithTimeout</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">),</span>
+<span class="p">).</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span>
 
 <span class="c1">// Without
-</span><span class="c1"></span><span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Cmd</span><span class="p">{</span>
+</span><span class="c1"></span><span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Cmd</span><span class="p">{</span>
 	<span class="nx">Command</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;sh&#34;</span><span class="p">,</span> <span class="s">&#34;-c&#34;</span><span class="p">,</span> <span class="s">&#34;echo $FOO&#34;</span><span class="p">},</span>
 	<span class="nx">Env</span><span class="p">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">&#34;FOO=bar&#34;</span><span class="p">,</span> <span class="s">&#34;BAR=baz&#34;</span><span class="p">},</span>
 	<span class="nx">Dir</span><span class="p">:</span> <span class="s">&#34;/tmp&#34;</span><span class="p">,</span>
 	<span class="nx">Timeout</span><span class="p">:</span> <span class="mi">10</span><span class="o">*</span><span class="nx">time</span><span class="p">.</span><span class="nx">Second</span><span class="p">,</span>
-<span class="p">}).</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span></code></pre></div>
+<span class="p">}).</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span></code></pre></div>
 <p>As usual, the intent is clear, it&rsquo;s simple to read and composable (with <code>CmdOp</code>&rsquo;s).</p>
 
 <h2 id="assertions">Assertions</h2>
@@ -179,24 +179,24 @@ stderr, stdout)</li>
 <p><code>Success</code> is a constant that defines a success — it&rsquo;s an exit code of <code>0</code>, didn&rsquo;t timeout,
 no error. There is also the <code>None</code> constant, that should be used for <code>Out</code> or <code>Err</code>, to
 specify that we don&rsquo;t want any content for those standard outputs.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/not/exist&#34;</span><span class="p">)).</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/not/exist&#34;</span><span class="p">)).</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
 	<span class="nx">ExitCode</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 	<span class="nx">Err</span><span class="p">:</span>      <span class="s">&#34;cat: /does/not/exist: No such file or directory&#34;</span><span class="p">,</span>
 <span class="p">})</span>
 
 <span class="c1">// In case of success, we may want to do something with the result
-</span><span class="c1"></span><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCommand</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/exist&#34;</span><span class="p">)</span>
-<span class="nx">result</span><span class="p">.</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span>
+</span><span class="c1"></span><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCommand</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/exist&#34;</span><span class="p">)</span>
+<span class="nx">result</span><span class="p">.</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">)</span>
 <span class="c1">// Read the output line by line
-</span><span class="c1"></span><span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">()))</span>
-<span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="c1"></span><span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nf">Stdout</span><span class="p">()))</span>
+<span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
 	<span class="c1">// Do something with it
 </span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <p>If the <code>Result</code> doesn&rsquo;t map the <code>Expected</code>, a test failure will happen with a useful
 message that will contains the executed command and what differs between the result and
 the expectation.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCommand</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
-<span class="nx">result</span><span class="p">.</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCommand</span><span class="p">(</span><span class="err">…</span><span class="p">)</span>
+<span class="nx">result</span><span class="p">.</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
 		<span class="nx">ExitCode</span><span class="p">:</span> <span class="mi">101</span><span class="p">,</span>
 		<span class="nx">Out</span><span class="p">:</span>      <span class="s">&#34;Something else&#34;</span><span class="p">,</span>
 		<span class="nx">Err</span><span class="p">:</span>      <span class="nx">None</span><span class="p">,</span>
@@ -217,18 +217,18 @@ the expectation.</p>
 use it easily with the <code>assert</code> package. As written in a <a href="/posts/2018-08-16-gotest-tools-assertions/">previous post (about the <code>assert</code>
 package)</a>, I tend prefer to use <code>cmp.Comparison</code>. Let&rsquo;s convert the above examples using
 <code>assert</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Command</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/not/exist&#34;</span><span class="p">))</span>
-<span class="nx">assert</span><span class="p">.</span><span class="nx">Check</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
+<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCmd</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nf">Command</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/not/exist&#34;</span><span class="p">))</span>
+<span class="nx">assert</span><span class="p">.</span><span class="nf">Check</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Expected</span><span class="p">{</span>
 	<span class="nx">ExitCode</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
 	<span class="nx">Err</span><span class="p">:</span>      <span class="s">&#34;cat: /does/not/exist: No such file or directory&#34;</span><span class="p">,</span>
 <span class="p">}))</span>
 
 <span class="c1">// In case of success, we may want to do something with the result
-</span><span class="c1"></span><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nx">RunCommand</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/exist&#34;</span><span class="p">)</span>
-<span class="nx">assert</span><span class="p">.</span><span class="nx">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nx">Equal</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">))</span>
+</span><span class="c1"></span><span class="nx">result</span> <span class="o">:=</span> <span class="nx">icmd</span><span class="p">.</span><span class="nf">RunCommand</span><span class="p">(</span><span class="s">&#34;cat&#34;</span><span class="p">,</span> <span class="s">&#34;/does/exist&#34;</span><span class="p">)</span>
+<span class="nx">assert</span><span class="p">.</span><span class="nf">Assert</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">result</span><span class="p">.</span><span class="nf">Equal</span><span class="p">(</span><span class="nx">icmd</span><span class="p">.</span><span class="nx">Success</span><span class="p">))</span>
 <span class="c1">// Read the output line by line
-</span><span class="c1"></span><span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nx">NewScanner</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">Stdout</span><span class="p">()))</span>
-<span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nx">Scan</span><span class="p">()</span> <span class="p">{</span>
+</span><span class="c1"></span><span class="nx">scanner</span> <span class="o">:=</span> <span class="nx">bufio</span><span class="p">.</span><span class="nf">NewScanner</span><span class="p">(</span><span class="nx">strings</span><span class="p">.</span><span class="nf">NewReader</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nf">Stdout</span><span class="p">()))</span>
+<span class="k">for</span> <span class="nx">scanner</span><span class="p">.</span><span class="nf">Scan</span><span class="p">()</span> <span class="p">{</span>
 	<span class="c1">// Do something with it
 </span><span class="c1"></span><span class="p">}</span></code></pre></div>
 <h2 id="conclusion">Conclusion…</h2>

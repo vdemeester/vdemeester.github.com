@@ -90,8 +90,8 @@ why create a new one ? There is multiple reason for it, most of them can be seen
 
 <p><a href="https://github.com/dnephin/">Daniel</a> also wrote a very useful converter if your code base is currently using <code>testify</code> : <code>gty-migrate-from-testify</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh">$ go get -u gotest.tools/assert/cmd/gty-migrate-from-testify
-<span class="c1"># […]
-</span><span class="c1"></span>$ go list <span class="se">\
+<span class="c1"># […]</span>
+$ go list <span class="se">\
 </span><span class="se"></span>     -f <span class="s1">&#39;{{.ImportPath}} {{if .XTestGoFiles}}{{&#34;\n&#34;}}{{.ImportPath}}_test{{end}}&#39;</span> <span class="se">\
 </span><span class="se"></span>     ./... <span class="p">|</span> xargs gty-migrate-from-testify</code></pre></div>
 <p>In the next post, let&rsquo;s dig into the assertion part of the library, package <code>assert</code> 👼.</p>

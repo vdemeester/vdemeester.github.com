@@ -80,17 +80,17 @@ returns a boolean, <strong>or</strong> an expression.</p>
 </span><span class="c1">//   --- SKIP: TestName (0.00s)
 </span><span class="c1">//           skip.go:19: MissingFeature
 </span><span class="c1"></span><span class="kd">var</span> <span class="nx">MissingFeature</span> <span class="kt">bool</span>
-<span class="nx">skip</span><span class="p">.</span><span class="nx">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">MissingFeature</span><span class="p">)</span>
+<span class="nx">skip</span><span class="p">.</span><span class="nf">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">MissingFeature</span><span class="p">)</span>
 
 <span class="c1">// function
 </span><span class="c1">//   --- SKIP: TestName (0.00s)
 </span><span class="c1">//           skip.go:19: !IsExperimentalDaemon(dockerClient): daemon is not experimental
-</span><span class="c1"></span><span class="nx">skip</span><span class="p">.</span><span class="nx">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">IsExperimentalDaemon</span><span class="p">(</span><span class="nx">dockerClient</span><span class="p">),</span> <span class="s">&#34;daemon is not experimental&#34;</span><span class="p">)</span>
+</span><span class="c1"></span><span class="nx">skip</span><span class="p">.</span><span class="nf">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nf">IsExperimentalDaemon</span><span class="p">(</span><span class="nx">dockerClient</span><span class="p">),</span> <span class="s">&#34;daemon is not experimental&#34;</span><span class="p">)</span>
 
 <span class="c1">// expression
 </span><span class="c1">//   --- SKIP: TestName (0.00s)
 </span><span class="c1">//           skip.go:19: apiVersion &lt; version(&#34;v1.24&#34;)
-</span><span class="c1"></span><span class="nx">skip</span><span class="p">.</span><span class="nx">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">apiVersion</span> <span class="p">&lt;</span> <span class="nx">version</span><span class="p">(</span><span class="s">&#34;v1.24&#34;</span><span class="p">))</span></code></pre></div>
+</span><span class="c1"></span><span class="nx">skip</span><span class="p">.</span><span class="nf">If</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span> <span class="nx">apiVersion</span> <span class="p">&lt;</span> <span class="nf">version</span><span class="p">(</span><span class="s">&#34;v1.24&#34;</span><span class="p">))</span></code></pre></div>
 <p>There is few elements to note though :</p>
 
 <ul>
