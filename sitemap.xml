@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vincent.demeester.fr/posts/2019-03-24-link/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/posts/2019-03-23-gotest-tools-poll/</loc>
     <lastmod>2019-03-23T00:00:00+01:00</lastmod>
   </url>
@@ -282,14 +287,14 @@
   </url>
   
   <url>
-    <loc>https://vincent.demeester.fr/tags/development/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+    <loc>https://vincent.demeester.fr/categories/development/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://vincent.demeester.fr/categories/development/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+    <loc>https://vincent.demeester.fr/tags/development/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -356,6 +361,12 @@
   <url>
     <loc>https://vincent.demeester.fr/tags/foreman/</loc>
     <lastmod>2012-05-13T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vincent.demeester.fr/tags/functional/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -613,13 +624,19 @@
   
   <url>
     <loc>https://vincent.demeester.fr/posts/</loc>
-    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vincent.demeester.fr/tags/productivity/</loc>
     <lastmod>2019-01-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://vincent.demeester.fr/tags/programming/</loc>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -667,7 +684,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/software/</loc>
-    <lastmod>2019-03-12T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -725,7 +742,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/</loc>
-    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
+    <lastmod>2019-03-24T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
