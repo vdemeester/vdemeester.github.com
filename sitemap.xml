@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vincent.demeester.fr/posts/2019-03-27-link/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/posts/2019-03-26-link/</loc>
     <lastmod>2019-03-26T00:00:00+00:00</lastmod>
   </url>
@@ -280,6 +285,12 @@
   </url>
   
   <url>
+    <loc>https://vincent.demeester.fr/tags/craftmanship/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://vincent.demeester.fr/tags/cyclisme/</loc>
     <lastmod>2012-07-21T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -299,13 +310,13 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/development/</loc>
-    <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vincent.demeester.fr/categories/development/</loc>
-    <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -641,7 +652,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/posts/</loc>
-    <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -707,7 +718,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/software/</loc>
-    <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -735,7 +746,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/tags/testing/</loc>
-    <lastmod>2019-03-23T00:00:00+01:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -765,7 +776,7 @@
   
   <url>
     <loc>https://vincent.demeester.fr/</loc>
-    <lastmod>2019-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
