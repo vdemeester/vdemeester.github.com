@@ -166,7 +166,7 @@
     <item>
       <title>Development</title>
       <link>https://vincent.demeester.fr/tags/development/</link>
-      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/development/</guid>
       <description></description>
@@ -490,7 +490,7 @@
     <item>
       <title>Linux</title>
       <link>https://vincent.demeester.fr/tags/linux/</link>
-      <pubDate>Fri, 31 Jul 2015 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/linux/</guid>
       <description></description>
@@ -511,6 +511,15 @@
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/machine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macos</title>
+      <link>https://vincent.demeester.fr/tags/macos/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/macos/</guid>
       <description></description>
     </item>
     
@@ -580,7 +589,7 @@
     <item>
       <title>Nix</title>
       <link>https://vincent.demeester.fr/tags/nix/</link>
-      <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/nix/</guid>
       <description></description>
@@ -592,6 +601,15 @@
       <pubDate>Sat, 26 Jan 2019 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/nixos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nixpkgs</title>
+      <link>https://vincent.demeester.fr/tags/nixpkgs/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/nixpkgs/</guid>
       <description></description>
     </item>
     
@@ -704,6 +722,15 @@
     </item>
     
     <item>
+      <title>Reproductible</title>
+      <link>https://vincent.demeester.fr/tags/reproductible/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/reproductible/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Review</title>
       <link>https://vincent.demeester.fr/tags/review/</link>
       <pubDate>Sun, 20 Jan 2019 00:00:00 +0100</pubDate>
@@ -751,7 +778,7 @@
     <item>
       <title>Software</title>
       <link>https://vincent.demeester.fr/tags/software/</link>
-      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/software/</guid>
       <description></description>

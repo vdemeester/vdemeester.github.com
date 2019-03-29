@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Macos on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/macos/</link>
+    <description>Recent content in Macos on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Nix: A Reproducible Setup for Linux and macOS</title>
+      <link>https://vincent.demeester.fr/posts/2019-03-28-link/</link>
+      <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-03-28-link/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
