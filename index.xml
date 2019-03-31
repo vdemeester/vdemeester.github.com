@@ -5,10 +5,21 @@
     <link>https://vincent.demeester.fr/</link>
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Six Years With a Distraction-Free iPhone</title>
+      
+      <link>https://medium.com/s/story/six-years-with-a-distraction-free-iphone-8cf5eb4f97e3</link>
+      
+      <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-03-31-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Nix: A Reproducible Setup for Linux and macOS</title>
