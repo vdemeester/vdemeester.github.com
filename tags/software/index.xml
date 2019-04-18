@@ -5,10 +5,19 @@
     <link>https://vincent.demeester.fr/tags/software/</link>
     <description>Recent content in Software on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/software/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Easy Peasy Nix Versions</title>
+      <link>https://vincent.demeester.fr/posts/2019-04-18-link/</link>
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-04-18-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Nix: A Reproducible Setup for Linux and macOS</title>

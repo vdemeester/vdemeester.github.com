@@ -5,10 +5,21 @@
     <link>https://vincent.demeester.fr/</link>
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 31 Mar 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Easy Peasy Nix Versions</title>
+      
+      <link>https://www.nmattia.com/posts/2019-01-15-easy-peasy-nix-versions.html</link>
+      
+      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-04-18-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Six Years With a Distraction-Free iPhone</title>
@@ -1069,7 +1080,7 @@ counter-part &lt;code&gt;golden.Assert&lt;/code&gt; and &lt;code&gt;golden.Asser
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion…&lt;/h2&gt;
 
 &lt;p&gt;… that&amp;rsquo;s a wrap. As for &lt;a href=&#34;https://vincent.demeester.fr/posts/2018-09-01-gotest-tools-skip/&#34;&gt;&lt;code&gt;skip&lt;/code&gt;&lt;/a&gt;, this is a small package, so the post was going to be
-quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;https://vincent.demeester.fr/posts/2017--04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
+quick. &lt;code&gt;golden&lt;/code&gt; package just solve a specific problem (read &lt;a href=&#34;https://vincent.demeester.fr/posts/2017-04-22-golang-testing-golden-file/&#34;&gt;Golang testing — golden file&lt;/a&gt;)
 in a simple way.&lt;/p&gt;
 </description>
     </item>
