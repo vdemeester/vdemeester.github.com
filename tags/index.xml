@@ -56,6 +56,15 @@
     </item>
     
     <item>
+      <title>Broken</title>
+      <link>https://vincent.demeester.fr/tags/broken/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/broken/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Builder</title>
       <link>https://vincent.demeester.fr/tags/builder/</link>
       <pubDate>Sun, 01 Jan 2017 00:00:00 +0000</pubDate>
@@ -166,7 +175,7 @@
     <item>
       <title>Development</title>
       <link>https://vincent.demeester.fr/tags/development/</link>
-      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/development/</guid>
       <description></description>
@@ -346,7 +355,7 @@
     <item>
       <title>Go</title>
       <link>https://vincent.demeester.fr/tags/go/</link>
-      <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/go/</guid>
       <description></description>
@@ -511,6 +520,15 @@
       <pubDate>Fri, 01 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/jekyll/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Libraries</title>
+      <link>https://vincent.demeester.fr/tags/libraries/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/tags/libraries/</guid>
       <description></description>
     </item>
     
@@ -814,7 +832,7 @@
     <item>
       <title>Software</title>
       <link>https://vincent.demeester.fr/tags/software/</link>
-      <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/software/</guid>
       <description></description>
@@ -850,7 +868,7 @@
     <item>
       <title>Tips</title>
       <link>https://vincent.demeester.fr/tags/tips/</link>
-      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/tags/tips/</guid>
       <description></description>

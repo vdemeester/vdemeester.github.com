@@ -5,10 +5,19 @@
     <link>https://vincent.demeester.fr/tags/tips/</link>
     <description>Recent content in Tips on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 19 Sep 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stop writing broken Go libraries</title>
+      <link>https://vincent.demeester.fr/posts/2019-04-19-link/</link>
+      <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-04-19-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Firefox hidden feature — places in bookmarks</title>
