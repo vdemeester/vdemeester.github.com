@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Size on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/size/</link>
+    <description>Recent content in Size on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/size/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Trimming the fat from a Golang binary</title>
+      <link>https://vincent.demeester.fr/posts/2019-04-23-link/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-04-23-link/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

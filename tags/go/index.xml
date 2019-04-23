@@ -5,10 +5,19 @@
     <link>https://vincent.demeester.fr/tags/go/</link>
     <description>Recent content in Go on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 19 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Trimming the fat from a Golang binary</title>
+      <link>https://vincent.demeester.fr/posts/2019-04-23-link/</link>
+      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-04-23-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Stop writing broken Go libraries</title>
