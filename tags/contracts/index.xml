@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Contracts on Vincent Demeester</title>
+    <title>contracts on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/contracts/</link>
-    <description>Recent content in Contracts on Vincent Demeester</description>
+    <description>Recent content in contracts on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 12 Mar 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-12-link/</guid>
-      <description></description>
+      <description>A take at the Go 2 contracts proposal and why it might not really do good</description>
     </item>
     
   </channel>

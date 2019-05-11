@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Buildkit on Vincent Demeester</title>
+    <title>buildkit on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/buildkit/</link>
-    <description>Recent content in Buildkit on Vincent Demeester</description>
+    <description>Recent content in buildkit on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 15 Feb 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-02-15-link/</guid>
-      <description></description>
+      <description>how to write your own Dockerfile syntax that works out of the box with any existing Docker installation.</description>
     </item>
     
   </channel>

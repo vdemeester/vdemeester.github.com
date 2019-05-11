@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Handle on Vincent Demeester</title>
+    <title>handle on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/handle/</link>
-    <description>Recent content in Handle on Vincent Demeester</description>
+    <description>Recent content in handle on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 26 Mar 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-26-link/</guid>
-      <description></description>
+      <description>Opinion (that I share) on the check/handle error proposal for Go 2</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Productivity on Vincent Demeester</title>
+    <title>productivity on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/productivity/</link>
-    <description>Recent content in Productivity on Vincent Demeester</description>
+    <description>Recent content in productivity on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 27 Jan 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-01-27-link/</guid>
-      <description></description>
+      <description>Tips for developers to take care of themselves to work better (but less too 👼)</description>
     </item>
     
   </channel>

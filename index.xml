@@ -1,14 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vincent Demeester</title>
     <link>https://vincent.demeester.fr/</link>
     <description>Recent content on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>boring is cool | advocacy site for boring technology</title>
+      
+      <link>http://boringis.cool/</link>
+      
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-06-28-link/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>As We May Kube*</title>
+      
+      <link>https://itnext.io/as-we-may-kube-293b30c0a365</link>
+      
+      <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-05-11-link/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Trimming the fat from a Golang binary</title>

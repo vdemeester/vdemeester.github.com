@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Testing on Vincent Demeester</title>
+    <title>testing on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/testing/</link>
-    <description>Recent content in Testing on Vincent Demeester</description>
+    <description>Recent content in testing on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-27-link/</guid>
-      <description></description>
+      <description>The author describes five of the reason why he thinks tests are important — and I do agree !</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@
       <pubDate>Sun, 16 Dec 2018 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-12-16-link/</guid>
-      <description></description>
+      <description>A small (opiniated) style guide for Writing Go tests.</description>
     </item>
     
     <item>

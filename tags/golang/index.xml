@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Golang on Vincent Demeester</title>
+    <title>golang on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/golang/</link>
-    <description>Recent content in Golang on Vincent Demeester</description>
+    <description>Recent content in golang on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 23 Mar 2019 00:00:00 +0100</lastBuildDate>
     
@@ -27,7 +27,7 @@
       <pubDate>Thu, 10 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-01-10-link/</guid>
-      <description></description>
+      <description>Why you should prefer to use log.Panic instead of log.Fatal in go code</description>
     </item>
     
     <item>
@@ -36,7 +36,7 @@
       <pubDate>Sun, 16 Dec 2018 00:00:00 +0100</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2018-12-16-link/</guid>
-      <description></description>
+      <description>A small (opiniated) style guide for Writing Go tests.</description>
     </item>
     
     <item>

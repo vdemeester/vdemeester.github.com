@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>News on Vincent Demeester</title>
+    <title>news on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/news/</link>
-    <description>Recent content in News on Vincent Demeester</description>
+    <description>Recent content in news on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 21 Jul 2012 00:00:00 +0000</lastBuildDate>
     

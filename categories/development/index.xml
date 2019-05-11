@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on Vincent Demeester</title>
+    <title>development on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/categories/development/</link>
-    <description>Recent content in Development on Vincent Demeester</description>
+    <description>Recent content in development on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 23 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>boring is cool | advocacy site for boring technology</title>
+      <link>https://vincent.demeester.fr/posts/2019-06-28-link/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-06-28-link/</guid>
+      <description>« Here, I share some thoughts and considerations around using cloud native technologies, including Kubernetes, observability tools such as Prometheus, service meshes, and serverless offerings. »</description>
+    </item>
+    
+    <item>
+      <title>As We May Kube*</title>
+      <link>https://vincent.demeester.fr/posts/2019-05-11-link/</link>
+      <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-05-11-link/</guid>
+      <description>We use different programming languages and development environments to write apps. Each language comes with a different flow and also we typically go through different phases, from prototyping to integration-level activities to incrementally adding features or fixing bugs once the app is in production. Now, the expectation of a developer coming from a “traditional” environment to Kubernetes is in general that their natural and well-known workflow changes as little as possible. This article reviews where we stand in Kubernetes-land concerning developing apps and where we may be heading.</description>
+    </item>
     
     <item>
       <title>Trimming the fat from a Golang binary</title>
@@ -16,7 +34,7 @@
       <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-04-23-link/</guid>
-      <description></description>
+      <description>Some tips and tricks to reduce the size of a golang binary</description>
     </item>
     
     <item>
@@ -25,7 +43,7 @@
       <pubDate>Fri, 19 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-04-19-link/</guid>
-      <description></description>
+      <description>Every single one of those libraries had some fundamental problems that made it unusable in any real world applications. Furthermore every single one of those libraries was written in a way which made fixing the issues impossible without altering the existing library APIs in a non backwards compatibile way. As the same problems unfortunately plague many other Go libraries I attempted to list most of the sins commited by their authors below.</description>
     </item>
     
     <item>
@@ -34,7 +52,7 @@
       <pubDate>Thu, 18 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-04-18-link/</guid>
-      <description></description>
+      <description>This is a convention for using third-party packages in Nix. It has a simple directory structure, makes using the packages straightforward and automatizes updates.</description>
     </item>
     
     <item>
@@ -43,7 +61,7 @@
       <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-28-link/</guid>
-      <description></description>
+      <description>This post describes how I set up a reproducible development environment in a few seconds on any Linux distribution (and potentially macOS as well).</description>
     </item>
     
     <item>
@@ -52,7 +70,7 @@
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-27-link/</guid>
-      <description></description>
+      <description>The author describes five of the reason why he thinks tests are important — and I do agree !</description>
     </item>
     
     <item>
@@ -61,7 +79,7 @@
       <pubDate>Tue, 26 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-26-link/</guid>
-      <description></description>
+      <description>Opinion (that I share) on the check/handle error proposal for Go 2</description>
     </item>
     
     <item>
@@ -70,7 +88,7 @@
       <pubDate>Sun, 24 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-24-link/</guid>
-      <description></description>
+      <description>A visual approach to the topic of purely-typed functional programming.</description>
     </item>
     
     <item>
@@ -79,7 +97,7 @@
       <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-12-link/</guid>
-      <description></description>
+      <description>A take at the Go 2 contracts proposal and why it might not really do good</description>
     </item>
     
     <item>
@@ -88,7 +106,7 @@
       <pubDate>Mon, 25 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-02-25-link/</guid>
-      <description></description>
+      <description>I did some work recently that depended on Go interfaces and I found it both straightforward and elegant.</description>
     </item>
     
     <item>
@@ -97,7 +115,7 @@
       <pubDate>Fri, 15 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-02-15-link/</guid>
-      <description></description>
+      <description>how to write your own Dockerfile syntax that works out of the box with any existing Docker installation.</description>
     </item>
     
     <item>
@@ -106,7 +124,7 @@
       <pubDate>Sun, 27 Jan 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-01-27-link/</guid>
-      <description></description>
+      <description>Tips for developers to take care of themselves to work better (but less too 👼)</description>
     </item>
     
   </channel>

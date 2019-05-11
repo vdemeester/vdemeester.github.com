@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kube on Vincent Demeester</title>
+    <link>https://vincent.demeester.fr/tags/kube/</link>
+    <description>Recent content in kube on Vincent Demeester</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://vincent.demeester.fr/tags/kube/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>boring is cool | advocacy site for boring technology</title>
+      <link>https://vincent.demeester.fr/posts/2019-06-28-link/</link>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-06-28-link/</guid>
+      <description>« Here, I share some thoughts and considerations around using cloud native technologies, including Kubernetes, observability tools such as Prometheus, service meshes, and serverless offerings. »</description>
+    </item>
+    
+    <item>
+      <title>As We May Kube*</title>
+      <link>https://vincent.demeester.fr/posts/2019-05-11-link/</link>
+      <pubDate>Sat, 11 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/posts/2019-05-11-link/</guid>
+      <description>We use different programming languages and development environments to write apps. Each language comes with a different flow and also we typically go through different phases, from prototyping to integration-level activities to incrementally adding features or fixing bugs once the app is in production. Now, the expectation of a developer coming from a “traditional” environment to Kubernetes is in general that their natural and well-known workflow changes as little as possible. This article reviews where we stand in Kubernetes-land concerning developing apps and where we may be heading.</description>
+    </item>
+    
+  </channel>
+</rss>

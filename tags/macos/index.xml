@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Macos on Vincent Demeester</title>
+    <title>macos on Vincent Demeester</title>
     <link>https://vincent.demeester.fr/tags/macos/</link>
-    <description>Recent content in Macos on Vincent Demeester</description>
+    <description>Recent content in macos on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Thu, 28 Mar 2019 00:00:00 +0000</lastBuildDate>
     
@@ -16,7 +16,7 @@
       <pubDate>Thu, 28 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/posts/2019-03-28-link/</guid>
-      <description></description>
+      <description>This post describes how I set up a reproducible development environment in a few seconds on any Linux distribution (and potentially macOS as well).</description>
     </item>
     
   </channel>

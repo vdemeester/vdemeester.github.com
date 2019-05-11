@@ -5,48 +5,22 @@
     <link>https://vincent.demeester.fr/categories/</link>
     <description>Recent content in Categories on Vincent Demeester</description>
     <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 28 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://vincent.demeester.fr/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Configurations</title>
-      <link>https://vincent.demeester.fr/categories/configurations/</link>
-      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://vincent.demeester.fr/categories/configurations/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Developement</title>
-      <link>https://vincent.demeester.fr/categories/developement/</link>
-      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
-      
-      <guid>https://vincent.demeester.fr/categories/developement/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
+      <title>development</title>
       <link>https://vincent.demeester.fr/categories/development/</link>
-      <pubDate>Tue, 23 Apr 2019 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 28 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/categories/development/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Me</title>
-      <link>https://vincent.demeester.fr/categories/me/</link>
-      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://vincent.demeester.fr/categories/me/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Productivity</title>
+      <title>productivity</title>
       <link>https://vincent.demeester.fr/categories/productivity/</link>
       <pubDate>Sun, 31 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -55,11 +29,38 @@
     </item>
     
     <item>
-      <title>Zenika</title>
+      <title>developement</title>
+      <link>https://vincent.demeester.fr/categories/developement/</link>
+      <pubDate>Sat, 23 Mar 2019 00:00:00 +0100</pubDate>
+      
+      <guid>https://vincent.demeester.fr/categories/developement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>configurations</title>
+      <link>https://vincent.demeester.fr/categories/configurations/</link>
+      <pubDate>Mon, 19 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/categories/configurations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zenika</title>
       <link>https://vincent.demeester.fr/categories/zenika/</link>
       <pubDate>Mon, 01 Jun 2015 00:00:00 +0000</pubDate>
       
       <guid>https://vincent.demeester.fr/categories/zenika/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>me</title>
+      <link>https://vincent.demeester.fr/categories/me/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://vincent.demeester.fr/categories/me/</guid>
       <description></description>
     </item>
     
